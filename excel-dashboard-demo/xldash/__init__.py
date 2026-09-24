@@ -9,11 +9,11 @@ production    load / clean the production log + reference aggregations
 worklog       load / clean the time log and the rates table
 dashboard     build the production dashboard workbook
 invoice       build the time-and-materials invoice + payroll workbook
-formula_check static lint + formula evaluation (pycel) for generated workbooks
+formula_check static lint + formula evaluation (pycel); stores computed values for previews
 """
 
 __version__ = "1.0.0"
 
 DEMO_BRAND = "Quillmoor Machining"
-DEMO_CONTRACTOR = "Nimbra Digital"
+DEMO_CONTRACTOR = "Brindlecote Digital"
 DEMO_CLIENT = "Quillmoor Machining"

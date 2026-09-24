@@ -13,6 +13,7 @@ import sys
 from pathlib import Path
 
 from xldash.dashboard import build_dashboard
+from xldash.formula_check import add_preview_values
 from xldash.production import load_production_csv
 
 
@@ -23,6 +24,9 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("-o", "--output", default="output/dashboard.xlsx")
     p.add_argument("--lang", choices=["en", "ru"], default="en", help="workbook language")
     p.add_argument("--target", type=float, default=0.85, help="availability target, 0-1 (default 0.85)")
+    p.add_argument("--no-preview-values", action="store_true",
+                   help="do not store computed values next to the formulas "
+                        "(faster; previews without Excel then show 0)")
     args = p.parse_args(argv)
     if not 0 <= args.target <= 1:
         p.error("--target must be between 0 and 1")
@@ -39,8 +43,16 @@ def main(argv: list[str] | None = None) -> int:
     if not records:
         print("error: no valid rows", file=sys.stderr)
         return 2
-    out = build_dashboard(records, Path(args.output), lang=args.lang, report=report, target=args.target)
+    try:
+        out = build_dashboard(records, Path(args.output), lang=args.lang, report=report,
+                              target=args.target)
+    except OSError as exc:
+        hint = " (is it open in Excel? close it and run again)" if isinstance(exc, PermissionError) else ""
+        print(f"error: cannot write {args.output}: {exc.strerror or exc}{hint}", file=sys.stderr)
+        return 2
     print(f"Saved {out}")
+    if not args.no_preview_values:
+        print(add_preview_values(out))
     return 0
 
 

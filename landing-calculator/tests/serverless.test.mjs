@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createRequire } from 'node:module';
-import worker, { handleLead, formatLeadMessage, escapeHtml } from '../serverless/telegram-lead.mjs';
+import worker, { handleLead, formatLeadMessage, escapeHtml, displayPhone } from '../serverless/telegram-lead.mjs';
 
 const require = createRequire(import.meta.url);
 const cfg = require('../js/config.js');
@@ -98,6 +98,13 @@ test('HTML в полях экранируется', async () => {
   assert.match(text, /&lt;b&gt;Хакер&lt;\/b&gt;/);
   assert.match(text, /a &amp; b &lt; c/);
   assert.equal(escapeHtml('"'), '&quot;');
+});
+
+test('телефон в сообщении берётся из проверенного поля, а не из phoneFormatted', () => {
+  const text = formatLeadMessage(makeLead({ phoneFormatted: 'позвоните на +7 999 000-00-00' }));
+  assert.match(text, /<b>Телефон:<\/b> \+7 \(912\) 345-67-89/);
+  assert.doesNotMatch(text, /999/);
+  assert.equal(displayPhone({ phone: '+79123456789' }), '+7 (912) 345-67-89');
 });
 
 test('длинные поля обрезаются, сообщение укладывается в лимит Telegram', () => {

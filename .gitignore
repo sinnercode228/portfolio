@@ -1,13 +1,45 @@
+# Общие правила для всего репозитория портфолио.
+# В каждом демо-проекте есть свой .gitignore с правилами под конкретный стек.
+
+# Python
 .venv/
+venv/
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
 .pytest_cache/
 .ruff_cache/
-*.egg-info/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Node.js
+node_modules/
+
+# Кэши и временные файлы
 .cache/
 .http_cache/
-node_modules/
-.env
-.DS_Store
 *.log
+~$*
+
+# Секреты и локальные настройки (шаблоны .env.example остаются в репозитории)
+.env
+.env.*
+!.env.example
+credentials*.json
+service_account*.json
+.dev.vars
+.wrangler/
+.vercel/
+.netlify/
+
+# Локальные базы данных
 *.db
+*.db-shm
+*.db-wal
+
+# Системные файлы и редакторы
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -15,10 +15,13 @@ If LibreOffice is installed, ``recalc_with_libreoffice`` is an extra check.
 
 from __future__ import annotations
 
+import math
+import numbers
 import re
 import shutil
 import subprocess
 import tempfile
+import zipfile
 from dataclasses import dataclass, field
 from datetime import date, datetime
 from pathlib import Path
@@ -43,6 +46,7 @@ FORBIDDEN_FUNCTIONS = {
     "WRAPCOLS", "EXPAND", "MAP", "REDUCE", "SCAN", "BYROW", "BYCOL", "MAKEARRAY",
 }
 ERROR_VALUES = ("#NULL!", "#DIV/0!", "#VALUE!", "#REF!", "#NAME?", "#NUM!", "#N/A")
+NOT_EVALUATED = "#NOT-EVALUATED"   # pycel could not compute the formula (reported as an error)
 
 _FUNC_RE = re.compile(r"(?<![\w.])([A-Za-z_][A-Za-z0-9_.]*)\s*\(")
 _STRUCT_RE = re.compile(r"(?<![\w.])([A-Za-z_]\w*)\[([^\[\]]+)\]")
@@ -218,12 +222,14 @@ def prepare_for_pycel(src: str | Path, dst: str | Path, overrides: dict[str, obj
 
 
 def _pycel_compat() -> None:
-    """Two small gaps in pycel 1.0b30:
+    """Three small gaps in pycel 1.0b30 (patched in memory, the package is not modified):
 
     * it still builds ``ast.Str`` nodes, which Python 3.12+ removed
       (``ast.Constant`` is the drop-in replacement);
     * its WEEKDAY() ignores the ``return_type`` argument (Excel's WEEKDAY(x, 2)
-      = Monday 1 ... Sunday 7). Patched with the Excel definition.
+      = Monday 1 ... Sunday 7). Patched with the Excel definition;
+    * MATCH() / INDEX() over a one-cell range such as ``$C$9:$C$9`` receive a
+      scalar and crash (Excel treats it as a 1x1 range). Wrapped accordingly.
     """
     import ast
     import math
@@ -256,6 +262,25 @@ def _pycel_compat() -> None:
     weekday._xldash = True
     dt.weekday = weekday
 
+    import pycel.lib.lookup as lk
+    from pycel.excelutil import ERROR_CODES, list_like
+
+    orig_match, orig_index = lk.match, lk.index
+
+    @excel_helper(cse_params=0, number_params=2, err_str_params=(0, 2))
+    def match(lookup_value, lookup_array, match_type=1):
+        if not list_like(lookup_array) and lookup_array not in ERROR_CODES:
+            lookup_array = ((lookup_array,),)
+        return orig_match(lookup_value, lookup_array, match_type)
+
+    @excel_helper(err_str_params=(1, 2), number_params=(1, 2))
+    def index(array, row_num, col_num=None):
+        if not list_like(array) and array not in ERROR_CODES:
+            array = ((array,),)
+        return orig_index(array, row_num, col_num)
+
+    lk.match, lk.index = match, index
+
 
 def evaluate_workbook(path: str | Path, overrides: dict[str, object] | None = None,
                       sheets: list[str] | None = None) -> dict[str, object]:
@@ -272,7 +297,10 @@ def evaluate_workbook(path: str | Path, overrides: dict[str, object] | None = No
         results = {}
         for sheet, coord in wanted:
             addr = f"{sheet}!{coord}"
-            value = xl.evaluate(f"'{sheet}'!{coord}")
+            try:
+                value = xl.evaluate(f"'{sheet}'!{coord}")
+            except Exception:                  # a pycel limitation must not hide the other results
+                value = NOT_EVALUATED
             if hasattr(value, "tolist"):
                 value = value.tolist()
             results[addr] = value
@@ -280,7 +308,8 @@ def evaluate_workbook(path: str | Path, overrides: dict[str, object] | None = No
 
 
 def find_errors(values: dict[str, object]) -> dict[str, str]:
-    return {k: v for k, v in values.items() if isinstance(v, str) and v in ERROR_VALUES}
+    return {k: v for k, v in values.items()
+            if isinstance(v, str) and (v in ERROR_VALUES or v == NOT_EVALUATED)}
 
 
 def recalc_with_libreoffice(path: str | Path, timeout: int = 120) -> Path | None:
@@ -293,3 +322,102 @@ def recalc_with_libreoffice(path: str | Path, timeout: int = 120) -> Path | None
                     str(out_dir), str(path)], check=True, timeout=timeout,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     return out_dir / Path(path).name
+
+
+# ------------------------------------------------------------------ cached values for previews
+
+_CELL_RE = re.compile(r'<c r="([A-Z]+[0-9]+)"([^>]*)><f>(.*?)</f><v\s*/>', re.S)
+
+
+def _xml_escape(text: str) -> str:
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+
+
+def _sheet_files(zf: zipfile.ZipFile) -> dict[str, str]:
+    """{'Sheet name': 'xl/worksheets/sheetN.xml'} from workbook.xml + its relationships."""
+    wb_xml = zf.read("xl/workbook.xml").decode("utf-8")
+    rels_xml = zf.read("xl/_rels/workbook.xml.rels").decode("utf-8")
+    targets = {}
+    for rel in re.findall(r"<Relationship\b[^>]*>", rels_xml):
+        rid, target = re.search(r'Id="([^"]+)"', rel), re.search(r'Target="([^"]+)"', rel)
+        if rid and target:
+            t = target.group(1)
+            targets[rid.group(1)] = t.lstrip("/") if t.startswith("/") else "xl/" + t
+    out = {}
+    for sheet in re.findall(r"<sheet\b[^>]*>", wb_xml):
+        name = re.search(r'name="([^"]*)"', sheet).group(1)
+        rid = re.search(r'r:id="([^"]+)"', sheet).group(1)
+        name = (name.replace("&quot;", '"').replace("&apos;", "'").replace("&lt;", "<")
+                .replace("&gt;", ">").replace("&amp;", "&"))
+        out[name] = targets[rid]
+    return out
+
+
+def store_cached_values(path: str | Path, values: dict[str, object] | None = None) -> int:
+    """Write the computed result next to every formula (<v> in the sheet XML).
+
+    openpyxl saves formulas without results, so file previews that do not
+    calculate (Quick Look, phone / mail / messenger previews) show 0 everywhere.
+    Excel still recalculates on open (fullCalcOnLoad), so the cached values only
+    affect such previews. Cells pycel could not evaluate are left empty.
+    Returns the number of cells filled.
+    """
+    path = Path(path)
+    values = evaluate_workbook(path) if values is None else values
+    by_sheet: dict[str, dict[str, object]] = {}
+    for addr, value in values.items():
+        sheet, coord = addr.rsplit("!", 1)
+        by_sheet.setdefault(sheet, {})[coord] = value
+
+    filled = 0
+
+    def cell(m: re.Match, cached: dict[str, object]) -> str:
+        nonlocal filled
+        ref, attrs, formula = m.group(1), m.group(2), m.group(3)
+        v = cached.get(ref)
+        if isinstance(v, list):                              # 1x1 array result
+            v = v[0][0] if v and isinstance(v[0], list) else (v[0] if v else None)
+        if v is None or v == NOT_EVALUATED or 't="' in attrs:
+            return m.group(0)
+        if isinstance(v, bool):
+            t, text = "b", "1" if v else "0"
+        elif isinstance(v, numbers.Real):
+            f = float(v)
+            if not math.isfinite(f):
+                return m.group(0)
+            t, text = None, str(int(f)) if f.is_integer() and abs(f) < 1e15 else repr(f)
+        elif isinstance(v, str) and v in ERROR_VALUES:
+            t, text = "e", v
+        else:
+            t, text = "str", _xml_escape(str(v))
+        filled += 1
+        t_attr = f' t="{t}"' if t else ""
+        return f'<c r="{ref}"{attrs}{t_attr}><f>{formula}</f><v>{text}</v>'
+
+    tmp = path.with_suffix(".tmp.xlsx")
+    with zipfile.ZipFile(path) as src, zipfile.ZipFile(tmp, "w", zipfile.ZIP_DEFLATED) as dst:
+        files = {v: k for k, v in _sheet_files(src).items()}
+        for item in src.infolist():
+            data = src.read(item.filename)
+            sheet = files.get(item.filename)
+            if sheet in by_sheet:
+                xml = data.decode("utf-8")
+                xml = _CELL_RE.sub(lambda m: cell(m, by_sheet[sheet]), xml)
+                data = xml.encode("utf-8")
+            dst.writestr(item, data)
+    tmp.replace(path)
+    return filled
+
+
+def add_preview_values(path: str | Path) -> str:
+    """store_cached_values() if pycel is installed; returns a one-line status for the CLI."""
+    try:
+        import pycel  # noqa: F401
+    except ImportError:
+        return ("note: pycel is not installed (pip install -r requirements-dev.txt), so file previews "
+                "(Quick Look, phone) will show 0 until the workbook is opened in Excel")
+    try:
+        n = store_cached_values(path)
+    except Exception as exc:                  # the workbook itself is already saved and valid
+        return f"note: computed values were not stored for previews ({exc})"
+    return f"Stored computed values of {n} formulas (for previews; Excel recalculates on open)"

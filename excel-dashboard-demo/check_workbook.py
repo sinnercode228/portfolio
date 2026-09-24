@@ -13,7 +13,9 @@ Example:
 from __future__ import annotations
 
 import argparse
+import glob
 import sys
+from pathlib import Path
 
 from openpyxl import load_workbook
 
@@ -52,9 +54,16 @@ def check(path: str) -> bool:
 
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("files", nargs="+")
+    p.add_argument("files", nargs="+", help="workbooks; wildcards like output/*.xlsx also work on Windows")
     args = p.parse_args(argv)
-    results = [check(f) for f in args.files]
+    files: list[str] = []
+    for pattern in args.files:            # cmd.exe does not expand wildcards itself
+        matches = sorted(glob.glob(pattern)) if glob.has_magic(pattern) else [pattern]
+        files += matches
+        if not matches or not all(Path(f).is_file() for f in matches):
+            print(f"error: no such workbook: {pattern}", file=sys.stderr)
+            return 2
+    results = [check(f) for f in files]
     return 0 if all(results) else 1
 
 

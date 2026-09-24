@@ -190,7 +190,8 @@ b, strong { font-weight: 700; }
 }
 .btn-link:hover { color: var(--accent-hover); text-decoration-thickness: 2.5px; }
 .btn-link--inline { padding: 0; font-weight: inherit; color: inherit; }
-.btn-link--light { color: var(--on-dark); font-weight: 500; }
+.btn-link--light { padding: 0; color: var(--on-dark); font-weight: inherit; text-align: left; text-decoration: none; }
+.btn-link--light:hover { color: var(--on-dark); text-decoration: underline; text-decoration-thickness: 1.5px; }
 
 /* ---------- Демо-плашка и шапка ---------- */
 .demo-bar {
@@ -346,7 +347,23 @@ b, strong { font-weight: 700; }
   }
   .site-nav a:hover { background: var(--sand); color: var(--ink); }
   .header-actions { margin-left: 8px; }
+  .site-nav .nav-extra { display: none; }
 }
+/* 1080–1299 px: меню, телефон и кнопка вместе не помещаются в строку — телефон прячем,
+   он остаётся в контактах и в мобильном меню */
+@media (min-width: 1080px) and (max-width: 1299.98px) {
+  .header-phone { display: none; }
+}
+
+/* телефон внутри мобильного меню: на узких экранах в шапке его нет */
+.site-nav .nav-extra a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 0;
+  color: var(--accent);
+}
+.site-nav .nav-extra svg { width: 22px; height: 22px; }
 
 /* ---------- Общие секции ---------- */
 .section { padding-block: var(--section-y); }

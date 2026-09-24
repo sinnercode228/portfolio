@@ -7,9 +7,9 @@
   "license": "MIT",
   "scripts": {
     "test": "node --test \"tests/*.test.js\" \"tests/*.test.mjs\"",
-    "start": "python3 -m http.server 8080"
+    "start": "node scripts/serve.mjs"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   }
 }

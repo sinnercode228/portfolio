@@ -55,6 +55,17 @@ const clip = (value, max) => {
 };
 
 /**
+ * Телефон для сообщения собираем из проверенного поля phone (+7XXXXXXXXXX),
+ * а не из присланного phoneFormatted — его клиент может подменить.
+ */
+export function displayPhone(lead) {
+  const d = String(lead?.phone ?? '').replace(/\D/g, '');
+  return d.length === 11
+    ? `+7 (${d.slice(1, 4)}) ${d.slice(4, 7)}-${d.slice(7, 9)}-${d.slice(9)}`
+    : clip(lead?.phone, 30);
+}
+
+/**
  * Текст сообщения для Telegram (parse_mode: HTML).
  * Поля обрезаются заранее, чтобы уложиться в лимит 4096 символов
  * (Telegram считает длину уже после разбора HTML-сущностей).
@@ -64,7 +75,7 @@ export function formatLeadMessage(lead) {
     '<b>Новая заявка с сайта</b>',
     '',
     `<b>Имя:</b> ${escapeHtml(clip(lead.name, 80))}`,
-    `<b>Телефон:</b> ${escapeHtml(clip(lead.phoneFormatted || lead.phone, 30))}`
+    `<b>Телефон:</b> ${escapeHtml(displayPhone(lead))}`
   ];
   if (lead.comment) lines.push(`<b>Комментарий:</b> ${escapeHtml(clip(lead.comment, 1000))}`);
   if (lead.calculation?.summary) {
@@ -101,7 +112,7 @@ async function sendEmail(lead, env, fetchImpl) {
     body: JSON.stringify({
       from: env.LEAD_EMAIL_FROM || 'Заявки <leads@example.com>',
       to: [env.LEAD_EMAIL_TO],
-      subject: `Заявка: ${lead.name}, ${lead.phoneFormatted || lead.phone}`,
+      subject: `Заявка: ${clip(String(lead.name).replace(/\s+/g, ' ').trim(), 80)}, ${displayPhone(lead)}`,
       html: formatLeadMessage(lead).replace(/\n/g, '<br>')
     })
   });

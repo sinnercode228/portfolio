@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import math
 from collections import defaultdict
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date
 from pathlib import Path
 
@@ -97,21 +97,42 @@ def load_worklog_csv(path: str | Path) -> tuple[list[WorkEntry], LoadReport]:
 
 def load_rates_csv(path: str | Path) -> list[Rate]:
     rows = sniff_rows(read_text(path))
+    if not rows:
+        raise ValueError(f"{path}: file is empty")
     cols = map_headers(rows[0], RATE_ALIASES)
     missing = [k for k in RATE_ALIASES if k not in cols]
     if missing:
         raise ValueError(f"{path}: missing required column(s): {', '.join(missing)}")
     rates = []
-    for raw in rows[1:]:
+    for line_no, raw in enumerate(rows[1:], start=2):
         if not any(c.strip() for c in raw):
             continue
-        rates.append(Rate(clean_text(raw[cols["employee"]]), clean_text(raw[cols["role"]]),
-                          parse_number(raw[cols["bill_rate"]]), parse_number(raw[cols["pay_rate"]])))
+        get = lambda k: raw[cols[k]] if cols[k] < len(raw) else ""  # noqa: E731
+        employee = clean_text(get("employee"))
+        if not employee:
+            raise ValueError(f"{path}, line {line_no}: employee is empty")
+        try:
+            bill, pay = parse_number(get("bill_rate")), parse_number(get("pay_rate"))
+        except ValueError as exc:
+            raise ValueError(f"{path}, line {line_no}: bad rate for {employee}: {exc}") from None
+        if bill < 0 or pay < 0:
+            raise ValueError(f"{path}, line {line_no}: negative rate for {employee}")
+        rates.append(Rate(employee, clean_text(get("role")), bill, pay))
+    if not rates:
+        raise ValueError(f"{path}: no rates found")
     names = [r.employee.casefold() for r in rates]
     dupes = {n for n in names if names.count(n) > 1}
     if dupes:
         raise ValueError(f"{path}: duplicate employees in rates: {', '.join(sorted(dupes))}")
     return rates
+
+
+def match_rate_names(entries: list[WorkEntry], rates: list[Rate]) -> list[WorkEntry]:
+    """Use the rates table's spelling for names that differ only in case / spaces.
+    Excel's MATCH and SUMIFS ignore case anyway; this keeps the workbook, the
+    warnings and the Python reference consistent."""
+    by_key = {r.employee.casefold(): r.employee for r in rates}
+    return [replace(e, employee=by_key.get(e.employee.casefold(), e.employee)) for e in entries]
 
 
 # ----------------------------------------------------------------- reference maths

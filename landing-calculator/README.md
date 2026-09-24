@@ -24,9 +24,9 @@
 
 **Заявка**
 - Поля: имя, телефон с маской `+7 (___) ___-__-__` (правка в середине номера и Backspace по скобкам работают корректно) и комментарий.
-- Флажок «Приложить расчёт» добавляет в заявку расчёт целиком: параметры, строки сметы и текстовое резюме. Ещё в заявку попадают UTM-метки и адрес страницы.
+- Флажок «Приложить расчёт» добавляет в заявку расчёт целиком: параметры, строки сметы и текстовое резюме. Ещё в заявку попадают UTM-метки и адрес страницы входа. Метки запоминаются при загрузке, поэтому не теряются, даже если посетитель скопировал ссылку на расчёт.
 - Ошибки валидации показываются у полей: `aria-invalid`, `aria-describedby`, фокус переходит на первое поле с ошибкой. Есть honeypot против ботов.
-- Бэкенда в демо нет. После отправки показывается экран успеха, а весь payload выводится в консоль браузера (F12). Как подключить Telegram или почту, описано ниже.
+- Бэкенда в демо нет. После отправки показывается экран успеха, а весь payload выводится в консоль браузера (F12). Как подключить Telegram или почту, описано ниже. Когда адрес обработчика задан, пояснение «это демо» на экране успеха скрывается само.
 
 **Остальное**
 - Разделы: первый экран, технологии, калькулятор, заявка, этапы, проекты с фильтром, гарантии, FAQ-аккордеон на `<details>` (одновременно открыт один ответ), контакты с картой-заглушкой, подвал.
@@ -40,30 +40,33 @@
 Сборка не нужна.
 
 ```bash
-# вариант 1: просто открыть файл
-open index.html
+# вариант 1: просто открыть файл (двойной клик по index.html или команда ниже)
+open index.html      # Windows: start index.html · Linux: xdg-open index.html
 
-# вариант 2: локальный сервер (нужен, например, для копирования ссылки в буфер)
-npm start            # = python3 -m http.server 8080
-# → http://localhost:8080
+# вариант 2: локальный сервер на Node.js — без Python и без npm install
+npm start            # → http://localhost:8080
+npm start -- 3000    # если порт 8080 занят
 ```
+
+Сервер (`scripts/serve.mjs`) нужен, если вы хотите открыть сайт с телефона в той же сети или проверить копирование ссылки в буфер: в некоторых браузерах оно работает только по `http://`.
 
 ## Тесты
 
-Нужен Node.js 20 или новее. Зависимости ставить не нужно, используется встроенный `node:test`.
+Нужен Node.js 22 или новее (раннер `node --test` понимает шаблоны вида `tests/*.test.js` только с 21-й версии). Зависимости ставить не нужно, используется встроенный `node:test`.
 
 ```bash
 npm test
 ```
 
-44 теста в четырёх файлах:
+49 тестов в пяти файлах:
 
 | Файл | Что проверяет |
 |---|---|
 | `tests/calc.test.js` | Формулы на конкретных числах; сумма строк равна итогу на переборе 360 комбинаций; монотонность цены; нормализация ввода (границы, строки, `__proto__`); сроки; форматирование ₽; склонения; ссылка с расчётом |
 | `tests/form-utils.test.js` | Маску телефона и позицию курсора, Backspace по символам маски, валидацию, UTM, состав payload |
-| `tests/serverless.test.mjs` | Пример serverless-функции с подменённым `fetch`: CORS, 405/400/413/422, honeypot, отправку в Telegram и e-mail, экранирование HTML, лимит длины сообщения |
-| `tests/page.test.js` | Уникальность id, существование файлов и якорей, наличие в разметке всех id из `app.js`, подписи у полей, корректность JSON в пресетах, демо-пометку, размер страницы |
+| `tests/serverless.test.mjs` | Пример serverless-функции с подменённым `fetch`: CORS, 405/400/413/422, honeypot, отправку в Telegram и e-mail, экранирование HTML, телефон только из проверенного поля, лимит длины сообщения |
+| `tests/page.test.js` | Уникальность id, существование файлов и якорей, наличие в разметке всех id из `app.js`, подписи у полей, корректность JSON в пресетах, совпадение подписей карточек проектов с их пресетами, единый телефон, демо-пометку, размер страницы |
+| `tests/serve.test.mjs` | Локальный сервер `npm start`: типы файлов, 404/405, скрытые файлы и защиту от выхода из папки через `../` |
 
 ## Структура
 
@@ -77,6 +80,7 @@ landing-calculator/
 │   ├── form-utils.js          # маска телефона, валидация, сборка заявки (без DOM)
 │   └── app.js                 # связывает всё со страницей
 ├── serverless/telegram-lead.mjs  # пример приёма заявок → Telegram / e-mail
+├── scripts/serve.mjs          # локальный сервер для npm start (без зависимостей)
 ├── tests/                     # node --test
 ├── assets/favicon.svg
 └── docs/                      # скриншоты для README
@@ -143,7 +147,7 @@ npx wrangler deploy
 Обработчик написан на стандартном Web API (`Request → Response`), поэтому хватит тонкой обёртки:
 
 ```js
-// Vercel: api/lead.js
+// Vercel: api/lead.mjs
 import { handleLead } from '../serverless/telegram-lead.mjs';
 export const POST = (req) => handleLead(req, process.env);
 export const OPTIONS = (req) => handleLead(req, process.env);
@@ -207,17 +211,17 @@ This is a one-page site for a private house builder. It has a live house cost ca
 
 ## Features
 - **Calculator.** Inputs: area (slider and number input), floors, wall technology (aerated concrete, timber frame, brick, glued timber), finish level (shell, white box, turnkey) and options (slab foundation, terrace area, garage). The result updates live and shows the price per m², an estimated build time, a proportion bar and an itemised breakdown. All prices live in `js/config.js`, and the calculator's options are generated from that file. The current calculation can be shared as a URL. The project cards and technology cards can preload their parameters into the calculator. On mobile, a sticky total bar stays visible while you change inputs.
-- **Lead form.** Fields: name, a masked Russian phone number (caret-aware editing) and a comment. There is an option to attach the full calculation. The form also captures UTM tags and has a honeypot field and accessible inline validation. With no backend, the demo shows a success state and logs the JSON payload to the console.
+- **Lead form.** Fields: name, a masked Russian phone number (caret-aware editing) and a comment. There is an option to attach the full calculation. The form also captures UTM tags on page load (so they survive the "copy link" button rewriting the URL) and has a honeypot field and accessible inline validation. With no backend, the demo shows a success state and logs the JSON payload to the console.
 - **Sections.** Hero, technologies, calculator, lead form, stages, projects with a filter, guarantees, an FAQ accordion (native `<details name>`) and contacts.
 - **Yandex Metrika.** The counter snippet and the `track()` goal hooks are included as commented-out placeholders.
 - **Quality.** The layout is mobile-first and has no horizontal scroll at 375 px. The page has accessible labels and landmarks, visible focus, `aria-live` updates and reduced-motion support. It weighs about 37 KB gzipped and has zero dependencies.
 
 ## Run and test
 ```bash
-open index.html        # or: npm start → http://localhost:8080
-npm test               # Node ≥ 20, no install needed: 44 tests
+open index.html        # or: npm start → http://localhost:8080 (Node only, no Python needed)
+npm test               # Node ≥ 22, no install needed: 49 tests
 ```
-The tests cover the calculator maths (including a check that the item rows add up to the total across 360 input combinations), input normalisation, formatting, the phone mask and caret logic, validation, the lead payload, the serverless handler (with a mocked `fetch`) and static checks of the page markup.
+The tests cover the calculator maths (including a check that the item rows add up to the total across 360 input combinations), input normalisation, formatting, the phone mask and caret logic, validation, the lead payload, the serverless handler (with a mocked `fetch`), the local dev server and static checks of the page markup (including that each project card's label matches the preset its price is calculated from).
 
 ## Receiving leads (Telegram / e-mail)
 Set `leadEndpoint` in `js/config.js`. The form then POSTs its JSON payload to that URL. [`serverless/telegram-lead.mjs`](serverless/telegram-lead.mjs) is a Web-standard handler: it validates the payload, drops bot submissions, escapes HTML, and sends the lead to Telegram and optionally e-mails it via Resend.

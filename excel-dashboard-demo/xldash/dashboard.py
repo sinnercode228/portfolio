@@ -35,7 +35,7 @@ from openpyxl.worksheet.table import Table, TableStyleInfo
 from . import DEMO_BRAND
 from .csvio import LoadReport
 from .formulas import date_text, quote_sheet
-from .production import ProdRecord, dimension_values, machine_department
+from .production import UNSPECIFIED, ProdRecord, dimension_values, machine_department
 from .style import (BAD, BLUE, BOTTOM, GOOD, HEADER_FILL, INK_2, MUTED, ORANGE, PANEL,
                     TOP_DOUBLE, base_sheet, body_cell, col, fill, font, header_row, input_cell,
                     section_title, set_widths, style_bar_chart, text_props, title_bar)
@@ -211,15 +211,49 @@ ISSUE_TEXT = {
 }
 
 
+FIELD_TEXT = {
+    "en": {"shift": "shift", "department": "department", "machine": "machine",
+           "employee": "employee", "halt_reason": "halt reason"},
+    "ru": {"shift": "смена", "department": "цех", "machine": "оборудование",
+           "employee": "сотрудник", "halt_reason": "причина простоя"},
+}
+
+# the loader writes details in English; the Russian workbook translates the fixed phrases
+_DETAIL_RU = [
+    ("exact duplicate of an earlier row", "точный дубликат одной из строк выше"),
+    ("unrecognised date", "не удалось распознать дату"),
+    ("could not convert string to float:", "не удалось распознать число:"),
+    ("empty number", "пустое число"),
+    ("machine is empty", "не указано оборудование"),
+    ("run=", "работа="),
+    ("halt=", "простой="),
+    (" min", " мин"),
+]
+
+LOG_SUMMARY = {
+    "en": "{accepted} of {total} rows accepted",
+    "ru": "Принято строк: {accepted} из {total}",
+}
+
+
 def _issue_text(kind: str, lang: str) -> str:
     texts = ISSUE_TEXT[lang]
     if kind in texts:
         return texts[kind]
     if kind.startswith("normalised_"):
-        return f"{texts['normalised']} ({kind.split('_', 1)[1]})"
+        field = kind.split("_", 1)[1]
+        return f"{texts['normalised']} ({FIELD_TEXT[lang].get(field, field)})"
     if kind.startswith("filled_blank_"):
-        return f"{texts['filled']} ({kind.split('_', 2)[2]})"
+        field = kind.split("_", 2)[2]
+        return f"{texts['filled']} ({FIELD_TEXT[lang].get(field, field)})"
     return kind
+
+
+def _issue_detail(detail: str, lang: str) -> str:
+    if lang == "ru":
+        for en, ru in _DETAIL_RU:
+            detail = detail.replace(en, ru)
+    return detail
 
 
 class _Refs:
@@ -256,6 +290,10 @@ def build_dashboard(records: list[ProdRecord], out_path: str | Path, lang: str =
     L = LABELS[lang]
     S = L["sheets"]
     dims = dimension_values(records)
+    if not dims["halt_reason"]:
+        # a log without a single halt: keep one placeholder reason so the halts tables,
+        # ranking and heat map still exist (all zeros) and pick up halts added later in Excel
+        dims["halt_reason"] = [UNSPECIFIED[lang]]
     m_dept = machine_department(records)
     refs = _Refs(L["columns"])
 
@@ -721,15 +759,28 @@ def _log_sheet(ws, report: LoadReport | None, L, lang):
         return
     ws["B4"] = L["log_summary"]
     ws["B4"].font = font(10, True)
-    ws["C4"] = report.summary()
-    ws["C4"].font = font(10, color=INK_2)
+    ws["C4"] = LOG_SUMMARY[lang].format(accepted=report.accepted, total=report.total_lines)
+    ws["C4"].font = font(10, True, INK_2)
     if not report.issues:
         ws["B6"] = L["log_empty"]
         return
-    header_row(ws, 6, 2, L["log_hdr"])
-    for i, issue in enumerate(sorted(report.issues, key=lambda x: (x.line, x.kind)), start=7):
+    # counts per action: rejected rows first, then the fixes
+    counts: dict[str, int] = {}
+    for issue in report.issues:
+        counts[issue.kind] = counts.get(issue.kind, 0) + 1
+    r = 5
+    for kind in sorted(counts, key=lambda k: (not k.startswith("rejected"), k)):
+        body_cell(ws.cell(row=r, column=2, value=counts[kind]), "0", align="center", bold=True)
+        color = BAD if kind.startswith("rejected") else INK_2
+        body_cell(ws.cell(row=r, column=3, value=_issue_text(kind, lang)), align="left", color=color)
+        r += 1
+    hdr = r + 1
+    header_row(ws, hdr, 2, L["log_hdr"])
+    last = hdr
+    for i, issue in enumerate(sorted(report.issues, key=lambda x: (x.line, x.kind)), start=hdr + 1):
         body_cell(ws.cell(row=i, column=2, value=issue.line), "0", align="center")
         color = BAD if issue.kind.startswith("rejected") else INK_2
         body_cell(ws.cell(row=i, column=3, value=_issue_text(issue.kind, lang)), align="left", color=color)
-        body_cell(ws.cell(row=i, column=4, value=issue.detail), align="left", color=INK_2)
-    ws.freeze_panes = "A7"
+        body_cell(ws.cell(row=i, column=4, value=_issue_detail(issue.detail, lang)), align="left", color=INK_2)
+        last = i
+    ws.auto_filter.ref = f"B{hdr}:D{last}"          # filter the details by action

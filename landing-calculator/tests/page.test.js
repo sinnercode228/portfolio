@@ -67,6 +67,30 @@ test('пресеты в data-preset — корректный JSON с извес�
   }
 });
 
+test('подписи карточек проектов совпадают с их пресетами (цена считается по пресету)', () => {
+  const cards = [...markup.matchAll(/<li class="project" data-tech="([^"]+)"[\s\S]*?<\/li>/g)];
+  assert.equal(cards.length, 6);
+  const text = (s) => s.replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').toLowerCase();
+  for (const [card, dataTech] of cards) {
+    const tags = text(card.match(/<p class="project__tags">([\s\S]*?)<\/p>/)[1]);
+    const preset = JSON.parse(card.match(/data-preset='([^']+)'/)[1]);
+    const name = card.match(/<h3>([^<]+)<\/h3>/)[1];
+    assert.equal(dataTech, preset.tech, name + ': data-tech');
+    assert.ok(tags.includes(cfg.technologies[preset.tech].label.toLowerCase()), name + ': технология');
+    assert.ok(tags.includes(preset.area + ' м²'), name + ': площадь');
+    assert.ok(tags.includes(text(cfg.floors[preset.floors].label)), name + ': этажность');
+    assert.ok(tags.includes(cfg.finishes[preset.finish].label.toLowerCase()), name + ': отделка');
+    assert.equal(tags.includes('терраса'), preset.terrace > 0, name + ': терраса');
+    assert.equal(tags.includes('гараж'), preset.garage === true, name + ': гараж');
+  }
+});
+
+test('телефон в шапке, меню и контактах один и тот же', () => {
+  const tels = new Set([...markup.matchAll(/href="tel:([^"]+)"/g)].map((m) => m[1]));
+  assert.equal(tels.size, 1, [...tels].join(', '));
+  assert.ok([...markup.matchAll(/href="tel:/g)].length >= 3);
+});
+
 test('фильтры проектов соответствуют технологиям из конфига', () => {
   const filters = [...markup.matchAll(/data-filter="([^"]+)"/g)].map((m) => m[1]).filter((f) => f !== 'all');
   assert.deepEqual(filters.sort(), Object.keys(cfg.technologies).sort());

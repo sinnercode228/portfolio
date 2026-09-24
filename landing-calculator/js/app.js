@@ -35,7 +35,7 @@
     // if (METRIKA_ID && typeof window.ym === 'function') {
     //   window.ym(METRIKA_ID, 'reachGoal', goal, params);
     // }
-    console.debug('[Метрика · демо] reachGoal', goal, params || '', METRIKA_ID ? '' : '(счётчик не подключён)');
+    console.info('[Метрика · демо] reachGoal', goal, params || '', METRIKA_ID ? '' : '(счётчик не подключён)');
   }
 
   $$('[data-goal]').forEach(function (el) {
@@ -163,7 +163,8 @@
       tech: checkedValue('tech'),
       finish: checkedValue('finish'),
       slab: slabBox.checked,
-      terrace: terraceToggle.checked ? terraceArea.value : 0,
+      // Терраса включена, а поле пустое или 0 — считаем минимальную площадь, а не «0 м²»
+      terrace: terraceToggle.checked ? (Number(terraceArea.value) > 0 ? terraceArea.value : cfg.options.terrace.min) : 0,
       garage: garageBox.checked
     };
   }
@@ -402,6 +403,14 @@
   var summaryEl = $('#lead-summary');
   var attachTotalEl = $('#lead-attach-total');
 
+  // UTM-метки запоминаем при загрузке: кнопка «Скопировать ссылку» переписывает адрес страницы,
+  // и без этого метки рекламной кампании потерялись бы до отправки заявки
+  var landingUtm = Form.parseUtm(location.search);
+  var landingPage = location.href;
+
+  // Пояснение «это демо, данные никуда не ушли» нужно только без подключённого бэкенда
+  $('.lead-success__demo').hidden = Boolean(cfg.leadEndpoint);
+
   var fieldsMap = {
     name: nameInput,
     phone: phoneInput,
@@ -519,9 +528,9 @@
 
     var calc = fields.attach ? { result: current, summary: Calc.formatCalcSummary(current, cfg) } : null;
     var payload = Form.buildLeadPayload(fields, calc, {
-      page: location.href,
+      page: landingPage,
       submittedAt: new Date().toISOString(),
-      utm: Form.parseUtm(location.search)
+      utm: landingUtm
     });
 
     // Бот заполнил скрытое поле — делаем вид, что всё хорошо, но ничего не отправляем

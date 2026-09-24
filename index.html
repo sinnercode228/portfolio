@@ -3,39 +3,827 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Портфолио разработчика — Python / JS</title>
-<meta name="description" content="Парсеры, Telegram-боты, автоматизация, лендинги, Excel. Рабочие демо-проекты с кодом.">
+<title>sinnercode228 — разработчик Python и JavaScript</title>
+<meta name="description" content="Парсеры, Telegram-боты, автоматизация и интеграции по API, лендинги, Excel и Google Sheets, исправление багов. Четыре рабочих демо-проекта с открытым кодом и тестами.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f6f6f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1113" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="sinnercode228 — Python и JavaScript">
+<meta property="og:description" content="Парсеры, Telegram-боты, автоматизация, лендинги, Excel. Рабочие демо-проекты с кодом и тестами.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231d6b58'/%3E%3Cpath d='M12.5 10 7 16l5.5 6M19.5 10 25 16l-5.5 6' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>
+  /* Язык выбираем до отрисовки, чтобы не мигал русский текст: ?lang=en|ru → сохранённый выбор → русский. */
+  (function () {
+    var m = /[?&]lang=(ru|en)(?:&|$)/.exec(location.search), l = m && m[1];
+    if (!l) { try { l = localStorage.getItem("portfolio-lang"); } catch (e) {} }
+    if (l === "en" || l === "ru") document.documentElement.lang = l;
+  })();
+</script>
 <style>
-:root{--bg:#0f1115;--card:#171a21;--text:#e8eaf0;--muted:#9aa3b2;--accent:#4f8cff;--border:#262b36}
-@media (prefers-color-scheme: light){:root{--bg:#f6f7fb;--card:#fff;--text:#161a22;--muted:#5b6475;--accent:#2563eb;--border:#e3e6ee}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
-.wrap{max-width:960px;margin:0 auto;padding:48px 16px}
-h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin:0 0 12px}
-.lead{color:var(--muted);max-width:640px;margin:0 0 32px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px}
-.card h2{font-size:19px;margin:0}.card p{margin:0;color:var(--muted);font-size:15px}
-.tags{font-size:13px;color:var(--muted)}
-.links{margin-top:auto;display:flex;gap:12px;flex-wrap:wrap}
-a{color:var(--accent);text-decoration:none;font-weight:600}a:hover{text-decoration:underline}
-.services{margin:40px 0 0;color:var(--muted)}
-.lang{float:right;font-size:14px}
+:root {
+  --bg: #f6f6f2;
+  --surface: #ffffff;
+  --surface-2: #efefe9;
+  --text: #15171b;
+  --muted: #555b66;
+  --border: #e1e1da;
+  --border-strong: #c9c9c0;
+  --accent: #1d6b58;
+  --accent-hover: #145243;
+  --accent-ink: #ffffff;
+  --accent-soft: #e0eee8;
+  --ok: #2c9b68;
+  --dark: #111417;
+  --dark-text: #e6e9ec;
+  --dark-muted: #9aa3ad;
+  --dark-border: #252a30;
+  --dark-ok: #5ad19f;
+  --shadow: 0 1px 2px rgba(20, 24, 30, .05), 0 12px 28px -16px rgba(20, 24, 30, .18);
+  --radius: 16px;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1113;
+    --surface: #16191c;
+    --surface-2: #1e2226;
+    --text: #e8eaed;
+    --muted: #a3aab3;
+    --border: #262b30;
+    --border-strong: #3a4047;
+    --accent: #58c9a7;
+    --accent-hover: #7fd9be;
+    --accent-ink: #06201a;
+    --accent-soft: #143129;
+    --ok: #5ad19f;
+    --dark: #0a0c0e;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    color-scheme: dark;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.6 var(--font);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+/* Двуязычие: оба текста лежат в разметке, показываем язык из <html lang>. Без JS видна русская версия. */
+html[lang="ru"] [data-l="en"],
+html[lang="en"] [data-l="ru"] { display: none !important; }
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:hover { color: var(--accent-hover); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3 { text-wrap: balance; }
+p, li { text-wrap: pretty; }
+.nw { white-space: nowrap; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+@media (min-width: 640px) { .wrap { padding: 0 24px; } }
+
+.skip {
+  position: absolute; left: 16px; top: -100px; z-index: 50;
+  background: var(--surface); color: var(--text);
+  padding: 10px 14px; border-radius: 10px; box-shadow: var(--shadow);
+}
+.skip:focus { top: 12px; }
+
+/* ---------- Плашка «демо» ---------- */
+.notice {
+  margin: 0; padding: 7px 16px;
+  font-size: 13px; line-height: 1.45; text-align: center;
+  color: var(--muted); background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+.notice b { color: var(--text); font-weight: 600; }
+
+/* ---------- Шапка ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--bg);
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(12px);
+  backdrop-filter: saturate(1.4) blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.header-in { display: flex; align-items: center; gap: 12px; height: 64px; }
+.brand {
+  display: inline-flex; align-items: center; gap: 10px; min-width: 0;
+  color: var(--text); text-decoration: none; font-weight: 700; letter-spacing: -.01em;
+}
+.brand:hover { color: var(--text); }
+.brand svg { width: 30px; height: 30px; flex: none; }
+.nav { display: none; margin-left: auto; gap: 2px; }
+.nav a {
+  color: var(--muted); text-decoration: none; font-size: 15px;
+  padding: 8px 12px; border-radius: 8px;
+}
+.nav a:hover { color: var(--text); background: var(--surface-2); }
+.lang {
+  margin-left: auto; flex: none;
+  display: inline-flex; padding: 3px; gap: 2px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 999px;
+}
+.lang button {
+  min-width: 44px; min-height: 34px; padding: 0 12px;
+  font: 600 13px/1 var(--font); letter-spacing: .04em;
+  color: var(--muted); background: none; border: 0; border-radius: 999px; cursor: pointer;
+}
+.lang button:hover { color: var(--text); }
+.lang button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+@media (min-width: 820px) {
+  .nav { display: flex; }
+  .lang { margin-left: 8px; }
+}
+
+/* ---------- Кнопки ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 12px 20px;
+  font: 600 16px/1.2 var(--font); text-decoration: none; text-align: center;
+  border: 1px solid transparent; border-radius: 12px;
+  transition: background-color .15s, border-color .15s, color .15s;
+}
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-hover); color: var(--accent-ink); }
+.btn-ghost { background: var(--surface); color: var(--text); border-color: var(--border-strong); }
+.btn-ghost:hover { color: var(--text); border-color: var(--text); }
+.btn-sm { min-height: 44px; padding: 10px 16px; font-size: 15px; border-radius: 10px; }
+
+/* ---------- Первый экран ---------- */
+.hero { padding: 48px 0 56px; }
+.hero-grid { display: grid; gap: 40px; align-items: center; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px; margin: 0 0 18px;
+  font: 600 13px/1.4 var(--mono); color: var(--accent); letter-spacing: .02em;
+}
+.eyebrow::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft);
+}
+h1 {
+  margin: 0 0 20px;
+  font-size: clamp(31px, 5.6vw, 52px); line-height: 1.08; letter-spacing: -.028em; font-weight: 750;
+}
+.lead { margin: 0 0 28px; max-width: 60ch; font-size: clamp(17px, 2vw, 19px); color: var(--muted); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 479px) { .cta .btn { flex: 1 1 100%; } }
+.facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(80px, 1fr)); gap: 12px;
+  margin: 36px 0 0; padding: 24px 0 0; border-top: 1px solid var(--border);
+}
+.fact b { display: block; font-size: clamp(22px, 3.2vw, 28px); line-height: 1.15; letter-spacing: -.02em; }
+.fact span { display: block; margin-top: 4px; font-size: 14px; line-height: 1.4; color: var(--muted); }
+@media (min-width: 960px) {
+  .hero { padding: 80px 0 88px; }
+  .hero-grid { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: 56px; }
+}
+
+/* Терминал с результатами тестов */
+.term-wrap { margin: 0; }
+.term {
+  margin: 0;
+  background: var(--dark); color: var(--dark-text);
+  border: 1px solid var(--dark-border); border-radius: var(--radius);
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, .55);
+  font: 13.5px/1.5 var(--mono);
+  overflow: hidden;
+}
+.term-bar {
+  display: flex; align-items: center; gap: 7px;
+  padding: 12px 16px; border-bottom: 1px solid var(--dark-border);
+  color: var(--dark-muted); font-size: 12.5px;
+}
+.term-bar i { width: 10px; height: 10px; border-radius: 50%; background: #3a4047; flex: none; }
+.term-bar span { margin-left: 8px; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.term-body { padding: 6px 16px 14px; }
+.term-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline; gap: 0 12px;
+  padding: 10px 0; border-bottom: 1px dashed var(--dark-border);
+}
+.term-dir { grid-column: 1 / -1; color: var(--dark-text); overflow-wrap: anywhere; }
+.term-cmd { color: var(--dark-muted); }
+.term-cmd::before { content: "$ "; color: var(--dark-ok); }
+.term-ok { color: var(--dark-ok); white-space: nowrap; }
+.term-total {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px;
+  padding-top: 12px; font-weight: 600;
+}
+.term-total .term-ok { font-weight: 600; }
+.term-note { margin: 12px 2px 0; font-size: 14px; color: var(--muted); }
+
+/* ---------- Секции ---------- */
+.section { padding: 64px 0; border-top: 1px solid var(--border); }
+@media (min-width: 960px) { .section { padding: 88px 0; } }
+.section-head { max-width: 720px; margin: 0 0 36px; }
+.kicker { margin: 0 0 10px; font: 600 13px/1.4 var(--mono); color: var(--accent); letter-spacing: .02em; }
+h2 { margin: 0 0 12px; font-size: clamp(26px, 4vw, 38px); line-height: 1.15; letter-spacing: -.022em; }
+.section-head p:not(.kicker) { margin: 0; font-size: 17px; color: var(--muted); }
+
+/* Услуги */
+.services {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 310px), 1fr));
+}
+.service {
+  display: flex; flex-direction: column; gap: 10px; padding: 24px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+}
+.icon {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px;
+  background: var(--accent-soft); color: var(--accent);
+}
+.icon svg { width: 22px; height: 22px; }
+.service h3 { margin: 6px 0 0; font-size: 19px; line-height: 1.3; letter-spacing: -.01em; }
+.service p { margin: 0; font-size: 15.5px; color: var(--muted); }
+.tags { list-style: none; margin: auto 0 0; padding: 8px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.tags li {
+  padding: 5px 9px; border-radius: 7px;
+  font: 500 12.5px/1.2 var(--mono); color: var(--text); background: var(--surface-2);
+}
+
+/* Проекты */
+.projects { display: grid; gap: 24px; }
+@media (min-width: 900px) { .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.project {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.shot {
+  position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden;
+  background: var(--surface-2); border-bottom: 1px solid var(--border);
+  container-type: inline-size;
+}
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+/* Крупнее показываем левый верхний угол широких скриншотов, чтобы текст читался */
+.shot img.crop-wide { width: 140%; height: auto; max-width: none; }
+.shot img.crop-tall { width: auto; height: 125%; max-width: none; }
+.shot-badge {
+  position: absolute; left: 12px; top: 12px; z-index: 2;
+  padding: 7px 10px; border-radius: 999px;
+  font: 600 12px/1 var(--mono); color: #fff; background: rgba(17, 20, 23, .84);
+}
+.project-body { display: flex; flex-direction: column; gap: 14px; flex: 1; padding: 24px; }
+.project-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; }
+.cat { font: 600 13px/1.4 var(--mono); color: var(--accent); }
+.tests {
+  display: inline-flex; align-items: center; gap: 7px; padding: 6px 10px;
+  font: 600 12.5px/1 var(--mono); color: var(--muted);
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 999px;
+}
+.tests::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
+.project h3 { margin: 0; font-size: 22px; line-height: 1.25; letter-spacing: -.015em; }
+.project p { margin: 0; color: var(--muted); }
+.feat { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 15px; }
+.feat li { position: relative; padding-left: 26px; }
+.feat li::before {
+  content: ""; position: absolute; left: 3px; top: .5em;
+  width: 11px; height: 6px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+.project .tags { margin: 0; padding: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 6px; }
+
+/* Макет чата для бота (своя иллюстрация, не скриншот) */
+.chat {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .5em;
+  padding: 3em 6% 4%;
+  font-family: var(--font); font-size: 12px; font-size: clamp(9px, 2.9cqw, 15px);
+  color: #1b1f24;
+  background:
+    radial-gradient(circle at 18% 22%, rgba(255, 255, 255, .35) 0 14%, transparent 15%),
+    radial-gradient(circle at 86% 78%, rgba(255, 255, 255, .25) 0 18%, transparent 19%),
+    linear-gradient(135deg, #cfe4d8, #a9cfc4);
+}
+.chat-card, .chat-btns { width: min(100%, 27em); }
+.chat-card {
+  padding: .75em 1em .8em; line-height: 1.42;
+  background: #fff; border-radius: 1.1em 1.1em 1.1em .35em;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+}
+.chat-card b { font-weight: 700; }
+.chat-card .dim { color: #6b7480; }
+.chat-card .line { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chat-btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .4em; }
+.chat-btns span {
+  padding: .55em .3em; border-radius: .7em; text-align: center;
+  font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  color: #173a31; background: rgba(255, 255, 255, .62);
+}
+
+/* Процесс */
+.steps {
+  list-style: none; margin: 0; padding: 0; counter-reset: step;
+  display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+}
+.step {
+  counter-increment: step; padding: 22px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+}
+.step::before {
+  content: counter(step, decimal-leading-zero); display: block; margin-bottom: 14px;
+  font: 600 13px/1 var(--mono); color: var(--accent);
+}
+.step h3 { margin: 0 0 6px; font-size: 18px; letter-spacing: -.01em; }
+.step p { margin: 0; font-size: 15px; color: var(--muted); }
+.principles {
+  list-style: none; margin: 28px 0 0; padding: 0;
+  display: grid; gap: 12px 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+}
+.principles li { position: relative; padding-left: 26px; font-size: 15px; color: var(--muted); }
+.principles li::before {
+  content: ""; position: absolute; left: 3px; top: .5em;
+  width: 11px; height: 6px; border-left: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+  transform: rotate(-45deg);
+}
+.principles b { color: var(--text); font-weight: 600; }
+
+/* Контакты */
+.contact-card {
+  display: grid; gap: 28px; padding: clamp(24px, 5vw, 56px);
+  background: var(--dark); color: var(--dark-text);
+  border: 1px solid var(--dark-border); border-radius: 24px;
+}
+@media (min-width: 900px) { .contact-card { grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr); align-items: center; gap: 48px; } }
+.contact-card .kicker { color: var(--dark-ok); }
+.contact-card h2 { color: #fff; }
+.contact-card p { margin: 0; color: var(--dark-muted); font-size: 17px; }
+.contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.contact {
+  display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; align-items: center; gap: 12px;
+  min-height: 56px; padding: 12px 16px;
+  color: var(--dark-text); text-decoration: none;
+  background: rgba(255, 255, 255, .04); border: 1px solid var(--dark-border); border-radius: 12px;
+  transition: border-color .15s, background-color .15s;
+}
+.contact:hover { color: #fff; border-color: var(--dark-ok); background: rgba(255, 255, 255, .07); }
+.contact:focus-visible { outline-color: var(--dark-ok); }
+.c-label { font: 600 12.5px/1.2 var(--mono); color: var(--dark-muted); text-transform: uppercase; letter-spacing: .06em; }
+.c-value { font-weight: 600; overflow-wrap: anywhere; }
+.c-arrow { color: var(--dark-ok); }
+.contact.is-placeholder .c-value { color: #f2c46d; }
+@media (max-width: 420px) {
+  .contact { grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; }
+  .c-label { grid-column: 1 / -1; }
+}
+
+/* Подвал */
+.site-footer { padding: 28px 0 40px; font-size: 14px; color: var(--muted); }
+.footer-in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+.footer-in p { margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
 </style>
 </head>
-<body>
-<div class="wrap">
-<a class="lang" href="#en">EN ↓</a>
-<h1>Разработчик Python / JavaScript</h1>
-<p class="lead">Беру небольшие задачи с понятным результатом и сдаю за 1–3 дня: парсеры, Telegram-боты, автоматизация и интеграции по API, лендинги, Excel / Google Sheets. Ниже рабочие демо-проекты с исходным кодом.</p>
-<div class="grid">
-  <div class="card"><h2>Лендинг с калькулятором стоимости</h2><p>Одностраничный сайт для строительной компании: живой расчёт цены дома, форма заявки с расчётом, адаптив, без сборки.</p><div class="tags">HTML · CSS · JavaScript · тесты на Node</div><div class="links"><a href="./landing-calculator/">Открыть демо →</a><a href="https://github.com/sinnercode228/portfolio/tree/main/landing-calculator">Код</a></div></div>
-  <div class="card"><h2>Парсер сайта → Excel / CSV / JSON</h2><p>Асинхронный сбор каталога с пагинацией, повторами и кешем, выгрузка в оформленный Excel, CLI, тесты.</p><div class="tags">Python · httpx · asyncio · openpyxl</div><div class="links"><a href="https://github.com/sinnercode228/portfolio/tree/main/scraper-demo">Код и пример выгрузки →</a></div></div>
-  <div class="card"><h2>Telegram-бот для заявок</h2><p>Меню, пошаговая анкета, SQLite, уведомления админам, экспорт CSV, статистика, рассылка, Docker.</p><div class="tags">Python · aiogram · SQLite · Docker</div><div class="links"><a href="https://github.com/sinnercode228/portfolio/tree/main/telegram-bot-demo">Код →</a></div></div>
-  <div class="card"><h2>Excel-дашборд и инвойс из логов</h2><p>Из сырых CSV получается живой дашборд с фильтрами и графиками на формулах, плюс счёт и расчёт зарплаты.</p><div class="tags">Python · openpyxl · Excel 2013+</div><div class="links"><a href="https://github.com/sinnercode228/portfolio/tree/main/excel-dashboard-demo">Код и примеры .xlsx →</a></div></div>
-</div>
-<p class="services">Все проекты демонстрационные, бренды в них вымышленные.</p>
-<h2 id="en" style="margin-top:48px">English</h2>
-<p class="lead">Python / JavaScript developer. Small, clearly scoped tasks delivered in 1–3 days: web scrapers, Telegram bots, automation and API integrations, landing pages, Excel / Google Sheets. The demo projects above are working code: a landing page with a cost calculator, an async scraper exporting to Excel, a Telegram lead bot, and an Excel dashboard and invoice generator.</p>
-</div>
+<body id="top">
+<a class="skip" href="#main"><span data-l="ru">Перейти к содержимому</span><span data-l="en">Skip to content</span></a>
+
+<p class="notice">
+  <span data-l="ru"><b>Демо-проект / Demo project.</b> Проекты в портфолио демонстрационные: бренды, люди и цифры в них вымышлены, код рабочий.</span>
+  <span data-l="en"><b>Demo project / Демо-проект.</b> The portfolio projects are demos: brands, people and figures are fictional, the code is real.</span>
+</p>
+
+<header class="site-header">
+  <div class="wrap header-in">
+    <a class="brand" href="#top" aria-label="sinnercode228">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="var(--accent)"/><path d="M12.5 10 7 16l5.5 6M19.5 10 25 16l-5.5 6" fill="none" stroke="var(--accent-ink)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>sinnercode228</span>
+    </a>
+    <nav class="nav" data-label-ru="Разделы страницы" data-label-en="Page sections" aria-label="Разделы страницы">
+      <a href="#services"><span data-l="ru">Услуги</span><span data-l="en">Services</span></a>
+      <a href="#projects"><span data-l="ru">Проекты</span><span data-l="en">Projects</span></a>
+      <a href="#process"><span data-l="ru">Как работаю</span><span data-l="en">How I work</span></a>
+      <a href="#contacts"><span data-l="ru">Контакты</span><span data-l="en">Contact</span></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Язык / Language">
+      <button type="button" data-set-lang="ru" aria-pressed="true" lang="ru" title="Русский">RU</button>
+      <button type="button" data-set-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Первый экран -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow"><span data-l="ru">Python · JavaScript · фриланс</span><span data-l="en">Python · JavaScript · freelance</span></p>
+        <h1>
+          <span data-l="ru">Парсеры, <span class="nw">Telegram-боты</span> и автоматизация на&nbsp;Python и&nbsp;JavaScript</span>
+          <span data-l="en">Scrapers, Telegram bots and automation in&nbsp;Python and&nbsp;JavaScript</span>
+        </h1>
+        <p class="lead" data-l="ru">Беру задачи с понятным результатом: собрать данные с сайта, запустить бота для заявок, связать сервисы по API, сверстать лендинг, автоматизировать отчёты в Excel или Google Sheets, найти и исправить баг. Ниже — рабочие демо-проекты: код открыт, тесты проходят, всё запускается по инструкции.</p>
+        <p class="lead" data-l="en">I take on tasks with a clear outcome: scrape data from a website, launch a lead bot, connect services through their APIs, build a landing page, automate Excel or Google Sheets reports, or track down a bug. Below are working demo projects with open code, passing tests and step-by-step run instructions.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="#contacts"><span data-l="ru">Обсудить задачу</span><span data-l="en">Discuss a task</span></a>
+          <a class="btn btn-ghost" href="#projects"><span data-l="ru">Смотреть проекты</span><span data-l="en">See projects</span></a>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>4</b><span data-l="ru">демо-проекта с&nbsp;открытым кодом</span><span data-l="en">demo projects with open code</span></div>
+          <div class="fact"><b>380</b><span data-l="ru">автотестов, все проходят</span><span data-l="en">automated tests, all passing</span></div>
+          <div class="fact"><b>RU / EN</b><span data-l="ru">README к&nbsp;каждому проекту</span><span data-l="en">README for every project</span></div>
+        </div>
+      </div>
+
+      <figure class="term-wrap">
+        <div class="term" role="img" data-label-ru="Результаты тестов: landing-calculator 49, scraper-demo 80, telegram-bot-demo 139, excel-dashboard-demo 112; всего 380, ошибок 0" data-label-en="Test results: landing-calculator 49, scraper-demo 80, telegram-bot-demo 139, excel-dashboard-demo 112; 380 passed, 0 failed" aria-label="Результаты тестов: landing-calculator 49, scraper-demo 80, telegram-bot-demo 139, excel-dashboard-demo 112; всего 380, ошибок 0">
+          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>~/portfolio — tests</span></div>
+          <div class="term-body" aria-hidden="true">
+            <div class="term-row"><span class="term-dir">landing-calculator/</span><span class="term-cmd">npm test</span><span class="term-ok">✓ 49 passed</span></div>
+            <div class="term-row"><span class="term-dir">scraper-demo/</span><span class="term-cmd">pytest</span><span class="term-ok">✓ 80 passed</span></div>
+            <div class="term-row"><span class="term-dir">telegram-bot-demo/</span><span class="term-cmd">pytest</span><span class="term-ok">✓ 139 passed</span></div>
+            <div class="term-row"><span class="term-dir">excel-dashboard-demo/</span><span class="term-cmd">pytest</span><span class="term-ok">✓ 112 passed</span></div>
+            <div class="term-total"><span>total</span><span class="term-ok">380 passed · 0 failed</span></div>
+          </div>
+        </div>
+        <figcaption class="term-note">
+          <span data-l="ru">Тесты запускаются локально одной командой в папке проекта — можно проверить самостоятельно.</span>
+          <span data-l="en">Each suite runs locally with one command in the project folder, so you can check it yourself.</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Услуги -->
+  <section class="section" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker"><span data-l="ru">Услуги</span><span data-l="en">Services</span></p>
+        <h2 id="services-title"><span data-l="ru">Чем могу помочь</span><span data-l="en">What I can help with</span></h2>
+        <p><span data-l="ru">Небольшие и средние задачи на Python и JavaScript — от одного скрипта до бота, который работает на сервере.</span><span data-l="en">Small and mid-size Python and JavaScript work, from a single script to a bot running on a server.</span></p>
+      </div>
+
+      <ul class="services">
+        <li class="service">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 11h9M4 16h6"/><circle cx="16.5" cy="15.5" r="3.5"/><path d="m19 18 2.5 2.5"/></svg></span>
+          <h3><span data-l="ru">Парсеры и сбор данных</span><span data-l="en">Web scraping and data collection</span></h3>
+          <p data-l="ru">Соберу данные с сайтов, каталогов и API: товары, цены, остатки, объявления. Пагинация, повторы при сбоях, лимиты скорости, запуск по расписанию.</p>
+          <p data-l="en">Collect data from websites, catalogues and APIs: products, prices, stock, listings. Pagination, retries on failure, rate limits and scheduled runs.</p>
+          <ul class="tags"><li>Excel</li><li>CSV</li><li>JSON</li><li>Google Sheets</li></ul>
+        </li>
+        <li class="service">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 3.5 2.5 10.8l7 2.7 2.7 7 9.3-17Z"/><path d="m9.5 13.5 5-5"/></svg></span>
+          <h3><span data-l="ru">Telegram-боты</span><span data-l="en">Telegram bots</span></h3>
+          <p data-l="ru">Боты для заявок, записи, каталога и уведомлений: пошаговые анкеты, кнопки, команды для администратора, выгрузки и рассылки. Запуск на сервере через Docker или systemd.</p>
+          <p data-l="en">Bots for leads, bookings, catalogues and notifications: step-by-step forms, buttons, admin commands, exports and broadcasts. Deployed to a server with Docker or systemd.</p>
+          <ul class="tags"><li>aiogram 3</li><li>SQLite</li><li>Docker</li></ul>
+        </li>
+        <li class="service">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h13"/><path d="m14 4.5 3.5 3.5L14 11.5"/><path d="M20 16H7"/><path d="M10 12.5 6.5 16l3.5 3.5"/></svg></span>
+          <h3><span data-l="ru">Автоматизация и интеграции по API</span><span data-l="en">Automation and API integrations</span></h3>
+          <p data-l="ru">Свяжу между собой сайт, CRM, таблицы, почту и мессенджеры. Скрипты сами забирают данные, обрабатывают их и передают дальше — без ручного копирования.</p>
+          <p data-l="en">Connect your website, CRM, spreadsheets, email and messengers. Scripts fetch, transform and forward the data, so nobody has to copy it by hand.</p>
+          <ul class="tags"><li>REST API</li><li><span data-l="ru">вебхуки</span><span data-l="en">webhooks</span></li><li>cron</li></ul>
+        </li>
+        <li class="service">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9h18"/><path d="M7 13.5h6M7 16.5h4"/></svg></span>
+          <h3><span data-l="ru">Лендинги</span><span data-l="en">Landing pages</span></h3>
+          <p data-l="ru">Одностраничные сайты на чистом HTML, CSS и JavaScript: адаптивная вёрстка, калькуляторы, формы заявок с отправкой в Telegram или на почту. Лёгкие, без конструкторов, публикуются на любом хостинге.</p>
+          <p data-l="en">One-page sites in plain HTML, CSS and JavaScript: responsive layout, calculators, lead forms that deliver to Telegram or email. Lightweight, no site builders, host them anywhere.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>serverless</li></ul>
+        </li>
+        <li class="service">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2.5"/><path d="M3 9.5h18M3 14.5h18M9 4v16"/></svg></span>
+          <h3><span data-l="ru">Excel и Google Sheets</span><span data-l="en">Excel and Google Sheets</span></h3>
+          <p data-l="ru">Отчёты и дашборды из выгрузок, формулы, фильтры и графики, импорт и экспорт данных, автоматическое заполнение таблиц скриптом.</p>
+          <p data-l="en">Reports and dashboards built from raw exports, formulas, filters and charts, data import and export, and scripts that fill spreadsheets automatically.</p>
+          <ul class="tags"><li>openpyxl</li><li>gspread</li><li><span data-l="ru">формулы</span><span data-l="en">formulas</span></li></ul>
+        </li>
+        <li class="service">
+          <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7.5a3 3 0 0 1 6 0"/><rect x="7" y="7.5" width="10" height="12.5" rx="5"/><path d="M12 11v9M3.5 13H7M17 13h3.5M4.5 8l2.7 1.8M19.5 8l-2.7 1.8M4.5 19l2.9-1.9M19.5 19l-2.9-1.9"/></svg></span>
+          <h3><span data-l="ru">Исправление багов</span><span data-l="en">Bug fixing</span></h3>
+          <p data-l="ru">Найду и исправлю ошибку в проекте на Python или JavaScript: падения, неверные расчёты, сломанные формы и интеграции. Добавлю тест, чтобы ошибка не вернулась.</p>
+          <p data-l="en">Find and fix bugs in Python or JavaScript projects: crashes, wrong calculations, broken forms and integrations. I add a test so the bug stays fixed.</p>
+          <ul class="tags"><li>pytest</li><li>node:test</li><li>ruff</li></ul>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Проекты -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker"><span data-l="ru">Проекты</span><span data-l="en">Projects</span></p>
+        <h2 id="projects-title"><span data-l="ru">Рабочие демо-проекты</span><span data-l="en">Working demo projects</span></h2>
+        <p><span data-l="ru">Каждый проект можно склонировать, запустить и прогнать тесты — инструкции в README. Компании, люди и цифры в них вымышлены.</span><span data-l="en">Every project can be cloned, run and tested; the instructions are in its README. Companies, people and figures in them are fictional.</span></p>
+      </div>
+
+      <div class="projects">
+
+        <!-- 1. Лендинг -->
+        <article class="project">
+          <a class="shot" href="./landing-calculator/" data-local-index tabindex="-1" aria-hidden="true">
+            <span class="shot-badge"><span data-l="ru">Живое демо</span><span data-l="en">Live demo</span></span>
+            <img src="landing-calculator/docs/screenshot-hero.jpg" width="1440" height="880" loading="lazy" decoding="async"
+                 alt="Первый экран лендинга «Полдень»: заголовок, кнопка расчёта и иллюстрация дома"
+                 data-alt-ru="Первый экран лендинга «Полдень»: заголовок, кнопка расчёта и иллюстрация дома"
+                 data-alt-en="Hero section of the Polden landing page: headline, calculator button and a house illustration">
+          </a>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="cat"><span data-l="ru">Лендинг · JavaScript</span><span data-l="en">Landing page · JavaScript</span></span>
+              <span class="tests"><span data-l="ru">49 тестов</span><span data-l="en">49 tests</span></span>
+            </div>
+            <h3><span data-l="ru">«Полдень»: лендинг с калькулятором стоимости дома</span><span data-l="en">Polden: house builder landing page with a cost calculator</span></h3>
+            <p data-l="ru">Сайт строительной компании с живым калькулятором: площадь, этажность, технология стен и отделка сразу дают итог, срок и смету по статьям. Расчётом можно поделиться ссылкой.</p>
+            <p data-l="en">A house builder's site with a live calculator: area, floors, wall technology and finish level instantly produce a total, a build time and an itemised estimate. Any calculation can be shared as a link. The interface is in Russian.</p>
+            <ul class="feat" data-l="ru">
+              <li>Заявка с маской телефона и UTM-метками уходит в Telegram или на почту через serverless-функцию</li>
+              <li>Адаптивная вёрстка от 320&nbsp;px, доступность, около 37&nbsp;КБ в&nbsp;gzip</li>
+              <li>Без сборки и зависимостей: открывается двойным кликом</li>
+            </ul>
+            <ul class="feat" data-l="en">
+              <li>Lead form with a phone mask and UTM tracking, delivered to Telegram or email by a serverless function</li>
+              <li>Responsive from 320&nbsp;px, accessible, about 37&nbsp;KB gzipped</li>
+              <li>No build step and no dependencies: opens with a double click</li>
+            </ul>
+            <ul class="tags" data-label-ru="Технологии" data-label-en="Stack" aria-label="Технологии"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>node:test</li></ul>
+            <div class="actions">
+              <a class="btn btn-primary btn-sm" href="./landing-calculator/" data-local-index><span data-l="ru">Открыть демо</span><span data-l="en">Open demo</span></a>
+              <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/portfolio/tree/main/landing-calculator"><span data-l="ru">Код на GitHub</span><span data-l="en">Code on GitHub</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2. Парсер -->
+        <article class="project">
+          <a class="shot" href="https://github.com/sinnercode228/portfolio/tree/main/scraper-demo" tabindex="-1" aria-hidden="true">
+            <span class="shot-badge"><span data-l="ru">Код + пример .xlsx</span><span data-l="en">Code + sample .xlsx</span></span>
+            <img class="crop-tall" src="scraper-demo/docs/excel_preview.jpg" width="1200" height="420" loading="lazy" decoding="async"
+                 alt="Лист Excel с собранными книгами: название, категория, цена, остаток, рейтинг, UPC"
+                 data-alt-ru="Лист Excel с собранными книгами: название, категория, цена, остаток, рейтинг, UPC"
+                 data-alt-en="Excel sheet with the scraped books: title, category, price, stock, rating, UPC">
+          </a>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="cat"><span data-l="ru">Парсер · Python</span><span data-l="en">Scraper · Python</span></span>
+              <span class="tests"><span data-l="ru">80 тестов</span><span data-l="en">80 tests</span></span>
+            </div>
+            <h3><span data-l="ru">Парсер каталога → Excel, CSV, JSON, Google&nbsp;Sheets</span><span data-l="en">Catalogue scraper → Excel, CSV, JSON, Google&nbsp;Sheets</span></h3>
+            <p data-l="ru">Асинхронный парсер учебного сайта books.toscrape.com: обходит 50 категорий с пагинацией и собирает карточки товаров. Весь каталог — 1000&nbsp;книг — за один запуск без ошибок.</p>
+            <p data-l="en">An async scraper for the books.toscrape.com practice site: it walks 50 categories with pagination and collects every product page. The full catalogue of 1,000&nbsp;books in one run, with zero errors.</p>
+            <ul class="feat" data-l="ru">
+              <li>Лимит скорости, повторы при сбоях, кэш на диске и проверка robots.txt</li>
+              <li>Оформленный Excel, CSV для русского Excel, защита от формул в ячейках</li>
+              <li>Под другой сайт меняется в основном один модуль парсинга</li>
+            </ul>
+            <ul class="feat" data-l="en">
+              <li>Rate limiting, retries on failure, on-disk cache and robots.txt checks</li>
+              <li>Formatted Excel, CSV that opens cleanly in Russian-locale Excel, protection against formula injection</li>
+              <li>Adapting it to another site mostly means rewriting one parser module</li>
+            </ul>
+            <ul class="tags" data-label-ru="Технологии" data-label-en="Stack" aria-label="Технологии"><li>Python</li><li>httpx</li><li>asyncio</li><li>selectolax</li><li>openpyxl</li></ul>
+            <div class="actions">
+              <a class="btn btn-primary btn-sm" href="https://github.com/sinnercode228/portfolio/tree/main/scraper-demo"><span data-l="ru">Код и пример выгрузки</span><span data-l="en">Code and sample export</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3. Telegram-бот -->
+        <article class="project">
+          <a class="shot" href="https://github.com/sinnercode228/portfolio/tree/main/telegram-bot-demo" tabindex="-1" aria-hidden="true">
+            <span class="shot-badge"><span data-l="ru">Код</span><span data-l="en">Code</span></span>
+            <span class="chat">
+              <span class="chat-card">
+                <span class="line"><b>🔔 Заявка №27</b> <span class="dim">· 24.09 14:05</span></span>
+                <span class="line">👤 Анна</span>
+                <span class="line">📱 +7 (000) 000-00-00</span>
+                <span class="line">🛠 Лендинг</span>
+                <span class="line">💬 Нужен сайт под рекламу</span>
+                <span class="line">Статус: 🆕 Новая</span>
+              </span>
+              <span class="chat-btns"><span>🟡 В работе</span><span>✅ Закрыта</span><span>🚫 Отклонена</span></span>
+            </span>
+          </a>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="cat"><span data-l="ru">Telegram-бот · Python</span><span data-l="en">Telegram bot · Python</span></span>
+              <span class="tests"><span data-l="ru">139 тестов</span><span data-l="en">139 tests</span></span>
+            </div>
+            <h3><span data-l="ru">Telegram-бот для сбора заявок</span><span data-l="en">Telegram lead-capture bot</span></h3>
+            <p data-l="ru">Клиент за минуту оставляет имя, телефон и задачу, а менеджер сразу получает карточку заявки с кнопками статусов. Выше — макет такой карточки.</p>
+            <p data-l="en">Customers leave their name, phone and request in under a minute, and managers instantly get a lead card with status buttons, as in the mock-up above. The bot speaks Russian; all its texts live in one file.</p>
+            <ul class="feat" data-l="ru">
+              <li>Анкета в 4 шага: проверка телефона, правка любого поля, защита от дублей</li>
+              <li>Для менеджеров: последние заявки, выгрузка в CSV для Excel, статистика, рассылка</li>
+              <li>Запуск через Docker или systemd; тексты и услуги — в одном файле</li>
+            </ul>
+            <ul class="feat" data-l="en">
+              <li>A 4-step form: phone validation, editing of any field, duplicate protection</li>
+              <li>For managers: latest leads, CSV export for Excel, stats and broadcasts</li>
+              <li>Runs with Docker or systemd; texts and services are edited in one file</li>
+            </ul>
+            <ul class="tags" data-label-ru="Технологии" data-label-en="Stack" aria-label="Технологии"><li>Python</li><li>aiogram 3</li><li>SQLite</li><li>Docker</li></ul>
+            <div class="actions">
+              <a class="btn btn-primary btn-sm" href="https://github.com/sinnercode228/portfolio/tree/main/telegram-bot-demo"><span data-l="ru">Код на GitHub</span><span data-l="en">Code on GitHub</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4. Excel -->
+        <article class="project">
+          <a class="shot" href="https://github.com/sinnercode228/portfolio/tree/main/excel-dashboard-demo" tabindex="-1" aria-hidden="true">
+            <span class="shot-badge"><span data-l="ru">Код + примеры .xlsx</span><span data-l="en">Code + sample .xlsx</span></span>
+            <img class="crop-wide" data-l="ru" src="excel-dashboard-demo/docs/dashboard_ru.png" width="1500" height="863" loading="lazy" decoding="async"
+                 alt="Производственный дашборд в Excel: KPI, таблица по цехам и график доступности">
+            <img class="crop-wide" data-l="en" src="excel-dashboard-demo/docs/dashboard_en.png" width="1500" height="1583" loading="lazy" decoding="async"
+                 alt="Production dashboard in Excel: KPI tiles, a table by department and an availability chart">
+          </a>
+          <div class="project-body">
+            <div class="project-top">
+              <span class="cat"><span data-l="ru">Excel · Python</span><span data-l="en">Excel · Python</span></span>
+              <span class="tests"><span data-l="ru">112 тестов</span><span data-l="en">112 tests</span></span>
+            </div>
+            <h3><span data-l="ru">Excel-дашборд и счёт из CSV-выгрузок</span><span data-l="en">Excel dashboard and invoice from CSV exports</span></h3>
+            <p data-l="ru">Скрипты превращают сырые CSV — производственный журнал и учёт рабочего времени — в живые книги Excel: дашборд с KPI, фильтрами, графиками и анализом простоев, а также готовый к печати счёт с зарплатой и маржой.</p>
+            <p data-l="en">Scripts turn raw CSV exports, a production log and a time log, into live Excel workbooks: a KPI dashboard with filters, charts and downtime analysis, plus a print-ready invoice with payroll and margin.</p>
+            <ul class="feat" data-l="ru">
+              <li>Все цифры — формулы Excel: книга работает без Python и пересчитывается сама</li>
+              <li>Чистит «грязные» выгрузки и ведёт журнал исправлений</li>
+              <li>Тесты сверяют каждую формулу с независимым расчётом</li>
+            </ul>
+            <ul class="feat" data-l="en">
+              <li>Every number is an Excel formula: the workbook works without Python and recalculates itself</li>
+              <li>Cleans up messy exports and keeps a log of every fix</li>
+              <li>Tests check each formula against an independent calculation</li>
+            </ul>
+            <ul class="tags" data-label-ru="Технологии" data-label-en="Stack" aria-label="Технологии"><li>Python</li><li>openpyxl</li><li>pycel</li><li>Excel 2013+</li></ul>
+            <div class="actions">
+              <a class="btn btn-primary btn-sm" href="https://github.com/sinnercode228/portfolio/tree/main/excel-dashboard-demo"><span data-l="ru">Код и примеры книг</span><span data-l="en">Code and sample workbooks</span></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Процесс -->
+  <section class="section" id="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker"><span data-l="ru">Процесс</span><span data-l="en">Process</span></p>
+        <h2 id="process-title"><span data-l="ru">Как я работаю</span><span data-l="en">How I work</span></h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <h3><span data-l="ru">Задача</span><span data-l="en">Brief</span></h3>
+          <p data-l="ru">Вы пишете в Telegram или на почту: что есть сейчас, что нужно получить и к какому сроку. Скриншоты и примеры помогают.</p>
+          <p data-l="en">You message me on Telegram or by email: what you have now, what you need and by when. Screenshots and examples help.</p>
+        </li>
+        <li class="step">
+          <h3><span data-l="ru">Оценка</span><span data-l="en">Estimate</span></h3>
+          <p data-l="ru">Задаю уточняющие вопросы и называю срок и стоимость до начала работы.</p>
+          <p data-l="en">I ask clarifying questions and give you a timeline and a price before any work starts.</p>
+        </li>
+        <li class="step">
+          <h3><span data-l="ru">Работа</span><span data-l="en">Build</span></h3>
+          <p data-l="ru">Показываю промежуточный результат, чтобы поправить курс по ходу, а не в самом конце.</p>
+          <p data-l="en">You see progress along the way, so we can adjust course early rather than at the very end.</p>
+        </li>
+        <li class="step">
+          <h3><span data-l="ru">Сдача</span><span data-l="en">Handover</span></h3>
+          <p data-l="ru">Код, инструкция по запуску и проверка результата вместе с вами.</p>
+          <p data-l="en">The code, setup instructions and a check of the result together with you.</p>
+        </li>
+      </ol>
+      <ul class="principles">
+        <li data-l="ru"><b>Код и доступы — ваши:</b> репозиторий или архив, без привязки к моим серверам.</li>
+        <li data-l="en"><b>The code and access are yours:</b> a repository or an archive, with no lock-in to my servers.</li>
+        <li data-l="ru"><b>Секреты — в .env, а не в коде:</b> токены и пароли не попадают в репозиторий.</li>
+        <li data-l="en"><b>Secrets live in .env, not in the code:</b> tokens and passwords stay out of the repository.</li>
+        <li data-l="ru"><b>Аккуратный парсинг:</b> только открытые данные, лимиты скорости и учёт robots.txt.</li>
+        <li data-l="en"><b>Considerate scraping:</b> public data only, with rate limits and respect for robots.txt.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section class="section" id="contacts" aria-labelledby="contacts-title">
+    <div class="wrap">
+      <div class="contact-card">
+        <div>
+          <p class="kicker"><span data-l="ru">Контакты</span><span data-l="en">Contact</span></p>
+          <h2 id="contacts-title"><span data-l="ru">Расскажите о задаче</span><span data-l="en">Tell me about your task</span></h2>
+          <p data-l="ru">Опишите в двух-трёх предложениях, что нужно сделать, — отвечу с вопросами или с оценкой срока и цены.</p>
+          <p data-l="en">Describe what you need in two or three sentences, and I'll reply with questions or an estimate of time and price.</p>
+        </div>
+        <!-- Замените [Telegram] на ник без @, а [email] на адрес почты (во всех местах файла). -->
+        <ul class="contact-list">
+          <li>
+            <a class="contact" href="https://t.me/[Telegram]">
+              <span class="c-label">Telegram</span>
+              <span class="c-value">@[Telegram]</span>
+              <span class="c-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="contact" href="mailto:[email]">
+              <span class="c-label">E-mail</span>
+              <span class="c-value">[email]</span>
+              <span class="c-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="contact" href="https://github.com/sinnercode228">
+              <span class="c-label">GitHub</span>
+              <span class="c-value">sinnercode228</span>
+              <span class="c-arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-in">
+    <p>© 2026 sinnercode228</p>
+    <p data-l="ru">Демо-проект / Demo project: бренды, люди и цифры в примерах вымышлены. Без трекеров и cookies.</p>
+    <p data-l="en">Demo project / Демо-проект: brands, people and figures in the samples are fictional. No trackers, no cookies.</p>
+    <p><a href="https://github.com/sinnercode228/portfolio"><span data-l="ru">Код этой страницы</span><span data-l="en">Source of this page</span></a></p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var root = document.documentElement;
+  var STORAGE_KEY = "portfolio-lang";
+  var META = {
+    ru: {
+      title: "sinnercode228 — разработчик Python и JavaScript",
+      description: "Парсеры, Telegram-боты, автоматизация и интеграции по API, лендинги, Excel и Google Sheets, исправление багов. Четыре рабочих демо-проекта с открытым кодом и тестами."
+    },
+    en: {
+      title: "sinnercode228 — Python and JavaScript developer",
+      description: "Web scrapers, Telegram bots, automation and API integrations, landing pages, Excel and Google Sheets, bug fixing. Four working demo projects with open code and tests."
+    }
+  };
+  var descMeta = document.querySelector('meta[name="description"]');
+  var buttons = Array.prototype.slice.call(document.querySelectorAll("[data-set-lang]"));
+
+  function setLang(lang, save) {
+    if (lang !== "en") lang = "ru";
+    root.lang = lang;
+    document.title = META[lang].title;
+    if (descMeta) descMeta.setAttribute("content", META[lang].description);
+    buttons.forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.getAttribute("data-set-lang") === lang));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-alt-" + lang + "]"), function (el) {
+      el.setAttribute("alt", el.getAttribute("data-alt-" + lang));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-label-" + lang + "]"), function (el) {
+      el.setAttribute("aria-label", el.getAttribute("data-label-" + lang));
+    });
+    if (!save) return;
+    try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) { /* приватный режим — не страшно */ }
+    try {
+      var url = new URL(location.href);
+      if (lang === "en") url.searchParams.set("lang", "en"); else url.searchParams.delete("lang");
+      history.replaceState(null, "", url.href);
+    } catch (e) { /* file:// в некоторых браузерах не даёт менять адрес */ }
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.getAttribute("data-set-lang"), true); });
+  });
+  setLang(root.lang, false);
+
+  // При открытии файла с диска ссылка на папку показала бы список файлов — ведём сразу на index.html.
+  if (location.protocol === "file:") {
+    Array.prototype.forEach.call(document.querySelectorAll("a[data-local-index]"), function (a) {
+      a.setAttribute("href", a.getAttribute("href").replace(/\/?$/, "/index.html"));
+    });
+  }
+
+  // Напоминание владельцу: контакты ещё не заполнены.
+  var placeholders = document.querySelectorAll('a[href*="[Telegram]"], a[href*="[email]"]');
+  if (placeholders.length) {
+    Array.prototype.forEach.call(placeholders, function (a) { a.classList.add("is-placeholder"); });
+    if (window.console) console.warn("Портфолио: замените [Telegram] и [email] в index.html на свои контакты.");
+  }
+})();
+</script>
 </body>
 </html>
