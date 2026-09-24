@@ -65,7 +65,6 @@ make setup all           # или команды из README проекта
 - Один файл без сборки и внешних зависимостей: без шрифтов со сторонних серверов, аналитики и cookies. Светлая и тёмная тема по настройкам системы, адаптивная вёрстка от 320 px.
 - Русский язык по умолчанию, переключатель RU / EN в шапке. Выбор запоминается в браузере. На английскую версию можно дать прямую ссылку: `?lang=en`.
 - Посмотреть локально: откройте `index.html` двойным кликом или запустите сервер в корне репозитория: `python3 -m http.server 8000` → http://localhost:8000.
-- **Контакты.** Перед публикацией замените в `index.html` все `[Telegram]` на свой ник без `@` и все `[email]` на адрес почты. Пока заглушки не заменены, они подсвечены жёлтым, а в консоли браузера выводится напоминание.
 - **Публикация на GitHub Pages:** Settings → Pages → Build and deployment → Deploy from a branch → `main` / `(root)`. Желательно добавить в корень пустой файл `.nojekyll`, чтобы GitHub Pages отдавал файлы как есть, без обработки Jekyll.
 
 ### Структура
@@ -83,8 +82,7 @@ portfolio/
 
 ### Контакты
 
-- Telegram: [Telegram]
-- E-mail: [email]
+- Telegram: [@sinnercode](https://t.me/sinnercode)
 - GitHub: [sinnercode228](https://github.com/sinnercode228)
 
 ---
@@ -113,11 +111,9 @@ Each project's README has full instructions; the short version is in the Russian
 - A single file with no build step and no external requests: no third-party fonts, analytics or cookies. Light and dark themes follow the system setting; the layout works from 320 px wide.
 - Russian by default with an RU / EN switch in the header. The choice is remembered in the browser, and `?lang=en` links straight to the English version.
 - To preview locally, open `index.html` or run `python3 -m http.server 8000` in the repository root and visit http://localhost:8000.
-- **Contacts.** Before publishing, replace every `[Telegram]` in `index.html` with your username (without `@`) and every `[email]` with your email address. Until then they are highlighted in yellow and the browser console shows a reminder.
 - **GitHub Pages:** Settings → Pages → Build and deployment → Deploy from a branch → `main` / `(root)`. Adding an empty `.nojekyll` file to the root is recommended, so Pages serves the files as they are, without Jekyll.
 
 ### Contact
 
-- Telegram: [Telegram]
-- Email: [email]
+- Telegram: [@sinnercode](https://t.me/sinnercode)
 - GitHub: [sinnercode228](https://github.com/sinnercode228)
