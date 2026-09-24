@@ -1,0 +1,406 @@
+﻿date,employee,project,task,hours,billable
+2026-08-25,Theo Varga,Customer portal,Order status page,2.95,Yes
+2026-08-25,Theo Varga,Customer portal,Code review,3.05,Yes
+2026-08-25,Ines Okafor,Customer portal,Reports export,1.86,Yes
+2026-08-25,Ines Okafor,Customer portal,Code review,3.14,Yes
+2026-08-25,Ines Okafor,Customer portal,Code review,3,Yes
+2026-08-26,Mira Solberg,Support & maintenance,Bug fixes,2.83,Yes
+2026-08-26,Mira Solberg,Shop-floor mobile app,Push notifications,1.54,Yes
+2026-08-26,Mira Solberg,Customer portal,Reports export,2.57,Yes
+2026-08-26,Mira Solberg,Shop-floor mobile app,Push notifications,1.06,Yes
+2026-08-26,Theo Varga,Customer portal,Login and roles,0.35,Yes
+2026-08-26,Theo Varga,Shop-floor mobile app,Offline sync,0.55,Yes
+2026-08-26,Theo Varga,Customer portal,Order status page,2,Yes
+2026-08-26,Theo Varga,Customer portal,Login and roles,3.27,Yes
+2026-08-26,Theo Varga,Customer portal,Reports export,2.02,Yes
+2026-08-26,Theo Varga,Customer portal,Code review,0.31,Yes
+2026-08-26,Ines Okafor,Shop-floor mobile app,Push notifications,3.92,Yes
+2026-08-26,Ines Okafor,Customer portal,Order status page,2.91,Yes
+2026-08-26,Ines Okafor,Shop-floor mobile app,Push notifications,1.67,Yes
+2026-08-26,Luca Brenner,Shop-floor mobile app,Barcode scanning,1.3,Yes
+2026-08-26,Luca Brenner,Shop-floor mobile app,Push notifications,2.93,Yes
+2026-08-26,Luca Brenner,Customer portal,Order status page,3.29,Yes
+2026-08-26,Luca Brenner,Shop-floor mobile app,Barcode scanning,0.48,Yes
+2026-08-27,Theo Varga,Shop-floor mobile app,Offline sync,4.09,Yes
+2026-08-27,Theo Varga,Support & maintenance,Client call,2.32,Yes
+2026-08-27,Theo Varga,Customer portal,Login and roles,0.43,Yes
+2026-08-27,Theo Varga,Customer portal,Order status page,0.66,Yes
+2026-08-27,Ines Okafor,Shop-floor mobile app,Offline sync,1.16,Yes
+2026-08-27,Ines Okafor,Shop-floor mobile app,Push notifications,4.04,Yes
+2026-08-27,Ines Okafor,Customer portal,Login and roles,2.3,Yes
+2026-08-27,Luca Brenner,Shop-floor mobile app,Barcode scanning,0.48,Yes
+2026-08-27,Luca Brenner,Shop-floor mobile app,Barcode scanning,3.88,Yes
+2026-08-27,Luca Brenner,Shop-floor mobile app,Push notifications,2.98,Yes
+2026-08-28,Mira Solberg,Shop-floor mobile app,Offline sync,1.52,Yes
+2026-08-28,Mira Solberg,Customer portal,Login and roles,3.53,Yes
+2026-08-28,Mira Solberg,Shop-floor mobile app,Offline sync,1.19,No
+2026-08-28,Mira Solberg,Shop-floor mobile app,Offline sync,0.68,Yes
+2026-08-28,Mira Solberg,Shop-floor mobile app,Barcode scanning,1.08,Yes
+2026-08-28,Theo Varga,Customer portal,Login and roles,2.94,Yes
+2026-08-28,Theo Varga,Customer portal,Login and roles,0.55,Yes
+2026-08-28,Theo Varga,Customer portal,Login and roles,1.24,Yes
+2026-08-28,Theo Varga,Customer portal,Login and roles,1.52,Yes
+2026-08-28,Theo Varga,Customer portal,Code review,0.64,Yes
+2026-08-28,Theo Varga,Customer portal,Code review,1.11,Yes
+2026-08-28,Ines Okafor,Customer portal,Order status page,3.31,No
+2026-08-28,Ines Okafor,Customer portal,Login and roles,3.69,Yes
+2026-08-28,Luca Brenner,Shop-floor mobile app,Barcode scanning,3.92,Yes
+2026-08-28,Luca Brenner,Customer portal,Reports export,1.19,Yes
+2026-08-28,Luca Brenner,Customer portal,Login and roles,1.89,Yes
+2026-08-31,Theo Varga,Customer portal,Order status page,2.14,Yes
+2026-08-31,Theo Varga,Customer portal,Code review,1.92,Yes
+2026-08-31,Theo Varga,Support & maintenance,Bug fixes,0.87,Yes
+2026-08-31,Theo Varga,Customer portal,Reports export,1.6,Yes
+2026-08-31,Theo Varga,Customer portal,Code review,0.97,Yes
+2026-08-31,Ines Okafor,Support & maintenance,Server updates,1.83,Yes
+2026-08-31,Ines Okafor,Customer portal,Reports export,1.72,Yes
+2026-08-31,Ines Okafor,Shop-floor mobile app,Barcode scanning,1.2,Yes
+2026-08-31,Ines Okafor,Support & maintenance,Client call,1.88,No
+2026-08-31,Ines Okafor,Shop-floor mobile app,Push notifications,1.37,Yes
+2026-08-31,Luca Brenner,Customer portal,Order status page,1.14,Yes
+2026-08-31,Luca Brenner,Shop-floor mobile app,Barcode scanning,0.76,Yes
+2026-08-31,Luca Brenner,Customer portal,Code review,3.17,Yes
+2026-08-31,Luca Brenner,Customer portal,Login and roles,2.93,Yes
+2026-09-01,Mira Solberg,Customer portal,Order status page,2.86,Yes
+2026-09-01,Mira Solberg,Customer portal,Order status page,3.29,Yes
+2026-09-01,Mira Solberg,Support & maintenance,Server updates,1.85,No
+2026-09-01,Theo Varga,Customer portal,Code review,2.39,Yes
+2026-09-01,Theo Varga,Shop-floor mobile app,Offline sync,3.2,Yes
+2026-09-01,Theo Varga,Shop-floor mobile app,Offline sync,1.91,Yes
+2026-09-01,Ines Okafor,Shop-floor mobile app,Offline sync,2.06,No
+2026-09-01,Ines Okafor,Shop-floor mobile app,Push notifications,2.05,Yes
+2026-09-01,Ines Okafor,Shop-floor mobile app,Push notifications,1.44,Yes
+2026-09-01,Ines Okafor,Customer portal,Code review,1.95,Yes
+2026-09-01,Luca Brenner,Customer portal,Code review,2.16,Yes
+2026-09-01,Luca Brenner,Shop-floor mobile app,Push notifications,1.75,Yes
+2026-09-01,Luca Brenner,Customer portal,Code review,2.09,Yes
+2026-09-02,Mira Solberg,Customer portal,Reports export,2.96,No
+2026-09-02,Mira Solberg,Shop-floor mobile app,Push notifications,3.41,Yes
+2026-09-02,Mira Solberg,Support & maintenance,Server updates,1.63,No
+2026-09-02,Theo Varga,Support & maintenance,Bug fixes,1.98,Yes
+2026-09-02,Theo Varga,Customer portal,Order status page,0.71,Yes
+2026-09-02,Theo Varga,Shop-floor mobile app,Offline sync,1.92,Yes
+2026-09-02,Theo Varga,Customer portal,Order status page,3.39,Yes
+2026-09-02,Ines Okafor,Shop-floor mobile app,Offline sync,2.01,Yes
+2026-09-02,Ines Okafor,Customer portal,Code review,3.46,Yes
+2026-09-02,Ines Okafor,Customer portal,Login and roles,1.53,Yes
+2026-09-02,Luca Brenner,Shop-floor mobile app,Barcode scanning,1.09,Yes
+2026-09-02,Luca Brenner,Customer portal,Code review,0.4,Yes
+2026-09-02,Luca Brenner,Customer portal,Login and roles,2.5,Yes
+2026-09-02,Luca Brenner,Customer portal,Order status page,2.01,Yes
+2026-09-03,Mira Solberg,Customer portal,Reports export,0.81,Yes
+2026-09-03,Mira Solberg,Support & maintenance,Server updates,0.4,Yes
+2026-09-03,Mira Solberg,Shop-floor mobile app,Barcode scanning,0.57,Yes
+2026-09-03,Mira Solberg,Customer portal,Reports export,1.42,Yes
+2026-09-03,Mira Solberg,Support & maintenance,Bug fixes,1.46,Yes
+2026-09-03,Mira Solberg,Shop-floor mobile app,Barcode scanning,2.09,Yes
+2026-09-03,Mira Solberg,Shop-floor mobile app,Offline sync,1.25,Yes
+2026-09-03,Theo Varga,Shop-floor mobile app,Barcode scanning,3.5,Yes
+2026-09-03,Theo Varga,Customer portal,Order status page,3.78,Yes
+2026-09-03,Theo Varga,Shop-floor mobile app,Barcode scanning,1.22,Yes
+2026-09-03,Ines Okafor,Customer portal,Order status page,2.87,Yes
+2026-09-03,Ines Okafor,Support & maintenance,Bug fixes,2.16,Yes
+2026-09-03,Ines Okafor,Customer portal,Code review,1.31,Yes
+2026-09-03,Ines Okafor,Customer portal,Login and roles,1.62,Yes
+2026-09-03,Ines Okafor,Shop-floor mobile app,Offline sync,0.54,Yes
+2026-09-03,Luca Brenner,Customer portal,Login and roles,2.44,Yes
+2026-09-03,Luca Brenner,Shop-floor mobile app,Barcode scanning,0.96,Yes
+2026-09-03,Luca Brenner,Customer portal,Code review,1.5,Yes
+2026-09-03,Luca Brenner,Shop-floor mobile app,Offline sync,1.74,Yes
+2026-09-03,Luca Brenner,Customer portal,Login and roles,1.36,Yes
+2026-09-04,Mira Solberg,Shop-floor mobile app,Barcode scanning,1.21,Yes
+2026-09-04,Mira Solberg,Shop-floor mobile app,Offline sync,0.95,Yes
+2026-09-04,Mira Solberg,Shop-floor mobile app,Offline sync,3.05,Yes
+2026-09-04,Mira Solberg,Customer portal,Login and roles,2.79,Yes
+2026-09-04,Theo Varga,Support & maintenance,Server updates,1.66,No
+2026-09-04,Theo Varga,Shop-floor mobile app,Push notifications,3.7,Yes
+2026-09-04,Theo Varga,Shop-floor mobile app,Barcode scanning,2.64,Yes
+2026-09-04,Ines Okafor,Shop-floor mobile app,Push notifications,3.98,Yes
+2026-09-04,Ines Okafor,Customer portal,Login and roles,3.19,Yes
+2026-09-04,Ines Okafor,Customer portal,Order status page,0.33,Yes
+2026-09-07,Mira Solberg,Shop-floor mobile app,Push notifications,1.81,Yes
+2026-09-07,Mira Solberg,Support & maintenance,Client call,3.11,No
+2026-09-07,Mira Solberg,Shop-floor mobile app,Push notifications,2.08,Yes
+2026-09-07,Theo Varga,Shop-floor mobile app,Barcode scanning,3.41,Yes
+2026-09-07,Theo Varga,Customer portal,Reports export,3.65,Yes
+2026-09-07,Theo Varga,Shop-floor mobile app,Push notifications,0.94,Yes
+2026-09-07,Ines Okafor,Customer portal,Reports export,1.1,Yes
+2026-09-07,Ines Okafor,Shop-floor mobile app,Barcode scanning,2.32,Yes
+2026-09-07,Ines Okafor,Customer portal,Code review,0.34,Yes
+2026-09-07,Ines Okafor,Shop-floor mobile app,Barcode scanning,2.53,Yes
+2026-09-07,Ines Okafor,Shop-floor mobile app,Offline sync,1.71,Yes
+2026-09-08,Mira Solberg,Shop-floor mobile app,Barcode scanning,3.92,Yes
+2026-09-08,Mira Solberg,Shop-floor mobile app,Offline sync,3.57,Yes
+2026-09-08,Mira Solberg,Shop-floor mobile app,Offline sync,0.51,Yes
+2026-09-08,Theo Varga,Customer portal,Login and roles,3.1,Yes
+2026-09-08,Theo Varga,Customer portal,Login and roles,4.11,Yes
+2026-09-08,Theo Varga,Shop-floor mobile app,Push notifications,1,Yes
+2026-09-08,Theo Varga,Customer portal,Login and roles,0.29,Yes
+2026-09-08,Ines Okafor,Customer portal,Order status page,1.66,Yes
+2026-09-08,Ines Okafor,Shop-floor mobile app,Push notifications,3.51,No
+2026-09-08,Ines Okafor,Customer portal,Login and roles,0.84,Yes
+2026-09-08,Ines Okafor,Customer portal,Login and roles,1.71,No
+2026-09-08,Ines Okafor,Shop-floor mobile app,Barcode scanning,0.78,Yes
+2026-09-08,Luca Brenner,Customer portal,Code review,2.63,Yes
+2026-09-08,Luca Brenner,Customer portal,Order status page,0.59,Yes
+2026-09-08,Luca Brenner,Shop-floor mobile app,Barcode scanning,2.91,Yes
+2026-09-08,Luca Brenner,Customer portal,Login and roles,0.87,Yes
+2026-09-09,Mira Solberg,Shop-floor mobile app,Barcode scanning,1.21,Yes
+2026-09-09,Mira Solberg,Support & maintenance,Client call,3.96,Yes
+2026-09-09,Mira Solberg,Customer portal,Reports export,2.03,Yes
+2026-09-09,Mira Solberg,Customer portal,Code review,0.8,Yes
+2026-09-09,Theo Varga,Shop-floor mobile app,Barcode scanning,1.05,Yes
+2026-09-09,Theo Varga,Customer portal,Reports export,0.84,Yes
+2026-09-09,Theo Varga,Customer portal,Login and roles,1.44,No
+2026-09-09,Theo Varga,Shop-floor mobile app,Barcode scanning,3.76,Yes
+2026-09-09,Theo Varga,Shop-floor mobile app,Push notifications,0.91,Yes
+2026-09-09,Ines Okafor,Shop-floor mobile app,Barcode scanning,2.33,Yes
+2026-09-09,Ines Okafor,Shop-floor mobile app,Barcode scanning,3.46,Yes
+2026-09-09,Ines Okafor,Customer portal,Login and roles,2.21,Yes
+2026-09-09,Luca Brenner,Customer portal,Login and roles,4.19,Yes
+2026-09-09,Luca Brenner,Customer portal,Login and roles,3.81,No
+2026-09-10,Mira Solberg,Customer portal,Code review,2.07,Yes
+2026-09-10,Mira Solberg,Customer portal,Reports export,1.26,Yes
+2026-09-10,Mira Solberg,Customer portal,Reports export,2.95,Yes
+2026-09-10,Mira Solberg,Shop-floor mobile app,Offline sync,1.72,Yes
+2026-09-10,Theo Varga,Customer portal,Reports export,3.66,Yes
+2026-09-10,Theo Varga,Shop-floor mobile app,Barcode scanning,1.64,Yes
+2026-09-10,Theo Varga,Shop-floor mobile app,Barcode scanning,2.7,Yes
+2026-09-10,Ines Okafor,Customer portal,Login and roles,3.05,Yes
+2026-09-10,Ines Okafor,Customer portal,Login and roles,1.64,Yes
+2026-09-10,Ines Okafor,Support & maintenance,Bug fixes,1.75,Yes
+2026-09-10,Ines Okafor,Shop-floor mobile app,Offline sync,2.06,Yes
+2026-09-10,Luca Brenner,Customer portal,Reports export,3.19,Yes
+2026-09-10,Luca Brenner,Customer portal,Order status page,3.87,Yes
+2026-09-10,Luca Brenner,Customer portal,Login and roles,0.94,Yes
+2026-09-11,Mira Solberg,Shop-floor mobile app,Offline sync,0.61,No
+2026-09-11,Mira Solberg,Support & maintenance,Bug fixes,1.95,No
+2026-09-11,Mira Solberg,Support & maintenance,Server updates,3.08,Yes
+2026-09-11,Mira Solberg,Shop-floor mobile app,Offline sync,1.36,Yes
+2026-09-11,Theo Varga,Shop-floor mobile app,Barcode scanning,1.5,Yes
+2026-09-11,Theo Varga,Customer portal,Order status page,1.41,Yes
+2026-09-11,Theo Varga,Customer portal,Reports export,2.64,Yes
+2026-09-11,Theo Varga,Customer portal,Order status page,1.45,Yes
+2026-09-11,Ines Okafor,Shop-floor mobile app,Offline sync,2,No
+2026-09-11,Ines Okafor,Shop-floor mobile app,Barcode scanning,3.17,Yes
+2026-09-11,Ines Okafor,Customer portal,Code review,0.83,Yes
+2026-09-11,Luca Brenner,Customer portal,Reports export,2.88,Yes
+2026-09-11,Luca Brenner,Customer portal,Order status page,2.26,Yes
+2026-09-11,Luca Brenner,Shop-floor mobile app,Offline sync,1.86,Yes
+2026-09-14,Mira Solberg,Customer portal,Login and roles,0.86,Yes
+2026-09-14,Mira Solberg,Support & maintenance,Server updates,3.3,Yes
+2026-09-14,Mira Solberg,Support & maintenance,Bug fixes,3.34,No
+2026-09-14,Theo Varga,Shop-floor mobile app,Push notifications,3.68,Yes
+2026-09-14,Theo Varga,Customer portal,Code review,1.42,Yes
+2026-09-14,Theo Varga,Shop-floor mobile app,Barcode scanning,1.9,Yes
+2026-09-14,Ines Okafor,Customer portal,Reports export,1.85,Yes
+2026-09-14,Ines Okafor,Shop-floor mobile app,Push notifications,3.15,Yes
+2026-09-14,Ines Okafor,Shop-floor mobile app,Offline sync,1.83,Yes
+2026-09-14,Ines Okafor,Customer portal,Order status page,1.17,Yes
+2026-09-14,Luca Brenner,Customer portal,Reports export,2.86,Yes
+2026-09-14,Luca Brenner,Customer portal,Order status page,2.05,Yes
+2026-09-14,Luca Brenner,Customer portal,Login and roles,2.59,Yes
+2026-09-15,Mira Solberg,Support & maintenance,Server updates,4.04,Yes
+2026-09-15,Mira Solberg,Shop-floor mobile app,Offline sync,2.43,Yes
+2026-09-15,Mira Solberg,Support & maintenance,Bug fixes,1.53,No
+2026-09-15,Theo Varga,Shop-floor mobile app,Offline sync,2.08,Yes
+2026-09-15,Theo Varga,Customer portal,Login and roles,1,Yes
+2026-09-15,Theo Varga,Shop-floor mobile app,Barcode scanning,1.6,Yes
+2026-09-15,Theo Varga,Customer portal,Login and roles,2.32,Yes
+2026-09-15,Ines Okafor,Shop-floor mobile app,Offline sync,3.47,Yes
+2026-09-15,Ines Okafor,Customer portal,Reports export,0.72,Yes
+2026-09-15,Ines Okafor,Shop-floor mobile app,Barcode scanning,1.81,Yes
+2026-09-15,Luca Brenner,Shop-floor mobile app,Offline sync,0.88,Yes
+2026-09-15,Luca Brenner,Customer portal,Reports export,1.1,Yes
+2026-09-15,Luca Brenner,Shop-floor mobile app,Push notifications,1.37,Yes
+2026-09-15,Luca Brenner,Shop-floor mobile app,Push notifications,1.74,Yes
+2026-09-15,Luca Brenner,Customer portal,Login and roles,1.48,Yes
+2026-09-15,Luca Brenner,Customer portal,Code review,1.43,Yes
+2026-09-16,Mira Solberg,Customer portal,Login and roles,3.16,Yes
+2026-09-16,Mira Solberg,Support & maintenance,Client call,0.95,No
+2026-09-16,Mira Solberg,Customer portal,Order status page,1.98,Yes
+2026-09-16,Mira Solberg,Shop-floor mobile app,Push notifications,1.21,Yes
+2026-09-16,Mira Solberg,Shop-floor mobile app,Offline sync,0.6,Yes
+2026-09-16,Theo Varga,Customer portal,Login and roles,2.74,No
+2026-09-16,Theo Varga,Shop-floor mobile app,Push notifications,1.53,Yes
+2026-09-16,Theo Varga,Customer portal,Login and roles,1.73,Yes
+2026-09-16,Ines Okafor,Customer portal,Order status page,1.44,Yes
+2026-09-16,Ines Okafor,Support & maintenance,Bug fixes,2.12,Yes
+2026-09-16,Ines Okafor,Customer portal,Order status page,2.5,Yes
+2026-09-16,Ines Okafor,Customer portal,Reports export,0.96,Yes
+2026-09-16,Ines Okafor,Customer portal,Code review,0.94,Yes
+2026-09-16,Luca Brenner,Customer portal,Login and roles,1.62,Yes
+2026-09-16,Luca Brenner,Shop-floor mobile app,Offline sync,0.5,Yes
+2026-09-16,Luca Brenner,Shop-floor mobile app,Barcode scanning,0.7,Yes
+2026-09-16,Luca Brenner,Customer portal,Order status page,2.69,Yes
+2026-09-16,Luca Brenner,Customer portal,Code review,0.99,Yes
+2026-09-16,Luca Brenner,Shop-floor mobile app,Barcode scanning,0.84,Yes
+2026-09-16,Luca Brenner,Customer portal,Reports export,1.16,Yes
+2026-09-17,Mira Solberg,Support & maintenance,Bug fixes,2.98,Yes
+2026-09-17,Mira Solberg,Customer portal,Login and roles,0.63,Yes
+2026-09-17,Mira Solberg,Customer portal,Login and roles,1.76,Yes
+2026-09-17,Mira Solberg,Shop-floor mobile app,Barcode scanning,1.63,Yes
+2026-09-17,Theo Varga,Shop-floor mobile app,Offline sync,3.87,Yes
+2026-09-17,Theo Varga,Customer portal,Order status page,1.5,Yes
+2026-09-17,Theo Varga,Customer portal,Reports export,1.36,Yes
+2026-09-17,Theo Varga,Shop-floor mobile app,Barcode scanning,0.71,Yes
+2026-09-17,Theo Varga,Support & maintenance,Client call,0.43,Yes
+2026-09-17,Ines Okafor,Customer portal,Code review,2.34,Yes
+2026-09-17,Ines Okafor,Shop-floor mobile app,Barcode scanning,3.94,Yes
+2026-09-17,Ines Okafor,Support & maintenance,Server updates,0.66,Yes
+2026-09-17,Ines Okafor,Customer portal,Reports export,1.06,Yes
+2026-09-17,Luca Brenner,Shop-floor mobile app,Push notifications,2.72,Yes
+2026-09-17,Luca Brenner,Customer portal,Reports export,1.67,Yes
+2026-09-17,Luca Brenner,Customer portal,Reports export,1.57,Yes
+2026-09-17,Luca Brenner,Customer portal,Reports export,0.8,Yes
+2026-09-17,Luca Brenner,Shop-floor mobile app,Offline sync,0.93,Yes
+2026-09-17,Luca Brenner,Shop-floor mobile app,Push notifications,0.81,Yes
+2026-09-18,Theo Varga,Customer portal,Code review,3.8,Yes
+2026-09-18,Theo Varga,Customer portal,Order status page,1.91,Yes
+2026-09-18,Theo Varga,Shop-floor mobile app,Barcode scanning,0.6,Yes
+2026-09-18,Theo Varga,Customer portal,Code review,1.69,Yes
+2026-09-18,Ines Okafor,Shop-floor mobile app,Push notifications,1.82,Yes
+2026-09-18,Ines Okafor,Customer portal,Login and roles,3.38,Yes
+2026-09-18,Ines Okafor,Shop-floor mobile app,Push notifications,0.8,Yes
+2026-09-18,Luca Brenner,Shop-floor mobile app,Offline sync,3.5,Yes
+2026-09-18,Luca Brenner,Customer portal,Reports export,3.01,Yes
+2026-09-18,Luca Brenner,Shop-floor mobile app,Offline sync,1.49,Yes
+2026-09-21,Mira Solberg,Shop-floor mobile app,Push notifications,2.77,Yes
+2026-09-21,Mira Solberg,Shop-floor mobile app,Offline sync,1.72,Yes
+2026-09-21,Mira Solberg,Shop-floor mobile app,Push notifications,1.66,Yes
+2026-09-21,Mira Solberg,Shop-floor mobile app,Offline sync,1.85,Yes
+2026-09-21,Theo Varga,Customer portal,Order status page,1.64,Yes
+2026-09-21,Theo Varga,Shop-floor mobile app,Barcode scanning,1.83,Yes
+2026-09-21,Theo Varga,Customer portal,Login and roles,0.58,Yes
+2026-09-21,Theo Varga,Shop-floor mobile app,Push notifications,2.61,Yes
+2026-09-21,Theo Varga,Customer portal,Code review,0.34,Yes
+2026-09-21,Ines Okafor,Support & maintenance,Bug fixes,3.5,Yes
+2026-09-21,Ines Okafor,Customer portal,Code review,0.54,Yes
+2026-09-21,Ines Okafor,Support & maintenance,Client call,2.05,Yes
+2026-09-21,Ines Okafor,Shop-floor mobile app,Push notifications,1.91,Yes
+2026-09-21,Luca Brenner,Customer portal,Order status page,4.17,Yes
+2026-09-21,Luca Brenner,Customer portal,Login and roles,0.35,Yes
+2026-09-21,Luca Brenner,Customer portal,Order status page,2.48,Yes
+2026-09-22,Mira Solberg,Customer portal,Order status page,3.91,Yes
+2026-09-22,Mira Solberg,Shop-floor mobile app,Offline sync,0.33,Yes
+2026-09-22,Mira Solberg,Shop-floor mobile app,Push notifications,3.26,Yes
+2026-09-22,Theo Varga,Shop-floor mobile app,Push notifications,2.21,Yes
+2026-09-22,Theo Varga,Support & maintenance,Bug fixes,3.79,No
+2026-09-22,Ines Okafor,Customer portal,Code review,3.69,Yes
+2026-09-22,Ines Okafor,Shop-floor mobile app,Offline sync,3.63,Yes
+2026-09-22,Luca Brenner,Customer portal,Login and roles,3.9,Yes
+2026-09-22,Luca Brenner,Shop-floor mobile app,Barcode scanning,3.59,Yes
+2026-09-23,Theo Varga,Shop-floor mobile app,Barcode scanning,4.13,Yes
+2026-09-23,Theo Varga,Shop-floor mobile app,Push notifications,3.11,Yes
+2026-09-23,Theo Varga,Shop-floor mobile app,Push notifications,1.26,Yes
+2026-09-23,Ines Okafor,Customer portal,Code review,3.66,Yes
+2026-09-23,Ines Okafor,Customer portal,Login and roles,3.29,Yes
+2026-09-23,Luca Brenner,Customer portal,Order status page,2.67,No
+2026-09-23,Luca Brenner,Customer portal,Code review,0.5,Yes
+2026-09-23,Luca Brenner,Customer portal,Reports export,3.48,No
+2026-09-23,Luca Brenner,Customer portal,Reports export,0.85,Yes
+2026-09-24,Mira Solberg,Customer portal,Order status page,0.64,Yes
+2026-09-24,Mira Solberg,Customer portal,Reports export,3.79,Yes
+2026-09-24,Mira Solberg,Customer portal,Order status page,3.22,Yes
+2026-09-24,Mira Solberg,Shop-floor mobile app,Offline sync,0.35,Yes
+2026-09-24,Theo Varga,Shop-floor mobile app,Offline sync,0.38,Yes
+2026-09-24,Theo Varga,Customer portal,Reports export,2.32,Yes
+2026-09-24,Theo Varga,Customer portal,Login and roles,4.08,Yes
+2026-09-24,Theo Varga,Shop-floor mobile app,Offline sync,0.22,Yes
+2026-09-24,Ines Okafor,Customer portal,Code review,3.15,Yes
+2026-09-24,Ines Okafor,Customer portal,Code review,2.41,Yes
+2026-09-24,Ines Okafor,Support & maintenance,Client call,2.42,Yes
+2026-09-24,Luca Brenner,Customer portal,Login and roles,4.02,Yes
+2026-09-24,Luca Brenner,Customer portal,Login and roles,2.74,Yes
+2026-09-24,Luca Brenner,Customer portal,Code review,0.24,Yes
+2026-09-25,Mira Solberg,Support & maintenance,Bug fixes,4.18,Yes
+2026-09-25,Mira Solberg,Customer portal,Reports export,2.98,Yes
+2026-09-25,Mira Solberg,Shop-floor mobile app,Push notifications,1.34,Yes
+2026-09-25,Theo Varga,Customer portal,Order status page,1.72,Yes
+2026-09-25,Theo Varga,Customer portal,Login and roles,1.82,Yes
+2026-09-25,Theo Varga,Customer portal,Login and roles,2.46,Yes
+2026-09-25,Ines Okafor,Shop-floor mobile app,Barcode scanning,4.05,Yes
+2026-09-25,Ines Okafor,Customer portal,Reports export,2.53,Yes
+2026-09-25,Ines Okafor,Customer portal,Reports export,1.42,Yes
+2026-09-25,Luca Brenner,Customer portal,Order status page,2.08,Yes
+2026-09-25,Luca Brenner,Shop-floor mobile app,Offline sync,2.3,Yes
+2026-09-25,Luca Brenner,Customer portal,Order status page,2.62,Yes
+2026-09-28,Mira Solberg,Shop-floor mobile app,Offline sync,0.31,Yes
+2026-09-28,Mira Solberg,Support & maintenance,Server updates,0.98,Yes
+2026-09-28,Mira Solberg,Support & maintenance,Bug fixes,2.87,Yes
+2026-09-28,Mira Solberg,Shop-floor mobile app,Push notifications,4.18,Yes
+2026-09-28,Theo Varga,Customer portal,Order status page,1.96,Yes
+2026-09-28,Theo Varga,Customer portal,Code review,0.67,Yes
+2026-09-28,Theo Varga,Customer portal,Reports export,2.17,Yes
+2026-09-28,Theo Varga,Customer portal,Code review,1.2,Yes
+2026-09-28,Ines Okafor,Customer portal,Login and roles,1.86,Yes
+2026-09-28,Ines Okafor,Customer portal,Login and roles,1.56,Yes
+2026-09-28,Ines Okafor,Customer portal,Code review,2.67,Yes
+2026-09-28,Ines Okafor,Customer portal,Order status page,1.09,Yes
+2026-09-28,Ines Okafor,Customer portal,Order status page,0.32,Yes
+2026-09-28,Luca Brenner,Shop-floor mobile app,Offline sync,2.05,Yes
+2026-09-28,Luca Brenner,Shop-floor mobile app,Offline sync,2.93,Yes
+2026-09-28,Luca Brenner,Shop-floor mobile app,Barcode scanning,1.24,Yes
+2026-09-28,Luca Brenner,Customer portal,Login and roles,1.03,Yes
+2026-09-28,Luca Brenner,Shop-floor mobile app,Barcode scanning,0.75,Yes
+2026-09-29,Mira Solberg,Customer portal,Order status page,2.33,Yes
+2026-09-29,Mira Solberg,Support & maintenance,Client call,1.7,No
+2026-09-29,Mira Solberg,Customer portal,Login and roles,1.85,No
+2026-09-29,Mira Solberg,Customer portal,Code review,1.54,Yes
+2026-09-29,Mira Solberg,Customer portal,Code review,0.58,Yes
+2026-09-29,Theo Varga,Support & maintenance,Server updates,1.27,No
+2026-09-29,Theo Varga,Customer portal,Reports export,3.69,Yes
+2026-09-29,Theo Varga,Customer portal,Code review,3.04,No
+2026-09-29,Ines Okafor,Customer portal,Order status page,3.3,Yes
+2026-09-29,Ines Okafor,Customer portal,Reports export,1.13,Yes
+2026-09-29,Ines Okafor,Shop-floor mobile app,Barcode scanning,1.08,Yes
+2026-09-29,Ines Okafor,Customer portal,Code review,1.99,Yes
+2026-09-29,Luca Brenner,Shop-floor mobile app,Offline sync,2.23,Yes
+2026-09-29,Luca Brenner,Shop-floor mobile app,Barcode scanning,3.91,Yes
+2026-09-29,Luca Brenner,Customer portal,Reports export,0.8,Yes
+2026-09-30,Mira Solberg,Shop-floor mobile app,Push notifications,3,Yes
+2026-09-30,Mira Solberg,Customer portal,Login and roles,1.8,Yes
+2026-09-30,Mira Solberg,Support & maintenance,Server updates,2.49,Yes
+2026-09-30,Mira Solberg,Support & maintenance,Client call,0.71,Yes
+2026-09-30,Theo Varga,Customer portal,Code review,0.93,Yes
+2026-09-30,Theo Varga,Shop-floor mobile app,Offline sync,4.01,Yes
+2026-09-30,Theo Varga,Customer portal,Reports export,1.91,Yes
+2026-09-30,Theo Varga,Support & maintenance,Bug fixes,1.15,No
+2026-09-30,Ines Okafor,Shop-floor mobile app,Barcode scanning,3.25,Yes
+2026-09-30,Ines Okafor,Shop-floor mobile app,Offline sync,1.06,Yes
+2026-09-30,Ines Okafor,Shop-floor mobile app,Offline sync,1.69,Yes
+2026-09-30,Luca Brenner,Customer portal,Code review,2.64,Yes
+2026-09-30,Luca Brenner,Shop-floor mobile app,Push notifications,1.25,Yes
+2026-09-30,Luca Brenner,Customer portal,Order status page,3.16,Yes
+2026-09-30,Luca Brenner,Shop-floor mobile app,Barcode scanning,0.95,Yes
+2026-10-01,Mira Solberg,Shop-floor mobile app,Offline sync,2.47,Yes
+2026-10-01,Mira Solberg,Support & maintenance,Bug fixes,0.98,Yes
+2026-10-01,Mira Solberg,Shop-floor mobile app,Push notifications,1.13,Yes
+2026-10-01,Mira Solberg,Shop-floor mobile app,Push notifications,1.42,Yes
+2026-10-01,Theo Varga,Shop-floor mobile app,Offline sync,3.51,Yes
+2026-10-01,Theo Varga,Customer portal,Login and roles,1.48,Yes
+2026-10-01,Theo Varga,Customer portal,Reports export,1.43,Yes
+2026-10-01,Theo Varga,Support & maintenance,Client call,1.28,Yes
+2026-10-01,Theo Varga,Support & maintenance,Client call,0.3,Yes
+2026-10-01,Ines Okafor,Shop-floor mobile app,Barcode scanning,2.54,Yes
+2026-10-01,Ines Okafor,Shop-floor mobile app,Offline sync,1.41,Yes
+2026-10-01,Ines Okafor,Support & maintenance,Server updates,3.42,No
+2026-10-01,Luca Brenner,Shop-floor mobile app,Barcode scanning,4.11,Yes
+2026-10-01,Luca Brenner,Customer portal,Reports export,2.73,Yes
+2026-10-01,Luca Brenner,Customer portal,Reports export,0.66,Yes
+2026-10-02,Mira Solberg,Customer portal,Reports export,2.51,Yes
+2026-10-02,Mira Solberg,Customer portal,Order status page,0.76,Yes
+2026-10-02,Mira Solberg,Customer portal,Code review,0.96,Yes
+2026-10-02,Mira Solberg,Customer portal,Code review,3.23,Yes
+2026-10-02,Theo Varga,Shop-floor mobile app,Barcode scanning,3.96,Yes
+2026-10-02,Theo Varga,Customer portal,Reports export,3.08,Yes
+2026-10-02,Theo Varga,Customer portal,Code review,1.46,Yes
+2026-10-02,Ines Okafor,Customer portal,Code review,0.69,Yes
+2026-10-02,Ines Okafor,Customer portal,Code review,1.86,No
+2026-10-02,Ines Okafor,Shop-floor mobile app,Push notifications,0.53,Yes
+2026-10-02,Ines Okafor,Support & maintenance,Server updates,1.36,No
+2026-10-02,Ines Okafor,Customer portal,Login and roles,2.2,Yes
+2026-10-02,Ines Okafor,Customer portal,Reports export,1.36,Yes
+2026-10-02,Luca Brenner,Customer portal,Order status page,3.86,Yes
+2026-10-02,Luca Brenner,Shop-floor mobile app,Push notifications,1.23,Yes
+2026-10-02,Luca Brenner,Customer portal,Order status page,0.91,Yes

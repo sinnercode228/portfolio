@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bookscraper-demo"
+version = "1.0.0"
+description = "Async web-scraper demo (httpx + asyncio) with Excel/CSV/JSON export. Demo project."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "sinnercode228" }]
+dependencies = [
+    "httpx>=0.27,<1",
+    "selectolax>=0.3.21",
+    "openpyxl>=3.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6"]
+gsheets = ["gspread>=6"]
+
+[project.scripts]
+bookscraper = "bookscraper.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["bookscraper*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "I", "UP"]

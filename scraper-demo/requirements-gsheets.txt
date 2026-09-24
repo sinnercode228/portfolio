@@ -1,0 +1,3 @@
+# Optional: only needed for --gsheet export
+-r requirements.txt
+gspread>=6

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Портфолио разработчика — Python / JS</title>
+<meta name="description" content="Парсеры, Telegram-боты, автоматизация, лендинги, Excel. Рабочие демо-проекты с кодом.">
+<style>
+:root{--bg:#0f1115;--card:#171a21;--text:#e8eaf0;--muted:#9aa3b2;--accent:#4f8cff;--border:#262b36}
+@media (prefers-color-scheme: light){:root{--bg:#f6f7fb;--card:#fff;--text:#161a22;--muted:#5b6475;--accent:#2563eb;--border:#e3e6ee}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:48px 16px}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin:0 0 12px}
+.lead{color:var(--muted);max-width:640px;margin:0 0 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px}
+.card h2{font-size:19px;margin:0}.card p{margin:0;color:var(--muted);font-size:15px}
+.tags{font-size:13px;color:var(--muted)}
+.links{margin-top:auto;display:flex;gap:12px;flex-wrap:wrap}
+a{color:var(--accent);text-decoration:none;font-weight:600}a:hover{text-decoration:underline}
+.services{margin:40px 0 0;color:var(--muted)}
+.lang{float:right;font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="lang" href="#en">EN ↓</a>
+<h1>Разработчик Python / JavaScript</h1>
+<p class="lead">Беру небольшие задачи с понятным результатом и сдаю за 1–3 дня: парсеры, Telegram-боты, автоматизация и интеграции по API, лендинги, Excel / Google Sheets. Ниже рабочие демо-проекты с исходным кодом.</p>
+<div class="grid">
+  <div class="card"><h2>Лендинг с калькулятором стоимости</h2><p>Одностраничный сайт для строительной компании: живой расчёт цены дома, форма заявки с расчётом, адаптив, без сборки.</p><div class="tags">HTML · CSS · JavaScript · тесты на Node</div><div class="links"><a href="./landing-calculator/">Открыть демо →</a><a href="https://github.com/sinnercode228/portfolio/tree/main/landing-calculator">Код</a></div></div>
+  <div class="card"><h2>Парсер сайта → Excel / CSV / JSON</h2><p>Асинхронный сбор каталога с пагинацией, повторами и кешем, выгрузка в оформленный Excel, CLI, тесты.</p><div class="tags">Python · httpx · asyncio · openpyxl</div><div class="links"><a href="https://github.com/sinnercode228/portfolio/tree/main/scraper-demo">Код и пример выгрузки →</a></div></div>
+  <div class="card"><h2>Telegram-бот для заявок</h2><p>Меню, пошаговая анкета, SQLite, уведомления админам, экспорт CSV, статистика, рассылка, Docker.</p><div class="tags">Python · aiogram · SQLite · Docker</div><div class="links"><a href="https://github.com/sinnercode228/portfolio/tree/main/telegram-bot-demo">Код →</a></div></div>
+  <div class="card"><h2>Excel-дашборд и инвойс из логов</h2><p>Из сырых CSV получается живой дашборд с фильтрами и графиками на формулах, плюс счёт и расчёт зарплаты.</p><div class="tags">Python · openpyxl · Excel 2013+</div><div class="links"><a href="https://github.com/sinnercode228/portfolio/tree/main/excel-dashboard-demo">Код и примеры .xlsx →</a></div></div>
+</div>
+<p class="services">Все проекты демонстрационные, бренды в них вымышленные.</p>
+<h2 id="en" style="margin-top:48px">English</h2>
+<p class="lead">Python / JavaScript developer. Small, clearly scoped tasks delivered in 1–3 days: web scrapers, Telegram bots, automation and API integrations, landing pages, Excel / Google Sheets. The demo projects above are working code: a landing page with a cost calculator, an async scraper exporting to Excel, a Telegram lead bot, and an Excel dashboard and invoice generator.</p>
+</div>
+</body>
+</html>

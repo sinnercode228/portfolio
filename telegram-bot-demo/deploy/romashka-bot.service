@@ -1,0 +1,30 @@
+# systemd unit для запуска бота на VPS без Docker.
+# Установка: см. раздел «Деплой на VPS (systemd)» в README.md
+[Unit]
+Description=Romashka Digital lead bot (demo)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=botuser
+Group=botuser
+WorkingDirectory=/opt/romashka-bot
+EnvironmentFile=/opt/romashka-bot/.env
+ExecStart=/opt/romashka-bot/.venv/bin/python -m bot
+
+# Перезапуск при сбоях, но не при ошибке конфигурации (код 2) — её надо исправить руками
+Restart=on-failure
+RestartSec=5
+RestartPreventExitStatus=2
+TimeoutStopSec=20
+
+# Песочница: бот может писать только в свою папку data/
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/romashka-bot/data
+
+[Install]
+WantedBy=multi-user.target

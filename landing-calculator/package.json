@@ -1,0 +1,15 @@
+{
+  "name": "landing-calculator-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Демо-лендинг строительной компании с калькулятором стоимости дома (HTML/CSS/JS без сборки)",
+  "author": "sinnercode228",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test \"tests/*.test.js\" \"tests/*.test.mjs\"",
+    "start": "python3 -m http.server 8080"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

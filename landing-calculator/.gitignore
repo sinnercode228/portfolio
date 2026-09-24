@@ -1,0 +1,17 @@
+# зависимости и кэши (в проекте их нет, но на всякий случай)
+node_modules/
+.venv/
+__pycache__/
+
+# локальные настройки деплоя и секреты
+.env
+.env.*
+.dev.vars
+.wrangler/
+.vercel/
+.netlify/
+
+# системное
+.DS_Store
+Thumbs.db
+*.log

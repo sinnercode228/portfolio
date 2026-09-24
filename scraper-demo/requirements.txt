@@ -1,0 +1,3 @@
+httpx>=0.27,<1
+selectolax>=0.3.21
+openpyxl>=3.1

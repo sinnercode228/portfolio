@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Полдень — дома на юге с фиксированной ценой · демо</title>
+  <meta name="description" content="Демо-лендинг строительной компании с калькулятором стоимости дома: газобетон, каркас, кирпич, брус. Компания вымышленная, цены условные.">
+  <!-- Демо-проект: не индексируем, чтобы вымышленную компанию не приняли за настоящую. На реальном сайте удалите. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1f2a24">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Полдень — калькулятор стоимости дома (демо)">
+  <meta property="og:description" content="Одностраничный сайт с живым калькулятором стоимости дома и формой заявки. Демо-проект для портфолио.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/config.js" defer></script>
+  <script src="js/calc.js" defer></script>
+  <script src="js/form-utils.js" defer></script>
+  <script src="js/app.js" defer></script>
+
+  <!--
+    Яндекс.Метрика — место для счётчика.
+    1) Создайте счётчик на metrika.yandex.ru и замените 00000000 на его номер.
+    2) Раскомментируйте блок ниже и укажите тот же номер в js/app.js (METRIKA_ID).
+    3) Создайте в Метрике JavaScript-цели: calc_used, calc_preset, calc_share, calc_cta,
+       lead_submit, lead_error, phone_click, faq_open.
+
+  <script>
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+      m[i].l = 1 * new Date();
+      k = e.createElement(t); a = e.getElementsByTagName(t)[0];
+      k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
+    ym(00000000, 'init', { clickmap: true, trackLinks: true, accurateTrackBounce: true, webvisor: false });
+  </script>
+  -->
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <!-- Спрайт: иконки и иллюстрации домов для галереи (без сторонних картинок) -->
+  <svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="i-logo" viewBox="0 0 40 40"><rect width="40" height="40" rx="11" fill="#1f2a24"/><circle cx="27.5" cy="12.5" r="5" fill="#f2b544"/><path d="M8.5 30V20.5L18 13l9.5 7.5V30" fill="none" stroke="#faf7f2" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M6.6 3.5 9 3l1.6 4.2-2 1.5a11 11 0 0 0 6.7 6.7l1.5-2L21 15l-.5 2.4A2.5 2.5 0 0 1 18 19.5 15.5 15.5 0 0 1 4.5 6 2.5 2.5 0 0 1 6.6 3.5Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+      <symbol id="i-contract" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M10 18v-7h2.6a1.9 1.9 0 0 1 0 3.8H10M9 16h3.5"/></g></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 19 6v5.5c0 4.4-2.9 7.7-7 9.5-4.1-1.8-7-5.1-7-9.5V6z"/><path d="m9 12 2.2 2.2L15.5 10"/></g></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8h3.3L8.5 5h7l1.7 3h3.3v11h-17z"/><circle cx="12" cy="13" r="3.4"/></g></symbol>
+      <symbol id="i-stages" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5h17"/><path d="M6 20.5V16h3.5v4.5M10.5 20.5V11H14v9.5M15 20.5V6h3.5v14.5"/></g></symbol>
+      <symbol id="i-helmet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 17.5h17v2h-17z"/><path d="M5.5 17.5a6.5 6.5 0 0 1 13 0"/><path d="M10 11.5V8.5h4v3"/></g></symbol>
+      <symbol id="i-inspect" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m20.5 20.5-5.3-5.3"/><path d="m7.8 10.6 1.9 1.9 3.3-3.3"/></g></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5.6-6.5-11a6.5 6.5 0 0 1 13 0c0 5.4-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></g></symbol>
+      <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></g></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g></symbol>
+
+      <!-- Иллюстрации домов: цвета задаются CSS-переменными карточки -->
+      <symbol id="h-gable" viewBox="0 0 320 200">
+        <circle class="h-sun" cx="258" cy="44" r="17"/>
+        <rect class="h-ground" y="172" width="320" height="28"/>
+        <polygon class="h-wall" points="78,172 78,104 160,52 242,104 242,172"/>
+        <polygon class="h-roof" points="62,110 160,46 258,110 258,119 160,57 62,119"/>
+        <circle class="h-glass" cx="160" cy="88" r="9"/>
+        <rect class="h-glass" x="96" y="120" width="58" height="40" rx="2"/>
+        <rect class="h-trim" x="170" y="120" width="26" height="52" rx="2"/>
+        <rect class="h-glass" x="208" y="124" width="22" height="24" rx="2"/>
+        <rect class="h-trim" x="56" y="170" width="208" height="6" rx="2"/>
+        <circle class="h-bush" cx="50" cy="162" r="13"/><circle class="h-bush" cx="272" cy="164" r="10"/>
+      </symbol>
+      <symbol id="h-modern" viewBox="0 0 320 200">
+        <circle class="h-sun" cx="62" cy="42" r="16"/>
+        <rect class="h-ground" y="172" width="320" height="28"/>
+        <rect class="h-wall" x="56" y="110" width="208" height="62"/>
+        <rect class="h-trim" x="100" y="62" width="140" height="48"/>
+        <rect class="h-roof" x="94" y="56" width="152" height="8" rx="1"/>
+        <rect class="h-roof" x="50" y="104" width="220" height="8" rx="1"/>
+        <rect class="h-glass" x="114" y="74" width="64" height="24" rx="1"/>
+        <rect class="h-glass" x="190" y="74" width="36" height="24" rx="1"/>
+        <rect class="h-glass" x="72" y="124" width="80" height="36" rx="1"/>
+        <rect class="h-roof" x="170" y="124" width="24" height="48" rx="1"/>
+        <rect class="h-glass" x="208" y="124" width="40" height="24" rx="1"/>
+        <circle class="h-bush" cx="282" cy="162" r="13"/><circle class="h-bush" cx="40" cy="164" r="9"/>
+      </symbol>
+      <symbol id="h-barn" viewBox="0 0 320 200">
+        <circle class="h-sun" cx="62" cy="48" r="16"/>
+        <rect class="h-ground" y="172" width="320" height="28"/>
+        <rect class="h-trim" x="230" y="128" width="58" height="44"/>
+        <rect class="h-roof" x="226" y="122" width="66" height="7" rx="1"/>
+        <polygon class="h-wall" points="92,172 92,100 160,42 228,100 228,172"/>
+        <polygon class="h-roof" points="80,106 160,32 240,106 240,116 160,44 80,116"/>
+        <polygon class="h-glass" points="128,172 128,102 160,74 192,102 192,172"/>
+        <path class="h-mullion" d="M160 76v96M128 132h64"/>
+        <circle class="h-bush" cx="70" cy="162" r="12"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <div class="demo-bar" role="note">
+    <strong>Демо-проект / Demo project.</strong>
+    «Полдень» — вымышленная компания: цены, контакты и объекты условные.
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="Полдень — на главную">
+        <svg class="logo__mark" aria-hidden="true"><use href="#i-logo"/></svg>
+        <span class="logo__text">Полдень<span class="logo__sub">дома на юге · демо</span></span>
+      </a>
+
+      <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+        <ul>
+          <li><a href="#tech">Технологии</a></li>
+          <li><a href="#calc">Калькулятор</a></li>
+          <li><a href="#stages">Этапы</a></li>
+          <li><a href="#projects">Проекты</a></li>
+          <li><a href="#guarantees">Гарантии</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="header-phone" href="tel:+70000000000">
+          <svg aria-hidden="true"><use href="#i-phone"/></svg>
+          <span>+7 (000) 000-00-00</span>
+        </a>
+        <a class="btn btn--primary btn--sm header-cta" href="#calc">Рассчитать</a>
+        <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span class="nav-toggle__bars" aria-hidden="true"></span>
+          <span class="visually-hidden">Меню</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===== Hero ===== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Частные дома · Краснодарский край и побережье</p>
+          <h1 id="hero-title">Дома на&nbsp;юге с&nbsp;ценой, которая не&nbsp;растёт после договора</h1>
+          <p class="hero-lead">Газобетон, каркас, кирпич или брус — от&nbsp;проекта до&nbsp;ключей за&nbsp;3–9&nbsp;месяцев. Посчитайте свой дом за&nbsp;минуту: калькулятор покажет итог и&nbsp;из&nbsp;чего он&nbsp;складывается.</p>
+          <div class="hero-actions">
+            <a class="btn btn--primary btn--lg" href="#calc" data-goal="calc_cta">
+              Рассчитать стоимость
+              <svg aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+            <a class="btn btn--ghost btn--lg" href="#projects">Смотреть проекты</a>
+          </div>
+          <dl class="hero-facts">
+            <div><dt>5&nbsp;лет</dt><dd>гарантия на&nbsp;конструктив</dd></div>
+            <div><dt>0&nbsp;₽</dt><dd>доплат сверх сметы</dd></div>
+            <div><dt>1&nbsp;раз в&nbsp;неделю</dt><dd>фото- и&nbsp;видеоотчёт</dd></div>
+          </dl>
+        </div>
+
+        <div class="hero-visual">
+          <svg class="hero-art" viewBox="0 0 600 460" role="img" aria-labelledby="hero-art-title">
+            <title id="hero-art-title">Иллюстрация: одноэтажный дом с террасой под полуденным солнцем</title>
+            <defs>
+              <linearGradient id="hero-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fcebd2"/><stop offset="1" stop-color="#f5cf9f"/></linearGradient>
+              <radialGradient id="hero-glow"><stop offset="0" stop-color="#ffd27a" stop-opacity=".95"/><stop offset="1" stop-color="#ffd27a" stop-opacity="0"/></radialGradient>
+              <linearGradient id="hero-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b3cad2"/><stop offset="1" stop-color="#557687"/></linearGradient>
+              <pattern id="hero-slats" width="12" height="10" patternUnits="userSpaceOnUse"><rect width="12" height="10" fill="#bd8352"/><rect width="3" height="10" fill="#9a6337"/></pattern>
+            </defs>
+            <rect width="600" height="460" rx="28" fill="url(#hero-sky)"/>
+            <circle cx="452" cy="112" r="130" fill="url(#hero-glow)"/>
+            <circle cx="452" cy="112" r="48" fill="#f2b544"/>
+            <path d="M0 320c110-40 210-30 320-10s190-12 280-26v176H0z" fill="#cfd3a6"/>
+            <path d="M0 366c150-30 290-22 410-6s150 2 190-4v104H0z" fill="#9dab74"/>
+            <ellipse cx="310" cy="372" rx="250" ry="16" fill="#1f2a24" opacity=".14"/>
+            <!-- основной объём -->
+            <polygon points="116,364 116,222 232,140 348,222 348,364" fill="#f4ede2"/>
+            <polygon points="96,228 232,128 368,228 368,242 232,144 96,242" fill="#2b2f2b"/>
+            <rect x="146" y="252" width="88" height="96" rx="3" fill="url(#hero-glass)"/>
+            <path d="M190 252v96M146 300h88" stroke="#2b2f2b" stroke-width="4"/>
+            <rect x="256" y="262" width="52" height="102" rx="3" fill="#b8471f"/>
+            <circle cx="298" cy="316" r="3.5" fill="#f4ede2"/>
+            <circle cx="232" cy="196" r="15" fill="url(#hero-glass)" stroke="#2b2f2b" stroke-width="4"/>
+            <!-- пристройка с деревянной обшивкой -->
+            <rect x="348" y="262" width="164" height="102" fill="url(#hero-slats)"/>
+            <rect x="340" y="250" width="180" height="14" rx="2" fill="#2b2f2b"/>
+            <rect x="372" y="286" width="116" height="50" rx="3" fill="url(#hero-glass)"/>
+            <path d="M430 286v50" stroke="#2b2f2b" stroke-width="4"/>
+            <!-- терраса -->
+            <rect x="72" y="360" width="460" height="12" rx="3" fill="#7a5638"/>
+            <path d="M88 372v18M516 372v18" stroke="#7a5638" stroke-width="6"/>
+            <!-- дерево -->
+            <rect x="52" y="262" width="9" height="100" rx="4" fill="#6b4f35"/>
+            <circle cx="57" cy="246" r="34" fill="#56693f"/>
+            <circle cx="36" cy="270" r="22" fill="#6d8150"/>
+            <circle cx="80" cy="266" r="20" fill="#6d8150"/>
+            <circle cx="548" cy="356" r="18" fill="#56693f"/>
+            <circle cx="568" cy="362" r="12" fill="#6d8150"/>
+          </svg>
+          <p class="hero-chip hero-chip--top">
+            <svg aria-hidden="true"><use href="#i-contract"/></svg>
+            Смета фиксируется в&nbsp;договоре
+          </p>
+          <p class="hero-chip hero-chip--bottom">
+            <svg aria-hidden="true"><use href="#i-camera"/></svg>
+            Фотоотчёт со&nbsp;стройки каждую неделю
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Технологии ===== -->
+    <section class="section" id="tech" aria-labelledby="tech-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Технологии</p>
+          <h2 id="tech-title">Четыре технологии — под бюджет и&nbsp;сроки</h2>
+          <p class="section-lead">Цены — за&nbsp;квадратный метр коробки. Они берутся из&nbsp;того же конфига, что и&nbsp;калькулятор, поэтому всегда совпадают.</p>
+        </header>
+
+        <ul class="tech-grid" role="list">
+          <li class="tech-card tech-card--aerated">
+            <div class="tech-card__texture" aria-hidden="true"></div>
+            <h3>Газобетон</h3>
+            <p class="tech-card__price" data-tech-price="aerated">от 31&nbsp;000&nbsp;₽/м²</p>
+            <p>Тёплый камень без дополнительного утепления: стена D500 толщиной 375&nbsp;мм держит прохладу в&nbsp;жару.</p>
+            <ul class="tech-card__facts">
+              <li>Срок: <span data-tech-months="aerated">≈ 5 месяцев</span></li>
+              <li>Долговечность: 100+ лет</li>
+            </ul>
+            <button class="btn btn--outline btn--block" type="button" data-preset='{"tech":"aerated"}'>Посчитать дом из&nbsp;газобетона</button>
+          </li>
+          <li class="tech-card tech-card--frame">
+            <div class="tech-card__texture" aria-hidden="true"></div>
+            <h3>Каркас</h3>
+            <p class="tech-card__price" data-tech-price="frame">от 24&nbsp;000&nbsp;₽/м²</p>
+            <p>Самый быстрый вариант: сухие технологии, строим круглый год. Утепление 200&nbsp;мм, паро- и&nbsp;ветрозащита.</p>
+            <ul class="tech-card__facts">
+              <li>Срок: <span data-tech-months="frame">≈ 3 месяца</span></li>
+              <li>Без усадки — отделка сразу</li>
+            </ul>
+            <button class="btn btn--outline btn--block" type="button" data-preset='{"tech":"frame"}'>Посчитать каркасный дом</button>
+          </li>
+          <li class="tech-card tech-card--brick">
+            <div class="tech-card__texture" aria-hidden="true"></div>
+            <h3>Кирпич</h3>
+            <p class="tech-card__price" data-tech-price="brick">от 43&nbsp;000&nbsp;₽/м²</p>
+            <p>Керамический блок с&nbsp;облицовочным кирпичом: классический фасад, который не&nbsp;нужно красить.</p>
+            <ul class="tech-card__facts">
+              <li>Срок: <span data-tech-months="brick">≈ 7 месяцев</span></li>
+              <li>Максимальная огнестойкость</li>
+            </ul>
+            <button class="btn btn--outline btn--block" type="button" data-preset='{"tech":"brick"}'>Посчитать кирпичный дом</button>
+          </li>
+          <li class="tech-card tech-card--timber">
+            <div class="tech-card__texture" aria-hidden="true"></div>
+            <h3>Брус</h3>
+            <p class="tech-card__price" data-tech-price="timber">от 28&nbsp;000&nbsp;₽/м²</p>
+            <p>Клеёный брус 200&nbsp;мм: живое дерево, минимальная усадка и&nbsp;здоровый микроклимат в&nbsp;доме.</p>
+            <ul class="tech-card__facts">
+              <li>Срок: <span data-tech-months="timber">≈ 4 месяца</span></li>
+              <li>Можно заезжать сразу</li>
+            </ul>
+            <button class="btn btn--outline btn--block" type="button" data-preset='{"tech":"timber"}'>Посчитать дом из&nbsp;бруса</button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Калькулятор ===== -->
+    <section class="section section--sand" id="calc" aria-labelledby="calc-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Калькулятор</p>
+          <h2 id="calc-title" tabindex="-1">Сколько стоит ваш дом</h2>
+          <p class="section-lead">Меняйте параметры — итог и&nbsp;разбивка пересчитываются сразу. Расчёт предварительный: точную смету инженер подготовит после выезда на&nbsp;участок.</p>
+        </header>
+
+        <noscript><p class="noscript">Калькулятору нужен JavaScript. Позвоните нам — посчитаем по&nbsp;телефону: +7&nbsp;(000)&nbsp;000-00-00.</p></noscript>
+
+        <form class="calc" id="calc-form" novalidate aria-describedby="calc-note">
+          <div class="calc__fields">
+            <div class="field">
+              <div class="field__head">
+                <label class="field__label" for="area-number" id="area-label">Площадь дома</label>
+                <span class="number-unit">
+                  <input class="input input--num" id="area-number" name="area" type="number" inputmode="numeric" min="40" max="400" step="1" value="120" aria-describedby="area-hint">
+                  <span aria-hidden="true">м²</span>
+                </span>
+              </div>
+              <input class="range" id="area-range" type="range" min="40" max="400" step="1" value="120" aria-labelledby="area-label" aria-describedby="area-hint">
+              <p class="field__hint" id="area-hint">От <span data-area-min>40</span> до <span data-area-max>400</span>&nbsp;м² — общая площадь всех этажей.</p>
+            </div>
+
+            <fieldset class="field">
+              <legend class="field__label">Этажность</legend>
+              <div class="segmented" id="floors-options">
+                <label class="seg"><input type="radio" name="floors" value="1" checked><span>1 этаж</span></label>
+                <label class="seg"><input type="radio" name="floors" value="2"><span>2 этажа</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend class="field__label">Технология стен</legend>
+              <div class="choice-grid" id="tech-options"><!-- варианты строятся из js/config.js --></div>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend class="field__label">Уровень отделки</legend>
+              <div class="segmented segmented--3" id="finish-options"><!-- из js/config.js --></div>
+              <p class="field__hint" id="finish-hint"></p>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend class="field__label">Дополнительно</legend>
+              <div class="options">
+                <label class="check">
+                  <input type="checkbox" name="slab" id="opt-slab" checked>
+                  <span class="check__text">Фундамент — монолитная плита <small data-opt-price="slab">7&nbsp;500&nbsp;₽/м²</small></span>
+                </label>
+                <div class="check-row">
+                  <label class="check">
+                    <input type="checkbox" id="terrace-toggle" aria-controls="terrace-area">
+                    <span class="check__text">Терраса <small data-opt-price="terrace">12&nbsp;000&nbsp;₽/м²</small></span>
+                  </label>
+                  <span class="number-unit number-unit--sm">
+                    <label class="visually-hidden" for="terrace-area">Площадь террасы, м²</label>
+                    <input class="input input--num" id="terrace-area" type="number" inputmode="numeric" min="6" max="80" step="1" value="20" disabled>
+                    <span aria-hidden="true">м²</span>
+                  </span>
+                </div>
+                <label class="check">
+                  <input type="checkbox" name="garage" id="opt-garage">
+                  <span class="check__text">Гараж на&nbsp;1&nbsp;автомобиль <small data-opt-price="garage">950&nbsp;000&nbsp;₽</small></span>
+                </label>
+              </div>
+            </fieldset>
+          </div>
+
+          <aside class="calc__result" aria-labelledby="result-title">
+            <div class="result-card" id="result-card">
+              <p class="result__label" id="result-title">Ориентировочная стоимость</p>
+              <p class="result__total"><output id="result-total" for="area-number area-range">—</output></p>
+              <p class="result__meta">
+                <span id="result-per-m2">—</span>
+                <span aria-hidden="true">·</span>
+                <span>срок <span id="result-months">—</span></span>
+              </p>
+              <div class="result__bar" id="result-bar" aria-hidden="true"></div>
+              <ul class="result__list" id="result-list" aria-label="Из чего складывается стоимость"></ul>
+              <a class="btn btn--primary btn--block btn--lg" href="#lead" data-goal="calc_cta">Получить точную смету</a>
+              <div class="result__share">
+                <button class="btn-link" type="button" id="copy-link">Скопировать ссылку на&nbsp;расчёт</button>
+                <span class="result__share-status" id="copy-status" role="status"></span>
+              </div>
+              <p class="result__note" id="calc-note">Не&nbsp;является публичной офертой. Цены условные — это демо-проект.</p>
+            </div>
+            <p class="visually-hidden" id="calc-live" aria-live="polite"></p>
+          </aside>
+        </form>
+
+        <!-- Мобильная плашка с итогом: видна, пока форма на экране, а карточка результата — нет -->
+        <a class="calc-sticky" id="calc-sticky" href="#result-card" aria-hidden="true" tabindex="-1">
+          <span class="calc-sticky__label">Итого</span>
+          <span class="calc-sticky__total" id="calc-sticky-total">—</span>
+          <span class="calc-sticky__more">Разбивка ↓</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ===== Заявка ===== -->
+    <section class="section section--dark" id="lead" aria-labelledby="lead-title">
+      <div class="container lead-grid">
+        <div class="lead-copy">
+          <p class="eyebrow eyebrow--light">Заявка</p>
+          <h2 id="lead-title">Получите точную смету за&nbsp;1&nbsp;день</h2>
+          <p class="section-lead">Инженер проверит расчёт, уточнит геологию участка и&nbsp;перезвонит в&nbsp;течение 15&nbsp;минут в&nbsp;рабочее время.</p>
+          <ul class="ticks" role="list">
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Смета по&nbsp;позициям, а&nbsp;не&nbsp;«цена за&nbsp;метр»</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Бесплатный выезд на&nbsp;участок</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>Никакого спама — только звонок инженера</li>
+          </ul>
+
+          <div class="lead-summary" aria-labelledby="lead-summary-title">
+            <div class="lead-summary__head">
+              <p class="lead-summary__title" id="lead-summary-title">Ваш расчёт</p>
+              <a class="lead-summary__edit" href="#calc">Изменить</a>
+            </div>
+            <dl class="lead-summary__list" id="lead-summary"></dl>
+          </div>
+        </div>
+
+        <div class="lead-panel">
+          <form class="lead-form" id="lead-form" novalidate aria-labelledby="lead-form-title">
+            <p class="lead-form__title" id="lead-form-title">Оставьте контакты</p>
+
+            <div class="form-field">
+              <label for="lead-name">Имя <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="lead-name" name="name" type="text" autocomplete="name" required maxlength="80" aria-describedby="lead-name-error">
+              <p class="form-error" id="lead-name-error" hidden></p>
+            </div>
+
+            <div class="form-field">
+              <label for="lead-phone">Телефон <span class="req" aria-hidden="true">*</span></label>
+              <input class="input" id="lead-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required placeholder="+7 (___) ___-__-__" aria-describedby="lead-phone-error">
+              <p class="form-error" id="lead-phone-error" hidden></p>
+            </div>
+
+            <div class="form-field">
+              <label for="lead-comment">Комментарий <span class="optional">— необязательно</span></label>
+              <textarea class="input" id="lead-comment" name="comment" rows="3" maxlength="1000" placeholder="Например: участок 8 соток, хотим котельную и второй санузел" aria-describedby="lead-comment-error"></textarea>
+              <p class="form-error" id="lead-comment-error" hidden></p>
+            </div>
+
+            <!-- honeypot против ботов: людям не виден -->
+            <div class="hp" aria-hidden="true">
+              <label for="lead-website">Сайт</label>
+              <input id="lead-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <label class="check check--light">
+              <input type="checkbox" name="attach" id="lead-attach" checked>
+              <span class="check__text">Приложить расчёт из&nbsp;калькулятора <small id="lead-attach-total"></small></span>
+            </label>
+
+            <div class="form-field">
+              <label class="check check--light">
+                <input type="checkbox" name="consent" id="lead-consent" required aria-describedby="lead-consent-error">
+                <span class="check__text">Согласен на&nbsp;обработку персональных данных согласно <button class="btn-link btn-link--inline" type="button" data-open-privacy>политике конфиденциальности</button></span>
+              </label>
+              <p class="form-error" id="lead-consent-error" hidden></p>
+            </div>
+
+            <button class="btn btn--sun btn--block btn--lg" type="submit" id="lead-submit">
+              <span class="btn__label">Отправить заявку</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+            <p class="form-status" id="lead-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="lead-success" id="lead-success" hidden>
+            <div class="lead-success__icon" aria-hidden="true"><svg><use href="#i-check"/></svg></div>
+            <h3 id="lead-success-title" tabindex="-1">Заявка отправлена</h3>
+            <p id="lead-success-text">Спасибо! Инженер перезвонит в&nbsp;течение 15&nbsp;минут.</p>
+            <p class="lead-success__demo">Это демо: бэкенда нет, поэтому данные никуда не&nbsp;ушли. Откройте консоль браузера (F12) — там весь payload заявки вместе с&nbsp;расчётом.</p>
+            <button class="btn btn--outline-light" type="button" id="lead-again">Отправить ещё одну заявку</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Этапы ===== -->
+    <section class="section" id="stages" aria-labelledby="stages-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Этапы работ</p>
+          <h2 id="stages-title">Как мы строим — шесть понятных шагов</h2>
+          <p class="section-lead">На&nbsp;каждом этапе вы&nbsp;знаете, что происходит, сколько это стоит и&nbsp;когда закончится.</p>
+        </header>
+        <ol class="stages" role="list">
+          <li class="stage">
+            <p class="stage__time">1 день</p>
+            <h3>Заявка и расчёт</h3>
+            <p>Обсуждаем задачу и&nbsp;бюджет, делаем предварительный расчёт по&nbsp;калькулятору.</p>
+          </li>
+          <li class="stage">
+            <p class="stage__time">3–5 дней</p>
+            <h3>Выезд на участок</h3>
+            <p>Геодезия и&nbsp;геология, проверяем подъезд, сети и&nbsp;уклон — от&nbsp;этого зависит фундамент.</p>
+          </li>
+          <li class="stage">
+            <p class="stage__time">2–4 недели</p>
+            <h3>Проект и смета</h3>
+            <p>Архитектурный и&nbsp;конструктивный разделы, смета по&nbsp;позициям с&nbsp;объёмами и&nbsp;ценами.</p>
+          </li>
+          <li class="stage">
+            <p class="stage__time">1 день</p>
+            <h3>Договор</h3>
+            <p>Фиксируем цену, сроки и&nbsp;график платежей по&nbsp;этапам. Штрафы за&nbsp;просрочку — наши.</p>
+          </li>
+          <li class="stage">
+            <p class="stage__time">3–9 месяцев</p>
+            <h3>Строительство</h3>
+            <p>Своя бригада, еженедельные фотоотчёты, технадзор на&nbsp;скрытых работах.</p>
+          </li>
+          <li class="stage">
+            <p class="stage__time">1 день</p>
+            <h3>Сдача дома</h3>
+            <p>Приёмка по&nbsp;чек-листу, исполнительная документация и&nbsp;гарантийный паспорт дома.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== Проекты ===== -->
+    <section class="section section--sand" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <header class="section-head section-head--row">
+          <div>
+            <p class="eyebrow">Проекты</p>
+            <h2 id="projects-title">Дома, которые можно повторить</h2>
+            <p class="section-lead">Иллюстрации условные — это демо, а&nbsp;не&nbsp;фотографии реальных объектов. Цена считается тем&nbsp;же калькулятором.</p>
+          </div>
+          <div class="filters" role="group" aria-label="Фильтр по технологии">
+            <button class="chip" type="button" data-filter="all" aria-pressed="true">Все</button>
+            <button class="chip" type="button" data-filter="aerated" aria-pressed="false">Газобетон</button>
+            <button class="chip" type="button" data-filter="frame" aria-pressed="false">Каркас</button>
+            <button class="chip" type="button" data-filter="brick" aria-pressed="false">Кирпич</button>
+            <button class="chip" type="button" data-filter="timber" aria-pressed="false">Брус</button>
+          </div>
+        </header>
+        <p class="visually-hidden" id="projects-count" role="status"></p>
+
+        <ul class="projects" role="list">
+          <li class="project" data-tech="timber" style="--sky1:#fdebd3;--sky2:#f4cc9c;--wall:#c8925f;--roof:#3b3a36;--glass:#7896a2;--trim:#8a5a33;--ground:#a9b37e;--bush:#6d8150;--sun:#f2b544">
+            <svg class="project__art" viewBox="0 0 320 200" role="img" aria-label="Одноэтажный дом из бруса с двускатной крышей"><use href="#h-gable"/></svg>
+            <div class="project__body">
+              <h3>«Сосновый»</h3>
+              <p class="project__tags">Брус · 96&nbsp;м² · 1&nbsp;этаж · под&nbsp;ключ</p>
+              <p class="project__price" data-project-price>—</p>
+              <button class="btn-link" type="button" data-preset='{"area":96,"floors":1,"tech":"timber","finish":"turnkey","slab":true,"terrace":18,"garage":false}'>Рассчитать похожий<span class="visually-hidden"> на проект «Сосновый»</span></button>
+            </div>
+          </li>
+          <li class="project" data-tech="aerated" style="--sky1:#e3edf2;--sky2:#bdd4df;--wall:#f3efe8;--roof:#2d302c;--glass:#5f7f8f;--trim:#c9b59c;--ground:#9fb08a;--bush:#56693f;--sun:#f6d68b">
+            <svg class="project__art" viewBox="0 0 320 200" role="img" aria-label="Двухэтажный дом из газобетона с плоской кровлей"><use href="#h-modern"/></svg>
+            <div class="project__body">
+              <h3>«Лагуна»</h3>
+              <p class="project__tags">Газобетон · 148&nbsp;м² · 2&nbsp;этажа · white box</p>
+              <p class="project__price" data-project-price>—</p>
+              <button class="btn-link" type="button" data-preset='{"area":148,"floors":2,"tech":"aerated","finish":"whitebox","slab":true,"terrace":0,"garage":false}'>Рассчитать похожий<span class="visually-hidden"> на проект «Лагуна»</span></button>
+            </div>
+          </li>
+          <li class="project" data-tech="frame" style="--sky1:#f3e3e6;--sky2:#dcbfc6;--wall:#3a3f3b;--roof:#1e201e;--glass:#f2c46d;--trim:#b8471f;--ground:#8e9b6c;--bush:#56693f;--sun:#fbe0a8">
+            <svg class="project__art" viewBox="0 0 320 200" role="img" aria-label="Каркасный барнхаус с панорамным остеклением"><use href="#h-barn"/></svg>
+            <div class="project__body">
+              <h3>«Барн»</h3>
+              <p class="project__tags">Каркас · 120&nbsp;м² · 2&nbsp;этажа · под&nbsp;ключ</p>
+              <p class="project__price" data-project-price>—</p>
+              <button class="btn-link" type="button" data-preset='{"area":120,"floors":2,"tech":"frame","finish":"turnkey","slab":true,"terrace":24,"garage":false}'>Рассчитать похожий<span class="visually-hidden"> на проект «Барн»</span></button>
+            </div>
+          </li>
+          <li class="project" data-tech="brick" style="--sky1:#fce6cb;--sky2:#f2b98c;--wall:#b5552f;--roof:#2d302c;--glass:#6d8a97;--trim:#eadfce;--ground:#a3ad78;--bush:#56693f;--sun:#f2b544">
+            <svg class="project__art" viewBox="0 0 320 200" role="img" aria-label="Двухэтажный кирпичный дом с гаражом"><use href="#h-modern"/></svg>
+            <div class="project__body">
+              <h3>«Терракота»</h3>
+              <p class="project__tags">Кирпич · 210&nbsp;м² · 2&nbsp;этажа · под&nbsp;ключ · гараж</p>
+              <p class="project__price" data-project-price>—</p>
+              <button class="btn-link" type="button" data-preset='{"area":210,"floors":2,"tech":"brick","finish":"turnkey","slab":true,"terrace":30,"garage":true}'>Рассчитать похожий<span class="visually-hidden"> на проект «Терракота»</span></button>
+            </div>
+          </li>
+          <li class="project" data-tech="frame" style="--sky1:#edf2e6;--sky2:#d0dcc2;--wall:#ece5d6;--roof:#56693f;--glass:#6d8a97;--trim:#56693f;--ground:#a5b184;--bush:#6d8150;--sun:#f4d58a">
+            <svg class="project__art" viewBox="0 0 320 200" role="img" aria-label="Небольшой одноэтажный каркасный дом"><use href="#h-gable"/></svg>
+            <div class="project__body">
+              <h3>«Полынь»</h3>
+              <p class="project__tags">Каркас · 78&nbsp;м² · 1&nbsp;этаж · коробка</p>
+              <p class="project__price" data-project-price>—</p>
+              <button class="btn-link" type="button" data-preset='{"area":78,"floors":1,"tech":"frame","finish":"shell","slab":false,"terrace":0,"garage":false}'>Рассчитать похожий<span class="visually-hidden"> на проект «Полынь»</span></button>
+            </div>
+          </li>
+          <li class="project" data-tech="aerated" style="--sky1:#27394b;--sky2:#4f6a84;--wall:#ebe5da;--roof:#232624;--glass:#f2c46d;--trim:#8c7a66;--ground:#3e4c3b;--bush:#2f3b2e;--sun:#f4ecd8">
+            <svg class="project__art" viewBox="0 0 320 200" role="img" aria-label="Одноэтажный дом из газобетона вечером, окна светятся"><use href="#h-barn"/></svg>
+            <div class="project__body">
+              <h3>«Утёс»</h3>
+              <p class="project__tags">Газобетон · 132&nbsp;м² · 1&nbsp;этаж · под&nbsp;ключ · гараж</p>
+              <p class="project__price" data-project-price>—</p>
+              <button class="btn-link" type="button" data-preset='{"area":132,"floors":1,"tech":"aerated","finish":"turnkey","slab":true,"terrace":28,"garage":true}'>Рассчитать похожий<span class="visually-hidden"> на проект «Утёс»</span></button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== Гарантии ===== -->
+    <section class="section" id="guarantees" aria-labelledby="guarantees-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Гарантии</p>
+          <h2 id="guarantees-title">Обещания, которые записаны в&nbsp;договоре</h2>
+        </header>
+        <ul class="guarantees" role="list">
+          <li class="guarantee">
+            <svg class="guarantee__icon" aria-hidden="true"><use href="#i-contract"/></svg>
+            <h3>Фиксированная цена</h3>
+            <p>Смета по&nbsp;позициям входит в&nbsp;договор. Если мы&nbsp;ошиблись в&nbsp;объёмах — это наши расходы.</p>
+          </li>
+          <li class="guarantee">
+            <svg class="guarantee__icon" aria-hidden="true"><use href="#i-shield"/></svg>
+            <h3>5 лет гарантии</h3>
+            <p>На&nbsp;фундамент, стены и&nbsp;кровлю. На&nbsp;инженерные системы и&nbsp;отделку — 2&nbsp;года.</p>
+          </li>
+          <li class="guarantee">
+            <svg class="guarantee__icon" aria-hidden="true"><use href="#i-stages"/></svg>
+            <h3>Оплата по этапам</h3>
+            <p>Платите только за&nbsp;принятый этап по&nbsp;акту. Никаких 100% предоплаты.</p>
+          </li>
+          <li class="guarantee">
+            <svg class="guarantee__icon" aria-hidden="true"><use href="#i-camera"/></svg>
+            <h3>Прозрачная стройка</h3>
+            <p>Еженедельные фото- и&nbsp;видеоотчёты, общий чат с&nbsp;прорабом и&nbsp;инженером.</p>
+          </li>
+          <li class="guarantee">
+            <svg class="guarantee__icon" aria-hidden="true"><use href="#i-helmet"/></svg>
+            <h3>Своя бригада</h3>
+            <p>Не&nbsp;перепродаём подряд: работают наши мастера с&nbsp;опытом от&nbsp;5&nbsp;лет.</p>
+          </li>
+          <li class="guarantee">
+            <svg class="guarantee__icon" aria-hidden="true"><use href="#i-inspect"/></svg>
+            <h3>Независимый технадзор</h3>
+            <p>Скрытые работы принимает инженер, которого можете выбрать вы.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="section section--sand" id="faq" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <header class="section-head">
+          <p class="eyebrow">Вопросы</p>
+          <h2 id="faq-title">Частые вопросы</h2>
+        </header>
+        <div class="faq">
+          <details class="faq__item" name="faq" open>
+            <summary>Цена в&nbsp;калькуляторе окончательная?</summary>
+            <div class="faq__body"><p>Нет, это ориентир с&nbsp;точностью ±10%. Точную смету инженер составит после выезда на&nbsp;участок и&nbsp;согласования проекта. После подписания договора цена фиксируется и&nbsp;не&nbsp;меняется.</p></div>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Чем отличаются «коробка», white box и&nbsp;«под ключ»?</summary>
+            <div class="faq__body"><p><b>Коробка</b> — стены, перекрытия, кровля, окна и&nbsp;входная дверь. <b>White box</b> — плюс инженерные сети, стяжка, штукатурка и&nbsp;фасад: остаётся чистовая отделка. <b>Под ключ</b> — дом полностью готов к&nbsp;заселению: полы, двери, сантехника, свет.</p></div>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Нужен ли свой проект?</summary>
+            <div class="faq__body"><p>Не&nbsp;обязательно. Можно взять проект из&nbsp;каталога и&nbsp;адаптировать под участок — это быстрее и&nbsp;дешевле. Если нужен индивидуальный проект, архитектор сделает его за&nbsp;2–4&nbsp;недели.</p></div>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Можно ли построить дом в&nbsp;ипотеку?</summary>
+            <div class="faq__body"><p>Да. Помогаем собрать документы для ипотеки на&nbsp;ИЖС и&nbsp;работаем через счета эскроу: деньги поступают нам только после приёмки этапов.</p></div>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Строите ли вы&nbsp;зимой?</summary>
+            <div class="faq__body"><p>Да. Каркас и&nbsp;брус монтируем круглый год. Кладку из&nbsp;газобетона и&nbsp;кирпича ведём при температуре выше −5&nbsp;°C — на&nbsp;юге это почти вся зима.</p></div>
+          </details>
+          <details class="faq__item" name="faq">
+            <summary>Что входит в&nbsp;гарантию?</summary>
+            <div class="faq__body"><p>5&nbsp;лет на&nbsp;конструктив (фундамент, стены, кровля) и&nbsp;2&nbsp;года на&nbsp;инженерные системы и&nbsp;отделку. Гарантийные обязательства прописаны в&nbsp;договоре и&nbsp;паспорте дома.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Контакты ===== -->
+    <section class="section" id="contacts" aria-labelledby="contacts-title">
+      <div class="container contacts-grid">
+        <div>
+          <p class="eyebrow">Контакты</p>
+          <h2 id="contacts-title">Приезжайте в&nbsp;офис или звоните</h2>
+          <ul class="contact-list" role="list">
+            <li>
+              <svg aria-hidden="true"><use href="#i-phone"/></svg>
+              <div><span class="contact-list__label">Телефон</span><a href="tel:+70000000000">+7 (000) 000-00-00</a></div>
+            </li>
+            <li>
+              <svg aria-hidden="true"><use href="#i-mail"/></svg>
+              <div><span class="contact-list__label">Почта</span><a href="mailto:hello@example.com">hello@example.com</a></div>
+            </li>
+            <li>
+              <svg aria-hidden="true"><use href="#i-pin"/></svg>
+              <div><span class="contact-list__label">Офис</span>Краснодар, ул.&nbsp;Вымышленная, 12, офис&nbsp;3 <span class="muted">(адрес условный)</span></div>
+            </li>
+            <li>
+              <svg aria-hidden="true"><use href="#i-clock"/></svg>
+              <div><span class="contact-list__label">Режим работы</span>Пн–Сб, 9:00–19:00</div>
+            </li>
+          </ul>
+          <a class="btn btn--primary btn--lg" href="#lead">Заказать звонок</a>
+        </div>
+        <figure class="map">
+          <svg viewBox="0 0 560 380" role="img" aria-labelledby="map-title">
+            <title id="map-title">Схематичная карта: офис у пересечения двух улиц рядом с парком и рекой</title>
+            <rect width="560" height="380" rx="24" fill="#efe6d8"/>
+            <path d="M-10 300c90-40 160-10 240-40s150-110 340-90" fill="none" stroke="#b9d0d8" stroke-width="30" stroke-linecap="round"/>
+            <rect x="40" y="30" width="150" height="120" rx="14" fill="#cfd8b4"/>
+            <rect x="380" y="250" width="140" height="90" rx="14" fill="#cfd8b4"/>
+            <g stroke="#fff" stroke-width="14" stroke-linecap="round">
+              <path d="M0 190h560M280 0v380M0 90h560M430 0v380M120 190v190"/>
+            </g>
+            <g stroke="#e3d6c3" stroke-width="5" stroke-linecap="round">
+              <path d="M0 250h260M340 140h220M200 0v120M500 190v190"/>
+            </g>
+            <circle cx="280" cy="190" r="34" fill="#b8471f" opacity=".16"/>
+            <path d="M280 196s-20-17-20-33a20 20 0 0 1 40 0c0 16-20 33-20 33z" fill="#b8471f"/>
+            <circle cx="280" cy="163" r="7" fill="#fff"/>
+          </svg>
+          <figcaption>Карта-заглушка. На&nbsp;реальном сайте здесь будет виджет Яндекс.Карт.</figcaption>
+        </figure>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="logo logo--light" href="#top" aria-label="Полдень — наверх">
+          <svg class="logo__mark" aria-hidden="true"><use href="#i-logo"/></svg>
+          <span class="logo__text">Полдень<span class="logo__sub">дома на юге · демо</span></span>
+        </a>
+        <p class="footer-note">© <span id="year">2026</span> «Полдень». Вымышленная компания — демо-проект для портфолио. Все цены, адреса и&nbsp;телефоны условные.</p>
+      </div>
+      <nav aria-label="Навигация в подвале">
+        <ul class="footer-links">
+          <li><a href="#calc">Калькулятор</a></li>
+          <li><a href="#projects">Проекты</a></li>
+          <li><a href="#faq">Вопросы</a></li>
+          <li><button class="btn-link btn-link--light" type="button" data-open-privacy>Политика конфиденциальности</button></li>
+        </ul>
+      </nav>
+      <p class="footer-dev">Сайт-демо: вёрстка и&nbsp;калькулятор —<br><a href="https://github.com/sinnercode228" rel="noopener" target="_blank">sinnercode228 на&nbsp;GitHub</a></p>
+    </div>
+  </footer>
+
+  <dialog class="dialog" id="privacy-dialog" aria-labelledby="privacy-title">
+    <form method="dialog" class="dialog__inner">
+      <h2 id="privacy-title">Политика конфиденциальности (шаблон)</h2>
+      <p>Это демо-проект: данные из&nbsp;формы никуда не&nbsp;отправляются и&nbsp;не&nbsp;сохраняются.</p>
+      <p>На&nbsp;реальном сайте здесь будет текст политики обработки персональных данных по&nbsp;152-ФЗ: кто оператор, какие данные собираются, зачем, сколько хранятся и&nbsp;как отозвать согласие.</p>
+      <button class="btn btn--primary" value="close">Понятно</button>
+    </form>
+  </dialog>
+</body>
+</html>

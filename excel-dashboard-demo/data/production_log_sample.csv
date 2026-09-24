@@ -1,0 +1,416 @@
+﻿date,shift,department,machine,employee,run_hours,halt_minutes,halt_reason
+2026-09-01,day,Machining,CNC-01,Robin Pryce,4.67,200,No material
+2026-09-01,Evening,Machining,CNC-01,Jamie Sutter,7,60,Quality check
+2026-09-01,Night,Machining,CNC-01,Hayden Rhodes,7.25,45,Setup / changeover
+2026-09-01,Day,Machining,CNC-02,Taylor Wilder,5.17,170,Planned maintenance
+2026-09-01,Evening,Machining,CNC-02,Morgan Sutter,4.92,185,No material
+2026-09-01,Night,Machining,CNC-02,Quinn Harlow,7,60,Setup / changeover
+2026-09-01,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-01,Evening,Machining,CNC-03,Alex Sutter,6.5,90,Setup / changeover
+2026-09-01,Night,Machining,CNC-03,  Jamie Harlow ,7.42,35,Setup / changeover
+2026-09-01,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-01,Evening,Assembly,ASM-01,Emerson Ellison,4.67,200,No material
+2026-09-01,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-01,Evening,Assembly,ASM-02,Riley Doyle,7.33,40,Quality check
+2026-09-01,Day,Welding,WLD-01,Reese Quill,7.67,20,Quality check
+2026-09-01,Evening,Welding,WLD-01,Emerson Harlow,5.17,170,Planned maintenance
+2026-09-01,Day,Welding,WLD-02,Casey Rhodes,6.08,115,Setup / changeover
+2026-09-01,Evening,Welding,WLD-02,Quinn Hart,3.92,245,Breakdown
+2026-09-01,Day,Painting,PNT-01,Avery Lang,8,0,
+2026-09-02,Day,Machining,CNC-01,Robin Pryce,8,0,
+02.09.2026,Evening,Machining,CNC-01,Jamie Sutter,7.25,45,No material
+2026-09-02,Night,Machining,CNC-01,Hayden Rhodes,8,0,
+2026-09-02,Day,Machining,CNC-02,Taylor Wilder,6.5,90,Setup / changeover
+2026-09-02,Evening,Machining,CNC-02,Morgan Sutter,6.67,80,Breakdown
+2026-09-02,Night,Machining,CNC-02,Quinn Harlow,7.08,55,Setup / changeover
+2026-09-02,Day,Machining,CNC-03,Robin Mercer,7.58,25,Tool change
+2026-09-02,Evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-02,Night,Machining,CNC-03,Jamie Harlow,6.33,100,Setup / changeover
+2026-09-02,day,Assembly,ASM-01,Alex Brooks,6.42,95,Breakdown
+2026-09-02,Evening,Assembly,asm-01 ,Emerson Ellison,5.83,130,Breakdown
+2026-09-02,Day,Assembly,ASM-02,Morgan Hart,5.83,130,Breakdown
+2026-09-02,Evening,Assembly,ASM-02,Riley Doyle,8,0,
+2026-09-02,Day,Welding,WLD-01,Reese Quill,7.67,20,Quality check
+2026-09-02,Evening,Welding,WLD-01,Emerson Harlow,8,0,
+2026-09-02,Day,Welding,WLD-02,Casey Rhodes,7.08,55,Quality check
+02.09.2026,Evening,Welding,WLD-02,Quinn Hart,6.17,110,No material
+2026-09-02,Day,Painting,PNT-01,Avery Lang,8,0,
+2026-09-03,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-03,Evening,Machining,CNC-01,Jamie Sutter,5,180,No material
+2026-09-03,Night,Machining,CNC-01,Hayden Rhodes,6.17,110,No material
+03.09.2026,Day,Machining,CNC-02,Taylor Wilder,7.58,25,Tool change
+2026-09-03,Evening,Machining,CNC-02,Morgan Sutter,6.33,100,Setup / changeover
+2026-09-03,Night,Machining,CNC-02,Quinn Harlow,8,0,
+2026-09-03,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-03,Evening,Machining,CNC-03,Alex Sutter,7.17,50,Setup / changeover
+2026-09-03,Night,Machining,CNC-03,Jamie Harlow,6.08,115,Planned maintenance
+2026-09-03,Day,Assembly,ASM-01,Alex Brooks,4.75,195,No material
+2026-09-03,Evening,Assembly,ASM-01,Emerson Ellison,7.67,20,Quality check
+2026-13-45,Night,Machining,CNC-02,Quinn Harlow,7.08,55,Setup / changeover
+2026-09-03,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-03,Evening,Assembly,ASM-02,Riley Doyle,7.75,15,Quality check
+2026-09-03,Day,Welding,wld-01 ,Reese Quill,7.67,20,Tool change
+2026-09-03,Evening,Welding,WLD-01,Emerson Harlow,6.33,100,Setup / changeover
+2026-09-03,Day,Welding,WLD-02,Casey Rhodes,6.17,110,Setup / changeover
+2026-09-03,Evening,Welding,WLD-02,Quinn Hart,4.92,185,Breakdown
+2026-09-03,Day,Painting,PNT-01,Avery Lang,6.17,110,Planned maintenance
+2026-09-04,Day,Machining,CNC-01,Robin Pryce,5.58,145,No material
+2026-09-04,Evening,Machining,CNC-01,Jamie Sutter,7.67,20,Quality check
+2026-09-04,Night,Machining,CNC-01,Hayden Rhodes,8,0,
+2026-09-04,Day,Machining,CNC-02,Taylor Wilder,7.25,45,Setup / changeover
+2026-09-04,Evening,Machining,CNC-02,Morgan Sutter,8,0,
+2026-09-04,Night,Machining,CNC-02,Quinn Harlow,6.75,75,Setup / changeover
+2026-09-04,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-04,evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-04,Day,Assembly,ASM-01,Alex Brooks,6.92,65,Quality check
+2026-09-04,Evening,Assembly,ASM-01,Emerson Ellison,6.83,70,Setup / changeover
+2026-09-04,Day,Assembly,ASM-02,Morgan Hart,"7,58",25,Quality check
+2026-09-04,Evening,Assembly,ASM-02,Riley Doyle,4.92,185,
+2026-09-04,Day,Welding,WLD-01,Reese Quill,"6,58",85,No material
+2026-09-04,Day,Welding,WLD-02,Casey Rhodes,6.33,100,Setup / changeover
+2026-09-04,Evening,Welding,WLD-02,Quinn Hart,7.33,40,Setup / changeover
+2026-09-04,Day,Painting,PNT-01,Avery Lang,8,0,
+05.09.2026,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-05,Day,Machining,CNC-02,Taylor Wilder,7.17,50,Setup / changeover
+2026-09-05,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-05,day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-05,Day,Assembly,ASM-02,  Morgan Hart ,6.5,90,Setup / changeover
+2026-09-05,Day,Welding,WLD-01,Reese Quill,6.25,105,Breakdown
+2026-09-05,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-05,Day,Painting,PNT-01,Avery Lang,8,0,
+2026-09-07,Day,Machining,CNC-01,Robin Pryce,7.5,30,Quality check
+2026-09-07,Evening,Machining,CNC-01,Jamie Sutter,8,0,
+2026-09-07,Night,Machining,CNC-01,Hayden Rhodes,8,0,
+2026-09-07,Day,Machining,CNC-02,Taylor Wilder,6.5,90,Setup / changeover
+2026-09-07,Evening,Machining,CNC-02,Morgan Sutter,7.5,30,Quality check
+2026-09-07,Night,Machining,CNC-02,Quinn Harlow,7.58,25,Setup / changeover
+2026-09-07,Day,Machining,CNC-03,Robin Mercer,7.33,40,Tool change
+2026-09-07,Evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-07,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-07,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-22,Evening,Assembly,ASM-01,Emerson Ellison,8,0,
+2026-09-07,Evening,Assembly,ASM-01,Emerson Ellison,8,0,
+2026-09-07,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-07,Evening,Assembly,ASM-02,Riley Doyle,5.42,155,No material
+07.09.2026,Day,Welding,WLD-01,Reese Quill,5.08,175,Breakdown
+2026-09-07,Evening,Welding,WLD-01,Emerson Harlow,7.67,20,Quality check
+2026-09-07,Day,Welding,WLD-02,Casey Rhodes,7.08,55,Quality check
+2026-09-07,Evening,Welding,WLD-02,Quinn Hart,6.5,90,Setup / changeover
+2026-09-07,Day,Painting,PNT-01,Avery Lang,7.5,30,Tool change
+2026-09-08,Day,Machining,CNC-01,Robin Pryce,6.25,105,No material
+2026-09-08,Evening,Machining,CNC-01,Jamie Sutter,4.83,190,No material
+2026-09-08,Night,Machining,CNC-01,Hayden Rhodes,8,0,
+2026-09-08,Day,Machining,CNC-02,Taylor Wilder,7,60,Breakdown
+2026-09-08,Evening,Machining,CNC-02,Morgan Sutter,3.75,255,Breakdown
+2026-09-08,Night,Machining,CNC-02,Quinn Harlow,7.08,55,Setup / changeover
+2026-09-08,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-08,Evening,Machining,CNC-03,Alex Sutter,5.67,140,No material
+2026-09-08,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-08,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-08,Evening,Assembly,ASM-01,Emerson Ellison,7.25,45,Setup / changeover
+2026-09-08,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-08,Evening,Assembly,ASM-02,Riley Doyle,6,120,Breakdown
+2026-09-08,Day,Welding,WLD-01,Reese Quill,6.75,75,Setup / changeover
+2026-09-08,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-08,Evening,Welding,WLD-02,Quinn Hart,6.08,115,Setup / changeover
+2026-09-08,Day,Painting,PNT-01,Avery Lang,6.67,80,Setup / changeover
+2026-09-09,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-09,Evening,Machining,CNC-01,Jamie Sutter,8,0,
+2026-09-09,Night,Machining,CNC-01,Hayden Rhodes,8,0,
+2026-09-09,Day,Machining,cnc-02 ,Taylor Wilder,7.42,35,Quality check
+2026-09-09,Evening,Machining,CNC-02,  Morgan Sutter ,7.42,35,Tool change
+2026-09-09,Night,Machining,CNC-02,Quinn Harlow,6.92,65,Setup / changeover
+2026-09-09,Day,Machining,CNC-03,Robin Mercer,7.58,25,Quality check
+2026-09-09,Evening,Machining,CNC-03,Alex Sutter,7.25,45,Setup / changeover
+2026-09-09,Night,Machining,CNC-03,Jamie Harlow,6.75,75,Setup / changeover
+2026-09-09,Day,Assembly,ASM-01,Alex Brooks,5.92,125,No material
+2026-09-09,Evening,Assembly,ASM-01,Emerson Ellison,4.92,185,No material
+2026-09-09,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-09,Evening,Assembly,ASM-02,Riley Doyle,8,0,
+2026-09-09,Day,Welding,WLD-01,Reese Quill,5.33,160,
+2026-09-09,Evening,Welding,WLD-01,Emerson Harlow,8,0,
+2026-09-09,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-09,Evening,Welding,WLD-02,  Quinn Hart ,7.17,50,Setup / changeover
+2026-09-09,Day,Painting,PNT-01,Avery Lang,5.5,150,No material
+2026-09-10,Day,Machining,CNC-01,Robin Pryce,7,60,
+2026-09-10,Evening,Machining,CNC-01,Jamie Sutter,5.83,130,No material
+2026-09-10,Day,Machining,CNC-02,Taylor Wilder,6.75,75,Breakdown
+2026-09-10,Evening,Machining,CNC-02,Morgan Sutter,5.33,160,No material
+2026-09-10,Night,Machining,CNC-02,  Quinn Harlow ,7.67,20,Tool change
+2026-09-10,Evening,Machining,CNC-02,Morgan Sutter,5.33,160,No material
+2026-09-10,Day,Machining,CNC-03,Robin Mercer,2,360,Breakdown
+2026-09-10,Evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-10,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-10,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-10,Evening,Assembly,ASM-01,Emerson Ellison,7.33,40,Setup / changeover
+2026-09-10,Day,Assembly,ASM-02,Morgan Hart,6.67,80,Setup / changeover
+2026-09-10,Evening,Assembly,ASM-02,Riley Doyle,3.25,285,Breakdown
+2026-09-10,day,Welding,WLD-01,Reese Quill,8,0,
+2026-09-10,Evening,Welding,WLD-01,Emerson Harlow,6.83,70,Setup / changeover
+2026-09-10,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-10,Evening,Welding,WLD-02,Quinn Hart,6.42,95,Setup / changeover
+2026-09-10,Day,Painting,PNT-01,Avery Lang,7.25,45,Quality check
+2026-09-11,Day,Machining,CNC-01,Robin Pryce,"5,33",160,Planned maintenance
+2026-09-11,Evening,Machining,CNC-01,Jamie Sutter,6,120,No material
+2026-09-11,Night,Machining,CNC-01,Hayden Rhodes,8,0,
+2026-09-11,Day,Machining,CNC-02,Taylor Wilder,5.58,145,Planned maintenance
+2026-09-11,Evening,Machining,CNC-02,Morgan Sutter,5.42,155,No material
+2026-09-11,Night,Machining,CNC-02,Quinn Harlow,7.5,30,Quality check
+2026-09-11,Day,Machining,CNC-03,Robin Mercer,7.58,25,Quality check
+2026-09-11,Evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-11,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-11,Day,Assembly,ASM-01,Alex Brooks,5.08,175,Breakdown
+2026-09-11,Day,Assembly,ASM-02,Morgan Hart,6.5,90,Setup / changeover
+2026-09-11,Evening,Assembly,ASM-02,Riley Doyle,8,0,
+2026-09-11,Day,Welding,WLD-01,Reese Quill,6.42,95,Setup / changeover
+2026-09-11,Evening,Welding,WLD-01,Emerson Harlow,8,0,
+2026-09-11,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-11,Evening,Welding,WLD-02,Quinn Hart,3,300,Breakdown
+2026-09-11,Day,Painting,PNT-01,Avery Lang,7.58,25,Quality check
+2026-09-12,Day,Machining,CNC-01,Robin Pryce,4.83,190,Breakdown
+2026-09-12,Day,Machining,CNC-02,Taylor Wilder,7.58,25,Quality check
+2026-09-12,Day,Machining,CNC-03,Robin Mercer,7.42,35,Setup / changeover
+2026-09-12,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-12,Day,Assembly,ASM-02,Morgan Hart,5.42,155,No material
+2026-09-12,Day,Welding,WLD-01,Reese Quill,7.42,35,Setup / changeover
+2026-09-12,Day,Welding,WLD-02,Casey Rhodes,7.42,35,Setup / changeover
+2026-09-12,Day,Painting,PNT-01,Avery Lang,5.67,140,Planned maintenance
+2026-09-14,Day,Machining,CNC-01,  Robin Pryce ,7.5,30,Tool change
+14.09.2026,Evening,Machining,CNC-01,Jamie Sutter,6.17,110,No material
+2026-09-14,Night,Machining,CNC-01,Hayden Rhodes,5.75,135,Planned maintenance
+2026-09-14,Day,Machining,CNC-02,Taylor Wilder,6.83,70,Setup / changeover
+2026-09-14,Evening,Machining,CNC-02,Morgan Sutter,5.5,150,Breakdown
+2026-09-14,Night,Machining,CNC-02,Quinn Harlow,7.42,35,Quality check
+2026-09-14,Day,Machining,CNC-03,Robin Mercer,4.75,195,Breakdown
+2026-09-14,Evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-14,Night,Machining,CNC-03,Jamie Harlow,3.92,245,Breakdown
+2026-09-14,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-14,Evening,Assembly,ASM-01,Emerson Ellison,7.67,20,Quality check
+2026-09-14,Day,Assembly,ASM-02,Morgan Hart,6.92,65,Setup / changeover
+2026-09-14,Evening,Assembly,ASM-02,Riley Doyle,6.75,75,Setup / changeover
+2026-09-14,Day,Welding,WLD-01,Reese Quill,7.17,50,Quality check
+2026-09-14,Evening,Welding,WLD-01,Emerson Harlow,8,0,
+2026-09-14,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-14,Evening,Welding,WLD-02,Quinn Hart,2.42,335,Breakdown
+2026-09-14,Day,Painting,PNT-01,Avery Lang,7.25,45,Setup / changeover
+2026-09-15,Day,Machining,CNC-01,Robin Pryce,7.25,45,Setup / changeover
+2026-09-07,Evening,Machining,CNC-03,Alex Sutter,8,-15,
+2026-09-15,Evening,Machining,CNC-01,Jamie Sutter,8,0,
+2026-09-15,Night,Machining,CNC-01,Hayden Rhodes,7.08,55,No material
+2026-09-15,Evening,Machining,CNC-02,Morgan Sutter,7.42,35,Setup / changeover
+2026-09-15,Night,Machining,CNC-02,Quinn Harlow,2.25,345,Breakdown
+2026-09-15,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-15,Evening,Machining,CNC-03,Alex Sutter,7.5,30,Quality check
+2026-09-15,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-15,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-15,Evening,Assembly,ASM-01,Emerson Ellison,7.08,55,Setup / changeover
+2026-09-15,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-15,Evening,Assembly,ASM-02,Riley Doyle,7.58,25,Quality check
+2026-09-15,Day,Welding,WLD-01,Reese Quill,8,0,
+2026-09-15,Evening,Welding,WLD-01,Emerson Harlow,6.5,90,No material
+2026-09-15,Day,Welding,WLD-02,Casey Rhodes,2.08,355,Breakdown
+2026-09-15,Evening,Welding,WLD-02,Quinn Hart,6.83,70,No material
+2026-09-15,day,Painting,PNT-01,Avery Lang,8,0,
+2026-09-16,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-16,Evening,Machining,CNC-01,Jamie Sutter,5.83,130,Planned maintenance
+2026-09-16,Night,Machining,CNC-01,Hayden Rhodes,5.58,145,Planned maintenance
+2026-09-16,Day,Machining,CNC-02,Taylor Wilder,4.25,225,Breakdown
+2026-09-16,Evening,Machining,CNC-02,Morgan Sutter,8,0,
+2026-09-16,Night,Machining,CNC-02,Quinn Harlow,6.75,75,Setup / changeover
+2026-09-16,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-16,Evening,Machining,CNC-03,Alex Sutter,7.42,35,Tool change
+2026-09-16,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-16,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-16,Evening,Assembly,ASM-01,Emerson Ellison,8,0,
+2026-09-16,Day,Assembly,ASM-02,Morgan Hart,7.5,30,Quality check
+2026-09-16,Evening,Assembly,ASM-02,Riley Doyle,7.67,20,Tool change
+2026-09-16,Day,Welding,WLD-01,Reese Quill,5.75,135,Planned maintenance
+2026-09-16,Evening,Welding,WLD-01,Emerson Harlow,5.83,130,No material
+2026-09-18,Evening,Assembly,ASM-02,Riley Doyle,7.42,35,Quality check
+2026-09-16,Day,Welding,WLD-02,Casey Rhodes,6.83,70,No material
+2026-09-16,Evening,Welding,WLD-02,Quinn Hart,6.33,100,Setup / changeover
+2026-09-17,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-17,Evening,Machining,CNC-01,Jamie Sutter,7,60,Quality check
+2026-09-17,Night,Machining,CNC-01,Hayden Rhodes,7.08,55,Setup / changeover
+2026-09-17,Day,Machining,CNC-02,Taylor Wilder,8,0,
+2026-09-17,Evening,Machining,CNC-02,Morgan Sutter,4.75,195,Breakdown
+2026-09-17,Night,Machining,CNC-02,Quinn Harlow,6.25,105,Breakdown
+2026-09-17,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-17,Evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-17,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-17,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-17,Evening,Assembly,ASM-01,Emerson Ellison,7.25,45,Quality check
+2026-09-17,Day,Assembly,ASM-02,Morgan Hart,6.75,75,Setup / changeover
+2026-09-17,Evening,Assembly,ASM-02,Riley Doyle,8,0,
+17.09.2026,Day,Welding,WLD-01,Reese Quill,6.75,75,Setup / changeover
+2026-09-17,Evening,Welding,WLD-01,Emerson Harlow,6.83,70,Quality check
+2026-09-17,Evening,Welding,WLD-02,Quinn Hart,6.92,65,No material
+2026-09-17,Day,Painting,PNT-01,Avery Lang,7.67,20,Quality check
+2026-09-18,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-18,Evening,Machining,CNC-01,Jamie Sutter,7.67,20,Tool change
+2026-09-18,Night,Machining,CNC-01,Hayden Rhodes,7.58,25,Setup / changeover
+2026-09-18,Day,Machining,CNC-02,Taylor Wilder,8,0,
+2026-09-18,Evening,Machining,CNC-02,Morgan Sutter,6.42,95,No material
+2026-09-18,Night,Machining,CNC-02,Quinn Harlow,6.67,80,No material
+2026-09-18,Day,Machining,CNC-03,Robin Mercer,6.08,115,No material
+2026-09-18,Evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-18,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-18,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-18,Evening,Assembly,ASM-01,Emerson Ellison,3.58,265,Breakdown
+2026-09-18,day,Assembly,ASM-02,Morgan Hart,4.5,210,Breakdown
+2026-09-18,Evening,Assembly,ASM-02,Riley Doyle,7.42,35,Quality check
+2026-09-18,Day,Welding,WLD-01,Reese Quill,8,0,
+2026-09-18,Evening,Welding,WLD-01,Emerson Harlow,8,0,
+2026-09-18,Day,Welding,WLD-02,Casey Rhodes,7.33,40,Tool change
+2026-09-18,Evening,Welding,WLD-02,Quinn Hart,6.17,110,No material
+2026-09-18,Day,Painting,PNT-01,Avery Lang,8,0,
+2026-09-19,Day,Machining,CNC-01,Robin Pryce,7.58,25,Quality check
+2026-09-19,Day,Machining,cnc-02 ,Taylor Wilder,5.67,140,Planned maintenance
+2026-09-19,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-19,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-19,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-19,Day,Welding,WLD-01,Reese Quill,6.42,95,Setup / changeover
+2026-09-19,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-19,Day,Painting,PNT-01,Avery Lang,8,0,
+2026-09-21,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-21,evening,Machining,CNC-01,Jamie Sutter,7.67,20,Quality check
+2026-09-21,Night,Machining,CNC-01,Hayden Rhodes,7.42,35,
+2026-09-21,Day,Machining,CNC-02,Taylor Wilder,6.33,100,Planned maintenance
+2026-09-21,Evening,Machining,CNC-02,Morgan Sutter,"7,5",30,Tool change
+2026-09-21,Night,Machining,CNC-02,Quinn Harlow,6.75,75,Setup / changeover
+2026-09-21,Day,Machining,CNC-03,Robin Mercer,7,60,No material
+2026-09-21,Evening,Machining,CNC-03,Alex Sutter,7.08,55,No material
+2026-09-21,Night,Machining,CNC-03,Jamie Harlow,5.58,145,No material
+2026-09-21,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-21,Evening,Assembly,ASM-01,Emerson Ellison,8,0,
+2026-09-21,Day,Assembly,ASM-02,Morgan Hart,6.92,65,Setup / changeover
+2026-09-21,Evening,Assembly,ASM-02,Riley Doyle,8,0,
+2026-09-21,Evening,Welding,WLD-01,Emerson Harlow,5.25,165,Planned maintenance
+2026-09-21,Day,Welding,WLD-02,Casey Rhodes,2.08,355,Breakdown
+2026-09-21,Evening,Welding,WLD-02,Quinn Hart,7.25,45,Setup / changeover
+2026-09-21,Day,Painting,PNT-01,Avery Lang,7.42,35,Quality check
+2026-09-22,Day,Machining,CNC-01,Robin Pryce,7.5,30,Quality check
+2026-09-22,Evening,Machining,CNC-01,Jamie Sutter,6.25,105,Setup / changeover
+2026-09-22,Night,Machining,CNC-01,Hayden Rhodes,7.67,20,Tool change
+2026-09-22,Day,Machining,CNC-02,Taylor Wilder,8,0,
+2026-09-22,Night,Machining,CNC-02,Quinn Harlow,7.33,40,Setup / changeover
+2026-09-22,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-22,Day,Assembly,ASM-01,Alex Brooks,6.83,70,No material
+2026-09-22,Evening,Assembly,ASM-01,Emerson Ellison,8,0,
+2026-09-22,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-22,Evening,Assembly,ASM-02,  Riley Doyle ,8,0,
+2026-09-22,Day,Welding,WLD-01,Reese Quill,2.25,345,Breakdown
+2026-09-22,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-22,evening,Welding,WLD-02,Quinn Hart,6.42,95,Planned maintenance
+2026-09-22,Day,Painting,PNT-01,Avery Lang,7.5,30,Quality check
+2026-09-23,Day,Machining,CNC-01,Robin Pryce,6.58,85,Setup / changeover
+2026-09-23,Evening,Machining,CNC-01,Jamie Sutter,4.25,225,
+2026-09-23,Night,Machining,CNC-01,Hayden Rhodes,8,0,
+2026-09-23,Day,Machining,CNC-02,Taylor Wilder,6.5,90,Breakdown
+2026-09-23,Evening,Machining,CNC-02,Morgan Sutter,8,0,
+2026-09-23,Night,Machining,CNC-02,Quinn Harlow,7.67,20,Quality check
+2026-09-23,Day,Machining,CNC-03,Robin Mercer,6.08,115,No material
+2026-09-23,Evening,Machining,CNC-03,Alex Sutter,5.58,145,No material
+2026-09-23,Night,Machining,CNC-03,Jamie Harlow,6.42,95,Planned maintenance
+2026-09-23,Day,Assembly,ASM-01,Alex Brooks,6.33,100,Setup / changeover
+2026-09-23,Evening,Assembly,ASM-01,Emerson Ellison,4.17,230,Breakdown
+2026-09-23,Day,Assembly,ASM-02,Morgan Hart,5.58,145,No material
+2026-09-23,Evening,Assembly,ASM-02,  Riley Doyle ,8,0,
+2026-09-23,Day,Welding,WLD-01,Reese Quill,8,0,
+23.09.2026,Evening,Welding,WLD-01,Emerson Harlow,5.92,125,Breakdown
+2026-09-23,Day,Welding,WLD-02,Casey Rhodes,"6,17",110,Setup / changeover
+2026-09-23,Evening,Welding,WLD-02,  Quinn Hart ,8,0,
+2026-09-23,Day,Painting,PNT-01,Avery Lang,8,0,
+2026-09-24,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-24,Evening,Machining,CNC-01,Jamie Sutter,7.67,20,
+2026-09-24,Night,Machining,CNC-01,Hayden Rhodes,8,0,
+2026-09-24,Day,Machining,CNC-02,Taylor Wilder,7.58,25,Quality check
+2026-09-24,Evening,Machining,CNC-02,Morgan Sutter,7.5,30,Tool change
+2026-09-24,Night,Machining,CNC-02,Quinn Harlow,6.83,70,Breakdown
+2026-09-24,Day,Machining,CNC-03,Robin Mercer,6.42,95,No material
+2026-09-24,Evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-24,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-24,Day,Assembly,ASM-01,Alex Brooks,6.58,85,Setup / changeover
+2026-09-24,Evening,Assembly,ASM-01,Emerson Ellison,7.42,35,Quality check
+2026-09-24,Day,Assembly,ASM-02,Morgan Hart,7.67,20,Quality check
+2026-09-24,Evening,Assembly,ASM-02,Riley Doyle,7.5,30,Quality check
+2026-09-24,Day,Welding,WLD-01,Reese Quill,5.75,135,No material
+2026-09-24,Day,Welding,WLD-02,Casey Rhodes,7.08,55,Setup / changeover
+2026-09-24,Evening,Welding,WLD-02,  Quinn Hart ,7.58,25,Quality check
+2026-09-24,Day,Painting,PNT-01,Avery Lang,8,0,
+2026-09-25,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-25,Evening,Machining,CNC-01,Jamie Sutter,7.67,20,Tool change
+2026-09-25,Day,Machining,cnc-02 ,Taylor Wilder,8,0,
+2026-09-25,Evening,Machining,CNC-02,Morgan Sutter,7.5,30,Quality check
+2026-09-25,Night,Machining,CNC-02,Quinn Harlow,5.17,170,No material
+2026-09-25,Day,Machining,CNC-03,Robin Mercer,8,0,
+2026-09-25,Evening,Machining,CNC-03,Alex Sutter,7.67,20,Tool change
+2026-09-25,Night,Machining,CNC-03,Jamie Harlow,6.5,90,No material
+2026-09-25,Day,Assembly,ASM-01,Alex Brooks,6.67,80,Setup / changeover
+2026-09-25,Evening,Assembly,ASM-01,Emerson Ellison,7.58,25,
+2026-09-25,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-25,Evening,Assembly,ASM-02,Riley Doyle,7.33,40,Setup / changeover
+2026-09-25,Day,Welding,WLD-01,Reese Quill,8,0,
+2026-09-25,Evening,Welding,WLD-01,Emerson Harlow,7.25,45,Quality check
+2026-09-25,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-25,Evening,Welding,WLD-02,Quinn Hart,8,0,
+2026-09-25,Day,Painting,PNT-01,Avery Lang,2.67,320,Breakdown
+2026-09-26,Day,Machining,CNC-01,Robin Pryce,6.83,70,
+2026-09-26,Day,Machining,CNC-02,Taylor Wilder,7,60,Setup / changeover
+2026-09-26,Day,Machining,CNC-03,Robin Mercer,6.58,85,Setup / changeover
+2026-09-26,Day,Assembly,ASM-01,Alex Brooks,8,0,
+26.09.2026,Day,Assembly,ASM-02,Morgan Hart,4.67,200,Breakdown
+2026-09-26,Day,Welding,WLD-01,Reese Quill,8,0,
+2026-09-26,Day,Welding,WLD-02,Casey Rhodes,7.17,50,Quality check
+2026-09-26,Day,Painting,PNT-01,Avery Lang,7.5,30,Setup / changeover
+2026-09-28,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-28,Evening,Machining,CNC-01,Jamie Sutter,8,0,
+2026-09-28,Night,Machining,CNC-01,Hayden Rhodes,7.17,50,Setup / changeover
+2026-09-28,Day,Machining,CNC-02,Taylor Wilder,7.08,55,Setup / changeover
+2026-09-28,Evening,Machining,CNC-02,Morgan Sutter,5.75,135,No material
+2026-09-28,Night,Machining,CNC-02,Quinn Harlow,7.5,30,Setup / changeover
+2026-09-28,Day,Machining,CNC-03,Robin Mercer,7.33,40,Quality check
+28.09.2026,Evening,Machining,CNC-03,Alex Sutter,8,0,
+2026-09-28,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-28,Day,Assembly,ASM-01,Alex Brooks,5.42,155,Planned maintenance
+2026-09-28,Evening,Assembly,ASM-01,Emerson Ellison,8,0,
+2026-09-28,Day,Assembly,ASM-02,Morgan Hart,5.25,165,No material
+2026-09-28,Evening,Assembly,ASM-02,Riley Doyle,8,0,
+2026-09-28,Day,Welding,WLD-01,Reese Quill,8,0,
+2026-09-28,Evening,Welding,WLD-01,Emerson Harlow,7.25,45,Quality check
+2026-09-28,Day,Welding,WLD-02,Casey Rhodes,7.17,50,Setup / changeover
+2026-09-28,Evening,Welding,WLD-02,Quinn Hart,7.25,45,Setup / changeover
+2026-09-28,Day,Painting,PNT-01,Avery Lang,8,0,
+2026-09-29,Day,Machining,CNC-01,Robin Pryce,8,0,
+2026-09-29,Evening,Machining,CNC-01,Jamie Sutter,8,0,
+2026-09-29,Day,Machining,CNC-02,Taylor Wilder,7.08,55,Setup / changeover
+2026-09-29,Evening,Machining,CNC-02,Morgan Sutter,7.25,45,Quality check
+2026-09-29,Night,Machining,CNC-02,  Quinn Harlow ,5.5,150,No material
+2026-09-29,Day,Machining,CNC-03,Robin Mercer,6.67,80,Setup / changeover
+2026-09-29,Evening,Machining,CNC-03,Alex Sutter,6.75,75,Setup / changeover
+2026-09-29,Night,Machining,CNC-03,Jamie Harlow,8,0,
+2026-09-29,Day,Assembly,ASM-01,Alex Brooks,8,0,
+2026-09-29,Evening,Assembly,ASM-01,Emerson Ellison,7,60,Setup / changeover
+2026-09-29,Day,Assembly,ASM-02,Morgan Hart,8,0,
+2026-09-29,Evening,Assembly,ASM-02,Riley Doyle,8,0,
+2026-09-29,Day,Welding,WLD-01,Reese Quill,7.17,50,Quality check
+2026-09-29,Evening,Welding,WLD-01,Emerson Harlow,7.17,50,Tool change
+2026-09-29,Day,Welding,WLD-02,Casey Rhodes,8,0,
+2026-09-29,Evening,Welding,WLD-02,Quinn Hart,8,0,
+2026-09-29,Day,Painting,PNT-01,Avery Lang,6.17,110,Planned maintenance
+2026-09-30,Day,Machining,CNC-01,Robin Pryce,7.42,35,Setup / changeover
+2026-09-30,Evening,Machining,CNC-01,Jamie Sutter,5.92,125,Planned maintenance
+2026-09-30,Day,Machining,CNC-02,Taylor Wilder,3.08,295,Breakdown
+2026-09-30,Evening,Machining,CNC-02,  Morgan Sutter ,7.42,35,Tool change
+2026-09-30,Night,Machining,CNC-02,Quinn Harlow,7.33,40,No material
+2026-09-30,Day,Machining,CNC-03,Robin Mercer,7.5,30,Tool change
+2026-09-30,Evening,Machining,cnc-03 ,Alex Sutter,7.25,45,Setup / changeover
+2026-09-30,Night,Machining,CNC-03,Jamie Harlow,5.25,165,No material
+2026-09-30,Day,Assembly,ASM-01,Alex Brooks,7.42,35,Tool change
+2026-09-30,Day,Assembly,ASM-02,Morgan Hart,7,60,Setup / changeover
+2026-09-30,Evening,Assembly,ASM-02,Riley Doyle,5.58,145,No material
+2026-09-30,Day,Welding,WLD-01,Reese Quill,8,0,
+2026-09-30,Evening,Welding,WLD-01,Emerson Harlow,2.08,355,Breakdown
+2026-09-30,Day,Welding,WLD-02,Casey Rhodes,5.67,140,No material
+2026-09-30,Evening,Welding,WLD-02,  Quinn Hart ,6.33,100,Setup / changeover
+2026-09-30,Day,Painting,PNT-01,Avery Lang,8,0,

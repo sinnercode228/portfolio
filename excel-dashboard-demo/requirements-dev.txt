@@ -1,0 +1,3 @@
+-r requirements.txt
+pytest>=8
+pycel>=1.0b30

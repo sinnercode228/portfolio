@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual env
+.venv/
+venv/
+
+# Scraper runtime
+.cache/
+*.log
+
+# Secrets (Google service-account keys etc.)
+credentials*.json
+service_account*.json
+.env
+
+# Output: keep only the committed samples
+output/*
+!output/books_sample.*
+!output/.gitkeep
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/

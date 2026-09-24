@@ -1,0 +1,24 @@
+services:
+  bot:
+    build:
+      context: .
+      args:
+        # Если Docker Hub недоступен: PYTHON_IMAGE=mirror.gcr.io/library/python:3.14-slim
+        PYTHON_IMAGE: ${PYTHON_IMAGE:-python:3.14-slim}
+    image: romashka-lead-bot:latest
+    container_name: romashka-lead-bot
+    env_file: .env
+    environment:
+      DB_PATH: /app/data/leads.db   # внутри контейнера путь фиксированный
+    volumes:
+      - bot-data:/app/data          # заявки переживают пересборку и перезапуск
+    restart: unless-stopped
+    stop_grace_period: 20s          # даём aiogram корректно завершить обработку апдейтов
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  bot-data:

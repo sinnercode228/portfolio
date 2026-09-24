@@ -1,0 +1,14 @@
+[project]
+name = "xldash-demo"
+version = "1.0.0"
+description = "Demo: raw CSV logs -> live Excel dashboard and T&M invoice/payroll workbooks (openpyxl)"
+requires-python = ">=3.10"
+dependencies = ["openpyxl>=3.1"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pycel>=1.0b30"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"

@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+~$*.xlsx
+*.egg-info/
+# generated workbooks (the committed samples in output/ are kept on purpose)
+output/*.xlsx
+!output/dashboard_sample.xlsx
+!output/dashboard_sample_ru.xlsx
+!output/invoice_sample.xlsx
+!output/invoice_sample_ru.xlsx
