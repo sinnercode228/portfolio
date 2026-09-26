@@ -1,766 +1,723 @@
 <!doctype html>
-<html lang="ru" data-theme="dark">
+<html lang="ru" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Грешный Котик — full-stack разработчик</title>
-<meta name="description" content="Full-stack разработчик: React/Next.js и TypeScript, Node.js и Python/FastAPI, PostgreSQL, Telegram-боты и Mini Apps, AI/RAG, интеграции, Docker и CI/CD. Живые демо, открытый код, 999 автотестов.">
-<meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#0a0c0f">
+<title>Грешный Котик — боты, интеграции и веб-сервисы на заказ</title>
+<meta name="description" content="Full-stack разработчик, 7+ лет на фрилансе: Telegram-боты и Mini App, интеграции с amoCRM, Bitrix24 и Tilda, веб-приложения, парсеры и отчёты. Цены от 10 000 ₽, открытые демо и код.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#f1ede3">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Грешный Котик — full-stack разработчик">
-<meta property="og:description" content="Веб-приложения, Telegram Mini Apps, AI/RAG и интеграции. Живые демо и открытый код.">
+<meta property="og:title" content="Грешный Котик — боты, интеграции и веб-сервисы на заказ">
+<meta property="og:description" content="Telegram-боты и Mini App, интеграции с CRM, веб-приложения, парсеры и отчёты. Цены, сроки и живые демо.">
 <meta property="og:url" content="https://sinnercode228.github.io/portfolio/">
-<meta property="og:image" content="https://sinnercode228.github.io/portfolio/assets/projects/flowdesk-crm/cover.webp">
+<meta property="og:image" content="https://sinnercode228.github.io/portfolio/assets/projects/tg-shop-miniapp/cover.webp">
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="750">
-<meta property="og:image:alt" content="FlowDesk CRM — канбан сделок">
-<meta property="og:site_name" content="sinnercode">
+<meta property="og:image:alt" content="Zernolist — магазин внутри Telegram">
+<meta property="og:site_name" content="Грешный Котик">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0c0f'/%3E%3Cpath d='M12.5 10 7 16l5.5 6M19.5 10 25 16l-5.5 6' fill='none' stroke='%236ee7b7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-<link rel="preload" as="image" href="assets/projects/flowdesk-crm/cover.webp" type="image/webp">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%2315120e'/%3E%3Cpath d='M7 13V5.5l5.6 4.3h6.8L25 5.5V13c0 7.6-4 13-9 13s-9-5.4-9-13Z' fill='%23e2411f'/%3E%3Cpath d='M11 15.6l3 1.3M21 15.6l-3 1.3M13.6 21c.8.9 1.6.9 2.4 0 .8.9 1.6.9 2.4 0' fill='none' stroke='%2315120e' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" href="assets/projects/tg-shop-miniapp/cover.webp" type="image/webp">
 <script>
-  /* До отрисовки: язык (?lang=en|ru → сохранённый → русский) и тема (сохранённая → системная светлая → тёмная). */
+  /* До отрисовки: язык (?lang=en|ru → сохранённый → русский) и тема (сохранённая → системная). */
   (function () {
     var d = document.documentElement, l, t;
     var m = /[?&]lang=(ru|en)(?:&|$)/.exec(location.search);
     l = m && m[1];
     try { if (!l) l = localStorage.getItem("portfolio-lang"); t = localStorage.getItem("portfolio-theme"); } catch (e) {}
     if (l === "en" || l === "ru") d.lang = l;
-    if (t !== "light" && t !== "dark") { try { t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"; } catch (e) { t = "dark"; } }
+    if (t !== "light" && t !== "dark") { try { t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"; } catch (e) { t = "light"; } }
     d.setAttribute("data-theme", t);
   })();
 </script>
 <style>
+@font-face { font-family: "Unbounded"; font-weight: 700; font-style: normal; font-display: swap; src: url(assets/fonts/unbounded-cyrillic-700-normal.woff2) format("woff2"); unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: "Unbounded"; font-weight: 700; font-style: normal; font-display: swap; src: url(assets/fonts/unbounded-latin-700-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Onest"; font-weight: 400; font-style: normal; font-display: swap; src: url(assets/fonts/onest-cyrillic-400-normal.woff2) format("woff2"); unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: "Onest"; font-weight: 400; font-style: normal; font-display: swap; src: url(assets/fonts/onest-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Onest"; font-weight: 400; font-style: normal; font-display: swap; src: url(assets/fonts/onest-latin-ext-400-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "Onest"; font-weight: 500; font-style: normal; font-display: swap; src: url(assets/fonts/onest-cyrillic-500-normal.woff2) format("woff2"); unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: "Onest"; font-weight: 500; font-style: normal; font-display: swap; src: url(assets/fonts/onest-latin-500-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Onest"; font-weight: 700; font-style: normal; font-display: swap; src: url(assets/fonts/onest-cyrillic-700-normal.woff2) format("woff2"); unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: "Onest"; font-weight: 700; font-style: normal; font-display: swap; src: url(assets/fonts/onest-latin-700-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Onest"; font-weight: 700; font-style: normal; font-display: swap; src: url(assets/fonts/onest-latin-ext-700-normal.woff2) format("woff2"); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url(assets/fonts/jetbrains-mono-cyrillic-400-normal.woff2) format("woff2"); unicode-range: U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116; }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; font-display: swap; src: url(assets/fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+
 :root {
-  --bg: #0a0c0f;
-  --bg-2: #0f1216;
-  --surface: #13171c;
-  --surface-2: #1a1f26;
-  --text: #eef1f4;
-  --muted: #9aa4b0;
-  --faint: #828c98;
-  --border: #222831;
-  --border-strong: #333b46;
-  --accent: #6ee7b7;
-  --accent-2: #8ab4ff;
-  --accent-ink: #04140d;
-  --accent-soft: rgba(110, 231, 183, .1);
-  --glow: rgba(110, 231, 183, .16);
-  --glow-2: rgba(138, 180, 255, .12);
-  --shadow: 0 1px 0 rgba(255,255,255,.03) inset, 0 20px 40px -24px rgba(0,0,0,.7);
-  --radius: 18px;
-  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --mono: ui-monospace, "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, monospace;
-  color-scheme: dark;
+  --bg: #f1ede3;
+  --bg-alt: #e8e2d4;
+  --card: #fbf8f2;
+  --ink: #15120e;
+  --ink-2: #3a342b;
+  --muted: #6a6255;
+  --rule: #d4cab7;
+  --rule-strong: #ab9f88;
+  --accent: #e2411f;
+  --accent-hover: #c73614;
+  --on-accent: #fffaf3;
+  --accent-soft: rgba(226, 65, 31, .12);
+  --shadow: 0 1px 0 rgba(21, 18, 14, .05), 0 22px 44px -26px rgba(21, 18, 14, .55);
+  --grain: .07;
+  --display: "Unbounded", "Arial Black", "Helvetica Neue", sans-serif;
+  --sans: "Onest", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --wrap: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
 }
-:root[data-theme="light"] {
-  --bg: #f7f7f4;
-  --bg-2: #efefea;
-  --surface: #ffffff;
-  --surface-2: #f1f1ec;
-  --text: #111418;
-  --muted: #4f5864;
-  --faint: #5f6672;
-  --border: #e2e2db;
-  --border-strong: #c8c8bf;
-  --accent: #0b7a57;
-  --accent-2: #2f5bd3;
-  --accent-ink: #ffffff;
-  --accent-soft: rgba(11, 122, 87, .09);
-  --glow: rgba(11, 122, 87, .10);
-  --glow-2: rgba(47, 91, 211, .08);
-  --shadow: 0 1px 2px rgba(20,24,30,.05), 0 16px 32px -20px rgba(20,24,30,.22);
-  color-scheme: light;
+[data-theme="dark"] {
+  --bg: #13110e;
+  --bg-alt: #1a1713;
+  --card: #201c17;
+  --ink: #f1eadc;
+  --ink-2: #d6cdbd;
+  --muted: #a1988a;
+  --rule: #332d25;
+  --rule-strong: #564d40;
+  --accent: #ff5d3a;
+  --accent-hover: #ff7a5c;
+  --on-accent: #1b0c07;
+  --accent-soft: rgba(255, 93, 58, .15);
+  --shadow: 0 22px 44px -22px rgba(0, 0, 0, .85);
+  --grain: .05;
 }
+
+html[lang="ru"] [data-l="en"], html[lang="en"] [data-l="ru"] { display: none !important; }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 76px; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font: 16px/1.6 var(--font);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-  overflow-x: hidden;
-}
-img { max-width: 100%; display: block; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 84px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.6 var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 100; opacity: var(--grain); mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+[data-theme="dark"] body::before { mix-blend-mode: screen; }
+img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
-h1, h2, h3 { margin: 0; line-height: 1.12; letter-spacing: -.022em; }
-p { margin: 0; }
-ul { margin: 0; padding: 0; list-style: none; }
-code, .mono { font-family: var(--mono); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+h1, h2, h3, p, ol, ul, dl, dd, figure { margin: 0; }
+ol, ul { padding: 0; list-style: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--accent); color: var(--on-accent); }
 
-/* Двуязычие: оба текста в разметке, показываем язык из <html lang>. Без JS видна русская версия. */
-html[lang="ru"] [data-l="en"],
-html[lang="en"] [data-l="ru"] { display: none !important; }
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); }
+.mono { font-family: var(--mono); font-weight: 400; }
+.skip { position: absolute; left: -9999px; top: 8px; z-index: 200; background: var(--ink); color: var(--bg); padding: 10px 14px; border-radius: 6px; text-decoration: none; }
+.skip:focus { left: 8px; }
 
-.wrap { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
-@media (max-width: 480px) { .wrap { padding: 0 16px; } }
+/* Шапка */
+.top { position: sticky; top: 0; z-index: 50; background: var(--bg); border-bottom: 1.5px solid var(--ink); }
+.top-row { display: flex; align-items: center; gap: 24px; min-height: 68px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 15px/1 var(--display); letter-spacing: -.01em; white-space: nowrap; }
+.brand .cat { width: 34px; height: 34px; flex: none; }
+.nav { display: flex; gap: 26px; margin-left: auto; }
+.nav a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--ink-2); padding: 6px 0; border-bottom: 2px solid transparent; }
+.nav a:hover { color: var(--ink); border-color: var(--accent); }
+.tools { display: flex; align-items: center; gap: 10px; }
+.lang { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 8px; overflow: hidden; }
+.lang button { border: 0; background: transparent; padding: 6px 9px; font: 12px/1 var(--mono); cursor: pointer; color: var(--muted); }
+.lang button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.icon-btn { display: inline-grid; place-items: center; width: 34px; height: 34px; border: 1.5px solid var(--ink); border-radius: 8px; background: transparent; cursor: pointer; }
+.icon-btn svg { width: 17px; height: 17px; }
+.icon-btn .i-sun { display: none; }
+[data-theme="dark"] .icon-btn .i-sun { display: block; }
+[data-theme="dark"] .icon-btn .i-moon { display: none; }
 
-.skip { position: absolute; left: -9999px; top: 8px; z-index: 100; background: var(--accent); color: var(--accent-ink); padding: 8px 14px; border-radius: 8px; font-weight: 600; text-decoration: none; }
-.skip:focus { left: 16px; }
+/* Кнопки и ссылки */
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 16px/1.1 var(--sans); padding: 15px 22px; border: 2px solid var(--ink); border-radius: 10px; background: var(--card); color: var(--ink); box-shadow: 4px 4px 0 var(--ink); transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease; cursor: pointer; }
+.btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn-accent { background: var(--accent); color: var(--on-accent); }
+.btn-accent:hover { background: var(--accent-hover); }
+.btn-sm { padding: 9px 14px; font-size: 14px; box-shadow: 3px 3px 0 var(--ink); }
+.btn-sm:hover { box-shadow: 4px 4px 0 var(--ink); }
+.btn-lg { padding: 18px 26px; font-size: 17px; }
+.lnk { font-weight: 600; text-decoration: none; border-bottom: 2px solid var(--accent); padding-bottom: 1px; transition: color .15s; }
+.lnk:hover { color: var(--accent); }
 
-/* ---------- Header ---------- */
-.header {
-  position: sticky; top: 0; z-index: 50;
-  background: color-mix(in srgb, var(--bg) 82%, transparent);
-  backdrop-filter: saturate(160%) blur(14px);
-  -webkit-backdrop-filter: saturate(160%) blur(14px);
-  border-bottom: 1px solid var(--border);
+/* Первый экран */
+.hero { padding: clamp(40px, 7vw, 88px) 0 0; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
+.kicker { font-size: 13px; letter-spacing: .04em; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.kicker b { color: var(--ink); font-weight: 400; }
+.kicker i { font-style: normal; color: var(--accent); }
+.hero h1 { font: 700 clamp(32px, 4.2vw, 56px)/1.06 var(--display); letter-spacing: -.035em; margin: 22px 0 26px; }
+.nw { white-space: nowrap; }
+.mark { position: relative; white-space: nowrap; display: inline-block; }
+.scribble { position: absolute; left: -2%; bottom: -.16em; width: 104%; height: .36em; overflow: visible; }
+.scribble path { fill: none; stroke: var(--accent); stroke-width: 7; stroke-linecap: round; }
+.lead { font-size: clamp(17px, 1.6vw, 19px); color: var(--ink-2); max-width: 36em; }
+.lead + .lead { margin-top: 12px; }
+.lead strong { color: var(--ink); font-weight: 700; }
+.cta-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 28px; margin-top: 34px; }
+.cta-note { margin-top: 18px; font-size: 13px; color: var(--muted); }
+
+.hero-art { position: relative; min-height: 560px; }
+.shot { position: absolute; display: block; text-decoration: none; background: var(--card); border: 1.5px solid var(--ink); border-radius: 12px; padding: 9px 9px 40px; box-shadow: var(--shadow); transition: transform .3s ease; }
+.shot img { border-radius: 6px; border: 1px solid var(--rule); aspect-ratio: 1200 / 750; width: 100%; object-fit: cover; }
+.shot .cap { position: absolute; left: 14px; right: 14px; bottom: 11px; font: 12.5px/1.3 var(--mono); color: var(--muted); display: flex; justify-content: space-between; gap: 10px; }
+.shot .cap span:last-child { color: var(--accent); white-space: nowrap; }
+.shot-a { top: 0; right: 0; width: 86%; transform: rotate(2.2deg); }
+.shot-b { bottom: 18px; left: 0; width: 84%; transform: rotate(-2.4deg); z-index: 2; }
+.shot:hover { transform: rotate(0deg) translateY(-6px); z-index: 3; }
+.stamp { position: absolute; z-index: 4; width: 148px; height: 148px; left: -34px; top: -46px; color: var(--ink); transform: rotate(-8deg); }
+.stamp svg { width: 100%; height: 100%; animation: spin 48s linear infinite; }
+.stamp .ring { fill: var(--bg); stroke: var(--ink); stroke-width: 1.5; }
+.stamp text { font: 400 10.4px var(--mono); letter-spacing: .12em; fill: var(--ink); text-transform: uppercase; }
+.stamp .cat-in { animation: spin 48s linear infinite reverse; transform-origin: 80px 80px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(48px, 7vw, 84px); border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+.facts > div { padding: 20px 22px 22px; border-left: 1px solid var(--rule); }
+.facts > div:first-child { border-left: 0; padding-left: 0; }
+.facts dt { font: 700 clamp(26px, 3vw, 36px)/1 var(--display); letter-spacing: -.03em; }
+.facts dt em { font-style: normal; color: var(--accent); }
+.facts dd { margin-top: 10px; font: 13px/1.4 var(--mono); color: var(--muted); max-width: 22ch; }
+
+/* Секции */
+.sec { padding: clamp(64px, 9vw, 120px) 0; }
+.sec-alt { background: var(--bg-alt); border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+.sec-grid { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 24px clamp(24px, 5vw, 72px); }
+.sec-label { font: 13px/1.4 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 10px; }
+.sec-label b { color: var(--accent); font-weight: 400; margin-right: 8px; }
+.sec-side { position: sticky; top: 100px; align-self: start; }
+.sec-side p { margin-top: 18px; font-size: 15px; color: var(--muted); max-width: 30ch; }
+h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.035em; }
+.sec-intro { margin-top: 18px; color: var(--ink-2); max-width: 44em; }
+
+/* Прайс */
+.menu { margin-top: 34px; border-bottom: 1.5px solid var(--ink); counter-reset: m; }
+.menu-row { padding: 24px 0 22px; border-top: 1px solid var(--rule); }
+.menu-row:first-child { border-top: 1.5px solid var(--ink); }
+.menu-head { display: flex; align-items: baseline; gap: 14px; }
+.menu-head h3 { font: 700 clamp(19px, 2vw, 22px)/1.25 var(--sans); letter-spacing: -.01em; }
+.leader { flex: 1; min-width: 20px; border-bottom: 2.5px dotted var(--rule-strong); transform: translateY(-6px); }
+.price { font: 700 clamp(18px, 2vw, 21px)/1.2 var(--sans); white-space: nowrap; }
+.price small { font-size: .78em; font-weight: 400; color: var(--muted); margin-right: 4px; }
+.price.q { font-weight: 400; font-size: 16px; color: var(--muted); }
+.menu-row > p { margin-top: 8px; color: var(--ink-2); max-width: 60ch; }
+.menu-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; margin-top: 12px; font: 13px/1.5 var(--mono); color: var(--muted); }
+.menu-meta .ex a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent); }
+.menu-meta .ex a:hover { color: var(--accent); }
+.menu-meta .ex a + a { margin-left: 10px; }
+.menu-note { margin-top: 26px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 26px; }
+.menu-note p { color: var(--muted); font-size: 15px; max-width: 44ch; }
+
+/* Работы */
+.work-head { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 24px clamp(24px, 5vw, 72px); margin-bottom: clamp(36px, 5vw, 60px); }
+.case { background: var(--card); border: 1.5px solid var(--ink); border-radius: 16px; padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 22px; }
+.case figure { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; background: var(--bg); }
+.case figure img { width: 100%; aspect-ratio: 1200 / 750; object-fit: cover; transition: transform .5s ease; }
+.case:hover figure img { transform: scale(1.02); }
+.case-body { display: flex; flex-direction: column; gap: 12px; padding: 4px 8px 8px; }
+.case-kind { font: 12.5px/1.3 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; }
+.case-kind span:last-child { color: var(--accent); }
+.case h3 { font: 700 clamp(22px, 2.4vw, 28px)/1.1 var(--display); letter-spacing: -.03em; }
+.case-body p { color: var(--ink-2); font-size: 16px; }
+.case-body .case-tech { font: 13px/1.5 var(--mono); color: var(--muted); }
+.case-body .case-note { font: 12.5px/1.45 var(--mono); color: var(--muted); border-left: 2px solid var(--accent); padding-left: 10px; }
+.case-links { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: auto; padding-top: 8px; }
+.case-wide { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; }
+.case-wide .case-body { padding: 8px clamp(4px, 1.5vw, 18px); gap: 14px; }
+.case-wide h3 { font-size: clamp(26px, 3vw, 36px); }
+.case-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 26px); margin-top: clamp(16px, 2vw, 26px); }
+.case-pair .case { align-content: start; }
+
+.more { margin-top: clamp(48px, 6vw, 72px); display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 24px clamp(24px, 5vw, 72px); }
+.more h3 { font: 700 22px/1.15 var(--display); letter-spacing: -.03em; }
+.more-list { border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+.more-list li { display: grid; grid-template-columns: 220px minmax(0, 1fr) auto; gap: 8px 24px; padding: 16px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.more-list li:first-child { border-top: 0; }
+.more-list b { font-weight: 700; }
+.more-list p { color: var(--ink-2); font-size: 15.5px; }
+.more-list .links { font: 13px var(--mono); white-space: nowrap; display: flex; gap: 14px; }
+.more-list .links a { text-decoration: none; border-bottom: 1.5px solid var(--accent); color: var(--ink); }
+.more-list .links a:hover { color: var(--accent); }
+.stack { margin-top: 26px; font: 13px/1.7 var(--mono); color: var(--muted); }
+.stack b { color: var(--ink); font-weight: 400; }
+
+/* Как работаю */
+.steps { margin-top: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1.5px solid var(--ink); }
+.steps li { position: relative; padding: 26px 22px 6px 0; }
+.steps li + li { padding-left: 22px; border-left: 1px solid var(--rule); }
+.steps li::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--ink); }
+.steps li + li::before { left: 22px; }
+.steps li:nth-child(3)::before { background: var(--accent); border-color: var(--accent); }
+.step-n { font: 13px var(--mono); color: var(--muted); }
+.steps h3 { font: 700 19px/1.2 var(--sans); margin: 10px 0 8px; letter-spacing: -.01em; }
+.steps p { color: var(--ink-2); font-size: 15.5px; }
+
+/* Вопросы */
+.faq { margin-top: 30px; border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+.faq details { border-top: 1px solid var(--rule); }
+.faq details:first-child { border-top: 0; }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 20px 0; font: 700 18px/1.35 var(--sans); }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; flex: none; width: 32px; height: 32px; display: grid; place-items: center; border: 1.5px solid var(--ink); border-radius: 50%; font: 400 20px/1 var(--mono); transition: transform .2s ease, background-color .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.faq summary:hover { color: var(--accent); }
+.faq details p { padding: 0 52px 22px 0; color: var(--ink-2); max-width: 62ch; }
+
+/* Призыв */
+.cta-block { background: var(--ink); color: var(--bg); padding: clamp(64px, 9vw, 110px) 0; position: relative; overflow: hidden; }
+.cta-inner { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px 56px; align-items: end; }
+.cta-block h2 { font-size: clamp(32px, 5vw, 60px); max-width: 14em; }
+.cta-block p { margin-top: 18px; font-size: 18px; max-width: 34em; opacity: .85; }
+.cta-block .btn { border-color: var(--bg); box-shadow: 5px 5px 0 var(--bg); }
+.cta-block .btn:hover { box-shadow: 7px 7px 0 var(--bg); }
+.cta-contacts { margin-top: 22px; font: 13.5px/1.8 var(--mono); opacity: .8; display: flex; flex-wrap: wrap; gap: 4px 22px; }
+.cta-contacts a { text-decoration: none; border-bottom: 1px solid currentColor; }
+.cta-cat { position: absolute; right: -40px; top: -30px; width: 320px; height: 320px; opacity: .07; pointer-events: none; }
+
+footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 30px; }
+.foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
+.foot a:hover { border-color: var(--accent); }
+.foot nav { display: flex; gap: 20px; }
+
+/* Адаптив */
+@media (max-width: 1080px) {
+  .nav { display: none; }
+  .tools { margin-left: auto; }
 }
-.header .wrap { display: flex; align-items: center; gap: 16px; height: 64px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; letter-spacing: -.01em; white-space: nowrap; }
-.brand-mark { width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; background: var(--surface-2); border: 1px solid var(--border-strong); color: var(--accent); flex: none; }
-.nav { display: flex; gap: 4px; margin-left: 12px; }
-.nav a { text-decoration: none; color: var(--muted); font-size: 14.5px; padding: 6px 10px; border-radius: 8px; }
-.nav a:hover { color: var(--text); background: var(--surface-2); }
-.tools { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-.seg { display: inline-flex; padding: 3px; border: 1px solid var(--border); border-radius: 10px; background: var(--surface); }
-.seg button { font: 600 12.5px/1 var(--font); letter-spacing: .04em; color: var(--muted); background: none; border: 0; padding: 7px 9px; border-radius: 7px; cursor: pointer; min-width: 36px; min-height: 30px; }
-.seg button:hover { color: var(--text); }
-.seg button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
-.icon-btn { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; flex: none; }
-.icon-btn:hover { border-color: var(--border-strong); }
-.icon-btn svg { width: 18px; height: 18px; }
-:root[data-theme="light"] .i-sun, :root:not([data-theme="light"]) .i-moon { display: none; }
-@media (max-width: 900px) { .nav { display: none; } }
-@media (max-width: 560px) { .header .btn-tg-sm { display: none; } }
-
-/* ---------- Buttons ---------- */
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  min-height: 44px; padding: 0 18px; border-radius: 12px;
-  font: 600 15px/1 var(--font); text-decoration: none; white-space: nowrap;
-  border: 1px solid transparent; cursor: pointer;
-  transition: transform .15s ease, background-color .15s ease, border-color .15s ease;
+@media (max-width: 940px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-art { min-height: 0; height: min(92vw, 560px); max-width: 640px; }
+  .sec-grid, .work-head, .more { grid-template-columns: 1fr; }
+  .sec-side { position: static; }
+  .sec-label { padding-top: 0; }
+  .case-wide { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; border-top: 0; }
+  .steps li, .steps li + li { padding: 22px 18px 18px 0; border-left: 0; border-top: 1.5px solid var(--ink); }
+  .steps li::before, .steps li + li::before { left: 0; }
+  .steps li:nth-child(2n) { padding-left: 18px; }
+  .steps li:nth-child(2n)::before { left: 18px; }
+  .steps li:last-child { grid-column: 1 / -1; padding-left: 0; }
+  .steps li:last-child::before { left: 0; }
+  .cta-inner { grid-template-columns: 1fr; align-items: start; }
 }
-.btn svg { width: 18px; height: 18px; flex: none; }
-.btn:hover { transform: translateY(-1px); }
-.btn-primary { background: var(--accent); color: var(--accent-ink); }
-.btn-primary:hover { background: color-mix(in srgb, var(--accent) 88%, var(--text)); }
-.btn-ghost { background: var(--surface); color: var(--text); border-color: var(--border-strong); }
-.btn-ghost:hover { border-color: var(--muted); }
-.btn-sm { min-height: 38px; padding: 0 14px; font-size: 14px; border-radius: 10px; }
-
-/* ---------- Hero ---------- */
-.hero { position: relative; padding: 88px 0 72px; overflow: hidden; }
-.hero::before {
-  content: ""; position: absolute; inset: -20% -10% auto; height: 620px; z-index: -1;
-  background: radial-gradient(40% 50% at 22% 30%, var(--glow), transparent 70%), radial-gradient(38% 46% at 80% 20%, var(--glow-2), transparent 70%);
+@media (max-width: 700px) {
+  body { font-size: 16px; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .facts > div { padding: 18px 16px 18px 0; }
+  .facts > div:nth-child(2n) { padding-left: 16px; border-left: 1px solid var(--rule); }
+  .facts > div:nth-child(3) { border-left: 0; padding-left: 0; }
+  .facts > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .case-pair { grid-template-columns: 1fr; }
+  .more-list li { grid-template-columns: 1fr; gap: 4px; }
+  .menu-head { flex-wrap: wrap; row-gap: 4px; }
+  .menu-head h3 { flex: 1 1 100%; }
+  .leader { display: none; }
+  .brand-name { display: none; }
+  .top-row { gap: 12px; }
+  .hero-art { height: 108vw; }
+  .shot { padding: 7px 7px 32px; }
+  .shot .cap { font-size: 11px; bottom: 9px; left: 10px; right: 10px; }
+  .shot-a { width: 92%; }
+  .shot-b { width: 90%; bottom: 8vw; }
+  .stamp { width: 104px; height: 104px; left: -6px; top: -30px; }
+  .steps { grid-template-columns: 1fr; }
+  .steps li:nth-child(2n) { padding-left: 0; }
+  .steps li:nth-child(2n)::before { left: 0; }
+  .faq details p { padding-right: 0; }
+  .cta-cat { width: 220px; height: 220px; right: -60px; top: -40px; }
 }
-.hero::after {
-  content: ""; position: absolute; inset: 0; z-index: -1; opacity: .5;
-  background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 56px 56px;
-  -webkit-mask-image: radial-gradient(70% 60% at 50% 0%, #000, transparent 75%);
-          mask-image: radial-gradient(70% 60% at 50% 0%, #000, transparent 75%);
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
-.hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr); gap: 56px; align-items: center; }
-.badge { max-width: 100%; line-height: 1.35; display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: var(--muted); padding: 6px 12px 6px 10px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); }
-.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
-.hero h1 { font-size: clamp(36px, 6.2vw, 64px); font-weight: 800; margin: 22px 0 20px; letter-spacing: -.035em; }
-.hero h1 .hl { background: linear-gradient(92deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.lead { font-size: clamp(17px, 2vw, 19px); color: var(--muted); max-width: 600px; }
-.lead strong { color: var(--text); font-weight: 600; }
-.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.facts { display: flex; flex-wrap: wrap; gap: 28px 40px; margin-top: 44px; padding-top: 28px; border-top: 1px solid var(--border); }
-.fact b { display: block; font-size: 28px; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; }
-.fact span { font-size: 14px; color: var(--muted); }
-@media (max-width: 400px) { .badge { font-size: 12.5px; padding: 6px 10px 6px 9px; } }
-@media (max-width: 560px) { .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; } .fact b { font-size: 24px; } .fact span { display: block; font-size: 13px; line-height: 1.4; } }
-
-.term { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; font-family: var(--mono); font-size: 13.5px; }
-.term-bar { display: flex; align-items: center; gap: 7px; padding: 12px 14px; border-bottom: 1px solid var(--border); background: var(--surface-2); }
-.term-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--border-strong); }
-.term-bar span { margin-left: 8px; color: var(--faint); font-size: 12.5px; }
-.term-body { padding: 18px 18px 20px; line-height: 1.85; overflow-x: auto; }
-.term-body .p { color: var(--accent); }
-.term-body .c { color: var(--faint); }
-.term-row { display: flex; justify-content: space-between; gap: 16px; white-space: nowrap; }
-.term-row .ok { color: var(--accent); }
-.term-row .n { color: var(--text); font-weight: 600; }
-.term-total { margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--border-strong); }
-@media (max-width: 920px) { .hero-grid { grid-template-columns: 1fr; gap: 44px; } .hero { padding: 56px 0 56px; } }
-
-/* ---------- Sections ---------- */
-section { padding: 88px 0; }
-@media (max-width: 640px) { section { padding: 64px 0; } }
-.sec-alt { background: var(--bg-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.sec-head { max-width: 720px; margin-bottom: 44px; }
-.eyebrow { font: 600 13px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-.sec-head h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; }
-.sec-head p { color: var(--muted); font-size: 17px; margin-top: 14px; }
-
-/* ---------- Stack ---------- */
-.stack { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
-.stack li { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
-.stack h3 { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 12px; letter-spacing: -.01em; }
-.stack h3 svg { width: 20px; height: 20px; color: var(--accent); flex: none; }
-.stack p { color: var(--muted); font-size: 14.5px; line-height: 1.55; }
-@media (max-width: 980px) { .stack { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 520px) { .stack { grid-template-columns: 1fr; } }
-
-/* ---------- Featured ---------- */
-.featured { display: grid; gap: 28px; }
-.proj {
-  display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr);
-  background: var(--surface); border: 1px solid var(--border); border-radius: 22px; overflow: hidden; box-shadow: var(--shadow);
-}
-.proj:nth-child(even) .proj-shot { order: 2; border-right: 0; border-left: 1px solid var(--border); }
-.proj-shot { position: relative; background: var(--surface-2); border-right: 1px solid var(--border); display: block; overflow: hidden; min-height: 100%; }
-.proj-shot img { width: 100%; height: 100%; object-fit: cover; object-position: left top; aspect-ratio: 16 / 10; transition: transform .5s ease; }
-.proj-shot:hover img { transform: scale(1.025); }
-.proj-body { padding: 32px 32px 30px; display: flex; flex-direction: column; min-width: 0; }
-.proj-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font: 600 12.5px/1.2 var(--mono); color: var(--faint); margin-bottom: 12px; }
-.proj-kicker .tests { color: var(--accent); background: var(--accent-soft); padding: 4px 8px; border-radius: 6px; }
-.proj h3 { font-size: clamp(24px, 2.6vw, 30px); font-weight: 800; margin-bottom: 10px; }
-.proj-pitch { color: var(--muted); font-size: 16px; }
-.proj-points { margin: 18px 0 20px; display: grid; gap: 8px; }
-.proj-points li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.5; }
-.proj-points li::before { content: ""; position: absolute; left: 2px; top: .55em; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); transform: rotate(45deg); }
-.tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.tags li { font: 500 12.5px/1 var(--mono); padding: 6px 8px; border-radius: 7px; background: var(--surface-2); border: 1px solid var(--border); color: var(--muted); }
-.proj-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; padding-top: 24px; }
-@media (max-width: 900px) {
-  .proj { grid-template-columns: 1fr; }
-  .proj:nth-child(even) .proj-shot { order: 0; border-left: 0; }
-  .proj-shot { border-right: 0; border-bottom: 1px solid var(--border); }
-  .proj:nth-child(even) .proj-shot { border-bottom: 1px solid var(--border); }
-  .proj-body { padding: 24px 20px 22px; }
-}
-
-/* ---------- More projects ---------- */
-.more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; min-width: 0; }
-.card h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.card h3 small { font: 600 12.5px/1 var(--mono); color: var(--accent); }
-.card p { color: var(--muted); font-size: 15px; }
-.card .tags { margin-top: 16px; }
-.card .proj-actions { padding-top: 20px; }
-@media (max-width: 760px) { .more { grid-template-columns: 1fr; } }
-
-/* ---------- Services ---------- */
-.services { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--surface); }
-.svc { padding: 24px 26px; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 20px; align-items: start; }
-.svc:nth-child(odd) { border-right: 1px solid var(--border); }
-.svc:nth-last-child(-n+2) { border-bottom: 0; }
-.svc h3 { font-size: 17px; font-weight: 700; letter-spacing: -.01em; }
-.svc p { grid-column: 1 / -1; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
-.svc .price { grid-column: 1 / -1; margin-top: 8px; font-size: 14px; color: var(--muted); }
-.svc .price b { font-size: 18px; font-weight: 750; color: var(--text); letter-spacing: -.01em; font-variant-numeric: tabular-nums; }
-.svc .price .usd { color: var(--muted); font-weight: 600; }
-.svc .price-q { font-size: 13.5px; color: var(--faint); }
-.svc .time { font: 600 13px/1.3 var(--mono); color: var(--accent); white-space: nowrap; padding-top: 2px; }
-.note { color: var(--faint); font-size: 14px; margin-top: 16px; }
-@media (max-width: 800px) {
-  .services { grid-template-columns: 1fr; }
-  .svc:nth-child(odd) { border-right: 0; }
-  .svc:nth-last-child(2) { border-bottom: 1px solid var(--border); }
-  .svc { padding: 20px; }
-}
-@media (max-width: 400px) { .svc { grid-template-columns: 1fr; } }
-
-/* ---------- Process ---------- */
-.steps { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; counter-reset: s; }
-.steps li { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 22px 20px; counter-increment: s; }
-.steps li::before { content: "0" counter(s); display: block; font: 700 13px/1 var(--mono); color: var(--accent); margin-bottom: 16px; }
-.steps h3 { font-size: 16.5px; font-weight: 700; margin-bottom: 8px; letter-spacing: -.01em; }
-.steps p { color: var(--muted); font-size: 14.5px; line-height: 1.55; }
-@media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } .steps li:last-child { grid-column: 1 / -1; } }
-@media (max-width: 560px) { .steps { grid-template-columns: 1fr; } }
-
-/* ---------- Contact ---------- */
-.contact {
-  position: relative; overflow: hidden;
-  background: var(--surface); border: 1px solid var(--border-strong); border-radius: 26px;
-  padding: clamp(28px, 6vw, 64px); text-align: center;
-}
-.contact::before { content: ""; position: absolute; inset: 0; z-index: 0; background: radial-gradient(50% 70% at 50% 0%, var(--glow), transparent 70%); }
-.contact > * { position: relative; }
-.contact h2 { font-size: clamp(28px, 4.4vw, 46px); font-weight: 800; }
-.contact p { color: var(--muted); font-size: 17px; max-width: 580px; margin: 16px auto 0; }
-.contact .cta-row { justify-content: center; }
-.contact-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 28px; margin-top: 28px; font-family: var(--mono); font-size: 14.5px; }
-.contact-list a { color: var(--muted); text-decoration: none; }
-.contact-list a:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width: 480px) { .contact .btn { width: 100%; } }
-
-/* ---------- Footer ---------- */
-footer { padding: 36px 0 44px; border-top: 1px solid var(--border); color: var(--faint); font-size: 14px; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; }
-footer a { color: var(--muted); }
 </style>
 </head>
 <body>
 <a class="skip" href="#main"><span data-l="ru">К содержимому</span><span data-l="en">Skip to content</span></a>
 
-<header class="header">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="sinnercode">
-      <span class="brand-mark" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 6-6 6 6 6M16 6l6 6-6 6"/></svg></span>
-      sinnercode
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="cat" viewBox="0 0 32 32">
+    <path d="M7 13V5.5l5.6 4.3h6.8L25 5.5V13c0 7.6-4 13-9 13s-9-5.4-9-13Z" style="fill:var(--accent)"/>
+    <path d="M11 15.6l3 1.3M21 15.6l-3 1.3M13.6 21c.8.9 1.6.9 2.4 0 .8.9 1.6.9 2.4 0" style="fill:none;stroke:var(--ink)" stroke-width="1.6" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="tg" viewBox="0 0 24 24"><path fill="currentColor" d="M21.9 4.3 18.8 19c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.8-8c.4-.3-.1-.5-.6-.2L6.7 12.9 2 11.4c-1-.3-1-1 .2-1.5L20.6 3c.8-.3 1.6.2 1.3 1.3Z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="#top" aria-label="Грешный Котик, наверх">
+      <svg class="cat" aria-hidden="true"><use href="#cat"/></svg>
+      <span class="brand-name"><span data-l="ru">Грешный Котик</span><span data-l="en">sinnercode</span></span>
     </a>
-    <nav class="nav" aria-label="Навигация" data-label-ru="Навигация" data-label-en="Main navigation">
-      <a href="#stack"><span data-l="ru">Стек</span><span data-l="en">Stack</span></a>
-      <a href="#projects"><span data-l="ru">Проекты</span><span data-l="en">Projects</span></a>
-      <a href="#services"><span data-l="ru">Услуги</span><span data-l="en">Services</span></a>
+    <nav class="nav" aria-label="Разделы" data-label-ru="Разделы" data-label-en="Sections">
+      <a href="#services"><span data-l="ru">Цены</span><span data-l="en">Pricing</span></a>
+      <a href="#work"><span data-l="ru">Работы</span><span data-l="en">Work</span></a>
       <a href="#process"><span data-l="ru">Как работаю</span><span data-l="en">Process</span></a>
-      <a href="#contacts"><span data-l="ru">Контакты</span><span data-l="en">Contact</span></a>
+      <a href="#faq"><span data-l="ru">Вопросы</span><span data-l="en">FAQ</span></a>
     </nav>
     <div class="tools">
-      <div class="seg" role="group" aria-label="Язык / Language">
-        <button type="button" data-set-lang="ru" aria-pressed="true" lang="ru" title="Русский">RU</button>
-        <button type="button" data-set-lang="en" aria-pressed="false" lang="en" title="English">EN</button>
+      <div class="lang" role="group" aria-label="Язык" data-label-ru="Язык" data-label-en="Language">
+        <button type="button" data-set-lang="ru" aria-pressed="true">RU</button>
+        <button type="button" data-set-lang="en" aria-pressed="false">EN</button>
       </div>
-      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Переключить тему" data-label-ru="Переключить тему" data-label-en="Toggle theme">
-        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+      <button type="button" class="icon-btn" id="theme-toggle" aria-label="Включить тёмную тему">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5Z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       </button>
-      <a class="btn btn-primary btn-sm btn-tg-sm" href="https://t.me/sinnercode" target="_blank" rel="noopener">
-        <span data-l="ru">Написать</span><span data-l="en">Message me</span>
-      </a>
+      <a class="btn btn-sm btn-accent" href="https://t.me/sinnercode" target="_blank" rel="noopener"><span data-l="ru">Написать</span><span data-l="en">Message me</span></a>
     </div>
   </div>
 </header>
 
 <main id="main">
-<!-- ============ HERO ============ -->
-<div class="hero" id="top">
+
+<section class="hero" id="top" aria-labelledby="hero-h">
   <div class="wrap hero-grid">
     <div>
-      <span class="badge"><span class="dot" aria-hidden="true"></span><span data-l="ru">Грешный Котик · 7+ лет на&nbsp;фрилансе · открыт к&nbsp;проектам</span><span data-l="en">Грешный Котик · 7+ years freelancing · open to new projects</span></span>
-      <h1>
-        <span data-l="ru">Пишу фронтенд и&nbsp;бэкенд <span class="hl">на&nbsp;TypeScript и&nbsp;Python</span></span>
-        <span data-l="en">I build frontends and backends <span class="hl">in TypeScript and&nbsp;Python</span></span>
+      <p class="kicker mono">
+        <span data-l="ru"><b>Грешный Котик</b> <i>/</i> full-stack разработчик <i>/</i> 7+ лет на фрилансе</span>
+        <span data-l="en"><b>Грешный Котик</b> (sinnercode) <i>/</i> full-stack developer <i>/</i> 7+ years freelancing</span>
+      </p>
+      <h1 id="hero-h">
+        <span data-l="ru"><span class="nw">Telegram-боты,</span> интеграции и&nbsp;<span class="nw">веб-сервисы</span> <span class="nw">под <span class="mark">вашу задачу<svg class="scribble" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 15C46 7 92 19 146 11c50-7 101-6 150 2"/></svg></span></span></span>
+        <span data-l="en">Telegram bots, integrations and web services built for&nbsp;<span class="mark">your task<svg class="scribble" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true"><path d="M4 15C46 7 92 19 146 11c50-7 101-6 150 2"/></svg></span></span>
       </h1>
-      <p class="lead" data-l="ru">Веб-приложения, Telegram Mini Apps, AI&#8209;ассистенты и интеграции на <strong>React, Next.js, Node.js, Python/FastAPI и PostgreSQL</strong>. Вместе с кодом отдаю тесты, CI и документацию. Ниже пять живых демо&nbsp;— откройте любое и попробуйте сами.</p>
-      <p class="lead" data-l="en">Web apps, Telegram Mini Apps, AI assistants and integrations built with <strong>React, Next.js, Node.js, Python/FastAPI and PostgreSQL</strong>. Tests, CI and docs come with the code. Five live demos below&nbsp;— open any of them and try it yourself.</p>
+      <p class="lead" data-l="ru">Делаю то, что обычно нужно небольшому бизнесу: бота для заявок, связку сайта с CRM, магазин прямо в Telegram, внутреннюю CRM или отчёт, который собирается сам. Веду задачу от брифа до деплоя на ваш сервер.</p>
+      <p class="lead" data-l="en">I build what small businesses usually need: a lead bot, a website wired to a CRM, a shop right inside Telegram, an internal CRM or a report that builds itself. I take the job from the brief to deployment on your server.</p>
+      <p class="lead" data-l="ru"><strong>Цену и срок называю до начала работы.</strong> Половина оплаты — после приёмки.</p>
+      <p class="lead" data-l="en"><strong>You get the price and timeline before work starts.</strong> Half of the payment comes after acceptance.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="https://t.me/sinnercode" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.8 19c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.8-8c.4-.3-.1-.5-.6-.2L6.7 12.9 2 11.4c-1-.3-1-1 .2-1.5L20.6 3c.8-.3 1.6.2 1.3 1.3Z"/></svg>
-          <span data-l="ru">Обсудить проект в Telegram</span><span data-l="en">Discuss a project on Telegram</span>
+        <a class="btn btn-accent btn-lg" href="https://t.me/sinnercode" target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#tg"/></svg>
+          <span data-l="ru">Обсудить задачу в Telegram</span><span data-l="en">Discuss your task on Telegram</span>
         </a>
-        <a class="btn btn-ghost" href="#projects"><span data-l="ru">Смотреть проекты</span><span data-l="en">See the projects</span></a>
+        <a class="lnk" href="#services"><span data-l="ru">Цены и сроки ↓</span><span data-l="en">Prices and timelines ↓</span></a>
       </div>
-      <div class="facts">
-        <div class="fact"><b>5</b><span data-l="ru">full-stack демо онлайн</span><span data-l="en">live full-stack demos</span></div>
-        <div class="fact"><b>9</b><span data-l="ru">проектов на этой странице</span><span data-l="en">projects on this page</span></div>
-        <div class="fact"><b>999</b><span data-l="ru">автотестов, все зелёные</span><span data-l="en">automated tests, all green</span></div>
-      </div>
+      <p class="cta-note mono"><span data-l="ru">@sinnercode — отвечу с вопросами, сроком и ценой. Сейчас беру новые проекты.</span><span data-l="en">@sinnercode — I'll reply with questions, a timeline and a price. Taking on new projects now.</span></p>
     </div>
 
-    <div class="term" role="img" aria-label="Число автотестов по репозиториям" data-label-ru="Число автотестов по репозиториям" data-label-en="Automated test counts per repository">
-      <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><span>tests per repository</span></div>
-      <div class="term-body" aria-hidden="true">
-        <div><span class="c"># pytest · vitest · node --test</span></div>
-        <div class="term-row"><span>flowdesk-crm</span><span><span class="n">97</span> <span class="ok">passed</span></span></div>
-        <div class="term-row"><span>docmind-rag</span><span><span class="n">127</span> <span class="ok">passed</span></span></div>
-        <div class="term-row"><span>tg-shop-miniapp</span><span><span class="n">143</span> <span class="ok">passed</span></span></div>
-        <div class="term-row"><span>integration-hub</span><span><span class="n">155</span> <span class="ok">passed</span></span></div>
-        <div class="term-row"><span>pulse-analytics</span><span><span class="n">97</span> <span class="ok">passed</span></span></div>
-        <div class="term-row term-total"><span class="c">+ 4 smaller demos</span><span><span class="n">380</span> <span class="ok">passed</span></span></div>
-        <div><span class="p">✓</span> <span class="c">999 tests · 0 failed</span></div>
+    <div class="hero-art">
+      <a class="shot shot-a" href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener">
+        <img src="assets/projects/pulse-analytics/cover.webp" width="1200" height="750" alt="Дашборд веб-аналитики Pulse" data-alt-en="The Pulse web analytics dashboard" fetchpriority="high">
+        <span class="cap"><span data-l="ru">рис. 1 — веб-аналитика</span><span data-l="en">fig. 1 — web analytics</span><span><span data-l="ru">демо ↗</span><span data-l="en">demo ↗</span></span></span>
+      </a>
+      <a class="shot shot-b" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener">
+        <img src="assets/projects/tg-shop-miniapp/cover.webp" width="1200" height="750" alt="Магазин Zernolist внутри Telegram: каталог, товар, оплата звёздами" data-alt-en="The Zernolist shop inside Telegram: catalog, product, Stars payment" fetchpriority="high">
+        <span class="cap"><span data-l="ru">рис. 2 — магазин в Telegram</span><span data-l="en">fig. 2 — a shop inside Telegram</span><span><span data-l="ru">демо ↗</span><span data-l="en">demo ↗</span></span></span>
+      </a>
+      <div class="stamp" aria-hidden="true">
+        <svg viewBox="0 0 160 160">
+          <defs><path id="stamp-circle" d="M80 80m-60 0a60 60 0 1 1 120 0a60 60 0 1 1-120 0"/></defs>
+          <circle class="ring" cx="80" cy="80" r="76"/>
+          <circle cx="80" cy="80" r="46" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4"/>
+          <text data-l="ru"><textPath href="#stamp-circle" textLength="372">Грешный Котик ✶ пишет код на заказ ✶ 7+ лет ✶</textPath></text>
+          <text data-l="en"><textPath href="#stamp-circle" textLength="372">sinnercode ✶ code to order ✶ 7+ years freelance ✶</textPath></text>
+          <g class="cat-in"><use href="#cat" x="54" y="52" width="52" height="52"/></g>
+        </svg>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ============ STACK ============ -->
-<section id="stack" class="sec-alt" aria-labelledby="stack-h">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow"><span data-l="ru">Стек</span><span data-l="en">Stack</span></div>
-      <h2 id="stack-h"><span data-l="ru">С чем работаю</span><span data-l="en">What I work with</span></h2>
-      <p data-l="ru">Интерфейс, API, базу и деплой делаю сам, поэтому согласовывать работу фронтендера, бэкендера и девопса не нужно.</p>
-      <p data-l="en">I do the UI, the API, the database and deployment myself, so there's no frontend dev, backend dev or DevOps engineer to coordinate.</p>
-    </div>
-    <ul class="stack">
-      <li>
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 21h8"/></svg>Frontend</h3>
-        <p>React, Next.js, TypeScript, Vite, Tailwind CSS, <span data-l="ru">адаптив и доступность</span><span data-l="en">responsive and accessible UI</span></p>
-      </li>
-      <li>
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01"/></svg>Backend</h3>
-        <p>Node.js/TypeScript (Fastify), Python (FastAPI), REST, WebSocket, SSE, <span data-l="ru">JWT и роли</span><span data-l="en">JWT and roles</span></p>
-      </li>
-      <li>
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg><span data-l="ru">Данные</span><span data-l="en">Data</span></h3>
-        <p>PostgreSQL, Redis, SQLite, Prisma, SQLAlchemy, pgvector</p>
-      </li>
-      <li>
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 3-9.5 9.5M22 3l-6.5 18-3-8.5L4 9.5 22 3Z"/></svg>Telegram</h3>
-        <p><span data-l="ru">Боты на aiogram 3, Mini Apps, оплата в Telegram Stars, проверка initData</span><span data-l="en">aiogram 3 bots, Mini Apps, Telegram Stars payments, initData validation</span></p>
-      </li>
-      <li>
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M6 18l2-2M16 8l2-2"/><circle cx="12" cy="12" r="3.5"/></svg>AI / LLM</h3>
-        <p><span data-l="ru">RAG по документам, Claude и OpenAI-совместимые API, эмбеддинги, стриминг ответов</span><span data-l="en">Document RAG, Claude and OpenAI-compatible APIs, embeddings, streamed answers</span></p>
-      </li>
-      <li>
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7h8M8 17h8"/><circle cx="5" cy="7" r="2"/><circle cx="19" cy="7" r="2"/><circle cx="5" cy="17" r="2"/><circle cx="19" cy="17" r="2"/><path d="M19 9v6"/></svg><span data-l="ru">Интеграции</span><span data-l="en">Integrations</span></h3>
-        <p><span data-l="ru">amoCRM, Bitrix24, Tilda, МойСклад, Google Sheets, вебхуки, парсинг</span><span data-l="en">amoCRM, Bitrix24, Tilda, MoySklad, Google Sheets, webhooks, scraping</span></p>
-      </li>
-      <li>
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8l-9-5-9 5v8l9 5 9-5Z"/><path d="m3.3 7 8.7 5 8.7-5M12 22V12"/></svg>DevOps</h3>
-        <p>Docker, Docker Compose, GitHub Actions CI/CD, VPS, nginx, systemd</p>
-      </li>
-      <li>
-        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 12l2 2 4-4"/><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6l-8-3Z"/></svg><span data-l="ru">Качество</span><span data-l="en">Quality</span></h3>
-        <p>Vitest, pytest, mypy --strict, ESLint, ruff, <span data-l="ru">строгий TypeScript</span><span data-l="en">strict TypeScript</span></p>
-      </li>
-    </ul>
+    <dl class="facts">
+      <div><dt>7<em>+</em></dt><dd><span data-l="ru">лет пишу код на заказ, в основном на фрилансе</span><span data-l="en">years of client work, mostly freelance</span></dd></div>
+      <div><dt>10</dt><dd><span data-l="ru">открытых проектов с кодом, 6 из них с живым демо</span><span data-l="en">open projects with code, 6 with a live demo</span></dd></div>
+      <div><dt>1047</dt><dd><span data-l="ru">автотестов в этих проектах, прогоняются в CI</span><span data-l="en">automated tests in them, run in CI</span></dd></div>
+      <div><dt>50<em>/</em>50</dt><dd><span data-l="ru">предоплата на старте и оплата после приёмки</span><span data-l="en">paid upfront, and after you accept the work</span></dd></div>
+    </dl>
   </div>
 </section>
 
-<!-- ============ FEATURED ============ -->
-<section id="projects" aria-labelledby="projects-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow"><span data-l="ru">Флагманские проекты</span><span data-l="en">Flagship projects</span></div>
-      <h2 id="projects-h"><span data-l="ru">CRM, RAG-ассистент, магазин, хаб вебхуков и аналитика</span><span data-l="en">A CRM, a RAG assistant, a shop, a webhook hub and analytics</span></h2>
-      <p data-l="ru">Каждый проект — отдельный репозиторий с бэкендом, фронтендом, тестами, CI и Docker. Демо работают прямо в браузере, без регистрации: бэкенд подменяется встроенным API (в FlowDesk и Pulse — на общем с сервером коде).</p>
-      <p data-l="en">Each project is its own repository with a backend, frontend, tests, CI and Docker. The demos run right in your browser with no sign-up: the backend is replaced by an in-browser API (in FlowDesk and Pulse it runs on code shared with the server).</p>
+<section class="sec" id="services" aria-labelledby="services-h">
+  <div class="wrap sec-grid">
+    <div class="sec-side">
+      <div class="sec-label"><b>01</b><span data-l="ru">Цены</span><span data-l="en">Pricing</span></div>
+      <p data-l="ru">Сроки ориентировочные, цены — нижняя граница. Точную цену и срок называю после брифа, до начала работы.</p>
+      <p data-l="en">Timelines are estimates; prices are starting points. I give the exact price and timeline after the brief, before work starts.</p>
     </div>
-
-    <div class="featured">
-      <!-- FlowDesk -->
-      <article class="proj">
-        <a class="proj-shot" href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-          <img src="assets/projects/flowdesk-crm/cover.webp" width="1200" height="750" alt="" decoding="async" fetchpriority="high">
-        </a>
-        <div class="proj-body">
-          <div class="proj-kicker"><span>CRM · SaaS</span><span class="tests">97 <span data-l="ru">тестов</span><span data-l="en">tests</span></span></div>
-          <h3>FlowDesk CRM</h3>
-          <p class="proj-pitch" data-l="ru">Мини-CRM для отдела продаж: канбан сделок, контакты, аналитика и роли.</p>
-          <p class="proj-pitch" data-l="en">A mini-CRM for a sales team: deals kanban, contacts, analytics and roles.</p>
-          <ul class="proj-points" data-l="ru">
-            <li>Drag-and-drop воронка, заметки, фильтры по владельцу, поиск</li>
-            <li>JWT с refresh-токенами, роли admin и manager — чужие сделки только на чтение</li>
-            <li>Общие схемы для API и фронтенда, миграции PostgreSQL в CI</li>
-          </ul>
-          <ul class="proj-points" data-l="en">
-            <li>Drag-and-drop pipeline, notes, owner filters, search</li>
-            <li>JWT with refresh tokens, admin and manager roles — others' deals are read-only</li>
-            <li>Shared schemas for API and frontend, PostgreSQL migrations in CI</li>
-          </ul>
-          <ul class="tags" aria-label="Стек" data-label-ru="Стек" data-label-en="Stack"><li>Next.js</li><li>TypeScript</li><li>Fastify</li><li>Prisma</li><li>PostgreSQL</li><li>Tailwind</li><li>Docker</li></ul>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">Живое демо</span><span data-l="en">Live demo</span> ↗</a>
-            <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/flowdesk-crm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- DocMind -->
-      <article class="proj">
-        <a class="proj-shot" href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-          <img src="assets/projects/docmind-rag/cover.webp" width="1200" height="750" alt="" loading="lazy" decoding="async">
-        </a>
-        <div class="proj-body">
-          <div class="proj-kicker"><span>AI · RAG</span><span class="tests">127 <span data-l="ru">тестов</span><span data-l="en">tests</span></span></div>
-          <h3>DocMind RAG</h3>
-          <p class="proj-pitch" data-l="ru">AI-ассистент по вашим документам: отвечает по PDF, DOCX и веб-страницам со ссылками на источник.</p>
-          <p class="proj-pitch" data-l="en">An AI assistant for your documents: answers from PDFs, DOCX files and web pages with source citations.</p>
-          <ul class="proj-points" data-l="ru">
-            <li>Потоковые ответы по SSE со сносками [n], карточки источников приходят раньше текста</li>
-            <li>В карточке источника подсвечено предложение, ближе всего подходящее к вопросу</li>
-            <li>pgvector + MMR, модели Claude или OpenAI-совместимые, Telegram-бот</li>
-          </ul>
-          <ul class="proj-points" data-l="en">
-            <li>Answers streamed over SSE with [n] citations; source cards arrive before the text</li>
-            <li>The source card highlights the sentence closest to the question</li>
-            <li>pgvector + MMR, Claude or OpenAI-compatible models, a Telegram bot</li>
-          </ul>
-          <ul class="tags" aria-label="Стек" data-label-ru="Стек" data-label-en="Stack"><li>FastAPI</li><li>pgvector</li><li>LLM</li><li>React</li><li>TypeScript</li><li>aiogram</li><li>Docker</li></ul>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener"><span data-l="ru">Живое демо</span><span data-l="en">Live demo</span> ↗</a>
-            <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/docmind-rag" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- tg-shop -->
-      <article class="proj">
-        <a class="proj-shot" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-          <img src="assets/projects/tg-shop-miniapp/cover.webp" width="1200" height="750" alt="" loading="lazy" decoding="async">
-        </a>
-        <div class="proj-body">
-          <div class="proj-kicker"><span>Telegram Mini App</span><span class="tests">143 <span data-l="ru">теста</span><span data-l="en">tests</span></span></div>
-          <h3>Zernolist</h3>
-          <p class="proj-pitch" data-l="ru">Магазин внутри Telegram: каталог, корзина, оформление и оплата в Telegram Stars.</p>
-          <p class="proj-pitch" data-l="en">A shop inside Telegram: catalog, cart, checkout and Telegram Stars payments.</p>
-          <ul class="proj-points" data-l="ru">
-            <li>Нативные кнопки и тема клиента Telegram, RU/EN, промокоды</li>
-            <li>Бот на aiogram 3: проверка initData по HMAC, уведомления админам</li>
-            <li>Цены считаются одной логикой на Python и TypeScript — сверяются общими тестами</li>
-          </ul>
-          <ul class="proj-points" data-l="en">
-            <li>Native Telegram buttons and client theme, RU/EN, promo codes</li>
-            <li>aiogram 3 bot: initData HMAC validation, admin notifications</li>
-            <li>Pricing shared between Python and TypeScript, kept in sync by the same test cases</li>
-          </ul>
-          <ul class="tags" aria-label="Стек" data-label-ru="Стек" data-label-en="Stack"><li>React</li><li>Vite</li><li>TypeScript</li><li>aiogram 3</li><li>FastAPI</li><li>Telegram Stars</li></ul>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">Живое демо</span><span data-l="en">Live demo</span> ↗</a>
-            <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/tg-shop-miniapp" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- integration-hub -->
-      <article class="proj">
-        <a class="proj-shot" href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-          <img src="assets/projects/integration-hub/cover.webp" width="1200" height="750" alt="" loading="lazy" decoding="async">
-        </a>
-        <div class="proj-body">
-          <div class="proj-kicker"><span><span data-l="ru">Интеграции</span><span data-l="en">Integrations</span></span><span class="tests">155 <span data-l="ru">тестов</span><span data-l="en">tests</span></span></div>
-          <h3>Relay Integration Hub</h3>
-          <p class="proj-pitch" data-l="ru">Хаб вебхуков: заявки из Tilda, amoCRM и Bitrix24 доходят до Telegram, Google Sheets, CRM и почты по YAML-маршрутам.</p>
-          <p class="proj-pitch" data-l="en">A webhook hub: leads from Tilda, amoCRM and Bitrix24 reach Telegram, Google Sheets, a CRM and e-mail via YAML routes.</p>
-          <ul class="proj-points" data-l="ru">
-            <li>Нормализация событий, HMAC-подписи, отсев повторных вебхуков по ключу идемпотентности</li>
-            <li>Ретраи с backoff, dead-letter очередь и повтор в один клик</li>
-            <li>Админ-дашборд с историей попыток и метрики Prometheus</li>
-          </ul>
-          <ul class="proj-points" data-l="en">
-            <li>Event normalization, HMAC signatures, idempotency keys to drop repeated webhooks</li>
-            <li>Backoff retries, a dead-letter queue and one-click replay</li>
-            <li>Admin dashboard with attempt history, Prometheus metrics</li>
-          </ul>
-          <ul class="tags" aria-label="Стек" data-label-ru="Стек" data-label-en="Stack"><li>FastAPI</li><li>Redis</li><li>Webhooks</li><li>amoCRM</li><li>Bitrix24</li><li>React</li><li>Docker</li></ul>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener"><span data-l="ru">Живое демо</span><span data-l="en">Live demo</span> ↗</a>
-            <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/integration-hub" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-          </div>
-        </div>
-      </article>
-
-      <!-- pulse -->
-      <article class="proj">
-        <a class="proj-shot" href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true">
-          <img src="assets/projects/pulse-analytics/cover.webp" width="1200" height="750" alt="" loading="lazy" decoding="async">
-        </a>
-        <div class="proj-body">
-          <div class="proj-kicker"><span><span data-l="ru">Аналитика · real-time</span><span data-l="en">Analytics · real-time</span></span><span class="tests">97 <span data-l="ru">тестов</span><span data-l="en">tests</span></span></div>
-          <h3>Pulse Analytics</h3>
-          <p class="proj-pitch" data-l="ru">Веб-аналитика в реальном времени без cookies и мониторинг аптайма.</p>
-          <p class="proj-pitch" data-l="en">Cookieless real-time web analytics plus uptime monitoring.</p>
-          <ul class="proj-points" data-l="ru">
-            <li>Трекер меньше 1 КБ, приём событий на Fastify, агрегация в SQLite</li>
-            <li>Живой поток посетителей через WebSocket, графики на uPlot</li>
-            <li>Демо без бэкенда: тот же движок запросов крутится в Web Worker</li>
-          </ul>
-          <ul class="proj-points" data-l="en">
-            <li>A tracker under 1 KB, Fastify ingestion, SQLite rollups</li>
-            <li>Live visitor feed over WebSocket, uPlot charts</li>
-            <li>Backend-free demo: the same query engine runs in a Web Worker</li>
-          </ul>
-          <ul class="tags" aria-label="Стек" data-label-ru="Стек" data-label-en="Stack"><li>Fastify</li><li>WebSocket</li><li>SQLite</li><li>React</li><li>uPlot</li><li>TypeScript</li></ul>
-          <div class="proj-actions">
-            <a class="btn btn-primary btn-sm" href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">Живое демо</span><span data-l="en">Live demo</span> ↗</a>
-            <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/pulse-analytics" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-          </div>
-        </div>
-      </article>
+    <div>
+      <h2><span data-l="ru">Что можно заказать</span><span data-l="en">What you can order</span></h2>
+      <ol class="menu">
+        <li class="menu-row">
+          <div class="menu-head"><h3><span data-l="ru">Telegram-бот</span><span data-l="en">Telegram bot</span></h3><span class="leader" aria-hidden="true"></span><span class="price"><span data-l="ru"><small>от</small>15&nbsp;000&nbsp;₽</span><span data-l="en"><small>from</small>$200</span></span></div>
+          <p data-l="ru">Приём заявок, запись, рассылки, выгрузки, связка с CRM и таблицами. С деплоем на ваш сервер.</p>
+          <p data-l="en">Lead capture, bookings, broadcasts, exports, CRM and spreadsheet sync. Deployed to your server.</p>
+          <div class="menu-meta"><span><span data-l="ru">срок: 3–10 дней</span><span data-l="en">time: 3–10 days</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://github.com/sinnercode228/portfolio/tree/main/telegram-bot-demo" target="_blank" rel="noopener"><span data-l="ru">бот для заявок</span><span data-l="en">lead bot</span></a></span></div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-head"><h3><span data-l="ru">Интеграции и автоматизация</span><span data-l="en">Integrations and automation</span></h3><span class="leader" aria-hidden="true"></span><span class="price"><span data-l="ru"><small>от</small>10&nbsp;000&nbsp;₽</span><span data-l="en"><small>from</small>$120</span></span></div>
+          <p data-l="ru">Сайт → CRM → Telegram → Google Sheets. Вебхуки, API и повторные попытки, чтобы заявки не терялись по дороге.</p>
+          <p data-l="en">Website → CRM → Telegram → Google Sheets. Webhooks, APIs and retries, so leads don't get lost on the way.</p>
+          <div class="menu-meta"><span><span data-l="ru">срок: 2–7 дней</span><span data-l="en">time: 2–7 days</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener"><span data-l="ru">хаб вебхуков Relay ↗</span><span data-l="en">Relay webhook hub ↗</span></a></span></div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-head"><h3><span data-l="ru">Лендинг или сайт</span><span data-l="en">Landing page or website</span></h3><span class="leader" aria-hidden="true"></span><span class="price"><span data-l="ru"><small>от</small>12&nbsp;000&nbsp;₽</span><span data-l="en"><small>from</small>$150</span></span></div>
+          <p data-l="ru">Адаптивный сайт с формой, калькулятором и отправкой заявок в Telegram или на почту.</p>
+          <p data-l="en">A responsive site with a form, a calculator and leads sent to Telegram or e-mail.</p>
+          <div class="menu-meta"><span><span data-l="ru">срок: 3–7 дней</span><span data-l="en">time: 3–7 days</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/portfolio/landing-calculator/" target="_blank" rel="noopener"><span data-l="ru">лендинг с калькулятором ↗</span><span data-l="en">landing page with a calculator ↗</span></a></span></div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-head"><h3><span data-l="ru">Веб-приложение или MVP</span><span data-l="en">Web app or MVP</span></h3><span class="leader" aria-hidden="true"></span><span class="price"><span data-l="ru"><small>от</small>60&nbsp;000&nbsp;₽</span><span data-l="en"><small>from</small>$700</span></span></div>
+          <p data-l="ru">CRM, личный кабинет, админка, SaaS: Next.js или React, API на Node.js или FastAPI, PostgreSQL, роли и авторизация.</p>
+          <p data-l="en">A CRM, customer portal, admin panel or SaaS: Next.js or React, a Node.js or FastAPI API, PostgreSQL, roles and auth.</p>
+          <div class="menu-meta"><span><span data-l="ru">срок: 2–6 недель</span><span data-l="en">time: 2–6 weeks</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">CRM FlowDesk ↗</span><span data-l="en">FlowDesk CRM ↗</span></a></span></div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-head"><h3>Telegram Mini App</h3><span class="leader" aria-hidden="true"></span><span class="price q"><span data-l="ru">цена после брифа</span><span data-l="en">priced after the brief</span></span></div>
+          <p data-l="ru">Магазин, запись или каталог внутри Telegram: бот, веб-приложение, оплата в Stars, уведомления админам.</p>
+          <p data-l="en">A shop, booking or catalog inside Telegram: bot, web app, Stars payments, admin notifications.</p>
+          <div class="menu-meta"><span><span data-l="ru">срок: 2–4 недели</span><span data-l="en">time: 2–4 weeks</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">магазин Zernolist ↗</span><span data-l="en">Zernolist shop ↗</span></a></span></div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-head"><h3><span data-l="ru">AI-ассистент по документам</span><span data-l="en">AI assistant for your documents</span></h3><span class="leader" aria-hidden="true"></span><span class="price q"><span data-l="ru">цена после брифа</span><span data-l="en">priced after the brief</span></span></div>
+          <p data-l="ru">Ответы по вашей базе знаний со ссылками на источник: в вебе, в Telegram или по API.</p>
+          <p data-l="en">Answers from your knowledge base with source citations: on the web, in Telegram or via an API.</p>
+          <div class="menu-meta"><span><span data-l="ru">срок: 1–3 недели</span><span data-l="en">time: 1–3 weeks</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener">DocMind ↗</a></span></div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-head"><h3><span data-l="ru">Парсинг, отчёты, дашборды</span><span data-l="en">Scraping, reports, dashboards</span></h3><span class="leader" aria-hidden="true"></span><span class="price q"><span data-l="ru">цена после брифа</span><span data-l="en">priced after the brief</span></span></div>
+          <p data-l="ru">Сбор данных с сайтов, выгрузки в Excel и Google Sheets, веб-дашборды с метриками.</p>
+          <p data-l="en">Collecting data from websites, exports to Excel and Google Sheets, web dashboards with metrics.</p>
+          <div class="menu-meta"><span><span data-l="ru">срок: 2–5 дней</span><span data-l="en">time: 2–5 days</span></span><span class="ex"><span data-l="ru">примеры:</span><span data-l="en">examples:</span> <a href="https://github.com/sinnercode228/portfolio/tree/main/scraper-demo" target="_blank" rel="noopener"><span data-l="ru">парсер</span><span data-l="en">scraper</span></a><a href="https://github.com/sinnercode228/portfolio/tree/main/excel-dashboard-demo" target="_blank" rel="noopener"><span data-l="ru">отчёт в Excel</span><span data-l="en">Excel report</span></a><a href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">дашборд ↗</span><span data-l="en">dashboard ↗</span></a></span></div>
+        </li>
+        <li class="menu-row">
+          <div class="menu-head"><h3><span data-l="ru">Деплой, CI/CD, доработки</span><span data-l="en">Deployment, CI/CD, fixes</span></h3><span class="leader" aria-hidden="true"></span><span class="price q"><span data-l="ru">цена после брифа</span><span data-l="en">priced after the brief</span></span></div>
+          <p data-l="ru">Docker, VPS, GitHub Actions, перенос на сервер, исправление багов в существующем коде.</p>
+          <p data-l="en">Docker, VPS, GitHub Actions, moving to a server, bug fixes in an existing codebase.</p>
+          <div class="menu-meta"><span><span data-l="ru">срок: 1–3 дня</span><span data-l="en">time: 1–3 days</span></span></div>
+        </li>
+      </ol>
+      <div class="menu-note">
+        <a class="btn" href="https://t.me/sinnercode" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#tg"/></svg><span data-l="ru">Узнать цену вашей задачи</span><span data-l="en">Get a price for your task</span></a>
+        <p data-l="ru">Не нашли свою задачу в списке? Всё равно напишите: список не полный.</p>
+        <p data-l="en">Don't see your task on the list? Write anyway: the list isn't complete.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ MORE ============ -->
-<section class="sec-alt" aria-labelledby="more-h">
+<section class="sec sec-alt" id="work" aria-labelledby="work-h">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow"><span data-l="ru">Ещё проекты</span><span data-l="en">More projects</span></div>
-      <h2 id="more-h"><span data-l="ru">Небольшие демо на Python и JavaScript</span><span data-l="en">Smaller demos in Python and JavaScript</span></h2>
-      <p data-l="ru">Лендинг, парсер, бот и отчёт в Excel. У каждого есть README, инструкция по запуску и автотесты.</p>
-      <p data-l="en">A landing page, a scraper, a bot and an Excel report. Each has a README, run instructions and automated tests.</p>
+    <div class="work-head">
+      <div class="sec-label"><b>02</b><span data-l="ru">Работы</span><span data-l="en">Work</span></div>
+      <div>
+        <h2 id="work-h"><span data-l="ru">Работы, которые можно открыть и&nbsp;потрогать</span><span data-l="en">Work you can open and try</span></h2>
+        <p class="sec-intro" data-l="ru">Коммерческий код остаётся у заказчиков, поэтому здесь открытые демо на выдуманных данных. Они работают прямо в браузере, без регистрации, а весь код лежит на GitHub.</p>
+        <p class="sec-intro" data-l="en">Client code stays with clients, so these are open demos on made-up data. They run right in your browser without sign-up, and all the code is on GitHub.</p>
+      </div>
     </div>
+
+    <article class="case case-wide">
+      <figure><img src="assets/projects/tg-shop-miniapp/cover.webp" width="1200" height="750" loading="lazy" alt="Zernolist: каталог, карточка товара и оплата звёздами" data-alt-en="Zernolist: catalog, product page and Stars payment"></figure>
+      <div class="case-body">
+        <div class="case-kind"><span>Telegram Mini App</span><span data-l="ru">143 теста</span><span data-l="en">143 tests</span></div>
+        <h3>Zernolist</h3>
+        <p data-l="ru">Магазин кофе и чая, который открывается прямо в Telegram: каталог с поиском, промокоды, курьер или самовывоз, оплата звёздами Stars или при получении. Заказы приходят админу в бота, статус он меняет кнопками под уведомлением.</p>
+        <p data-l="en">A coffee and tea shop that opens right inside Telegram: a searchable catalog, promo codes, courier or pickup, payment with Stars or on receipt. Orders reach the admin in the bot, and the status changes with buttons under the notification.</p>
+        <p data-l="ru">Цену каждого заказа сервер считает сам по каталогу, поэтому подменить её из браузера не выйдет. Если Telegram пришлёт уведомление об оплате дважды, заказ второй раз не проведётся.</p>
+        <p data-l="en">The server prices every order from the catalog itself, so the price can't be swapped in the browser. If Telegram delivers a payment update twice, the order isn't processed twice.</p>
+        <p class="case-tech">React · Vite · aiogram 3 · FastAPI · Telegram Stars</p>
+        <div class="case-links">
+          <a class="lnk" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+          <a class="lnk" href="https://github.com/sinnercode228/tg-shop-miniapp" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+        </div>
+      </div>
+    </article>
+
+    <div class="case-pair">
+      <article class="case">
+        <figure><img src="assets/projects/integration-hub/cover.webp" width="1200" height="750" loading="lazy" alt="Дашборд Relay: события, доставки и повторы" data-alt-en="The Relay dashboard: events, deliveries and retries"></figure>
+        <div class="case-body">
+          <div class="case-kind"><span data-l="ru">Интеграции</span><span data-l="en">Integrations</span><span data-l="ru">155 тестов</span><span data-l="en">155 tests</span></div>
+          <h3>Relay</h3>
+          <p data-l="ru">Заявки из Tilda, amoCRM и Bitrix24 расходятся в Telegram, Google Sheets, amoCRM и на почту. Если получатель не ответил, доставка повторяется с растущей паузой, а то, что так и не дошло, ждёт в отдельном списке, откуда его можно отправить ещё раз.</p>
+          <p data-l="en">Leads from Tilda, amoCRM and Bitrix24 go out to Telegram, Google Sheets, amoCRM and e-mail. If a recipient doesn't answer, the delivery is retried with growing pauses, and whatever never got through waits in a separate list where you can send it again.</p>
+          <p class="case-tech">Python · FastAPI · Redis · React</p>
+          <div class="case-links">
+            <a class="lnk" href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+            <a class="lnk" href="https://github.com/sinnercode228/integration-hub" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          </div>
+        </div>
+      </article>
+      <article class="case">
+        <figure><img src="assets/projects/flowdesk-crm/cover.webp" width="1200" height="750" loading="lazy" alt="FlowDesk: канбан сделок" data-alt-en="FlowDesk: the deals board"></figure>
+        <div class="case-body">
+          <div class="case-kind"><span>CRM</span><span data-l="ru">97 тестов</span><span data-l="en">97 tests</span></div>
+          <h3>FlowDesk</h3>
+          <p data-l="ru">CRM для отдела продаж: канбан сделок с перетаскиванием, контакты, заметки и история по сделке, дашборд с воронкой и прогнозом. Менеджер двигает и правит только свои сделки, админ — все.</p>
+          <p data-l="en">A CRM for a sales team: a drag-and-drop deals board, contacts, notes and history per deal, a dashboard with the funnel and a forecast. Managers move and edit only their own deals; admins can edit all of them.</p>
+          <p class="case-note" data-l="ru">Вход в демо уже заполнен, пароль вводить не нужно.</p>
+          <p class="case-note" data-l="en">The demo login is prefilled, no password to type.</p>
+          <p class="case-tech">Next.js · Fastify · Prisma · PostgreSQL</p>
+          <div class="case-links">
+            <a class="lnk" href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+            <a class="lnk" href="https://github.com/sinnercode228/flowdesk-crm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="case-pair">
+      <article class="case">
+        <figure><img src="assets/projects/pulse-analytics/cover.webp" width="1200" height="750" loading="lazy" alt="Pulse: график трафика и живая лента посетителей" data-alt-en="Pulse: traffic chart and live visitor feed"></figure>
+        <div class="case-body">
+          <div class="case-kind"><span data-l="ru">Аналитика</span><span data-l="en">Analytics</span><span data-l="ru">97 тестов</span><span data-l="en">97 tests</span></div>
+          <h3>Pulse</h3>
+          <p data-l="ru">Веб-аналитика без cookies и мониторинг аптайма в одном дашборде. Скрипт для сайта весит 843 байта, посетители появляются в живой ленте, а упавший сайт видно на странице аптайма.</p>
+          <p data-l="en">Cookieless web analytics and uptime monitoring in one dashboard. The site script weighs 843 bytes, visitors show up in a live feed, and a site that goes down shows up on the uptime page.</p>
+          <p class="case-tech">TypeScript · Fastify · SQLite · WebSocket · React</p>
+          <div class="case-links">
+            <a class="lnk" href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+            <a class="lnk" href="https://github.com/sinnercode228/pulse-analytics" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          </div>
+        </div>
+      </article>
+      <article class="case">
+        <figure><img src="assets/projects/docmind-rag/cover.webp" width="1200" height="750" loading="lazy" alt="DocMind: ответ со сносками на источники" data-alt-en="DocMind: an answer with source citations"></figure>
+        <div class="case-body">
+          <div class="case-kind"><span>AI</span><span data-l="ru">127 тестов</span><span data-l="en">127 tests</span></div>
+          <h3>DocMind</h3>
+          <p data-l="ru">Ассистент, который отвечает по вашим документам: PDF, DOCX, страницам сайта. Ответ идёт потоком со сносками, клик по сноске открывает фрагмент источника. Есть веб-интерфейс и Telegram-бот.</p>
+          <p data-l="en">An assistant that answers from your documents: PDF, DOCX, web pages. The answer streams in with citations, and a click on a citation opens the source passage. There's a web UI and a Telegram bot.</p>
+          <p class="case-note" data-l="ru">В демо нет LLM: ответ собирается из найденных в документах предложений.</p>
+          <p class="case-note" data-l="en">The demo has no LLM: answers are assembled from sentences found in the documents.</p>
+          <p class="case-tech">Python · FastAPI · pgvector · Claude / OpenAI API · React</p>
+          <div class="case-links">
+            <a class="lnk" href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+            <a class="lnk" href="https://github.com/sinnercode228/docmind-rag" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+
     <div class="more">
-      <article class="card">
-        <h3><span data-l="ru">Лендинг с калькулятором</span><span data-l="en">Landing page with a calculator</span><small>49 <span data-l="ru">тестов</span><span data-l="en">tests</span></small></h3>
-        <p data-l="ru">Сайт строительной компании: расчёт стоимости дома со сметой, ссылка на расчёт, заявка в Telegram или на почту через serverless-функцию.</p>
-        <p data-l="en">A builder's website: house price calculator with an itemised estimate, shareable link, and leads sent to Telegram or e-mail via a serverless function.</p>
-        <ul class="tags" aria-label="Стек" data-label-ru="Стек" data-label-en="Stack"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Serverless</li></ul>
-        <div class="proj-actions">
-          <a class="btn btn-primary btn-sm" href="./landing-calculator/"><span data-l="ru">Живое демо</span><span data-l="en">Live demo</span></a>
-          <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/portfolio/tree/main/landing-calculator" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-        </div>
-      </article>
-      <article class="card">
-        <h3><span data-l="ru">Асинхронный парсер</span><span data-l="en">Async web scraper</span><small>80 <span data-l="ru">тестов</span><span data-l="en">tests</span></small></h3>
-        <p data-l="ru">Пример прогона в репозитории: 100 книг, 109 запросов, 0 ошибок. Лимиты скорости, повторы, кэш, robots.txt, выгрузка в Excel, CSV, JSON и Google Sheets.</p>
-        <p data-l="en">Sample run in the repo: 100 books, 109 requests, 0 errors. Rate limits, retries, caching, robots.txt, export to Excel, CSV, JSON and Google Sheets.</p>
-        <ul class="tags" aria-label="Стек" data-label-ru="Стек" data-label-en="Stack"><li>Python</li><li>httpx</li><li>asyncio</li><li>openpyxl</li></ul>
-        <div class="proj-actions">
-          <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/portfolio/tree/main/scraper-demo" target="_blank" rel="noopener"><span data-l="ru">Код и примеры</span><span data-l="en">Code and samples</span></a>
-        </div>
-      </article>
-      <article class="card">
-        <h3><span data-l="ru">Бот для заявок</span><span data-l="en">Lead-capture bot</span><small>139 <span data-l="ru">тестов</span><span data-l="en">tests</span></small></h3>
-        <p data-l="ru">Анкета в 4 шага, карточка заявки менеджеру с кнопками статусов, выгрузка в CSV, статистика и рассылка. Docker и systemd для деплоя.</p>
-        <p data-l="en">A 4-step form, lead cards for managers with status buttons, CSV export, stats and broadcasts. Docker and systemd for deployment.</p>
-        <ul class="tags" aria-label="Стек" data-label-ru="Стек" data-label-en="Stack"><li>Python</li><li>aiogram 3</li><li>SQLite</li><li>Docker</li></ul>
-        <div class="proj-actions">
-          <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/portfolio/tree/main/telegram-bot-demo" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-        </div>
-      </article>
-      <article class="card">
-        <h3><span data-l="ru">Дашборд в Excel</span><span data-l="en">Excel dashboard</span><small>112 <span data-l="ru">тестов</span><span data-l="en">tests</span></small></h3>
-        <p data-l="ru">Две книги Excel, собранные из сырых CSV: дашборд с KPI, фильтрами, графиками и анализом простоев и счёт с маржой. Все итоги считаются формулами.</p>
-        <p data-l="en">Two Excel workbooks built from raw CSVs: a dashboard with KPIs, filters, charts and downtime analysis, and an invoice with margin. Every total is a formula.</p>
-        <ul class="tags" aria-label="Стек" data-label-ru="Стек" data-label-en="Stack"><li>Python</li><li>openpyxl</li><li>pycel</li></ul>
-        <div class="proj-actions">
-          <a class="btn btn-ghost btn-sm" href="https://github.com/sinnercode228/portfolio/tree/main/excel-dashboard-demo" target="_blank" rel="noopener"><span data-l="ru">Код и скриншоты</span><span data-l="en">Code and screenshots</span></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ SERVICES ============ -->
-<section id="services" aria-labelledby="services-h">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow"><span data-l="ru">Услуги</span><span data-l="en">Services</span></div>
-      <h2 id="services-h"><span data-l="ru">Что делаю, сроки и цены</span><span data-l="en">What I build, timelines and prices</span></h2>
-      <p data-l="ru">Сроки ориентировочные, цены — нижняя граница. Точную цену и срок фиксирую после брифа, до начала работы.</p>
-      <p data-l="en">Timelines are estimates; prices are starting points. The exact price and timeline are fixed after the brief, before work starts.</p>
-    </div>
-    <div class="services">
-      <div class="svc">
-        <h3><span data-l="ru">Веб-приложение или MVP</span><span data-l="en">Web app or MVP</span></h3>
-        <span class="time"><span data-l="ru">2–6 недель</span><span data-l="en">2–6 weeks</span></span>
-        <p data-l="ru">CRM, личный кабинет, админка, SaaS: Next.js или React + API на Node.js/FastAPI + PostgreSQL, роли и авторизация.</p>
-        <p data-l="en">CRM, customer portal, admin panel, SaaS: Next.js or React + a Node.js/FastAPI API + PostgreSQL, roles and auth.</p>
-        <div class="price"><span data-l="ru">от <b>60&nbsp;000&nbsp;₽</b> <span class="usd">/ $700</span></span><span data-l="en">from <b>$700</b> <span class="usd">/ 60,000&nbsp;₽</span></span></div>
-      </div>
-      <div class="svc">
-        <h3><span data-l="ru">Telegram-бот</span><span data-l="en">Telegram bot</span></h3>
-        <span class="time"><span data-l="ru">3–10 дней</span><span data-l="en">3–10 days</span></span>
-        <p data-l="ru">Приём заявок, запись, рассылки, выгрузки, связка с CRM и таблицами. С деплоем на ваш сервер.</p>
-        <p data-l="en">Lead capture, bookings, broadcasts, exports, CRM and spreadsheet sync. Deployed to your server.</p>
-        <div class="price"><span data-l="ru">от <b>15&nbsp;000&nbsp;₽</b> <span class="usd">/ $200</span></span><span data-l="en">from <b>$200</b> <span class="usd">/ 15,000&nbsp;₽</span></span></div>
-      </div>
-      <div class="svc">
-        <h3><span data-l="ru">Интеграции и автоматизация</span><span data-l="en">Integrations and automation</span></h3>
-        <span class="time"><span data-l="ru">2–7 дней</span><span data-l="en">2–7 days</span></span>
-        <p data-l="ru">Сайт → CRM → Telegram → Google Sheets. Вебхуки, API и ретраи, чтобы заявки не терялись.</p>
-        <p data-l="en">Website → CRM → Telegram → Google Sheets. Webhooks, APIs and retries, so no lead gets lost.</p>
-        <div class="price"><span data-l="ru">от <b>10&nbsp;000&nbsp;₽</b> <span class="usd">/ $120</span></span><span data-l="en">from <b>$120</b> <span class="usd">/ 10,000&nbsp;₽</span></span></div>
-      </div>
-      <div class="svc">
-        <h3><span data-l="ru">Лендинг или сайт</span><span data-l="en">Landing page or website</span></h3>
-        <span class="time"><span data-l="ru">3–7 дней</span><span data-l="en">3–7 days</span></span>
-        <p data-l="ru">Быстрый адаптивный сайт с формой, калькулятором и отправкой заявок в Telegram или на почту.</p>
-        <p data-l="en">A fast responsive site with a form, a calculator and leads sent to Telegram or e-mail.</p>
-        <div class="price"><span data-l="ru">от <b>12&nbsp;000&nbsp;₽</b> <span class="usd">/ $150</span></span><span data-l="en">from <b>$150</b> <span class="usd">/ 12,000&nbsp;₽</span></span></div>
-      </div>
-      <div class="svc">
-        <h3><span data-l="ru">Telegram Mini App</span><span data-l="en">Telegram Mini App</span></h3>
-        <span class="time"><span data-l="ru">2–4 недели</span><span data-l="en">2–4 weeks</span></span>
-        <p data-l="ru">Магазин, запись, каталог внутри Telegram: бот, веб-приложение, оплата в Stars, уведомления админам.</p>
-        <p data-l="en">A shop, booking or catalog inside Telegram: bot, web app, Stars payments, admin notifications.</p>
-        <div class="price price-q"><span data-l="ru">Цена — после брифа</span><span data-l="en">Priced after the brief</span></div>
-      </div>
-      <div class="svc">
-        <h3><span data-l="ru">AI-ассистент и RAG</span><span data-l="en">AI assistant and RAG</span></h3>
-        <span class="time"><span data-l="ru">1–3 недели</span><span data-l="en">1–3 weeks</span></span>
-        <p data-l="ru">Ответы по вашей базе знаний со ссылками на источник — в вебе, в Telegram или по API.</p>
-        <p data-l="en">Answers from your knowledge base with source citations — on the web, in Telegram or via API.</p>
-        <div class="price price-q"><span data-l="ru">Цена — после брифа</span><span data-l="en">Priced after the brief</span></div>
-      </div>
-      <div class="svc">
-        <h3><span data-l="ru">Парсинг, отчёты, дашборды</span><span data-l="en">Scraping, reports, dashboards</span></h3>
-        <span class="time"><span data-l="ru">2–5 дней</span><span data-l="en">2–5 days</span></span>
-        <p data-l="ru">Сбор данных с сайтов, выгрузки в Excel и Google Sheets, веб-дашборды с метриками.</p>
-        <p data-l="en">Data collection from websites, Excel and Google Sheets exports, web dashboards with metrics.</p>
-        <div class="price price-q"><span data-l="ru">Цена — после брифа</span><span data-l="en">Priced after the brief</span></div>
-      </div>
-      <div class="svc">
-        <h3><span data-l="ru">Деплой, CI/CD, доработки</span><span data-l="en">Deploy, CI/CD, fixes</span></h3>
-        <span class="time"><span data-l="ru">1–3 дня</span><span data-l="en">1–3 days</span></span>
-        <p data-l="ru">Docker, VPS, GitHub Actions, перенос на сервер, исправление багов в существующем коде.</p>
-        <p data-l="en">Docker, VPS, GitHub Actions, server migration, bug fixes in an existing codebase.</p>
-        <div class="price price-q"><span data-l="ru">Цена — после брифа</span><span data-l="en">Priced after the brief</span></div>
+      <h3><span data-l="ru">Проекты поменьше</span><span data-l="en">Smaller projects</span></h3>
+      <div>
+        <ul class="more-list">
+          <li>
+            <b><span data-l="ru">Лендинг с калькулятором</span><span data-l="en">Landing page with a calculator</span></b>
+            <p data-l="ru">Смета дома по строкам, ссылка на расчёт, заявка в Telegram или на почту.</p>
+            <p data-l="en">A house estimate line by line, a shareable link to the calculation, leads to Telegram or e-mail.</p>
+            <span class="links"><a href="https://sinnercode228.github.io/portfolio/landing-calculator/" target="_blank" rel="noopener"><span data-l="ru">демо ↗</span><span data-l="en">demo ↗</span></a><a href="https://github.com/sinnercode228/portfolio/tree/main/landing-calculator" target="_blank" rel="noopener"><span data-l="ru">код</span><span data-l="en">code</span></a></span>
+          </li>
+          <li>
+            <b><span data-l="ru">Бот для заявок</span><span data-l="en">Lead bot</span></b>
+            <p data-l="ru">Анкета в 4 шага, карточка заявки менеджеру с кнопками статусов, выгрузка в CSV, рассылка.</p>
+            <p data-l="en">A 4-step form, a lead card for managers with status buttons, CSV export, broadcasts.</p>
+            <span class="links"><a href="https://github.com/sinnercode228/portfolio/tree/main/telegram-bot-demo" target="_blank" rel="noopener"><span data-l="ru">код</span><span data-l="en">code</span></a></span>
+          </li>
+          <li>
+            <b><span data-l="ru">Парсер</span><span data-l="en">Scraper</span></b>
+            <p data-l="ru">Ограничение запросов в секунду, повторы, кэш на диске; выгрузка в Excel, CSV, JSON и Google Sheets.</p>
+            <p data-l="en">Requests-per-second limit, retries, disk cache; exports to Excel, CSV, JSON and Google Sheets.</p>
+            <span class="links"><a href="https://github.com/sinnercode228/portfolio/tree/main/scraper-demo" target="_blank" rel="noopener"><span data-l="ru">код</span><span data-l="en">code</span></a></span>
+          </li>
+          <li>
+            <b><span data-l="ru">Отчёт в Excel</span><span data-l="en">Excel report</span></b>
+            <p data-l="ru">Книги Excel из сырых CSV: дашборд с фильтрами и счёт с маржой, все итоги считают формулы.</p>
+            <p data-l="en">Excel workbooks from raw CSVs: a dashboard with filters and an invoice with margin, every total is a formula.</p>
+            <span class="links"><a href="https://github.com/sinnercode228/portfolio/tree/main/excel-dashboard-demo" target="_blank" rel="noopener"><span data-l="ru">код</span><span data-l="en">code</span></a></span>
+          </li>
+          <li>
+            <b><span data-l="ru">Воркфлоу для n8n</span><span data-l="en">n8n workflows</span></b>
+            <p data-l="ru">Заметки со встреч в Notion через Claude, ответы по документам на локальной LLM, утренняя сводка календарей.</p>
+            <p data-l="en">Meeting notes to Notion with Claude, answers from documents on a local LLM, a morning calendar digest.</p>
+            <span class="links"><a href="https://github.com/sinnercode228/n8n-home-ai-workflows" target="_blank" rel="noopener"><span data-l="ru">код</span><span data-l="en">code</span></a></span>
+          </li>
+        </ul>
+        <p class="stack"><b><span data-l="ru">Стек:</span><span data-l="en">Stack:</span></b> Python (FastAPI, aiogram, SQLAlchemy) · TypeScript (React, Next.js, Fastify, Prisma) · PostgreSQL, Redis, SQLite · Docker, GitHub Actions, nginx</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PROCESS ============ -->
-<section id="process" class="sec-alt" aria-labelledby="process-h">
+<section class="sec" id="process" aria-labelledby="process-h">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow"><span data-l="ru">Как работаю</span><span data-l="en">How I work</span></div>
-      <h2 id="process-h"><span data-l="ru">Порядок работы</span><span data-l="en">How a project runs</span></h2>
+    <div class="work-head">
+      <div class="sec-label"><b>03</b><span data-l="ru">Как работаю</span><span data-l="en">Process</span></div>
+      <h2 id="process-h"><span data-l="ru">Как проходит заказ</span><span data-l="en">How an order goes</span></h2>
     </div>
-    <ol class="steps" role="list">
-      <li>
-        <h3><span data-l="ru">Бриф</span><span data-l="en">Brief</span></h3>
-        <p data-l="ru">Разбираем задачу в Telegram, фиксирую требования и результат, который вы примете.</p>
-        <p data-l="en">We go through the task on Telegram; I write down requirements and what you'll accept as done.</p>
-      </li>
-      <li>
-        <h3><span data-l="ru">Фиксированная цена</span><span data-l="en">Fixed price</span></h3>
-        <p data-l="ru">Называю цену и срок заранее. Цена не меняется, пока не меняется объём работ.</p>
-        <p data-l="en">You get the price and timeline upfront. The price doesn't change unless the scope does.</p>
-      </li>
-      <li>
-        <h3><span data-l="ru">50% предоплата</span><span data-l="en">50% upfront</span></h3>
-        <p data-l="ru">Половина — на старте, вторая — после приёмки.</p>
-        <p data-l="en">Half at the start, the rest after you accept the work.</p>
-      </li>
-      <li>
-        <h3><span data-l="ru">Этапы</span><span data-l="en">Milestones</span></h3>
-        <p data-l="ru">Показываю рабочие промежуточные версии, а не отчёты «в процессе».</p>
-        <p data-l="en">You see working builds at each milestone, not "in progress" updates.</p>
-      </li>
-      <li>
-        <h3><span data-l="ru">Сдача</span><span data-l="en">Handover</span></h3>
-        <p data-l="ru">Код в вашем репозитории, README, инструкция по запуску, тесты и деплой.</p>
-        <p data-l="en">Code in your repository, README, run instructions, tests and deployment.</p>
-      </li>
-    </ol>
+    <div>
+      <ol class="steps">
+        <li><span class="step-n">01</span><h3><span data-l="ru">Бриф</span><span data-l="en">Brief</span></h3><p data-l="ru">Разбираем задачу в Telegram, фиксирую требования и результат, который вы примете.</p><p data-l="en">We go through the task on Telegram; I write down the requirements and what you'll accept as done.</p></li>
+        <li><span class="step-n">02</span><h3><span data-l="ru">Цена и срок</span><span data-l="en">Price and timeline</span></h3><p data-l="ru">Называю цену и срок заранее. Цена не меняется, пока не меняется объём работ.</p><p data-l="en">You get the price and timeline upfront. The price doesn't change unless the scope does.</p></li>
+        <li><span class="step-n">03</span><h3><span data-l="ru">50% на старте</span><span data-l="en">50% upfront</span></h3><p data-l="ru">Половина — на старте, вторая — после приёмки.</p><p data-l="en">Half at the start, the rest after you accept the work.</p></li>
+        <li><span class="step-n">04</span><h3><span data-l="ru">Этапы</span><span data-l="en">Milestones</span></h3><p data-l="ru">Показываю рабочие промежуточные версии, а не отчёты «в процессе».</p><p data-l="en">You see working builds at each milestone, not "in progress" updates.</p></li>
+        <li><span class="step-n">05</span><h3><span data-l="ru">Сдача</span><span data-l="en">Handover</span></h3><p data-l="ru">Код в вашем репозитории, README, инструкция по запуску, тесты и деплой.</p><p data-l="en">Code in your repository, a README, run instructions, tests and deployment.</p></li>
+      </ol>
+    </div>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
-<section id="contacts" aria-labelledby="contacts-h">
-  <div class="wrap">
-    <div class="contact">
-      <h2 id="contacts-h"><span data-l="ru">Как со мной связаться</span><span data-l="en">How to reach me</span></h2>
-      <p data-l="ru">Опишите в паре предложений, что нужно сделать, — отвечу с вопросами, сроком и ценой.</p>
+<section class="sec sec-alt" id="faq" aria-labelledby="faq-h">
+  <div class="wrap sec-grid">
+    <div class="sec-side">
+      <div class="sec-label"><b>04</b><span data-l="ru">Вопросы</span><span data-l="en">FAQ</span></div>
+    </div>
+    <div>
+      <h2 id="faq-h"><span data-l="ru">Что обычно спрашивают</span><span data-l="en">What people usually ask</span></h2>
+      <div class="faq">
+        <details>
+          <summary><span data-l="ru">Сколько будет стоить моя задача?</span><span data-l="en">How much will my task cost?</span></summary>
+          <p data-l="ru">Нижние границы есть в прайсе выше. Точную цену называю после брифа: опишите задачу в Telegram, я задам вопросы и отвечу цифрой и сроком. Дальше цена не меняется, пока не меняется объём работ.</p>
+          <p data-l="en">The starting prices are in the list above. I give an exact price after the brief: describe the task on Telegram, I'll ask questions and reply with a number and a timeline. After that the price stays the same unless the scope changes.</p>
+        </details>
+        <details>
+          <summary><span data-l="ru">Как платить?</span><span data-l="en">How do I pay?</span></summary>
+          <p data-l="ru">50% на старте, вторую половину — после того, как вы примете работу.</p>
+          <p data-l="en">50% at the start, the other half after you accept the work.</p>
+        </details>
+        <details>
+          <summary><span data-l="ru">Что я получу в конце?</span><span data-l="en">What do I get at the end?</span></summary>
+          <p data-l="ru">Код в вашем репозитории, README, инструкцию по запуску, тесты и деплой. Бота разворачиваю на вашем сервере.</p>
+          <p data-l="en">The code in your repository, a README, run instructions, tests and deployment. Bots get deployed to your server.</p>
+        </details>
+        <details>
+          <summary><span data-l="ru">Можно доработать то, что уже есть?</span><span data-l="en">Can you work on something that already exists?</span></summary>
+          <p data-l="ru">Да. Перенос на сервер, Docker, CI и исправление багов в существующем коде есть в прайсе отдельной строкой.</p>
+          <p data-l="en">Yes. Moving to a server, Docker, CI and bug fixes in an existing codebase are a separate line in the price list.</p>
+        </details>
+        <details>
+          <summary><span data-l="ru">Почему в портфолио демо, а не проекты клиентов?</span><span data-l="en">Why demos instead of client projects?</span></summary>
+          <p data-l="ru">Коммерческий код остаётся у заказчиков. Поэтому здесь открытые демо на выдуманных данных: их можно открыть, пощёлкать и почитать код.</p>
+          <p data-l="en">Client code stays with clients. So these are open demos on made-up data: you can open them, click around and read the code.</p>
+        </details>
+        <details>
+          <summary><span data-l="ru">Как мы будем на связи?</span><span data-l="en">How do we stay in touch?</span></summary>
+          <p data-l="ru">В Telegram. По ходу работы показываю рабочие промежуточные версии, а не отчёты «в процессе».</p>
+          <p data-l="en">On Telegram. Along the way you see working builds, not "in progress" updates.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-block" id="contacts" aria-labelledby="contacts-h">
+  <svg class="cta-cat" aria-hidden="true"><use href="#cat"/></svg>
+  <div class="wrap cta-inner">
+    <div>
+      <h2 id="contacts-h"><span data-l="ru">Расскажите, что нужно сделать</span><span data-l="en">Tell me what you need built</span></h2>
+      <p data-l="ru">Опишите задачу в паре предложений — отвечу с вопросами, сроком и ценой.</p>
       <p data-l="en">Describe what you need in a couple of sentences — I'll reply with questions, a timeline and a price.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="https://t.me/sinnercode" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3 18.8 19c-.2 1-.9 1.3-1.7.8l-4.7-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.8 8.8-8c.4-.3-.1-.5-.6-.2L6.7 12.9 2 11.4c-1-.3-1-1 .2-1.5L20.6 3c.8-.3 1.6.2 1.3 1.3Z"/></svg>
-          <span data-l="ru">Написать в Telegram</span><span data-l="en">Message on Telegram</span>
-        </a>
-        <a class="btn btn-ghost" href="https://github.com/sinnercode228" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 4.9.4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg>
-          GitHub
-        </a>
-      </div>
-      <div class="contact-list">
-        <a href="https://t.me/sinnercode" target="_blank" rel="noopener">Telegram · @sinnercode</a>
-        <a href="https://github.com/sinnercode228" target="_blank" rel="noopener">GitHub · sinnercode228</a>
+      <div class="cta-contacts">
+        <span>Telegram · <a href="https://t.me/sinnercode" target="_blank" rel="noopener">@sinnercode</a></span>
+        <span>GitHub · <a href="https://github.com/sinnercode228" target="_blank" rel="noopener">sinnercode228</a></span>
       </div>
     </div>
+    <a class="btn btn-accent btn-lg" href="https://t.me/sinnercode" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#tg"/></svg><span data-l="ru">Написать в Telegram</span><span data-l="en">Message me on Telegram</span></a>
   </div>
 </section>
+
 </main>
 
 <footer>
-  <div class="wrap">
-    <p data-l="ru">Коммерческий код остаётся у заказчиков, поэтому здесь открытые демо. Компании, люди и данные в них вымышлены.</p>
-    <p data-l="en">Client code stays with clients, so these are open demos. The companies, people and data in them are made up.</p>
-    <p><a href="https://github.com/sinnercode228/portfolio" target="_blank" rel="noopener"><span data-l="ru">Исходник страницы</span><span data-l="en">Page source</span></a></p>
+  <div class="wrap foot">
+    <p><span data-l="ru">Грешный Котик, 2026. Компании, люди и данные в демо вымышлены.</span><span data-l="en">Грешный Котик (sinnercode), 2026. The companies, people and data in the demos are made up.</span></p>
+    <nav aria-label="Ссылки" data-label-ru="Ссылки" data-label-en="Links">
+      <a href="https://github.com/sinnercode228" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/sinnercode228/portfolio" target="_blank" rel="noopener"><span data-l="ru">Исходник страницы</span><span data-l="en">Page source</span></a>
+    </nav>
   </div>
 </footer>
 
@@ -768,50 +725,55 @@ footer a { color: var(--muted); }
 (function () {
   var root = document.documentElement;
   var META = {
-    ru: { title: "Грешный Котик — full-stack разработчик", description: "Full-stack разработчик: React/Next.js и TypeScript, Node.js и Python/FastAPI, PostgreSQL, Telegram-боты и Mini Apps, AI/RAG, интеграции, Docker и CI/CD. Живые демо, открытый код, 999 автотестов.", light: "Включить светлую тему", dark: "Включить тёмную тему" },
-    en: { title: "Грешный Котик (sinnercode) — full-stack developer", description: "Full-stack developer: React/Next.js and TypeScript, Node.js and Python/FastAPI, PostgreSQL, Telegram bots and Mini Apps, AI/RAG, integrations, Docker and CI/CD. Live demos, open code, 999 automated tests.", light: "Switch to light theme", dark: "Switch to dark theme" }
+    ru: { title: "Грешный Котик — боты, интеграции и веб-сервисы на заказ", description: "Full-stack разработчик, 7+ лет на фрилансе: Telegram-боты и Mini App, интеграции с amoCRM, Bitrix24 и Tilda, веб-приложения, парсеры и отчёты. Цены от 10 000 ₽, открытые демо и код.", toDark: "Включить тёмную тему", toLight: "Включить светлую тему" },
+    en: { title: "Грешный Котик (sinnercode) — bots, integrations and web services to order", description: "Full-stack developer with 7+ years of freelance work: Telegram bots and Mini Apps, amoCRM, Bitrix24 and Tilda integrations, web apps, scrapers and reports. Prices from $120, open demos and code.", toDark: "Switch to dark theme", toLight: "Switch to light theme" }
   };
   var descMeta = document.querySelector('meta[name="description"]');
-  var themeBtn = document.getElementById("theme-toggle");
   var themeMeta = document.querySelector('meta[name="theme-color"]');
+  var themeBtn = document.getElementById("theme-toggle");
   var langBtns = Array.prototype.slice.call(document.querySelectorAll("[data-set-lang]"));
+  var imgs = Array.prototype.slice.call(document.querySelectorAll("img[data-alt-en]"));
+  imgs.forEach(function (img) { img.setAttribute("data-alt-ru", img.getAttribute("alt")); });
 
   function store(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* приватный режим */ } }
+  function lang() { return root.lang === "en" ? "en" : "ru"; }
 
-  function syncThemeLabel() {
-    var light = root.getAttribute("data-theme") === "light";
-    themeBtn.setAttribute("aria-label", META[root.lang === "en" ? "en" : "ru"][light ? "dark" : "light"]);
-    if (themeMeta) themeMeta.setAttribute("content", light ? "#f7f7f4" : "#0a0c0f");
+  function syncTheme() {
+    var dark = root.getAttribute("data-theme") === "dark";
+    themeBtn.setAttribute("aria-label", META[lang()][dark ? "toLight" : "toDark"]);
+    if (themeMeta) themeMeta.setAttribute("content", dark ? "#13110e" : "#f1ede3");
   }
 
-  function setLang(lang, save) {
-    if (lang !== "en") lang = "ru";
-    root.lang = lang;
-    document.title = META[lang].title;
-    if (descMeta) descMeta.setAttribute("content", META[lang].description);
-    langBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-set-lang") === lang)); });
-    Array.prototype.forEach.call(document.querySelectorAll("[data-label-" + lang + "]"), function (el) {
-      if (el !== themeBtn) el.setAttribute("aria-label", el.getAttribute("data-label-" + lang));
+  function setLang(l, save) {
+    if (l !== "en") l = "ru";
+    root.lang = l;
+    document.title = META[l].title;
+    if (descMeta) descMeta.setAttribute("content", META[l].description);
+    langBtns.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-set-lang") === l)); });
+    imgs.forEach(function (img) { img.setAttribute("alt", img.getAttribute("data-alt-" + l)); });
+    Array.prototype.forEach.call(document.querySelectorAll("[data-label-" + l + "]"), function (el) {
+      el.setAttribute("aria-label", el.getAttribute("data-label-" + l));
     });
-    syncThemeLabel();
+    syncTheme();
     if (save) {
-      store("portfolio-lang", lang);
+      store("portfolio-lang", l);
       try {
         var url = new URL(location.href);
-        if (lang === "en") url.searchParams.set("lang", "en"); else url.searchParams.delete("lang");
-        history.replaceState(null, "", url);
-      } catch (e) {}
+        if (l === "en") url.searchParams.set("lang", "en"); else url.searchParams.delete("lang");
+        history.replaceState(null, "", url.pathname + url.search + url.hash);
+      } catch (e) { /* старый браузер */ }
     }
   }
 
   langBtns.forEach(function (b) { b.addEventListener("click", function () { setLang(b.getAttribute("data-set-lang"), true); }); });
   themeBtn.addEventListener("click", function () {
-    var next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
     store("portfolio-theme", next);
-    syncThemeLabel();
+    syncTheme();
   });
-  setLang(root.lang, false);
+
+  setLang(lang(), false);
 })();
 </script>
 </body>

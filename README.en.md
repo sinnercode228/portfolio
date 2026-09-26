@@ -52,7 +52,7 @@ On Windows, the venv is activated with `.venv\Scripts\activate`; the Makefile in
 
 ## The `index.html` page
 
-Styles and scripts live in the file itself, the fonts are system fonts, and nothing loads from other domains; the only files it pulls from the repo are the cover images in [`assets/projects/`](assets/projects/). Both languages are in the markup and CSS hides the unused one, so without JS you see the Russian version. A script in `<head>` sets the language (`?lang=en` or the saved one) and the theme (saved or system) before the first paint. The RU/EN and theme buttons remember your choice, and switching to EN adds `?lang=en` to the URL.
+Styles and scripts live in the file itself, and nothing loads from other domains. From the repo it pulls the cover images in [`assets/projects/`](assets/projects/) and the Unbounded, Onest and JetBrains Mono fonts in [`assets/fonts/`](assets/fonts/) (OFL license, Cyrillic and Latin subsets only, about 150 KB). Both languages are in the markup and CSS hides the unused one, so without JS you see the Russian version. A script in `<head>` sets the language (`?lang=en` or the saved one) and the theme (saved or system) before the first paint. The RU/EN and theme buttons remember your choice, and switching to EN adds `?lang=en` to the URL.
 
 ---
 
