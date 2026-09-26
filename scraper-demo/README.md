@@ -1,227 +1,100 @@
-# Books Scraper — асинхронный парсер с выгрузкой в Excel / CSV / JSON
+# bookscraper
 
-> **Демо-проект / Demo project.** Парсер работает с [books.toscrape.com](https://books.toscrape.com), это учебная песочница, сделанная специально для практики скрапинга. Цены и рейтинги там случайные. Проект показывает, как я пишу парсеры для клиентов, и никак не связан с владельцами сайта.
-
-[Русский](#русский) · [English](#english)
-
-![Лист Books из output/books_sample.xlsx](docs/excel_preview.jpg)
-
-<sub>Превью листа Books в macOS Quick Look. Data bars и цветовую шкалу рейтинга Quick Look не рисует, в Excel они видны.</sub>
-
----
-
-## Русский
-
-### Что умеет
-
-| | |
-|---|---|
-| **Обход сайта** | главная → 50 категорий → пагинация → карточки товаров |
-| **Поля** | название, цена, остаток (шт.), рейтинг 1–5, UPC, категория, описание, URL картинки, URL товара, число отзывов, время сбора. В JSON дополнительно: валюта, флаг «в наличии», цены без налога и с налогом, налог |
-| **Асинхронность** | `httpx` + `asyncio`, лимит одновременных запросов (`--concurrency`) |
-| **Вежливость** | лимит запросов в секунду (`--rate`), проверка `robots.txt`, честный User-Agent |
-| **Надёжность** | повторы с экспоненциальной задержкой и jitter на 5xx / 429 / сетевые ошибки, учитывает `Retry-After`. Упавшая страница не останавливает весь сбор |
-| **Кэш** | ответы сохраняются на диск с TTL. Повторный запуск идёт без обращений к сайту |
-| **Чистка данных** | нормализация пробелов, удаление невидимых символов (soft hyphen, zero-width), удаление обрезанного анонса и хвоста «...more» из описаний, пробел между склеенными предложениями («Indonesia.But» → «Indonesia. But») |
-| **Экспорт** | **Excel** (оформленная шапка, автофильтр, закреплённые строка и столбец, ширина колонок, кликабельные ссылки, формат £, data bars, цветовая шкала рейтинга, листы Summary и About), **CSV** (UTF-8 с BOM, кодировка в Excel не ломается; `--csv-sep semicolon` даёт «;» и десятичную запятую, и русский Excel сразу раскладывает файл по колонкам), **JSON**. Текст вида `=...` в Excel остаётся текстом, а не формулой |
-| **Google Sheets** | по желанию, через `gspread` (см. ниже). Для запуска не нужен |
-| **Тесты** | 80 тестов `pytest`, работают без сети: парсеры проверяются на сохранённом HTML, сеть подменяется `httpx.MockTransport` |
-
-### Быстрый старт
-
-Нужен Python 3.10+ (проверено на 3.10 и 3.14). Проверьте `python3 --version`: на macOS системный `python3` бывает 3.9, тогда создайте окружение через более новую версию, например `python3.12 -m venv .venv`.
+Асинхронный CLI-парсер для [books.toscrape.com](https://books.toscrape.com), песочницы, которую сделали специально для практики скрапинга. Разбор HTML тут короткий, основная часть кода — сетевой слой и чистка данных: лимит запросов в секунду, повторы с `Retry-After`, дисковый кэш с атомарной записью, срезание дублирующегося тизера в описаниях и XLSX с листами Summary и About.
 
 ```bash
-cd scraper-demo
-python3 -m venv .venv
-source .venv/bin/activate            # Windows: .venv\Scripts\activate
+git clone https://github.com/sinnercode228/portfolio.git
+cd portfolio/scraper-demo
+python3 -m venv .venv && source .venv/bin/activate     # Python 3.10+
 pip install -r requirements.txt
-
-python -m bookscraper --limit 100 --out output/books
-# → output/books.xlsx, output/books.csv, output/books.json
+python -m bookscraper --limit 100 --out output/books    # books.xlsx + books.csv + books.json
 ```
 
-Можно поставить пакетом, тогда появится команда `bookscraper`: `pip install -e .`
-
-### Примеры
-
-```bash
-# список категорий
-python -m bookscraper --list-categories
-
-# одна категория, только Excel
-python -m bookscraper --category Mystery --out output/mystery.xlsx
-
-# несколько категорий (по имени или slug, регистр не важен), 50 книг, CSV + JSON
-python -m bookscraper -c "science fiction" -c poetry -n 50 -o output/sf.csv -o output/sf.json
-
-# весь сайт (1000 книг) аккуратно: 3 потока, 2 запроса в секунду
-python -m bookscraper --concurrency 3 --rate 2 --out output/all_books
-
-# без кэша, с подробным логом
-python -m bookscraper -n 20 --no-cache -v
-
-# CSV для Excel с русской локалью (разделитель «;»)
-python -m bookscraper -n 100 -o output/books.csv --csv-sep semicolon
-```
-
-Все параметры: `python -m bookscraper --help`.
-
-| Параметр | По умолчанию | Что делает |
-|---|---|---|
-| `-c, --category` | все | категория, можно указать несколько раз |
-| `-n, --limit` | без лимита | максимум книг |
-| `-o, --out` | `output/books` | файл `.xlsx` / `.csv` / `.json`. Без расширения (или папка) пишутся все три формата. Можно указать несколько раз |
-| `--csv-sep` | `comma` | разделитель CSV: `comma`, `semicolon` (для русского Excel, с десятичной запятой), `tab` |
-| `--concurrency` | 5 | одновременных запросов |
-| `--rate` | 4 | запросов в секунду (0 = без ограничения) |
-| `--retries` | 3 | повторов на ошибку |
-| `--cache-ttl` | 24 | время жизни кэша, в часах (0 = бессрочно) |
-| `--no-cache` | — | отключить кэш |
-| `--gsheet` | — | дополнительно выгрузить в Google Sheets |
-| `-v` / `-q` | — | подробный лог / только предупреждения и ошибки |
-
-Коды выхода (удобно для cron и CI): `0` готово, `1` ничего не собрано, `2` неверные параметры или неизвестная категория, `3` сайт недоступен, `4` ошибка Google Sheets, `5` не удалось сохранить файл (например, он открыт в Excel). Если часть страниц не скачалась, сбор продолжается, а в конце выводится список ошибок.
-
-### Реальный прогон (есть в репозитории)
-
-`python -m bookscraper --limit 100 -o output/books_sample.xlsx -o output/books_sample.csv -o output/books_sample.json`
+Файлы `books_sample.*` в [`output/`](output/) получены такой командой (время и уровень в логе убраны):
 
 ```
-categories: 50 selected of 50
+$ python -m bookscraper --limit 100 -o output/books_sample.xlsx -o output/books_sample.csv -o output/books_sample.json
+...
   Travel                   11 product links
   Mystery                  32 product links
   Historical Fiction       26 product links
   Sequential Art           31 product links
-fetching 100 product pages ...
+...
 scraped 100 books in 30.3s — 109 HTTP requests, 0 cache hits, 0 retries, 0 errors
 ```
 
-Около 30 секунд на 100 книг: это скорость, которую задаёт `--rate 4`, а не предел парсера. Повторный запуск из кэша занимает около 1.4 с. Весь сайт (`--concurrency 3 --rate 2`): 1000 книг из 50 категорий примерно за 9 минут, 0 ошибок.
-Результаты: [`output/books_sample.xlsx`](output/books_sample.xlsx), [`output/books_sample.csv`](output/books_sample.csv), [`output/books_sample.json`](output/books_sample.json).
+![Лист Books из output/books_sample.xlsx](docs/excel_preview.jpg)
 
-**Что внутри Excel-файла**
-- **Books**: по строке на книгу, 11 колонок. Шапка оформлена, строка заголовков и столбец Title закреплены, стоит автофильтр. Название и URL кликабельны. Цены в формате `£`, у остатков data bars, у рейтинга цветовая шкала. Файл настроен на печать в альбомной ориентации по ширине листа.
-- **Summary**: сводка по категориям: сколько книг, средняя, минимальная и максимальная цена, остаток, средний рейтинг, строка TOTAL.
-- **About**: источник, дата, параметры запуска, пометка «Демо-проект».
+Python 3.10+, asyncio, httpx, selectolax (парсер lexbor), openpyxl. gspread ставится отдельно из `requirements-gsheets.txt` и импортируется, только если передан `--gsheet`. С карточки снимается 16 полей: в JSON идут все, в XLSX и CSV — 11.
 
-### Тесты
+## Лимитер: «следующий слот» вместо token bucket
 
-```bash
-pip install -r requirements-dev.txt
-python -m pytest -q        # 80 passed
-```
+109 запросов — это robots.txt, главная, 7 страниц листинга и 100 карточек, а время задаёт лимитер. `RateLimiter` в [`fetcher.py`](bookscraper/fetcher.py) хранит момент следующего разрешённого старта: задача под `asyncio.Lock` спит до него и сдвигает его на `1/rate`. Запаса токенов нет, поэтому нет и всплеска на старте: первый запрос уходит сразу, каждый следующий — не раньше чем через 0,25 с при `--rate 4`. 108 интервалов между 109 стартами — это уже 27 с при любой скорости сети.
 
-| Файл | Что проверяет |
-|---|---|
-| `tests/test_parsers.py` | парсеры на реальном HTML из `tests/fixtures/`: категории, пагинация, все поля карточки, граничные случаи (нет в наличии, нет рейтинга и описания, цена `£1,234.50`, невидимые символы, склеенные предложения) |
-| `tests/test_fetcher.py` | повторы при 503, сетевые ошибки, отказ после N попыток, 404 без повторов, `Retry-After`, кэш и TTL, сбой записи кэша не ломает сбор, лимит запросов в секунду и лимит одновременных запросов |
-| `tests/test_crawler.py` | полный обход «офлайн-копии» сайта: пагинация, `--limit` останавливает обход раньше, дубликаты, временные ошибки, упавшая страница каталога попадает в отчёт об ошибках |
-| `tests/test_exporters.py` | в xlsx действительно есть автофильтр, закрепление, ссылки, форматы и сводка, «формулы» остаются текстом. CSV с BOM, кириллицей и разделителем `;`, JSON |
-| `tests/test_cli.py` | запуск `main()` целиком: все форматы, кэш при повторном запуске, неизвестная категория, ошибка сохранения файла |
-| `tests/test_gsheets.py` | выгрузка в Google Sheets на поддельном `gspread`: очистка и расширение листа, понятные ошибки |
+`await self._limiter.wait()` стоит внутри `async with self._semaphore`, прямо перед `client.get`. Если ждать лимитер до семафора, задача получит время старта, постоит в очереди за соединением, и несколько таких задач уйдут в сеть разом. А пауза перед повтором стоит уже после выхода из семафора (`await asyncio.sleep(delay)  # sleep *outside* the semaphore`), чтобы запрос, который ждёт до 30 с, не держал одно из пяти мест (`--concurrency 5`).
 
-### Выгрузка в Google Sheets (необязательно)
+## Что повторяется и сколько ждать
 
-1. `pip install -r requirements-gsheets.txt`
-2. В Google Cloud Console создайте service account, включите Google Sheets API и Google Drive API, скачайте JSON-ключ в `service_account.json`. Он уже в `.gitignore`.
-3. Откройте доступ к таблице для e-mail сервисного аккаунта (права редактора).
-4. `python -m bookscraper -n 100 --gsheet <ID или URL таблицы> --gsheet-creds service_account.json`
+Повторяются ответы `408, 425, 429, 500, 502, 503, 504`, а ещё `httpx.TimeoutException` и `httpx.TransportError`. Любой другой код, включая 404 и 501, сразу даёт `FetchError`. По умолчанию 3 повтора, то есть до 4 попыток. Каждый повтор заново проходит семафор и лимитер, так что `--rate` держится и на повторах.
 
-Данные попадут на лист `Books`. Шапка будет жирной и закреплённой, фильтр включён.
+Задержка — `min(30, 0.5·2^(n-1))` с equal jitter: половина фиксирована, половина случайна, выходит 0,25–0,5 с, потом 0,5–1 с, потом 1–2 с. `Retry-After` понимается и в секундах, и как HTTP-дата (прошедшая дата — 0, мусор игнорируется). Пауза = max(backoff, Retry-After), но не больше 30 с: если сервер просит 120 с, повтор всё равно уйдёт через 30, то есть раньше срока.
 
-### Структура
+## Дисковый кэш и `os.replace`
 
-```
-bookscraper/
-  parsers.py        # чистые функции HTML → данные (при смене сайта меняется в основном этот файл)
-  fetcher.py        # httpx: семафор, rate limiter, повторы с backoff, кэш
-  cache.py          # дисковый кэш с TTL, атомарная запись
-  crawler.py        # категории → страницы → карточки, --limit, сбор ошибок
-  models.py         # dataclass Book / Category
-  exporters/        # excel.py, tabular.py (CSV/JSON), gsheets.py
-  cli.py            # argparse CLI
-tests/              # pytest + сохранённые HTML-фикстуры
-output/             # примеры результатов
-docs/               # превью Excel для README
-```
+[`cache.py`](bookscraper/cache.py) кладёт ответ в `.cache/http/<первые 2 символа хэша>/<sha256 от URL>.json` вместе с URL и временем. Кэшируется только HTTP 200. При чтении проверяются TTL (24 ч, `0` — бессрочно) и совпадение сохранённого URL с запрошенным (`# hash collision guard (paranoid)`), битый JSON считается промахом. Попадание в кэш возвращается до семафора и лимитера, так что страницы из кэша не ждут своих 0,25 с.
 
-### Как я адаптирую это под ваш сайт
+Пишу во временный файл с pid и id потока в имени, потом `os.replace`. Поэтому в `<sha256>.json` не бывает недописанного JSON (после `kill -9` может остаться разве что `*.tmp`), а две одновременные записи одного URL не попадают в один temp-файл. Файловый I/O идёт через `asyncio.to_thread`. Если запись упала с `OSError` (например, кончился диск), в лог уходит warning, а страница всё равно идёт в парсер.
 
-1. **Разбор сайта (от 30 минут).** Смотрю структуру: каталог, пагинация, карточка. Проверяю, есть ли скрытый JSON API: он быстрее и надёжнее HTML. Смотрю, нужен ли браузер (Playwright) для JS-страниц. Читаю `robots.txt` и условия использования.
-2. **Поля.** Согласуем список колонок и формат: Excel, CSV, Google Sheets, база данных или API.
-3. **Парсеры.** Переписываю `parsers.py` под ваши селекторы, сохраняю HTML-фикстуры и пишу на них тесты. Если сайт поменяет вёрстку, тест сразу покажет, что сломалось.
-4. **Масштаб и защита.** Подбираю `--concurrency` и `--rate` так, чтобы не нагружать сайт. При необходимости добавляю прокси, авторизацию, cookies, заголовки.
-5. **Запуск по расписанию.** cron, GitHub Actions или сервер. Отчёт отправляю в Telegram или на почту, сохраняю историю изменения цен и остатков.
-6. **Сдача.** Код, README, результат на ваших данных и короткая инструкция по запуску.
+## Кривые места books.toscrape.com
 
-> Собираю только общедоступные данные и соблюдаю `robots.txt` и условия сайта. Персональные данные и обход платного доступа не делаю.
+Сервер не отдаёт charset. httpx в таком случае и сам берёт UTF-8, но я декодирую `response.content` явно (charset из ответа, а если его нет, UTF-8; битые байты заменяются), чтобы `£` не зависел от дефолтов клиента. `test_success_decodes_utf8_without_charset` отдаёт `£51.77 — ok` без charset.
 
----
+Абзацы в описаниях склеены без пробела. Регулярка в [`parsers.py`](bookscraper/parsers.py) ставит пробел только между строчной буквой или цифрой с `.`, `!` или `?` и словом с заглавной: `Zimbabwe.But` → `Zimbabwe. But`, `“Go!”Then` → `“Go!” Then`, а `Version 2.0` не трогает (примеры из `test_clean_description_separates_glued_sentences`). В сэмпле так появился пробел в `Indonesia. But`.
 
-## English
+Длинное описание приходит как `<тизер, обрезанный посреди слова> <полный текст> ...more`. Тизер срезаю, только если в конце есть `...more`: без маркера повтор в начале — обычный текст, и `test_clean_description_needs_more_marker_to_cut` держит «Rise and shine, little one. Rise and shine, little one, the sun is up.» нетронутым.
 
-> **Demo project.** The target, [books.toscrape.com](https://books.toscrape.com), is a public sandbox built for scraping practice; its prices and ratings are random. The project shows how I build scrapers for clients and is not affiliated with the site's owners.
+Сам срез: беру первые 20 непробельных символов, ищу их следующее вхождение и режу, если общий префикс тизера и остатка не короче половины тизера (запас на битый символ). Начальные слова могут встретиться и внутри самого тизера, тогда поиск идёт дальше: `# the opening words may also occur inside the teaser itself: try the next match`.
 
-### Features
+## Листинги по «Page 1 of N», карточки через `gather`
 
-- **Crawl**: home → 50 categories → pagination → product pages. The page count is read from "Page 1 of N" and the remaining pages are fetched concurrently. If a site has no such counter, the crawler follows `next` links instead.
-- **Fields**: title, price, stock count, rating 1–5, UPC, category, description, image URL, product URL, review count, scrape timestamp. JSON also has currency, an in-stock flag, price excl./incl. tax and tax.
-- **Async**: `httpx` + `asyncio` with a concurrency limit (`asyncio.Semaphore`).
-- **Polite**: global requests-per-second limiter, `robots.txt` check, honest User-Agent.
-- **Reliable**: retries with exponential backoff and jitter on 5xx, 429 and network errors, and it honours `Retry-After`. A failed page is reported but does not stop the run.
-- **Cache**: on-disk cache with TTL and atomic writes, so re-runs don't hit the site.
-- **Data cleaning**: collapses whitespace, strips invisible characters, removes the site's duplicated teaser and "...more" suffix from descriptions, and puts the missing space back between glued sentences ("Indonesia.But" → "Indonesia. But").
-- **Export**:
-  - **Excel**: styled header, autofilter, frozen header row and title column, column widths, clickable hyperlinks, £ number format, data bars, rating colour scale, plus *Summary* and *About* sheets.
-  - **CSV**: UTF-8 with BOM, so Excel opens it with the right encoding. `--csv-sep semicolon` (with a decimal comma) suits Excel with a Russian or European locale.
-  - **JSON**.
-  - Optional **Google Sheets** via `gspread`.
-- **Tests**: 80 offline `pytest` tests. Parsers run against saved real HTML, and the network is replaced by `httpx.MockTransport`.
+С первой страницы категории читается «Page 1 of N», потом `page-2.html` … `page-K.html` качаются параллельно, где K = min(N, ⌈остаток лимита / книг на первой странице⌉). В сэмпле на Sequential Art до лимита оставалась 31 книга, это K = ⌈31/20⌉ = 2. Без счётчика [`crawler.py`](bookscraper/crawler.py) идёт по ссылкам `next`. Карточки качаются по корутине на книгу (параллельность держат семафор и лимитер) и потом сортируются обратно в порядок листинга. Исключение на одной карточке, в том числе неожиданное (`# one odd page must not kill a long run`), уходит в список ошибок, который печатается в конце, а прогон идёт дальше.
 
-### Quick start
+## Excel: название на `=` остаётся названием
 
-Python 3.10+ (tested on 3.10 and 3.14). On macOS the system `python3` may be 3.9; use e.g. `python3.12 -m venv .venv` then.
+[`exporters/excel.py`](bookscraper/exporters/excel.py) пишет строки через `_set_text_value`: если openpyxl принял строку на `=` за формулу, тип ячейки возвращается в строковый. Тест сохраняет файл с названием `=HYPERLINK("http://evil.test")`, открывает его заново через `load_workbook` и проверяет `data_type == "s"`. Управляющие символы, которые openpyxl не пропускает, вырезаются, а текст длиннее 32 767 символов (лимит ячейки Excel) обрезается с `…`.
 
-```bash
-python3 -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-python -m bookscraper --limit 100 --out output/books     # → .xlsx + .csv + .json
-python -m pytest -q                                      # after: pip install -r requirements-dev.txt
-```
+На листе Books закреплены шапка и колонка Title, на остатке data bar, на рейтинге 1–5 шкала красный → жёлтый → зелёный (на превью выше их не видно, в файле они есть). Summary считает по категориям число книг, среднюю, минимальную и максимальную цену, остаток и средний рейтинг, плюс строка TOTAL. About хранит источник, время в UTC, число строк, параметры запуска и число ошибок. CSV пишется в `utf-8-sig`: BOM нужен, чтобы Excel сразу открыл файл как UTF-8.
 
-### Usage
+## Тесты
 
-```bash
-python -m bookscraper --list-categories
-python -m bookscraper --category Mystery --out output/mystery.xlsx
-python -m bookscraper -c "science fiction" -c poetry -n 50 -o output/sf.csv -o output/sf.json
-python -m bookscraper --concurrency 3 --rate 2 --out output/all_books     # whole site, gently
-python -m bookscraper -n 100 -o output/books.csv --csv-sep semicolon     # CSV for a Russian-locale Excel
-python -m bookscraper -n 100 --gsheet <sheet id or url> --gsheet-creds service_account.json
-```
+80 тестов, все офлайн: сохранённые страницы лежат в `tests/fixtures/`, а `httpx.MockTransport` из [`tests/conftest.py`](tests/conftest.py) раздаёт их как копию сайта (robots.txt → 404, ответы без charset, как на песочнице). Вместо gspread — фейковый модуль. Запуск: `pip install -r requirements-dev.txt && python -m pytest -q`, линтер `ruff check .`.
 
-Exit codes: `0` done, `1` nothing scraped, `2` bad arguments or unknown category, `3` site unreachable, `4` Google Sheets error, `5` could not save a file (e.g. it is open in Excel). Failed pages don't stop the run; they are listed at the end.
+| Файл | Тестов | Что проверяет |
+|---|---|---|
+| `test_parsers.py` | 34 | категории, пагинация, все поля карточки, цены, тизер, склеенные предложения |
+| `test_fetcher.py` | 18 | повторы на 503 и сетевых ошибках, 404 без повторов, `Retry-After`, TTL, сбой записи кэша, лимитер, семафор |
+| `test_exporters.py` | 9 | оформление xlsx, «формулы» остаются текстом, BOM и `;` в CSV, JSON |
+| `test_crawler.py` | 8 | обход офлайн-копии, `--limit`, упавшие страницы листинга и карточек |
+| `test_cli.py` | 7 | `main()` целиком: все форматы, коды 2 и 5; повторный прогон из кэша делает один запрос, за robots.txt (404 не кэшируется) |
+| `test_gsheets.py` | 4 | очистка и расширение листа, создание листа, ошибка при ненайденной таблице и без файла ключа |
 
-**Real run** (included in `output/`): 100 books in 30.3 s, 109 requests, 0 errors. The speed is set by the 4 req/s politeness limit. A cached re-run takes about 1.4 s. The whole site (`--concurrency 3 --rate 2`): 1000 books from 50 categories in about 9 minutes, 0 errors.
+## Флаги и коды выхода
 
-**Google Sheets (optional)**:
-1. `pip install -r requirements-gsheets.txt`.
-2. Create a service account with the Sheets and Drive APIs enabled, and save its key as `service_account.json` (the file is git-ignored).
-3. Share the spreadsheet with the service-account e-mail.
-4. Run with `--gsheet`.
+| Флаг | По умолчанию | Что делает |
+|---|---|---|
+| `-c, --category NAME` / `-n, --limit N` | все / без лимита | категория по имени или slug без учёта регистра, можно повторять (список: `--list-categories`) / максимум книг |
+| `-o, --out PATH` | `output/books` | формат по расширению, без расширения пишутся все три; можно повторять |
+| `--csv-sep` | `comma` | `comma`, `semicolon` (с десятичной запятой), `tab` |
+| `--concurrency N` / `--rate RPS` | 5 / 4 | одновременных запросов / запросов в секунду (`0` без лимита) |
+| `--retries N` / `--timeout SEC` | 3 / 20 | повторов на запрос / таймаут в секундах |
+| `--cache-dir DIR` / `--cache-ttl HOURS` | `.cache/http` / 24 | папка и срок жизни кэша (`0` бессрочно) |
+| `--no-cache`, `--ignore-robots`, `-v`, `-q` | | без кэша; без проверки robots.txt; debug-лог; только предупреждения и ошибки |
+| `--gsheet KEY_OR_URL` | | ещё и в Google Sheets: `pip install -r requirements-gsheets.txt`, ключ сервисного аккаунта в `--gsheet-creds` (`service_account.json`), таблицу нужно открыть на e-mail этого аккаунта |
 
-### How I adapt this to your site
+Коды выхода: `0` готово (упавшие страницы перечисляются в логе, но код не меняют), `1` ничего не собрано, `2` неверные аргументы, неизвестная категория или на главной не нашлись категории, `3` главная не скачалась или закрыта в robots.txt, `4` ошибка Google Sheets, `5` не удалось записать файл (остальные форматы всё равно пишутся), `130` Ctrl-C. После Ctrl-C файлы не пишутся, но кэш пополняется после каждой страницы, так что повторный запуск уже скачанные страницы заново не качает.
 
-1. **Recon.** I map the catalogue, pagination and item pages. I check for a hidden JSON API (faster and more stable than HTML) and whether JS rendering (Playwright) is needed. I also read `robots.txt` and the site's terms.
-2. **Fields and format.** We agree on the columns and the output: Excel, CSV, Google Sheets, a database or an API.
-3. **Parsers.** I rewrite `parsers.py` for your selectors and save HTML fixtures with tests, so a layout change on the site shows up as a failing test.
-4. **Scale and politeness.** I tune concurrency and rate so the site isn't overloaded. Proxies, login, cookies and headers are added if needed.
-5. **Scheduling.** cron, GitHub Actions or a server. Reports go to Telegram or e-mail, and price and stock history is kept.
-6. **Handover.** Code, README, a sample on your real data and run instructions.
+## Ограничения
 
-> I only collect publicly available data and follow `robots.txt` and site terms. I don't scrape personal data or get around paywalls.
-
----
-
-MIT License · © sinnercode228
+- В CSV защиты от формул нет: название на `=` в XLSX останется текстом, а при открытии CSV Excel может посчитать его формулой.
+- На 404 у robots.txt «можно всё», так и положено, но так же трактуются 5xx и обрыв сети, хотя RFC 9309 в этом случае велит считать всё запрещённым.
+- Склейку без точки регулярка не трогает: в первой книге сэмпла остался `—My MotherDuring`. Правило «строчная + заглавная» разрезало бы McDonald и YouTube.

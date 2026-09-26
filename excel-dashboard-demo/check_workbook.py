@@ -41,7 +41,7 @@ def check(path: str) -> bool:
 
     recalculated = recalc_with_libreoffice(path)
     if recalculated is None:
-        print("   LibreOffice: not installed - skipped")
+        print("   LibreOffice: not installed or conversion failed - skipped")
     else:
         wb = load_workbook(recalculated, data_only=True)
         lo_errors = [f"{ws.title}!{c.coordinate}" for ws in wb.worksheets for row in ws.iter_rows()

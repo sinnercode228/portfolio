@@ -313,7 +313,8 @@ def find_errors(values: dict[str, object]) -> dict[str, str]:
 
 
 def recalc_with_libreoffice(path: str | Path, timeout: int = 120) -> Path | None:
-    """Headless LibreOffice round-trip (only if soffice is installed). Returns the recalculated copy."""
+    """Headless LibreOffice round-trip (only if soffice is installed). Returns the recalculated copy,
+    or None when soffice is missing or the conversion produced no file."""
     soffice = shutil.which("soffice") or shutil.which("libreoffice")
     if not soffice:
         return None
@@ -321,7 +322,9 @@ def recalc_with_libreoffice(path: str | Path, timeout: int = 120) -> Path | None
     subprocess.run([soffice, "--headless", "--calc", "--convert-to", "xlsx", "--outdir",
                     str(out_dir), str(path)], check=True, timeout=timeout,
                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    return out_dir / Path(path).name
+    out = out_dir / Path(path).name
+    # soffice can exit 0 without writing the file; treat that like "not installed"
+    return out if out.exists() else None
 
 
 # ------------------------------------------------------------------ cached values for previews
