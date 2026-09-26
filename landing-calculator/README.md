@@ -1,237 +1,97 @@
-# «Полдень» — лендинг с калькулятором стоимости дома
+# landing-calculator
 
-> **Демо-проект / Demo project.** «Полдень» — вымышленная строительная компания. Цены, адреса, телефоны и объекты условные; иллюстрации нарисованы на SVG/CSS, чужих фотографий нет.
+Одностраничный сайт строительной компании «Полдень» (компания, цены и контакты выдуманы): калькулятор стоимости дома со сметой по строкам, форма заявки с маской телефона и serverless-функция, которая пересылает заявку в Telegram и/или на почту. Интерфейс на русском, код на HTML, CSS и JS без сборки и без npm-зависимостей, страница весит 37 КБ в gzip, а 49 тестов запускаются в Node без браузера.
 
-Одностраничный сайт для компании, которая строит частные дома: живой калькулятор стоимости с разбивкой сметы, форма заявки с маской телефона, галерея проектов, этапы работ, гарантии, FAQ и контакты. Чистые HTML, CSS и JS без сборки, поэтому сайт открывается двойным кликом и публикуется на GitHub Pages как есть.
+Демо: https://sinnercode228.github.io/portfolio/landing-calculator/
 
-[English version below](#english)
+![Первый экран лендинга «Полдень»](docs/screenshot-hero.jpg)
 
-![Первый экран](docs/screenshot-hero.jpg)
+## Как считается цена
 
-![Калькулятор](docs/screenshot-calculator.jpg)
+Цены, коэффициенты и сроки лежат в [`js/config.js`](js/config.js), формула — функция `calculate` в [`js/calc.js`](js/calc.js). Каждая строка сметы округляется отдельно (`roundTo` там же):
 
-![Проекты](docs/screenshot-projects.jpg)
-
-## Что умеет
-
-**Калькулятор**
-- Площадь задаётся ползунком или вводом числа, оба поля синхронизированы. Ещё можно выбрать этажность (1 или 2), технологию стен (газобетон, каркас, кирпич, брус), уровень отделки («коробка», white box, «под ключ») и опции: фундамент-плиту, террасу с площадью и гараж.
-- Итог пересчитывается сразу. Показаны цена за м², ориентировочный срок, цветная шкала долей и разбивка по статьям. Сумма строк всегда равна итогу, это проверено тестом.
-- Цены, коэффициенты и сроки лежат в одном файле `js/config.js`. Варианты технологий и отделки строятся из него же, поэтому новая технология в конфиге сама появится на странице.
-- Кнопка «Скопировать ссылку на расчёт» кладёт параметры в URL (`?area=148&floors=2&tech=aerated…`). Если открыть такую ссылку, калькулятор восстановит расчёт.
-- Кнопки «Посчитать дом из газобетона» и «Рассчитать похожий» в карточках проектов подставляют параметры в калькулятор. Цены проектов считает тот же калькулятор.
-- На телефоне, пока пользователь крутит параметры, снизу держится плашка с итогом.
-
-**Заявка**
-- Поля: имя, телефон с маской `+7 (___) ___-__-__` (правка в середине номера и Backspace по скобкам работают корректно) и комментарий.
-- Флажок «Приложить расчёт» добавляет в заявку расчёт целиком: параметры, строки сметы и текстовое резюме. Ещё в заявку попадают UTM-метки и адрес страницы входа. Метки запоминаются при загрузке, поэтому не теряются, даже если посетитель скопировал ссылку на расчёт.
-- Ошибки валидации показываются у полей: `aria-invalid`, `aria-describedby`, фокус переходит на первое поле с ошибкой. Есть honeypot против ботов.
-- Бэкенда в демо нет. После отправки показывается экран успеха, а весь payload выводится в консоль браузера (F12). Как подключить Telegram или почту, описано ниже. Когда адрес обработчика задан, пояснение «это демо» на экране успеха скрывается само.
-
-**Остальное**
-- Разделы: первый экран, технологии, калькулятор, заявка, этапы, проекты с фильтром, гарантии, FAQ-аккордеон на `<details>` (одновременно открыт один ответ), контакты с картой-заглушкой, подвал.
-- Для Яндекс.Метрики подготовлены закомментированный счётчик и функция `track()` с целями. Подробнее в разделе про Метрику.
-- Вёрстка mobile-first и проверена на ширине 375 px без горизонтальной прокрутки. Шрифт — Manrope (Google Fonts) с системным запасным вариантом.
-- Доступность: ссылка «Перейти к содержимому», у всех полей есть подписи, `fieldset`/`legend`, видимый фокус, `aria-live` для итога, `prefers-reduced-motion`, контраст текста не ниже 4.5:1.
-- Размер: HTML + CSS + JS весят около 37 КБ в gzip. Зависимостей нет.
-
-## Быстрый старт
-
-Сборка не нужна.
-
-```bash
-# вариант 1: просто открыть файл (двойной клик по index.html или команда ниже)
-open index.html      # Windows: start index.html · Linux: xdg-open index.html
-
-# вариант 2: локальный сервер на Node.js — без Python и без npm install
-npm start            # → http://localhost:8080
-npm start -- 3000    # если порт 8080 занят
+```text
+цена за м²  = round(цена технологии × коэф. этажности, 10)   коэф.: 1 этаж — 1, 2 этажа — 0.94
+коробка     = round(площадь × цена за м², 1000)
+отделка     = round(коробка × (множитель − 1), 1000)         shell 1, whitebox 1.3, turnkey 1.65
+плита       = round(ceil(площадь / этажи × 1.1 − 1e-9) × 7500, 1000)
+терраса     = м² × 12 000
+гараж       = 950 000
+итог        = сумма строк
 ```
 
-Сервер (`scripts/serve.mjs`) нужен, если вы хотите открыть сайт с телефона в той же сети или проверить копирование ссылки в буфер: в некоторых браузерах оно работает только по `http://`.
+Итог отдельно не округляю: это сумма уже округлённых строк, поэтому разбивка всегда сходится с суммой. Перебор 360 комбинаций в [`tests/calc.test.js`](tests/calc.test.js) (4 технологии × 3 уровня отделки × 2 этажности × 5 площадей × 3 набора опций) проверяет, что каждая строка — целое положительное число, а итог кратен 1 000 ₽ и равен сумме строк.
 
-## Тесты
+`− 1e-9` в формуле плиты нужен из-за float: `100 * 1.1` в JS даёт `110.00000000000001`. Без поправки `Math.ceil` насчитал бы дому 100 м² в один этаж 111 м² плиты вместо 110, и строка вышла бы 833 000 ₽ вместо 825 000. Площадь целая, этажей один или два, так что у честного значения дробная часть либо ноль, либо не меньше 0,05, и поправка её не задевает.
 
-Нужен Node.js 22 или новее (раннер `node --test` понимает шаблоны вида `tests/*.test.js` только с 21-й версии). Зависимости ставить не нужно, используется встроенный `node:test`.
+Значения по умолчанию (газобетон, 120 м², один этаж, white box, плита) дают 3 720 000 + 1 116 000 + 990 000 = 5 826 000 ₽. Это же число проверяет первый тест в `calc.test.js`, и его же видно на скриншоте:
 
-```bash
-npm test
-```
+![Калькулятор: итог 5 826 000 ₽ и разбивка по строкам](docs/screenshot-calculator.jpg)
 
-49 тестов в пяти файлах:
+Деньги форматирую сам: разряды через неразрывный пробел, минус — `−` (U+2212), в карточках проектов и в объявлении для скринридера короткая форма «5,83 млн ₽». В текстовом резюме расчёта, которое уходит в заявку и в Telegram, неразрывные пробелы заменяются обычными.
 
-| Файл | Что проверяет |
-|---|---|
-| `tests/calc.test.js` | Формулы на конкретных числах; сумма строк равна итогу на переборе 360 комбинаций; монотонность цены; нормализация ввода (границы, строки, `__proto__`); сроки; форматирование ₽; склонения; ссылка с расчётом |
-| `tests/form-utils.test.js` | Маску телефона и позицию курсора, Backspace по символам маски, валидацию, UTM, состав payload |
-| `tests/serverless.test.mjs` | Пример serverless-функции с подменённым `fetch`: CORS, 405/400/413/422, honeypot, отправку в Telegram и e-mail, экранирование HTML, телефон только из проверенного поля, лимит длины сообщения |
-| `tests/page.test.js` | Уникальность id, существование файлов и якорей, наличие в разметке всех id из `app.js`, подписи у полей, корректность JSON в пресетах, совпадение подписей карточек проектов с их пресетами, единый телефон, демо-пометку, размер страницы |
-| `tests/serve.test.mjs` | Локальный сервер `npm start`: типы файлов, 404/405, скрытые файлы и защиту от выхода из папки через `../` |
+## Ссылка на расчёт
 
-## Структура
+Кнопка «Скопировать ссылку на расчёт» собирает 7 параметров (`area`, `floors`, `tech`, `finish`, `slab`, `terrace`, `garage`) в `URLSearchParams` и меняет адрес через `history.replaceState`, так что новой записи в истории не появляется. В буфер ссылка копируется, только если есть `navigator.clipboard` и страница открыта в безопасном контексте (`window.isSecureContext`). Иначе, как и при ошибке записи, рядом с кнопкой появляется «Ссылка — в адресной строке».
 
-```
-landing-calculator/
-├── index.html                 # вся страница + SVG-спрайт иконок и иллюстраций
-├── css/styles.css             # стили, дизайн-токены в :root
-├── js/
-│   ├── config.js              # цены, коэффициенты, сроки, leadEndpoint
-│   ├── calc.js                # чистые функции расчёта (без DOM)
-│   ├── form-utils.js          # маска телефона, валидация, сборка заявки (без DOM)
-│   └── app.js                 # связывает всё со страницей
-├── serverless/telegram-lead.mjs  # пример приёма заявок → Telegram / e-mail
-├── scripts/serve.mjs          # локальный сервер для npm start (без зависимостей)
-├── tests/                     # node --test
-├── assets/favicon.svg
-└── docs/                      # скриншоты для README
-```
+При открытии `decodeState` читает только эти 7 ключей и пропускает их через ту же `normalizeInput`, что и ввод с формы. Площадь приводится к диапазону 40–400, «150,6» превращается в 151, неизвестные `tech`, `finish` и `floors` заменяются значениями по умолчанию, а флаги считаются включёнными только при `1`, `true`, `on` или `yes`. Если ни одного ключа нет, `decodeState` возвращает `null`, и калькулятор стартует с дефолтов.
 
-`config.js`, `calc.js` и `form-utils.js` написаны в формате UMD. В браузере они подключаются обычным `<script>` и работают даже с `file://`, а в Node загружаются через `require()`, поэтому тесты проверяют тот же код, что работает на странице.
+Ключ ищется через `hasOwnProperty`, поэтому `?tech=__proto__` и `?tech=constructor` дают газобетон по умолчанию (на это есть тест). Простая проверка `cfg.technologies[tech]` такой ключ пропустила бы: для `__proto__` это `Object.prototype`, и цена стала бы `NaN`.
 
-## Как устроен расчёт
+Кнопка собирает адрес заново только из параметров калькулятора, поэтому после копирования UTM-метки исходной ссылки из адресной строки пропадают. Метки и адрес входа запоминаются один раз при загрузке страницы ([`js/app.js`](js/app.js)), и в заявку идут сохранённые значения, а не текущий адрес.
 
-```
-коробка   = площадь × цена_технологии × коэф_этажности   (2 этажа: ×0.94)
-отделка   = коробка × (множитель_отделки − 1)             (white box ×1.3, под ключ ×1.65)
-плита     = ⌈площадь / этажи × 1.1⌉ м² × 7 500 ₽
-терраса   = м² × 12 000 ₽
-гараж     = 950 000 ₽
-итого     = сумма строк (каждая округлена до 1 000 ₽)
-срок, мес = база_технологии + срок_отделки + (площадь − 100)/100 + 0.5 за 2 этажа + 0.5 за гараж → вверх
-```
+## Заявка: маска на клиенте, проверка на сервере
 
-Чтобы поменять цены, достаточно отредактировать `js/config.js`:
+Маска `+7 (___) ___-__-__` собрана из чистых функций в [`js/form-utils.js`](js/form-utils.js). Ведущая 8 превращается в 7. При правке в середине номера курсор не прыгает в конец: его позиция пересчитывается по числу цифр слева. Если слева от курсора скобка, пробел или дефис, Backspace удаляет ближайшую цифру слева, а не символ маски. На клиенте имя ещё должно содержать хотя бы одну букву (`\p{L}`), сервер проверяет только длину.
 
-```js
-technologies: {
-  aerated: { label: 'Газобетон', price: 31000, months: 5 },
-  // добавьте свою технологию — она появится в калькуляторе автоматически
-  sip: { label: 'СИП-панели', price: 22000, months: 2 }
-}
-```
+В демо `leadEndpoint` в `config.js` пустой, и заявка никуда не уходит: экран успеха показывается как обычно, а JSON, который ушёл бы на сервер, печатается в консоль браузера.
 
-## Подключение заявок: Telegram и почта
+Приёмник заявок — [`serverless/telegram-lead.mjs`](serverless/telegram-lead.mjs), функция `handleLead(request, env)` на Web Fetch API (`Request → Response`). Что происходит с запросом:
 
-На фронтенде достаточно указать адрес обработчика в `js/config.js`:
+1. Тело длиннее 20 000 символов (проверка после `request.text()`, до `JSON.parse`) — 413.
+2. Заполнено скрытое поле `website` (honeypot) — ответ 200 `{ ok: true }`, но ничего не отправляется. Поле лежит в блоке с `aria-hidden="true"`, у самого поля `tabindex="-1"`, чтобы его не заполнил человек с клавиатуры или скринридером.
+3. Телефон проверяется ещё раз: после удаления всего, кроме цифр и `+`, он должен совпасть с `^\+7\d{10}$`. Имя 2–80 символов, комментарий до 1000, иначе 422.
+4. Текст для Telegram идёт с `parse_mode: 'HTML'`. Поля сначала обрезаются (имя 80 символов, комментарий 1000, расчёт 1500, UTM и адрес страницы по 300, вместе 3 180 плюс подписи), потом проходят через `escapeHtml`. Лимит Telegram в 4096 символов считается после разбора HTML-сущностей, поэтому тест меряет длину текста без тегов.
+5. Телефон в сообщении собирается заново из проверенного `phone`; `phoneFormatted` приходит от клиента и не используется.
+6. Telegram и письмо через Resend отправляются параллельно через `Promise.allSettled`. Ошибка одного канала только пишется в лог, 502 возвращается, если не дошёл ни один. Если не настроен ни один канал — 500.
 
-```js
-leadEndpoint: 'https://polden-lead.<ваш-аккаунт>.workers.dev'
-```
+### Подключение заявок
 
-Форма отправит `POST` с JSON: `{ name, phone, phoneFormatted, comment, website, calculation, meta }`. Готовый обработчик лежит в [`serverless/telegram-lead.mjs`](serverless/telegram-lead.mjs). Он проверяет данные, отсекает ботов, экранирует HTML и отправляет сообщение в Telegram. Если указать ключ [Resend](https://resend.com), он дополнительно отправит письмо.
+Чтобы форма слала заявки, в `leadEndpoint` в [`js/config.js`](js/config.js) пишется адрес развёрнутого обработчика. На Cloudflare Workers файл работает как есть через `export default { fetch }`. Для Vercel и Netlify нужна обёртка, которая передаёт запросы `POST` и `OPTIONS` в `handleLead(req, process.env)`.
 
-### 1. Бот в Telegram
-1. Создайте бота у [@BotFather](https://t.me/BotFather) и скопируйте токен.
-2. Добавьте бота в рабочий чат или группу и напишите там любое сообщение.
-3. Откройте `https://api.telegram.org/bot<ТОКЕН>/getUpdates` и найдите `chat.id` (у групп он отрицательный).
+Telegram включается, когда заданы `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID`, почта через Resend — когда заданы `RESEND_API_KEY` и `LEAD_EMAIL_TO` (отправитель — `LEAD_EMAIL_FROM`). `ALLOWED_ORIGIN` уходит в CORS-заголовок.
 
-### 2. Cloudflare Workers (бесплатного тарифа хватает)
-Файл запускается как есть. Создайте рядом `wrangler.toml`:
+Чего нет: ограничения частоты запросов (от спама защищает только honeypot) и пересчёта сметы на сервере. `calculation.summary` приходит от клиента текстом и после обрезки и экранирования уходит в Telegram как есть. `ALLOWED_ORIGIN` по умолчанию `*`, для настоящего сайта его надо задать.
 
-```toml
-name = "polden-lead"
-main = "serverless/telegram-lead.mjs"
-compatibility_date = "2026-01-01"
+## Без сборки
 
-[vars]
-ALLOWED_ORIGIN = "https://<username>.github.io"
-```
+Скрипты подключены обычными `<script defer>`, страница открывается двойным кликом по `index.html`. `config.js`, `calc.js` и `form-utils.js` написаны как UMD: в браузере они кладут объект в `window` (`HOUSE_CONFIG`, `HouseCalc`, `FormUtils`), в Node отдаются через `module.exports`. Тесты делают `require()` тех же файлов, что грузит страница, без jsdom и без браузера.
 
-```bash
-npx wrangler secret put TELEGRAM_BOT_TOKEN
-npx wrangler secret put TELEGRAM_CHAT_ID
-npx wrangler deploy
-```
+Расчёт, маска телефона, валидация и сборка заявки лежат в чистых функциях без DOM, их я и тестирую. `app.js` связывает их со страницей, и его поведение (обработчики, анимация, фокус) тестами не покрыто. [`tests/page.test.js`](tests/page.test.js) читает `index.html` и `app.js` как текст и сверяет регулярками: id не повторяются, файлы из `src`/`href` существуют, все id, которые ищет `app.js`, есть в разметке, у каждого поля есть подпись.
 
-### Vercel или Netlify
-Обработчик написан на стандартном Web API (`Request → Response`), поэтому хватит тонкой обёртки:
+Цен в карточках проектов в HTML нет, там стоит «—»: `app.js` считает их тем же `calculate` по `data-preset`. Тест проверяет, что подписи шести карточек (технология, площадь, этажность, отделка, терраса, гараж) совпадают с пресетом.
 
-```js
-// Vercel: api/lead.mjs
-import { handleLead } from '../serverless/telegram-lead.mjs';
-export const POST = (req) => handleLead(req, process.env);
-export const OPTIONS = (req) => handleLead(req, process.env);
-```
+В `page.test.js` есть и тест на размер: HTML, CSS, JS и favicon вместе должны весить меньше 50 КБ в gzip, сейчас 37,3 КБ. Шрифт Manrope с Google Fonts сюда не входит. Тегов `<img>` на странице нет: иконки и иллюстрации сделаны на inline SVG (спрайт из 16 `<symbol>` плюс отдельные SVG первого экрана и карты) и CSS.
 
-```js
-// Netlify: netlify/functions/lead.mjs
-import { handleLead } from '../../serverless/telegram-lead.mjs';
-export default (req) => handleLead(req, process.env);
-export const config = { path: '/api/lead' };
-```
+49 тестов на встроенном `node:test`:
 
-### Почта
-Задайте переменные `RESEND_API_KEY`, `LEAD_EMAIL_TO` и `LEAD_EMAIL_FROM` (домен отправителя нужно подтвердить в Resend). Если Telegram тоже настроен, заявка уйдёт в оба канала, и ошибка одного из них не помешает второму.
-
-Если сервер не нужен вовсе, можно направить `leadEndpoint` в сервис форм, который пересылает JSON на почту. Ответ с кодом 2xx форма считает успехом.
-
-| Переменная | Обязательна | Назначение |
+| Файл | Тестов | Что проверяет |
 |---|---|---|
-| `TELEGRAM_BOT_TOKEN` | для Telegram | токен от @BotFather |
-| `TELEGRAM_CHAT_ID` | для Telegram | id чата или группы |
-| `ALLOWED_ORIGIN` | желательно | адрес сайта для CORS (по умолчанию `*`) |
-| `RESEND_API_KEY`, `LEAD_EMAIL_TO`, `LEAD_EMAIL_FROM` | для почты | отправка писем через Resend |
+| [`tests/calc.test.js`](tests/calc.test.js) | 14 | формулы на конкретных числах, перебор 360 комбинаций, нормализация ввода, форматирование, ссылка на расчёт |
+| [`tests/form-utils.test.js`](tests/form-utils.test.js) | 9 | маска, позиция курсора, Backspace, валидация, UTM, payload |
+| [`tests/serverless.test.mjs`](tests/serverless.test.mjs) | 13 | обработчик с подменённым `fetch`: коды ответов, honeypot, экранирование, телефон, лимит длины |
+| [`tests/page.test.js`](tests/page.test.js) | 11 | статические проверки разметки и размер страницы |
+| [`tests/serve.test.mjs`](tests/serve.test.mjs) | 2 | dev-сервер: типы файлов, `../` и `%2e%2e`, скрытые файлы |
 
-## Яндекс.Метрика
+## Доступность
 
-1. Создайте счётчик и в `index.html` раскомментируйте блок в `<head>`, подставив номер счётчика.
-2. В `js/app.js` задайте `METRIKA_ID` и раскомментируйте вызов `ym(…, 'reachGoal', …)` в функции `track()`.
-3. Заведите в Метрике JavaScript-цели:
+Первая ссылка на странице — «Перейти к содержимому». Итог дублируется в скрытый элемент с `aria-live="polite"` короткой фразой («Итого примерно 5,83 млн ₽, срок около 7 месяцев.») через 700 мс после последнего изменения, чтобы скринридер не зачитывал каждый шаг ползунка. У ползунка площади `aria-valuetext` со склонением: «120 квадратных метров». Если форма не прошла проверку, поля с ошибкой получают `aria-invalid`, а фокус переходит на первое из них. При `prefers-reduced-motion` CSS сводит анимации и переходы к 0,01 мс, сумма обновляется сразу, без отсчёта цифр, а к калькулятору страница прокручивается без `smooth`.
 
-| Цель | Когда срабатывает |
-|---|---|
-| `calc_used` | первое изменение калькулятора (один раз за визит) |
-| `calc_preset` | нажата кнопка «Посчитать…» или «Рассчитать похожий» |
-| `calc_share` | скопирована ссылка на расчёт |
-| `calc_cta` | нажата кнопка «Рассчитать стоимость» или «Получить точную смету» |
-| `lead_error` | заявка не прошла валидацию |
-| `lead_submit` | заявка отправлена |
-| `phone_click` | клик по телефону |
-| `faq_open` | открыт вопрос в FAQ |
+## Запуск
 
-Пока счётчик не подключён, цели пишутся в консоль как `[Метрика · демо] reachGoal …`.
-
-## Публикация на GitHub Pages
-
-1. Загрузите папку в репозиторий.
-2. Откройте Settings → Pages → Deploy from a branch → `main` / `(root)`.
-3. Файл `.nojekyll` уже лежит в проекте, Jekyll обрабатывать сайт не будет.
-
-На реальном сайте уберите `<meta name="robots" content="noindex, nofollow">` и демо-плашку, а также замените контакты и текст политики конфиденциальности.
-
----
-
-<a id="english"></a>
-
-# "Polden": a house-building landing page with a cost calculator
-
-> **Demo project.** "Polden" is a fictional house-building company. All prices, addresses, phone numbers and projects are placeholders. The illustrations are hand-made SVG/CSS with no third-party photos.
-
-This is a one-page site for a private house builder. It has a live house cost calculator with an itemised estimate, a lead form with a phone mask, a filterable project gallery, work stages, guarantees, an FAQ and contacts. It uses plain HTML, CSS and JS with no build step, so it works from `file://` and deploys to GitHub Pages as is.
-
-## Features
-- **Calculator.** Inputs: area (slider and number input), floors, wall technology (aerated concrete, timber frame, brick, glued timber), finish level (shell, white box, turnkey) and options (slab foundation, terrace area, garage). The result updates live and shows the price per m², an estimated build time, a proportion bar and an itemised breakdown. All prices live in `js/config.js`, and the calculator's options are generated from that file. The current calculation can be shared as a URL. The project cards and technology cards can preload their parameters into the calculator. On mobile, a sticky total bar stays visible while you change inputs.
-- **Lead form.** Fields: name, a masked Russian phone number (caret-aware editing) and a comment. There is an option to attach the full calculation. The form also captures UTM tags on page load (so they survive the "copy link" button rewriting the URL) and has a honeypot field and accessible inline validation. With no backend, the demo shows a success state and logs the JSON payload to the console.
-- **Sections.** Hero, technologies, calculator, lead form, stages, projects with a filter, guarantees, an FAQ accordion (native `<details name>`) and contacts.
-- **Yandex Metrika.** The counter snippet and the `track()` goal hooks are included as commented-out placeholders.
-- **Quality.** The layout is mobile-first and has no horizontal scroll at 375 px. The page has accessible labels and landmarks, visible focus, `aria-live` updates and reduced-motion support. It weighs about 37 KB gzipped and has zero dependencies.
-
-## Run and test
 ```bash
-open index.html        # or: npm start → http://localhost:8080 (Node only, no Python needed)
-npm test               # Node ≥ 22, no install needed: 49 tests
+# без Node: открыть index.html в браузере
+npm start            # dev-сервер без зависимостей, http://localhost:8080
+npm start -- 3000    # другой порт
+npm test             # Node ≥ 22, ничего ставить не нужно
 ```
-The tests cover the calculator maths (including a check that the item rows add up to the total across 360 input combinations), input normalisation, formatting, the phone mask and caret logic, validation, the lead payload, the serverless handler (with a mocked `fetch`), the local dev server and static checks of the page markup (including that each project card's label matches the preset its price is calculated from).
-
-## Receiving leads (Telegram / e-mail)
-Set `leadEndpoint` in `js/config.js`. The form then POSTs its JSON payload to that URL. [`serverless/telegram-lead.mjs`](serverless/telegram-lead.mjs) is a Web-standard handler: it validates the payload, drops bot submissions, escapes HTML, and sends the lead to Telegram and optionally e-mails it via Resend.
-- **Cloudflare Workers:** deploy the file as is (see the `wrangler.toml` example above). Set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` as secrets and `ALLOWED_ORIGIN` as a variable.
-- **Vercel / Netlify:** use the three-line wrappers shown above.
-- **E-mail:** set `RESEND_API_KEY`, `LEAD_EMAIL_TO` and `LEAD_EMAIL_FROM`.
-
-## Deploy
-Push the folder to a repository and enable GitHub Pages (branch `main`, root folder). For a real client, remove the `noindex` meta tag and the demo banner, and replace the contacts and the privacy policy text.
-
----
-
-Разработка / Author: [sinnercode228](https://github.com/sinnercode228) · MIT
