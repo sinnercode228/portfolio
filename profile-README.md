@@ -1,49 +1,47 @@
-# Hi, I'm sinnercode — full-stack developer
+Пишу бэкенды на Python (FastAPI) и TypeScript (Fastify), фронтенды на React, Telegram-ботов на aiogram и Mini App с оплатой в Stars.
+Связываю amoCRM, Bitrix24, Tilda и МойСклад через вебхуки и API. С LLM сделал RAG по документам и воркфлоу для n8n на Claude и локальной Ollama.
 
-Full-stack разработчик: веб-приложения, Telegram Mini Apps, AI/RAG и интеграции под ключ — от базы данных до интерфейса, с тестами, CI и документацией.
-Full-stack developer shipping web apps, Telegram Mini Apps, AI/RAG assistants and integrations end to end — from database to UI, with tests, CI and docs.
+<p>
+  <a href="https://sinnercode228.github.io/pulse-analytics/"><img src="https://raw.githubusercontent.com/sinnercode228/portfolio/main/assets/projects/pulse-analytics/cover.webp" width="32%" alt="Pulse, дашборд аналитики"></a>
+  <a href="https://sinnercode228.github.io/tg-shop-miniapp/"><img src="https://raw.githubusercontent.com/sinnercode228/portfolio/main/assets/projects/tg-shop-miniapp/cover.webp" width="32%" alt="Zernolist, магазин в Telegram"></a>
+  <a href="https://sinnercode228.github.io/flowdesk-crm/"><img src="https://raw.githubusercontent.com/sinnercode228/portfolio/main/assets/projects/flowdesk-crm/cover.webp" width="32%" alt="FlowDesk, канбан сделок"></a>
+</p>
 
-**Portfolio:** https://sinnercode228.github.io/portfolio/ · [English](https://sinnercode228.github.io/portfolio/?lang=en)
+- **[Pulse](https://github.com/sinnercode228/pulse-analytics)** · [демо](https://sinnercode228.github.io/pulse-analytics/)\
+  Аналитика сайтов без cookies с трекером на 843 байта (560 в gzip) и аптайм-мониторингом. Посетителей в каждой строке роллапа считает [HyperLogLog-скетч](https://github.com/sinnercode228/pulse-analytics/blob/main/packages/core/src/hll.ts), и период любой длины собирается слиянием скетчей.\
+  TypeScript, Fastify, node:sqlite, WebSocket, React, uPlot
 
-### Stack
+- **[Relay](https://github.com/sinnercode228/integration-hub)** · [демо](https://sinnercode228.github.io/integration-hub/)\
+  Принимает вебхуки Tilda, amoCRM и Bitrix24 и разносит их в Telegram, Google Sheets, amoCRM и на почту. Очередь своя, [на sorted sets в Redis](https://github.com/sinnercode228/integration-hub/blob/main/backend/src/relay/queue/redis.py): взятая задача переезжает в отдельный ZSET с дедлайном через 120 секунд, и если воркер упадёт, после дедлайна она вернётся в очередь.\
+  Python, FastAPI, Redis, SQLite, React
 
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=nextdotjs&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-0F172A?style=flat-square&logo=tailwindcss&logoColor=38BDF8)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
-![Fastify](https://img.shields.io/badge/Fastify-000000?style=flat-square&logo=fastify&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
-![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white)
-![Telegram Bots & Mini Apps](https://img.shields.io/badge/Telegram_Bots_%26_Mini_Apps-26A5E4?style=flat-square&logo=telegram&logoColor=white)
-![LLM / RAG](https://img.shields.io/badge/LLM_%2F_RAG-191919?style=flat-square&logo=anthropic&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=githubactions&logoColor=white)
-![nginx](https://img.shields.io/badge/nginx-009639?style=flat-square&logo=nginx&logoColor=white)
+- **[DocMind](https://github.com/sinnercode228/docmind-rag)** · [демо](https://sinnercode228.github.io/docmind-rag/)\
+  RAG-ассистент по PDF, DOCX и веб-страницам. Источники приходят по SSE [раньше первого токена ответа](https://github.com/sinnercode228/docmind-rag/blob/main/backend/src/docmind/rag/service.py#L110-L111) — когда в тексте появляется сноска `[n]`, её карточка уже на экране.\
+  Python, FastAPI, pgvector, Claude или OpenAI-совместимый API, React, бот на aiogram
 
-Integrations: amoCRM, Bitrix24, Tilda, MoySklad, Google Sheets, Stripe, Telegram Stars.
+- **[Zernolist](https://github.com/sinnercode228/tg-shop-miniapp)** · [демо](https://sinnercode228.github.io/tg-shop-miniapp/)\
+  Магазин кофе и чая внутри Telegram с оплатой в Stars. Сервер [пересчитывает каждый заказ по каталогу](https://github.com/sinnercode228/tg-shop-miniapp/blob/main/bot/tgshop/services/orders.py#L75-L77), поэтому тест шлёт `price: 1` и всё равно получает подытог 1290 ₽.\
+  Mini App на React и Tailwind, бот и API на aiogram 3 + FastAPI, SQLAlchemy
 
-### Featured projects
+- **[FlowDesk](https://github.com/sinnercode228/flowdesk-crm)** · [демо](https://sinnercode228.github.io/flowdesk-crm/)\
+  CRM с канбаном сделок. Refresh-токены ротируются, повторно использованный токен отзывает всю сессию, а гонку двух одновременных refresh закрывает [условный `updateMany` в транзакции](https://github.com/sinnercode228/flowdesk-crm/blob/main/server/src/modules/auth/auth.service.ts#L44-L51).\
+  Next.js, Fastify, Prisma, PostgreSQL, TanStack Query, dnd-kit
 
-Each of the five has a live demo that runs in the browser with no sign-up, open source code, CI and automated tests.
+Демо — статические сборки на GitHub Pages, бэкенд в них заменён реализацией в браузере. У DocMind там нет LLM: поиск идёт по BM25, ответ собирается из найденных предложений.
 
-| Project | What it is | Stack | Live demo | Code |
-|---|---|---|---|---|
-| **FlowDesk CRM** | Mini-CRM with a drag-and-drop deals pipeline, contacts, analytics, roles and JWT/refresh auth · 97 tests | Next.js, TypeScript, Fastify, Prisma, PostgreSQL | [Open](https://sinnercode228.github.io/flowdesk-crm/) | [flowdesk-crm](https://github.com/sinnercode228/flowdesk-crm) |
-| **DocMind RAG** | AI assistant for documents: streamed answers where every claim cites and highlights its source · 127 tests | Python, FastAPI, pgvector, Claude / OpenAI, React | [Open](https://sinnercode228.github.io/docmind-rag/) | [docmind-rag](https://github.com/sinnercode228/docmind-rag) |
-| **Telegram Mini App Shop** | A shop inside Telegram: React Mini App, Telegram Stars checkout, aiogram 3 bot with initData validation · 143 tests | React, TypeScript, aiogram 3, FastAPI | [Open](https://sinnercode228.github.io/tg-shop-miniapp/) | [tg-shop-miniapp](https://github.com/sinnercode228/tg-shop-miniapp) |
-| **Relay Integration Hub** | Tilda / amoCRM / Bitrix24 webhooks delivered to Telegram, Sheets, CRM and e-mail with retries, a DLQ and replay · 155 tests | Python, FastAPI, Redis, React | [Open](https://sinnercode228.github.io/integration-hub/) | [integration-hub](https://github.com/sinnercode228/integration-hub) |
-| **Pulse Analytics** | Cookieless real-time web analytics and uptime monitoring with a sub-1KB tracker and a live WebSocket feed · 97 tests | React, TypeScript, Fastify, WebSocket, SQLite | [Open](https://sinnercode228.github.io/pulse-analytics/) | [pulse-analytics](https://github.com/sinnercode228/pulse-analytics) |
+[n8n-home-ai-workflows](https://github.com/sinnercode228/n8n-home-ai-workflows) — четыре воркфлоу для n8n: заметки со встреч в Notion через Claude, дайджест семейных календарей, вопросы по домашним документам на локальных Ollama и Qdrant, обработчик ошибок. С живыми аккаунтами Anthropic, Notion и Google их не запускал; мок-прогоны исполняют настоящий `jsCode` из JSON воркфлоу в `vm`.
 
-Plus four smaller demos in [portfolio](https://github.com/sinnercode228/portfolio): a landing page with a calculator ([live](https://sinnercode228.github.io/portfolio/landing-calculator/)), an async scraper, a lead-capture Telegram bot and an Excel dashboard. 9 projects, 999 automated tests in total (619 + 380).
+В [portfolio](https://github.com/sinnercode228/portfolio) ещё четыре демо поменьше: лендинг с калькулятором стоимости дома ([демо](https://sinnercode228.github.io/portfolio/landing-calculator/)), асинхронный парсер books.toscrape.com с выгрузкой в XLSX, CSV и JSON, Telegram-бот для заявок и Excel-дашборд из CSV, где каждая цифра считается формулой.
+Все демо собраны на [sinnercode228.github.io/portfolio](https://sinnercode228.github.io/portfolio/), есть [английская версия](https://sinnercode228.github.io/portfolio/?lang=en).
 
-<sub>All projects are demos with fictional brands, people and data. The code is real and open.</sub>
+### Стек
 
-### Contact
+Python: FastAPI, aiogram 3, SQLAlchemy 2, Pydantic, httpx, openpyxl\
+TypeScript: Fastify, Prisma, zod, React 19, Next.js, Vite, TanStack Query, Zustand, Tailwind\
+Данные: PostgreSQL, pgvector, SQLite, Redis\
+LLM: Claude API, OpenAI-совместимые API, Ollama, Qdrant, n8n\
+Проверки и инфраструктура: pytest, Vitest, mypy (strict), ruff, GitHub Actions, Docker Compose, nginx
 
-- Telegram: [@sinnercode](https://t.me/sinnercode) — the fastest way to reach me
-- GitHub: [sinnercode228](https://github.com/sinnercode228)
+Всё это пет-проекты с выдуманными брендами и данными, но код, тесты и CI настоящие — 1047 тестов на десять проектов (999 без n8n), в шести репозиториях их гоняет GitHub Actions.
+
+Telegram: [@sinnercode](https://t.me/sinnercode)
