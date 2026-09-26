@@ -19,7 +19,7 @@ On every push and pull request, [`.github/workflows/ci.yml`](.github/workflows/c
 
 <p>
   <img src="landing-calculator/docs/screenshot-calculator.jpg" height="240" alt="House price calculator in landing-calculator">
-  <img src="excel-dashboard-demo/docs/dashboard_ru.png" height="240" alt="Production dashboard from excel-dashboard-demo">
+  <img src="excel-dashboard-demo/docs/dashboard_en.png" height="240" alt="Production dashboard from excel-dashboard-demo">
 </p>
 
 ## Clone and run
