@@ -6,26 +6,28 @@
 
 ## Четыре демо
 
-Компании и цифры в лендинге, боте и Excel-демо выдуманы.
+Компании и цифры в лендинге, боте и Excel-демо придуманы.
 
-- [`landing-calculator/`](landing-calculator/) · [живое демо](https://sinnercode228.github.io/portfolio/landing-calculator/). Лендинг строительной компании «Полдень» с калькулятором стоимости дома, HTML/CSS/JS без сборки. Итог складываю из строк сметы, уже округлённых до 1000 ₽, а не округляю отдельно, поэтому разбивка сходится с ним до рубля ([`js/calc.js`](landing-calculator/js/calc.js)). 49 тестов на `node:test`.
-- [`scraper-demo/`](scraper-demo/). Асинхронный парсер учебного сайта books.toscrape.com на httpx и selectolax, выгрузка в XLSX, CSV, JSON и по желанию в Google Sheets. На 408, 425, 429, 500, 502–504 и сетевых ошибках запрос повторяется с экспоненциальной паузой и учётом `Retry-After`. Паузу выдерживаю вне семафора: пока запрос ждёт, его место занимают другие ([`bookscraper/fetcher.py`](scraper-demo/bookscraper/fetcher.py)). 80 тестов, сеть им не нужна: страницы сайта сохранены в фикстурах.
-- [`telegram-bot-demo/`](telegram-bot-demo/). Бот для заявок на aiogram 3 и SQLite: анкета в четыре шага, карточка заявки админам с кнопками статусов, выгрузка в CSV. Повторное нажатие «Отправить» не создаёт дубль: апдейты одного пользователя идут по очереди (`SimpleEventIsolation` в [`bot/app.py`](telegram-bot-demo/bot/app.py)), а состояние анкеты я снимаю до записи в базу и возвращаю, если запись упала ([`bot/handlers/form.py`](telegram-bot-demo/bot/handlers/form.py)). 139 тестов; диалоги прогоняются через настоящие хендлеры с фейковой сессией Telegram, токен не нужен.
-- [`excel-dashboard-demo/`](excel-dashboard-demo/). Скрипты на openpyxl собирают из сырых CSV книги Excel, где все показатели и итоги считаются формулами: дашборд производства с фильтрами и разбором простоев и счёт с зарплатой и маржой. Даты в текст перевожу через `DAY`/`MONTH`/`YEAR`, а не `TEXT()`: коды формата `TEXT` зависят от языка Excel, в русском вместо `yyyy` нужно `ГГГГ` ([`xldash/formulas.py`](excel-dashboard-demo/xldash/formulas.py)). 112 тестов, часть из них вычисляет формулы готовых книг через pycel и сверяет с эталонной реализацией на Python.
+- [`landing-calculator/`](landing-calculator/) · [живое демо](https://sinnercode228.github.io/portfolio/landing-calculator/). Лендинг строительной компании «Полдень» на HTML/CSS/JS без сборки, с калькулятором стоимости дома. Заявки с формы принимает [serverless-функция](landing-calculator/serverless/telegram-lead.mjs) и отправляет в Telegram, на почту или в оба канала сразу. 49 тестов на `node:test`.
+- [`scraper-demo/`](scraper-demo/). Асинхронный парсер учебного сайта books.toscrape.com на httpx и selectolax: ограничение запросов в секунду, повторы с экспоненциальной паузой, дисковый кэш. Выгрузка в XLSX, CSV, JSON и по желанию в Google Sheets. 80 тестов работают без сети, парсер и обход сайта проверяются на страницах, сохранённых в фикстурах.
+- [`telegram-bot-demo/`](telegram-bot-demo/). Бот для заявок на aiogram 3 и SQLite: анкета в четыре шага, карточка заявки админам с кнопками статусов, выгрузка в CSV и рассылка. 139 тестов; диалоги пользователя и админа среди них идут через настоящие хендлеры с фейковой сессией Telegram из [`tests/fakes.py`](telegram-bot-demo/tests/fakes.py).
+- [`excel-dashboard-demo/`](excel-dashboard-demo/). Скрипты на openpyxl собирают из сырых CSV книги Excel, где все показатели и итоги считаются формулами: дашборд производства с фильтрами и разбором простоев и счёт с зарплатой и маржой. 112 тестов, часть из них вычисляет формулы готовых книг через pycel и сверяет с эталонной реализацией на Python.
+
+На каждый push и pull request [`.github/workflows/ci.yml`](.github/workflows/ci.yml) запускает `npm test` в лендинге, `pytest` во всех трёх Python-демо и `ruff check` в парсере и боте. Там же [`check_workbook.py`](excel-dashboard-demo/check_workbook.py) проверяет четыре книги Excel, закоммиченные в `excel-dashboard-demo/output/`.
 
 <p>
   <img src="landing-calculator/docs/screenshot-calculator.jpg" height="240" alt="Калькулятор стоимости дома в landing-calculator">
   <img src="excel-dashboard-demo/docs/dashboard_ru.png" height="240" alt="Дашборд производства из excel-dashboard-demo">
 </p>
 
-## Запуск
+## Клонировать и запустить
 
 Команды для каждого проекта запускаются из корня репозитория. Переменные окружения и другие способы запуска описаны в README папок.
 
 ```bash
 git clone https://github.com/sinnercode228/portfolio.git && cd portfolio
 
-# landing-calculator: Node.js 22+, зависимостей нет, npm install не нужен
+# landing-calculator: Node.js 22+, зависимостей нет
 cd landing-calculator && npm test
 npm start      # http://localhost:8080, или просто открыть index.html
 
@@ -46,7 +48,7 @@ cd excel-dashboard-demo && make setup all
 
 На Windows venv активируется через `.venv\Scripts\activate`; Makefile в excel-dashboard-demo рассчитан на Unix (`.venv/bin/python`).
 
-## `index.html`: один файл, два языка
+## Страница `index.html`
 
 Стили и скрипты лежат в самом файле, шрифты системные, с других доменов ничего не грузится; из репозитория подтягиваются только обложки из [`assets/projects/`](assets/projects/). Оба языка есть в разметке, лишний прячет CSS, так что без JS видна русская версия. Язык (`?lang=en` или сохранённый) и тему (сохранённую или системную) скрипт в `<head>` ставит до первой отрисовки. Кнопки RU/EN и темы запоминают выбор, при переключении на EN в адрес дописывается `?lang=en`.
 
