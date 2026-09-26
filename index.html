@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Грешный Котик — Telegram-боты, интеграции и веб-сервисы на заказ</title>
-<meta name="description" content="Full-stack разработчик, больше 7 лет работы на заказ, в основном на фрилансе: Telegram-боты и Mini App, интеграции с amoCRM, Bitrix24 и Tilda, веб-приложения, парсеры и отчёты. Цены от 10 000 ₽, открытые демо и код.">
+<title>Грешный Котик — full-stack разработчик: веб-продукты, интеграции, AI</title>
+<meta name="description" content="Full-stack разработчик на Python и TypeScript, больше 7 лет коммерческой разработки. Делаю продукты с нуля, работаю в командах, беру проекты на развитие и аудит. Открытые проекты с демо и кодом.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#fafaf8">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Грешный Котик — Telegram-боты, интеграции и веб-сервисы на заказ">
-<meta property="og:description" content="Telegram-боты и Mini App, интеграции с CRM, веб-приложения, парсеры и отчёты. Цены, сроки и живые демо.">
+<meta property="og:title" content="Грешный Котик — full-stack разработчик: веб-продукты, интеграции, AI">
+<meta property="og:description" content="Бэкенд, фронтенд, интеграции и AI. Продукты с нуля, работа в команде, развитие и аудит чужого кода. Открытые проекты с демо и кодом.">
 <meta property="og:url" content="https://sinnercode228.github.io/portfolio/">
-<meta property="og:image" content="https://sinnercode228.github.io/portfolio/assets/projects/tg-shop-miniapp/cover.webp">
+<meta property="og:image" content="https://sinnercode228.github.io/portfolio/assets/projects/pulse-analytics/cover.webp">
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="750">
-<meta property="og:image:alt" content="Zernolist — магазин внутри Telegram">
+<meta property="og:image:alt" content="Pulse — аналитика сайтов с живой лентой посетителей">
 <meta property="og:site_name" content="Грешный Котик">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="en_US">
@@ -23,7 +23,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f0f0f'/%3E%3Cpath d='M7 13V5.5l5.6 4.3h6.8L25 5.5V13c0 7.6-4 13-9 13s-9-5.4-9-13Z' fill='%23ff4530'/%3E%3Cpath d='M11 15.6l3 1.3M21 15.6l-3 1.3M13.6 21c.8.9 1.6.9 2.4 0 .8.9 1.6.9 2.4 0' fill='none' stroke='%230f0f0f' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/projects/tg-shop-miniapp/cover.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/projects/pulse-analytics/cover.webp" type="image/webp">
 <script>
   /* До отрисовки: язык (?lang=en|ru → сохранённый → русский) и тема (сохранённая → системная). */
   (function () {
@@ -149,7 +149,7 @@ button { font: inherit; color: inherit; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); align-items: center; }
 .kicker { font-size: 13px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .kicker b { color: var(--ink); font-weight: 400; }
-.hero h1 { font: 700 clamp(32px, 4.2vw, 56px)/1.06 var(--display); letter-spacing: -.035em; margin: 22px 0 26px; }
+.hero h1 { font: 700 clamp(30px, 3.7vw, 50px)/1.06 var(--display); letter-spacing: -.035em; margin: 22px 0 26px; }
 html[lang="en"] .hero h1 { font-size: clamp(30px, 3.9vw, 52px); }
 .hero h1 em { font-style: normal; color: var(--accent); }
 .lead { font-size: clamp(17px, 1.6vw, 19px); color: var(--ink-2); max-width: 36em; }
@@ -176,27 +176,24 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .sec-intro { margin-top: 18px; color: var(--ink-2); max-width: 44em; }
 .sec-head { max-width: 860px; margin-bottom: clamp(30px, 4vw, 48px); }
 
-/* Прайс */
-.price-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px clamp(28px, 4vw, 56px); align-items: start; }
-.menu { border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
-.menu-row { padding: 22px 0 20px; border-top: 1px solid var(--rule); }
-.menu-row:first-child { border-top: 0; }
-.menu-head { display: flex; align-items: baseline; gap: 14px; }
-.menu-head h3 { font: 700 clamp(19px, 2vw, 22px)/1.25 var(--sans); letter-spacing: -.01em; }
-.leader { flex: 1; min-width: 20px; border-bottom: 2.5px dotted var(--rule-strong); transform: translateY(-6px); }
-.price { font: 700 clamp(18px, 2vw, 21px)/1.2 var(--sans); white-space: nowrap; }
-.price small { font-size: .78em; font-weight: 400; color: var(--muted); margin-right: 4px; }
-.price.q { font-weight: 400; font-size: 16px; color: var(--muted); }
-.menu-row > p { margin-top: 8px; color: var(--ink-2); max-width: 60ch; }
-.menu-meta { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 22px; margin-top: 12px; font: 13px/1.5 var(--mono); color: var(--muted); }
-.menu-meta a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent); }
-.menu-meta a:hover { color: var(--accent); }
-.menu-meta .ex a + a { margin-left: 12px; }
-.price-aside { position: sticky; top: 96px; border: 1.5px solid var(--ink); border-radius: 14px; padding: 22px; background: var(--card); }
-.price-aside h3 { font: 700 18px/1.3 var(--sans); }
-.price-aside p { margin-top: 10px; color: var(--ink-2); font-size: 15px; }
-.price-aside .btn { margin-top: 18px; width: 100%; justify-content: center; }
-.price-aside small { display: block; margin-top: 14px; font: 12.5px/1.5 var(--mono); color: var(--muted); }
+/* Форматы */
+.formats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 20px); }
+.fmt { background: var(--card); border: 1.5px solid var(--ink); border-radius: 14px; padding: 24px 22px 18px; display: flex; flex-direction: column; gap: 10px; }
+.fmt h3 { font: 700 20px/1.2 var(--sans); letter-spacing: -.01em; }
+.fmt p { color: var(--ink-2); font-size: 15.5px; }
+.fmt .fmt-meta { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--rule); font: 13px/1.4 var(--mono); color: var(--muted); }
+.fmt-note { margin-top: 26px; color: var(--ink-2); }
+
+/* Что умею */
+.skills { border-top: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); }
+.skill { display: grid; grid-template-columns: 250px minmax(0, 1fr) 290px; gap: 8px clamp(20px, 3vw, 40px); padding: 24px 0; border-top: 1px solid var(--rule); align-items: start; }
+.skill:first-child { border-top: 0; }
+.skill h3 { font: 700 19px/1.3 var(--sans); letter-spacing: -.01em; }
+.skill p { color: var(--ink-2); }
+.skill .tech { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 2px 14px; font: 13px/1.6 var(--mono); color: var(--muted); }
+.skill .src { font: 13px/1.55 var(--mono); color: var(--muted); }
+.skill .src a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent); }
+.skill .src a:hover { color: var(--accent); }
 
 /* Работы */
 .case { background: var(--card); border: 1.5px solid var(--ink); border-radius: 16px; padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 22px; }
@@ -207,6 +204,9 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .case h3 { font: 700 clamp(22px, 2.4vw, 28px)/1.1 var(--display); letter-spacing: -.03em; }
 .case-body p { color: var(--ink-2); font-size: 16px; }
 .case-body .tags { display: flex; flex-wrap: wrap; gap: 4px 14px; font: 13px/1.5 var(--mono); color: var(--muted); }
+.case-body .inside { font-size: 15px; border-top: 1px dashed var(--rule-strong); padding-top: 12px; }
+.inside-l { display: block; font: 12px/1.4 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.case-body code { font: .9em var(--mono); background: var(--bg-alt); border-radius: 4px; padding: 1px 4px; }
 .case-body .note { font: 12.5px/1.5 var(--mono); color: var(--muted); border-left: 2px solid var(--accent); padding-left: 10px; }
 .case-links { display: flex; flex-wrap: wrap; gap: 12px 22px; margin-top: auto; padding-top: 8px; }
 .case-wide { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; }
@@ -225,8 +225,6 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .more-list .links { font: 13px var(--mono); white-space: nowrap; display: flex; gap: 14px; }
 .more-list .links a { text-decoration: none; border-bottom: 1.5px solid var(--accent); color: var(--ink); }
 .more-list .links a:hover { color: var(--accent); }
-.stack { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 4px 16px; font: 13px/1.6 var(--mono); color: var(--muted); }
-.stack b { color: var(--ink); font-weight: 400; }
 
 /* Как работаю */
 .steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1.5px solid var(--ink); }
@@ -272,6 +270,7 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
 @media (max-width: 1100px) {
   .nav { gap: 18px; }
   .nav a { font-size: 14px; }
+  .formats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 880px) {
   .nav { display: none; }
@@ -280,8 +279,9 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
 @media (max-width: 940px) {
   .hero-grid { grid-template-columns: 1fr; }
   .hero-shot { max-width: 640px; }
-  .price-grid, .faq-grid { grid-template-columns: 1fr; }
-  .price-aside { position: static; }
+  .faq-grid { grid-template-columns: 1fr; }
+  .skill { grid-template-columns: 200px minmax(0, 1fr); }
+  .skill .src { grid-column: 2; }
   .case-wide { grid-template-columns: 1fr; }
   .steps { grid-template-columns: 1fr 1fr; border-top: 0; }
   .steps li, .steps li + li { padding: 22px 18px 18px 0; border-left: 0; border-top: 1.5px solid var(--ink); }
@@ -296,9 +296,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
   body { font-size: 16px; }
   .case-pair { grid-template-columns: 1fr; }
   .more-list li { grid-template-columns: 1fr; gap: 4px; }
-  .menu-head { flex-wrap: wrap; row-gap: 4px; }
-  .menu-head h3 { flex: 1 1 100%; }
-  .leader { display: none; }
+  .skill { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
+  .skill .src { grid-column: auto; }
   .top-row { gap: 12px; }
   .steps { grid-template-columns: 1fr; border-top: 0; margin-left: 6px; }
   .steps li, .steps li + li, .steps li:nth-child(2n), .steps li:last-child { padding: 0 0 26px 26px; border-top: 0; border-left: 1.5px solid var(--ink); }
@@ -307,6 +306,9 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
   .steps h3 { margin-top: 4px; }
   .faq details p { padding-right: 0; }
   .hero-shot figcaption { flex-direction: column; gap: 4px; }
+}
+@media (max-width: 600px) {
+  .formats { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
   .brand-name { display: none; }
@@ -338,9 +340,10 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <span class="brand-name"><span data-l="ru">Грешный Котик</span><span data-l="en">sinnercode</span></span>
     </a>
     <nav class="nav" aria-label="Разделы" data-label-ru="Разделы" data-label-en="Sections">
-      <a href="#services"><span data-l="ru">Цены</span><span data-l="en">Pricing</span></a>
-      <a href="#work"><span data-l="ru">Работы</span><span data-l="en">Work</span></a>
-      <a href="#process"><span data-l="ru">Как работаю</span><span data-l="en">How it works</span></a>
+      <a href="#services"><span data-l="ru">Форматы</span><span data-l="en">Ways to work</span></a>
+      <a href="#skills"><span data-l="ru">Что умею</span><span data-l="en">Skills</span></a>
+      <a href="#work"><span data-l="ru">Проекты</span><span data-l="en">Projects</span></a>
+      <a href="#process"><span data-l="ru">Как работаю</span><span data-l="en">Process</span></a>
       <a href="#faq"><span data-l="ru">Вопросы</span><span data-l="en">FAQ</span></a>
     </nav>
     <div class="tools">
@@ -363,33 +366,33 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
   <div class="wrap hero-grid">
     <div>
       <p class="kicker mono">
-        <span data-l="ru"><b>Грешный Котик</b> · full-stack разработчик · 7+&nbsp;лет, в&nbsp;основном фриланс</span>
-        <span data-l="en"><b>sinnercode</b> · full-stack developer · 7+&nbsp;years, mostly freelance</span>
+        <span data-l="ru"><b>Грешный Котик</b> · full-stack разработчик · Python и&nbsp;TypeScript</span>
+        <span data-l="en"><b>sinnercode</b> · full-stack developer · Python and TypeScript</span>
       </p>
       <h1 id="hero-h">
-        <span data-l="ru"><span class="nw">Telegram-боты,</span> интеграции с&nbsp;CRM и&nbsp;<span class="nw keep">веб-сервисы</span> на&nbsp;заказ</span>
-        <span data-l="en">Custom Telegram bots, CRM integrations and web&nbsp;apps</span>
+        <span data-l="ru"><span class="nw">Бэкенд, фронтенд,</span> интеграции и&nbsp;AI в&nbsp;одних руках</span>
+        <span data-l="en">Backend, frontend, integrations and AI in one pair of&nbsp;hands</span>
       </h1>
-      <p class="lead" data-l="ru">Делаю то, что обычно нужно небольшому бизнесу: бота для&nbsp;заявок, связку сайта с&nbsp;CRM, магазин в&nbsp;Telegram, админку или отчёт, который собирается сам. Веду задачу от&nbsp;брифа до&nbsp;запуска на&nbsp;вашем сервере.</p>
-      <p class="lead" data-l="en">I build what small businesses usually need: a lead bot, a website wired to a CRM, a shop inside Telegram, an admin panel or a report that builds itself. I take the job from the brief to launch on your server.</p>
-      <p class="lead" data-l="ru"><strong>Цену и срок называю до&nbsp;начала работы.</strong> Половина оплаты&nbsp;— после приёмки.</p>
-      <p class="lead" data-l="en"><strong>You get the price and timeline before work starts.</strong> Half the payment comes after you accept the work.</p>
+      <p class="lead" data-l="ru">Делаю веб-продукты целиком, от&nbsp;схемы базы данных до&nbsp;продакшена. Можно отдать мне продукт с&nbsp;нуля, подключить к&nbsp;проекту, который уже работает, или взять в&nbsp;свою команду.</p>
+      <p class="lead" data-l="en">I build web products end to end, from the database schema to production. Hand me a product from scratch, bring me onto one that's already live, or add me to your team.</p>
+      <p class="lead" data-l="ru"><strong>Сбои продумываю заранее.</strong> Вебхук, пришедший дважды, два одновременных запроса, воркер, упавший посреди задачи: в&nbsp;проектах ниже всё это обработано и&nbsp;проверено тестами.</p>
+      <p class="lead" data-l="en"><strong>I plan for failure up front.</strong> A webhook delivered twice, two requests at the same moment, a worker dying mid-job: the projects below handle all of it, and tests check that they do.</p>
       <div class="cta-row">
         <a class="btn btn-accent btn-lg" href="https://t.me/sinnercode" target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="#tg"/></svg>
-          <span data-l="ru">Обсудить задачу в&nbsp;Telegram</span><span data-l="en">Tell me about your project</span>
+          <span data-l="ru">Обсудить проект</span><span data-l="en">Discuss your project</span>
         </a>
-        <a class="lnk" href="#services"><span data-l="ru">Цены и&nbsp;сроки ↓</span><span data-l="en">Services &amp; prices ↓</span></a>
+        <a class="lnk" href="#work"><span data-l="ru">Смотреть проекты ↓</span><span data-l="en">See the projects ↓</span></a>
       </div>
-      <p class="proof" data-l="ru"><span><b>7+ лет</b> работы на&nbsp;заказ</span><span><b>10</b> открытых проектов с&nbsp;кодом</span><span><b>6</b> живых демо</span><span>сейчас беру новые проекты</span></p>
-      <p class="proof" data-l="en"><span><b>7+ years</b> of client work</span><span><b>10</b> open projects with code</span><span><b>6</b> live demos</span><span>taking on new projects</span></p>
+      <p class="proof" data-l="ru"><span><b>7+ лет</b> коммерческой разработки</span><span><b>10</b> открытых проектов</span><span><b>1047</b> тестов в&nbsp;CI</span><span>беру новые проекты</span></p>
+      <p class="proof" data-l="en"><span><b>7+ years</b> of commercial work</span><span><b>10</b> open projects</span><span><b>1,047</b> tests in CI</span><span>taking on new projects</span></p>
     </div>
 
     <figure class="hero-shot">
-      <a href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener" tabindex="-1"><img src="assets/projects/tg-shop-miniapp/cover.webp" width="1200" height="750" alt="Магазин Zernolist внутри Telegram: каталог, товар, оплата в Telegram Stars" data-alt-en="The Zernolist shop inside Telegram: catalog, product, Telegram Stars payment" fetchpriority="high"></a>
+      <a href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener" tabindex="-1"><img src="assets/projects/pulse-analytics/cover.webp" width="1200" height="750" alt="Pulse: график трафика и живая лента посетителей" data-alt-en="Pulse: traffic chart and live visitor feed" fetchpriority="high"></a>
       <figcaption>
-        <span data-l="ru">Zernolist — магазин внутри Telegram</span><span data-l="en">Zernolist, a shop inside Telegram</span>
-        <a href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">открыть демо ↗</span><span data-l="en">open the demo ↗</span></a>
+        <span data-l="ru">Pulse — аналитика сайтов</span><span data-l="en">Pulse, web analytics with a live feed</span>
+        <a href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">открыть демо ↗</span><span data-l="en">open the demo ↗</span></a>
       </figcaption>
     </figure>
   </div>
@@ -398,140 +401,157 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
 <section class="sec" id="services" aria-labelledby="services-h">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow"><span data-l="ru">Цены</span><span data-l="en">Pricing</span></p>
-      <h2 id="services-h"><span data-l="ru">Что можно заказать</span><span data-l="en">Services &amp; prices</span></h2>
+      <p class="eyebrow"><span data-l="ru">Форматы</span><span data-l="en">Ways to work</span></p>
+      <h2 id="services-h"><span data-l="ru">Как можно со&nbsp;мной работать</span><span data-l="en">How we can work together</span></h2>
+      <p class="sec-intro" data-l="ru">Цену называю после разговора о&nbsp;задаче: за&nbsp;проект&nbsp;— фиксированную, за&nbsp;долгую работу&nbsp;— ставку в&nbsp;час или в&nbsp;месяц.</p>
+      <p class="sec-intro" data-l="en">I quote after we talk the task through: a fixed price for a project, an hourly or monthly rate for longer work.</p>
     </div>
-    <div class="price-grid">
-      <ol class="menu">
-        <li class="menu-row">
-          <div class="menu-head"><h3><span data-l="ru">Telegram-бот</span><span data-l="en">Telegram bot</span></h3><span class="leader" aria-hidden="true"></span><span class="price"><span data-l="ru"><small>от</small>15&nbsp;000&nbsp;₽</span><span data-l="en"><small>from</small>$200</span></span></div>
-          <p data-l="ru">Приём заявок, запись, рассылки, выгрузки, связка с&nbsp;CRM и&nbsp;таблицами. Запускаю на&nbsp;вашем сервере.</p>
-          <p data-l="en">Lead capture, bookings, broadcasts, exports, CRM and spreadsheet sync. Launched on your server.</p>
-          <div class="menu-meta"><span><span data-l="ru">срок: 3–10 дней</span><span data-l="en">timeline: 3–10 days</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://github.com/sinnercode228/portfolio/tree/main/telegram-bot-demo" target="_blank" rel="noopener"><span data-l="ru">бот для заявок, код и&nbsp;пример диалога</span><span data-l="en">lead bot, code and a sample chat</span></a></span></div>
-        </li>
-        <li class="menu-row">
-          <div class="menu-head"><h3><span data-l="ru">Интеграции и&nbsp;автоматизация</span><span data-l="en">Integrations and automation</span></h3><span class="leader" aria-hidden="true"></span><span class="price"><span data-l="ru"><small>от</small>10&nbsp;000&nbsp;₽</span><span data-l="en"><small>from</small>$120</span></span></div>
-          <p data-l="ru">Сайт → CRM → Telegram → Google Sheets. Вебхуки, API и&nbsp;повторные попытки, чтобы заявки не&nbsp;терялись по&nbsp;дороге.</p>
-          <p data-l="en">Website → CRM → Telegram → Google Sheets. Webhooks, APIs and retries, so leads don't get lost on the way.</p>
-          <div class="menu-meta"><span><span data-l="ru">срок: 2–7 дней</span><span data-l="en">timeline: 2–7 days</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener"><span data-l="ru">хаб вебхуков Relay ↗</span><span data-l="en">Relay webhook hub ↗</span></a></span></div>
-        </li>
-        <li class="menu-row">
-          <div class="menu-head"><h3><span data-l="ru">Лендинг или сайт</span><span data-l="en">Landing page or website</span></h3><span class="leader" aria-hidden="true"></span><span class="price"><span data-l="ru"><small>от</small>12&nbsp;000&nbsp;₽</span><span data-l="en"><small>from</small>$150</span></span></div>
-          <p data-l="ru">Адаптивный сайт с&nbsp;формой, калькулятором и&nbsp;отправкой заявок в&nbsp;Telegram или на&nbsp;почту.</p>
-          <p data-l="en">A responsive site with a form, a calculator and leads sent to Telegram or e-mail.</p>
-          <div class="menu-meta"><span><span data-l="ru">срок: 3–7 дней</span><span data-l="en">timeline: 3–7 days</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/portfolio/landing-calculator/" target="_blank" rel="noopener"><span data-l="ru">лендинг с&nbsp;калькулятором ↗</span><span data-l="en">landing page with a calculator ↗</span></a></span></div>
-        </li>
-        <li class="menu-row">
-          <div class="menu-head"><h3><span data-l="ru">Веб-приложение или MVP</span><span data-l="en">Web app or MVP</span></h3><span class="leader" aria-hidden="true"></span><span class="price"><span data-l="ru"><small>от</small>60&nbsp;000&nbsp;₽</span><span data-l="en"><small>from</small>$700</span></span></div>
-          <p data-l="ru">CRM, личный кабинет, админка, SaaS: Next.js или React, API на&nbsp;Node.js или FastAPI, PostgreSQL, роли и&nbsp;авторизация.</p>
-          <p data-l="en">A CRM, customer portal, admin panel or SaaS: Next.js or React, a Node.js or FastAPI backend, PostgreSQL, roles and sign-in.</p>
-          <div class="menu-meta"><span><span data-l="ru">срок: 2–6 недель</span><span data-l="en">timeline: 2–6 weeks</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">CRM FlowDesk ↗</span><span data-l="en">FlowDesk CRM ↗</span></a></span></div>
-        </li>
-        <li class="menu-row">
-          <div class="menu-head"><h3>Telegram Mini App</h3><span class="leader" aria-hidden="true"></span><span class="price q"><span data-l="ru">цена после брифа</span><span data-l="en">quoted after the brief</span></span></div>
-          <p data-l="ru">Магазин, запись или каталог внутри Telegram: бот, веб-приложение, оплата в&nbsp;Telegram Stars, уведомления админам.</p>
-          <p data-l="en">A shop, booking or catalog inside Telegram: bot, web app, Telegram Stars payments, admin notifications.</p>
-          <div class="menu-meta"><span><span data-l="ru">срок: 2–4 недели</span><span data-l="en">timeline: 2–4 weeks</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">магазин Zernolist ↗</span><span data-l="en">Zernolist shop ↗</span></a></span></div>
-        </li>
-        <li class="menu-row">
-          <div class="menu-head"><h3><span data-l="ru">AI-ассистент по&nbsp;документам</span><span data-l="en">AI assistant for your documents</span></h3><span class="leader" aria-hidden="true"></span><span class="price q"><span data-l="ru">цена после брифа</span><span data-l="en">quoted after the brief</span></span></div>
-          <p data-l="ru">Ответы по&nbsp;вашей базе знаний со&nbsp;ссылками на&nbsp;источник: на&nbsp;сайте, в&nbsp;Telegram или через API.</p>
-          <p data-l="en">Answers from your knowledge base with source citations: on your site, in Telegram or through an API.</p>
-          <div class="menu-meta"><span><span data-l="ru">срок: 1–3 недели</span><span data-l="en">timeline: 1–3 weeks</span></span><span class="ex"><span data-l="ru">пример:</span><span data-l="en">example:</span> <a href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener">DocMind ↗</a></span></div>
-        </li>
-        <li class="menu-row">
-          <div class="menu-head"><h3><span data-l="ru">Парсинг, отчёты, дашборды</span><span data-l="en">Scraping, reports, dashboards</span></h3><span class="leader" aria-hidden="true"></span><span class="price q"><span data-l="ru">цена после брифа</span><span data-l="en">quoted after the brief</span></span></div>
-          <p data-l="ru">Сбор данных с&nbsp;сайтов, выгрузки в&nbsp;Excel и&nbsp;Google Sheets, веб-дашборды с&nbsp;метриками.</p>
-          <p data-l="en">Collecting data from websites, exports to Excel and Google Sheets, web dashboards with metrics.</p>
-          <div class="menu-meta"><span><span data-l="ru">срок: 2–5 дней</span><span data-l="en">timeline: 2–5 days</span></span><span class="ex"><span data-l="ru">примеры:</span><span data-l="en">examples:</span> <a href="https://github.com/sinnercode228/portfolio/tree/main/scraper-demo" target="_blank" rel="noopener"><span data-l="ru">парсер</span><span data-l="en">scraper</span></a><a href="https://github.com/sinnercode228/portfolio/tree/main/excel-dashboard-demo" target="_blank" rel="noopener"><span data-l="ru">отчёт в&nbsp;Excel</span><span data-l="en">Excel report</span></a><a href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">дашборд ↗</span><span data-l="en">dashboard ↗</span></a></span></div>
-        </li>
-        <li class="menu-row">
-          <div class="menu-head"><h3><span data-l="ru">Запуск на&nbsp;сервере и&nbsp;доработки</span><span data-l="en">Deployment and fixes</span></h3><span class="leader" aria-hidden="true"></span><span class="price q"><span data-l="ru">цена после брифа</span><span data-l="en">quoted after the brief</span></span></div>
-          <p data-l="ru">Docker, VPS, GitHub Actions, перенос на&nbsp;сервер, исправление багов в&nbsp;существующем коде.</p>
-          <p data-l="en">Docker, VPS, GitHub Actions, moving to a server, bug fixes in an existing codebase.</p>
-          <div class="menu-meta"><span><span data-l="ru">срок: 1–3 дня</span><span data-l="en">timeline: 1–3 days</span></span></div>
-        </li>
-      </ol>
-      <aside class="price-aside">
-        <h3><span data-l="ru">Как считаю цену</span><span data-l="en">How I price</span></h3>
-        <p data-l="ru">Сроки ориентировочные, цены&nbsp;— нижняя граница. Точную цену и&nbsp;срок называю после брифа, до&nbsp;начала работы. Дальше цена не&nbsp;меняется, пока не&nbsp;меняется объём.</p>
-        <p data-l="en">Timelines are estimates and prices are starting points. I give the exact price and timeline after the brief, before work starts, and the price stays the same unless the scope changes.</p>
-        <a class="btn btn-accent" href="https://t.me/sinnercode" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#tg"/></svg><span data-l="ru">Узнать цену своей задачи</span><span data-l="en">Get a quote</span></a>
-        <small data-l="ru">Своей задачи нет в&nbsp;списке? Всё равно напишите, список неполный.</small>
-        <small data-l="en">Don't see your task on the list? Message me anyway, it isn't the full list.</small>
-      </aside>
-    </div>
+    <ul class="formats">
+      <li class="fmt">
+        <h3><span data-l="ru">Продукт с&nbsp;нуля</span><span data-l="en">A product from scratch</span></h3>
+        <p data-l="ru">MVP, SaaS, CRM, личный кабинет или внутренняя система. Проектирую данные и&nbsp;API, пишу бэкенд и&nbsp;интерфейс, настраиваю деплой и&nbsp;CI.</p>
+        <p data-l="en">An MVP, a SaaS, a CRM, a customer portal or an internal system. I design the data model and API, write the backend and the UI, and set up deployment and CI.</p>
+        <p class="fmt-meta"><span data-l="ru">фиксированная цена, оплата по&nbsp;этапам</span><span data-l="en">fixed price, paid by milestone</span></p>
+      </li>
+      <li class="fmt">
+        <h3><span data-l="ru">Разработчик в&nbsp;вашу команду</span><span data-l="en">A developer on your team</span></h3>
+        <p data-l="ru">Part-time или full-time по&nbsp;контракту. Работаю в&nbsp;вашем репозитории и&nbsp;трекере, беру задачи из&nbsp;бэклога, код проходит ваше ревью.</p>
+        <p data-l="en">Part-time or full-time on contract. I work in your repository and tracker, take tickets from the backlog, and my code goes through your review.</p>
+        <p class="fmt-meta"><span data-l="ru">ставка в&nbsp;час или в&nbsp;месяц</span><span data-l="en">hourly or monthly rate</span></p>
+      </li>
+      <li class="fmt">
+        <h3><span data-l="ru">Развитие продукта</span><span data-l="en">Ongoing development</span></h3>
+        <p data-l="ru">Продукт уже работает, и&nbsp;его нужно развивать: новые функции, интеграции, ускорение, исправление ошибок.</p>
+        <p data-l="en">The product is live and needs to keep moving: new features, integrations, speed-ups, bug fixes.</p>
+        <p class="fmt-meta"><span data-l="ru">почасово или помесячно</span><span data-l="en">hourly or monthly</span></p>
+      </li>
+      <li class="fmt">
+        <h3><span data-l="ru">Аудит и&nbsp;спасение проекта</span><span data-l="en">Audit and rescue</span></h3>
+        <p data-l="ru">Проект застрял или остался без разработчика. Разбираю код, говорю, что сломано и&nbsp;что опасно, потом чиню, покрываю тестами и&nbsp;довожу до&nbsp;релиза.</p>
+        <p data-l="en">The project is stuck or its developer is gone. I go through the code, tell you what's broken and what's risky, then fix it, add tests and get it to release.</p>
+        <p class="fmt-meta"><span data-l="ru">сначала аудит, потом оценка</span><span data-l="en">audit first, then an estimate</span></p>
+      </li>
+    </ul>
+    <p class="fmt-note" data-l="ru">Небольшие задачи тоже беру: бота, интеграцию с&nbsp;CRM, парсер, отчёт или лендинг. Примеры&nbsp;— в&nbsp;<a class="lnk" href="#more">проектах поменьше</a>.</p>
+    <p class="fmt-note" data-l="en">Smaller jobs are welcome too: a bot, a CRM integration, a scraper, a report or a landing page. See the <a class="lnk" href="#more">smaller projects</a> for examples.</p>
   </div>
 </section>
 
-<section class="sec sec-alt" id="work" aria-labelledby="work-h">
+<section class="sec sec-alt" id="skills" aria-labelledby="skills-h">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow"><span data-l="ru">Работы</span><span data-l="en">Work</span></p>
-      <h2 id="work-h"><span data-l="ru">Демо, которые можно открыть и&nbsp;потрогать</span><span data-l="en">Demos you can open and try</span></h2>
-      <p class="sec-intro" data-l="ru">Коммерческий код остаётся у&nbsp;заказчиков, поэтому здесь открытые демо на&nbsp;выдуманных данных. Они работают прямо в&nbsp;браузере, без регистрации, а&nbsp;весь код лежит на&nbsp;GitHub.</p>
-      <p class="sec-intro" data-l="en">Client code stays with clients, so these are open demos on made-up data. They run right in your browser with no sign-up, and all the code is on GitHub.</p>
+      <p class="eyebrow"><span data-l="ru">Что умею</span><span data-l="en">Skills</span></p>
+      <h2 id="skills-h"><span data-l="ru">Что умею и&nbsp;где это видно в&nbsp;коде</span><span data-l="en">What I do, and where to see it in the code</span></h2>
+      <p class="sec-intro" data-l="ru">У&nbsp;каждой строки есть ссылка на&nbsp;конкретный файл или демо, где это сделано.</p>
+      <p class="sec-intro" data-l="en">Every row links to the exact file or demo where it's done.</p>
+    </div>
+    <ul class="skills">
+      <li class="skill">
+        <h3><span data-l="ru">Бэкенд и&nbsp;API</span><span data-l="en">Backend and APIs</span></h3>
+        <div>
+          <p data-l="ru">REST и&nbsp;WebSocket API, фоновые задачи и&nbsp;очереди, повторные попытки, обработка вебхуков и&nbsp;платежей, которые пришли дважды.</p>
+          <p data-l="en">REST and WebSocket APIs, background jobs and queues, retries, handling webhooks and payments that arrive twice.</p>
+          <p class="tech"><span>FastAPI</span><span>SQLAlchemy</span><span>Fastify</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span></p>
+        </div>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/integration-hub/blob/main/backend/src/relay/queue/redis.py" target="_blank" rel="noopener"><span data-l="ru">очередь на&nbsp;Redis, которая забирает задачи у&nbsp;упавшего воркера</span><span data-l="en">a Redis queue that takes jobs back from a dead worker</span></a></p>
+      </li>
+      <li class="skill">
+        <h3><span data-l="ru">Авторизация и&nbsp;безопасность</span><span data-l="en">Auth and security</span></h3>
+        <div>
+          <p data-l="ru">Сессии с&nbsp;ротацией refresh-токенов, роли и&nbsp;права доступа, проверка данных и&nbsp;цен на&nbsp;сервере, а&nbsp;не&nbsp;в&nbsp;браузере.</p>
+          <p data-l="en">Sessions with refresh-token rotation, roles and permissions, and data and prices checked on the server rather than in the browser.</p>
+          <p class="tech"><span>zod</span><span>Pydantic</span><span>HMAC</span></p>
+        </div>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/flowdesk-crm/blob/main/server/src/modules/auth/auth.service.ts#L44-L51" target="_blank" rel="noopener"><span data-l="ru">гонка двух refresh-запросов, закрытая в&nbsp;транзакции</span><span data-l="en">two concurrent refreshes, settled inside a transaction</span></a></p>
+      </li>
+      <li class="skill">
+        <h3><span data-l="ru">Фронтенд</span><span data-l="en">Frontend</span></h3>
+        <div>
+          <p data-l="ru">Интерфейсы на&nbsp;React и&nbsp;Next.js: дашборды, канбан с&nbsp;перетаскиванием, живые графики, формы, адаптивная вёрстка.</p>
+          <p data-l="en">React and Next.js interfaces: dashboards, drag-and-drop boards, live charts, forms, responsive layouts.</p>
+          <p class="tech"><span>React 19</span><span>Next.js</span><span>TanStack Query</span><span>Zustand</span><span>Tailwind</span></p>
+        </div>
+        <p class="src"><span data-l="ru">в&nbsp;демо:</span><span data-l="en">in the demo:</span> <a href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">канбан сделок FlowDesk&nbsp;↗</span><span data-l="en">the FlowDesk deals board&nbsp;↗</span></a></p>
+      </li>
+      <li class="skill">
+        <h3><span data-l="ru">Интеграции и&nbsp;платежи</span><span data-l="en">Integrations and payments</span></h3>
+        <div>
+          <p data-l="ru">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, почта. Вебхуки с&nbsp;подписью, ретраи с&nbsp;растущей паузой, оплата в&nbsp;Telegram Stars.</p>
+          <p data-l="en">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, e-mail. Signed webhooks, retries with backoff, Telegram Stars payments.</p>
+          <p class="tech"><span>httpx</span><span>aiogram 3</span><span>Bot API</span></p>
+        </div>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/tg-shop-miniapp/blob/main/bot/tgshop/services/orders.py#L76-L97" target="_blank" rel="noopener"><span data-l="ru">сервер пересчитывает каждый заказ по&nbsp;каталогу</span><span data-l="en">the server re-prices every order from the catalog</span></a></p>
+      </li>
+      <li class="skill">
+        <h3><span data-l="ru">AI и&nbsp;LLM</span><span data-l="en">AI and LLMs</span></h3>
+        <div>
+          <p data-l="ru">Ответы по&nbsp;документам со&nbsp;ссылками на&nbsp;источник (RAG), ассистенты и&nbsp;боты, локальные модели для&nbsp;данных, которые нельзя отдавать наружу.</p>
+          <p data-l="en">Answers from documents with source citations (RAG), assistants and bots, local models for data that can't leave your servers.</p>
+          <p class="tech"><span>Claude API</span><span>OpenAI-compatible API</span><span>pgvector</span><span>Ollama</span><span>Qdrant</span><span>n8n</span></p>
+        </div>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/docmind-rag/blob/main/backend/src/docmind/rag/service.py#L110-L111" target="_blank" rel="noopener"><span data-l="ru">источники приходят раньше первого токена ответа</span><span data-l="en">sources arrive before the first answer token</span></a></p>
+      </li>
+      <li class="skill">
+        <h3><span data-l="ru">Данные и&nbsp;аналитика</span><span data-l="en">Data and analytics</span></h3>
+        <div>
+          <p data-l="ru">Сбор событий и&nbsp;агрегаты, парсинг сайтов, выгрузки и&nbsp;отчёты в&nbsp;Excel, где итоги считают формулы.</p>
+          <p data-l="en">Event collection and rollups, web scraping, exports and Excel reports where the totals are formulas.</p>
+          <p class="tech"><span>PostgreSQL</span><span>SQLite</span><span>openpyxl</span><span>uPlot</span></p>
+        </div>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/pulse-analytics/blob/main/packages/core/src/hll.ts" target="_blank" rel="noopener"><span data-l="ru">HyperLogLog для подсчёта посетителей</span><span data-l="en">HyperLogLog for counting visitors</span></a></p>
+      </li>
+      <li class="skill">
+        <h3><span data-l="ru">Инфраструктура и&nbsp;тесты</span><span data-l="en">Infrastructure and tests</span></h3>
+        <div>
+          <p data-l="ru">Docker Compose, nginx, VPS, CI на&nbsp;GitHub Actions. Тесты пишу вместе с&nbsp;кодом, типы проверяю в&nbsp;строгом режиме.</p>
+          <p data-l="en">Docker Compose, nginx, VPS, CI on GitHub Actions. I write tests along with the code and run type checks in strict mode.</p>
+          <p class="tech"><span>pytest</span><span>Vitest</span><span>mypy --strict</span><span>ruff</span></p>
+        </div>
+        <p class="src"><span data-l="ru">на&nbsp;GitHub:</span><span data-l="en">on GitHub:</span> <a href="https://github.com/sinnercode228" target="_blank" rel="noopener"><span data-l="ru">1047 тестов в&nbsp;CI по&nbsp;всем репозиториям&nbsp;↗</span><span data-l="en">1,047 tests in CI across all repos&nbsp;↗</span></a></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span data-l="ru">Проекты</span><span data-l="en">Projects</span></p>
+      <h2 id="work-h"><span data-l="ru">Проекты, в&nbsp;которые можно заглянуть</span><span data-l="en">Projects you can look inside</span></h2>
+      <p class="sec-intro" data-l="ru">Код заказчиков остаётся у&nbsp;них, поэтому здесь открытые проекты на&nbsp;выдуманных данных. Это не&nbsp;макеты: у&nbsp;каждого есть демо, которое работает прямо в&nbsp;браузере, тесты и&nbsp;CI, а&nbsp;весь код лежит на&nbsp;GitHub.</p>
+      <p class="sec-intro" data-l="en">Client code stays with clients, so these are open projects on made-up data. They aren't mockups: each one has a demo that runs right in your browser, tests and CI, and all the code is on GitHub.</p>
     </div>
 
     <article class="case case-wide">
-      <figure><img src="assets/projects/tg-shop-miniapp/cover.webp" width="1200" height="750" loading="lazy" alt="Zernolist: каталог, карточка товара и оплата в Telegram Stars" data-alt-en="Zernolist: catalog, product page and Telegram Stars payment"></figure>
+      <figure><img src="assets/projects/flowdesk-crm/cover.webp" width="1200" height="750" loading="lazy" alt="FlowDesk: канбан сделок" data-alt-en="FlowDesk: the deals board"></figure>
       <div class="case-body">
-        <div class="case-kind"><span>Telegram Mini App</span><span class="cnt"><span data-l="ru">143 теста</span><span data-l="en">143 tests</span></span></div>
-        <h3>Zernolist</h3>
-        <p data-l="ru">Магазин кофе и&nbsp;чая, который открывается прямо в&nbsp;Telegram: каталог с&nbsp;поиском, промокоды, курьер или самовывоз, оплата в&nbsp;Telegram Stars или при получении. Заказы приходят админу в&nbsp;бот, статус он меняет кнопками под уведомлением.</p>
-        <p data-l="en">A coffee and tea shop that opens right inside Telegram: a searchable catalog, promo codes, courier or pickup, payment with Telegram Stars or on receipt. Orders reach the admin in the bot, and the status changes with buttons under the notification.</p>
-        <p data-l="ru">Цену каждого заказа сервер считает сам по&nbsp;каталогу, поэтому подменить её из&nbsp;браузера не&nbsp;выйдет. Если Telegram пришлёт уведомление об&nbsp;оплате дважды, заказ второй раз не&nbsp;проведётся.</p>
-        <p data-l="en">The server prices every order from the catalog itself, so nobody can change the price in the browser. If Telegram sends the same payment update twice, the order goes through only once.</p>
-        <p class="tags"><span>React</span><span>Vite</span><span>aiogram 3</span><span>FastAPI</span><span>Telegram Stars</span></p>
+        <div class="case-kind"><span data-l="ru">CRM, full-stack</span><span data-l="en">CRM, full-stack</span><span class="cnt"><span data-l="ru">97 тестов</span><span data-l="en">97 tests</span></span></div>
+        <h3>FlowDesk</h3>
+        <p data-l="ru">CRM для отдела продаж: канбан сделок с&nbsp;перетаскиванием, контакты, заметки и&nbsp;история по&nbsp;сделке, дашборд с&nbsp;воронкой и&nbsp;прогнозом. Менеджер двигает и&nbsp;правит только свои сделки, админ&nbsp;— все.</p>
+        <p data-l="en">A CRM for a sales team: a drag-and-drop deals board, contacts, notes and history for each deal, a dashboard with the funnel and a forecast. Managers move and edit only their own deals; admins can edit all of them.</p>
+        <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Refresh-токены ротируются, а&nbsp;повторно использованный токен отзывает всю сессию. Гонку двух одновременных refresh-запросов закрывает условный <code>updateMany</code> в&nbsp;транзакции.</p>
+        <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>Refresh tokens rotate, and a reused token revokes the whole session. A conditional <code>updateMany</code> inside a transaction settles the race between two concurrent refreshes.</p>
+        <p class="tags"><span>Next.js</span><span>Fastify</span><span>Prisma</span><span>PostgreSQL</span><span>TanStack Query</span><span>dnd-kit</span></p>
+        <p class="note" data-l="ru">Вход в&nbsp;демо уже заполнен, пароль вводить не&nbsp;нужно.</p>
+        <p class="note" data-l="en">The demo login is prefilled, so there's no password to type.</p>
         <div class="case-links">
-          <a class="lnk" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
-          <a class="lnk" href="https://github.com/sinnercode228/tg-shop-miniapp" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          <a class="lnk" href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+          <a class="lnk" href="https://github.com/sinnercode228/flowdesk-crm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
         </div>
       </div>
     </article>
 
     <div class="case-pair">
       <article class="case">
-        <figure><img src="assets/projects/integration-hub/cover.webp" width="1200" height="750" loading="lazy" alt="Дашборд Relay: события, доставки и повторы" data-alt-en="The Relay dashboard: events, deliveries and retries"></figure>
-        <div class="case-body">
-          <div class="case-kind"><span data-l="ru">Интеграции</span><span data-l="en">Integrations</span><span class="cnt"><span data-l="ru">155 тестов</span><span data-l="en">155 tests</span></span></div>
-          <h3>Relay</h3>
-          <p data-l="ru">Заявки из&nbsp;Tilda, amoCRM и&nbsp;Bitrix24 расходятся в&nbsp;Telegram, Google Sheets, amoCRM и&nbsp;на&nbsp;почту. Если получатель не&nbsp;ответил, доставка повторяется с&nbsp;растущей паузой, а&nbsp;то, что так и&nbsp;не&nbsp;дошло, ждёт в&nbsp;отдельном списке, откуда его можно отправить ещё раз.</p>
-          <p data-l="en">Leads from Tilda, amoCRM and Bitrix24 go out to Telegram, Google Sheets, amoCRM and e-mail. If a recipient doesn't answer, the delivery is retried with growing pauses, and anything that never got through waits in a separate list where you can resend it.</p>
-          <p class="tags"><span>Python</span><span>FastAPI</span><span>Redis</span><span>React</span></p>
-          <div class="case-links">
-            <a class="lnk" href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
-            <a class="lnk" href="https://github.com/sinnercode228/integration-hub" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-          </div>
-        </div>
-      </article>
-      <article class="case">
-        <figure><img src="assets/projects/flowdesk-crm/cover.webp" width="1200" height="750" loading="lazy" alt="FlowDesk: канбан сделок" data-alt-en="FlowDesk: the deals board"></figure>
-        <div class="case-body">
-          <div class="case-kind"><span>CRM</span><span class="cnt"><span data-l="ru">97 тестов</span><span data-l="en">97 tests</span></span></div>
-          <h3>FlowDesk</h3>
-          <p data-l="ru">CRM для отдела продаж: канбан сделок с&nbsp;перетаскиванием, контакты, заметки и&nbsp;история по&nbsp;сделке, дашборд с&nbsp;воронкой и&nbsp;прогнозом. Менеджер двигает и&nbsp;правит только свои сделки, админ&nbsp;— все.</p>
-          <p data-l="en">A CRM for a sales team: a drag-and-drop deals board, contacts, notes and history for each deal, a dashboard with the funnel and a forecast. Managers move and edit only their own deals; admins can edit all of them.</p>
-          <p class="note" data-l="ru">Вход в&nbsp;демо уже заполнен, пароль вводить не&nbsp;нужно.</p>
-          <p class="note" data-l="en">The demo login is prefilled, so there's no password to type.</p>
-          <p class="tags"><span>Next.js</span><span>Fastify</span><span>Prisma</span><span>PostgreSQL</span></p>
-          <div class="case-links">
-            <a class="lnk" href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
-            <a class="lnk" href="https://github.com/sinnercode228/flowdesk-crm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="case-pair">
-      <article class="case">
         <figure><img src="assets/projects/pulse-analytics/cover.webp" width="1200" height="750" loading="lazy" alt="Pulse: график трафика и живая лента посетителей" data-alt-en="Pulse: traffic chart and live visitor feed"></figure>
         <div class="case-body">
-          <div class="case-kind"><span data-l="ru">Аналитика</span><span data-l="en">Analytics</span><span class="cnt"><span data-l="ru">97 тестов</span><span data-l="en">97 tests</span></span></div>
+          <div class="case-kind"><span data-l="ru">Аналитика, SaaS</span><span data-l="en">Analytics, SaaS</span><span class="cnt"><span data-l="ru">97 тестов</span><span data-l="en">97 tests</span></span></div>
           <h3>Pulse</h3>
-          <p data-l="ru">Веб-аналитика без cookies и&nbsp;проверка доступности сайтов в&nbsp;одном дашборде. Скрипт для сайта весит 843 байта, посетители появляются в&nbsp;живой ленте, а&nbsp;если сайт упал, это видно на&nbsp;отдельной странице.</p>
-          <p data-l="en">Cookieless web analytics and uptime checks in one dashboard. The site script weighs 843 bytes, visitors show up in a live feed, and if a site goes down you see it on a separate page.</p>
-          <p class="tags"><span>TypeScript</span><span>Fastify</span><span>SQLite</span><span>WebSocket</span><span>React</span></p>
+          <p data-l="ru">Веб-аналитика без cookies и&nbsp;проверка доступности сайтов в&nbsp;одном дашборде. Посетители появляются в&nbsp;живой ленте, а&nbsp;если сайт упал, это видно на&nbsp;отдельной странице.</p>
+          <p data-l="en">Cookieless web analytics and uptime checks in one dashboard. Visitors show up in a live feed, and if a site goes down you see it on a separate page.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Посетителей в&nbsp;каждой строке статистики считает HyperLogLog: до&nbsp;512 хэшей это точное множество, дальше 2048 регистров с&nbsp;ошибкой около 2,3%. Трекер для сайта весит 843&nbsp;байта, 560&nbsp;в&nbsp;gzip.</p>
+          <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>Each stats row counts visitors with HyperLogLog: an exact set up to 512 hashes, then 2048 registers with about 2.3% error. The site tracker is 843 bytes, 560 gzipped.</p>
+          <p class="tags"><span>TypeScript</span><span>Fastify</span><span>node:sqlite</span><span>WebSocket</span><span>React</span></p>
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
             <a class="lnk" href="https://github.com/sinnercode228/pulse-analytics" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
@@ -539,24 +559,61 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         </div>
       </article>
       <article class="case">
+        <figure><img src="assets/projects/integration-hub/cover.webp" width="1200" height="750" loading="lazy" alt="Дашборд Relay: события, доставки и повторы" data-alt-en="The Relay dashboard: events, deliveries and retries"></figure>
+        <div class="case-body">
+          <div class="case-kind"><span data-l="ru">Интеграции</span><span data-l="en">Integrations</span><span class="cnt"><span data-l="ru">155 тестов</span><span data-l="en">155 tests</span></span></div>
+          <h3>Relay</h3>
+          <p data-l="ru">Заявки из&nbsp;Tilda, amoCRM и&nbsp;Bitrix24 расходятся в&nbsp;Telegram, Google Sheets, amoCRM и&nbsp;на&nbsp;почту. Если получатель не&nbsp;ответил, доставка повторяется с&nbsp;растущей паузой, а&nbsp;то, что так и&nbsp;не&nbsp;дошло, можно отправить ещё раз из&nbsp;отдельного списка.</p>
+          <p data-l="en">Leads from Tilda, amoCRM and Bitrix24 go out to Telegram, Google Sheets, amoCRM and e-mail. If a recipient doesn't answer, delivery is retried with growing pauses, and anything that never got through can be resent from a separate list.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Очередь своя, на&nbsp;sorted sets в&nbsp;Redis. Взятая задача получает дедлайн 120&nbsp;секунд, и&nbsp;если воркер упадёт, после дедлайна она вернётся в&nbsp;очередь.</p>
+          <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>The queue is custom, built on Redis sorted sets. A job a worker takes gets a 120-second deadline, and if the worker dies, the job goes back to the queue once the deadline passes.</p>
+          <p class="tags"><span>Python</span><span>FastAPI</span><span>Redis</span><span>SQLite</span><span>React</span></p>
+          <div class="case-links">
+            <a class="lnk" href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+            <a class="lnk" href="https://github.com/sinnercode228/integration-hub" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="case-pair">
+      <article class="case">
         <figure><img src="assets/projects/docmind-rag/cover.webp" width="1200" height="750" loading="lazy" alt="DocMind: ответ со сносками на источники" data-alt-en="DocMind: an answer with source citations"></figure>
         <div class="case-body">
-          <div class="case-kind"><span>AI</span><span class="cnt"><span data-l="ru">127 тестов</span><span data-l="en">127 tests</span></span></div>
+          <div class="case-kind"><span>AI, RAG</span><span class="cnt"><span data-l="ru">127 тестов</span><span data-l="en">127 tests</span></span></div>
           <h3>DocMind</h3>
           <p data-l="ru">Ассистент, который отвечает по&nbsp;вашим документам: PDF, DOCX, страницам сайта. Ответ идёт потоком со&nbsp;сносками, клик по&nbsp;сноске открывает фрагмент источника. Есть веб-интерфейс и&nbsp;Telegram-бот.</p>
           <p data-l="en">An assistant that answers from your documents: PDF, DOCX, web pages. The answer streams in with citations, and clicking one opens the source passage. It has a web UI and a Telegram bot.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Источники приходят по&nbsp;SSE раньше первого токена ответа, поэтому, когда в&nbsp;тексте появляется сноска [n], её карточка уже на&nbsp;экране.</p>
+          <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>Sources arrive over SSE before the first answer token, so when a [n] citation appears in the text, its card is already on screen.</p>
+          <p class="tags"><span>Python</span><span>FastAPI</span><span>pgvector</span><span>Claude / OpenAI API</span><span>React</span></p>
           <p class="note" data-l="ru">В&nbsp;демо нет LLM: ответ собирается из&nbsp;найденных в&nbsp;документах предложений.</p>
           <p class="note" data-l="en">The demo has no LLM: answers are put together from sentences found in the documents.</p>
-          <p class="tags"><span>Python</span><span>FastAPI</span><span>pgvector</span><span>Claude / OpenAI API</span><span>React</span></p>
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
             <a class="lnk" href="https://github.com/sinnercode228/docmind-rag" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
           </div>
         </div>
       </article>
+      <article class="case">
+        <figure><img src="assets/projects/tg-shop-miniapp/cover.webp" width="1200" height="750" loading="lazy" alt="Zernolist: каталог, карточка товара и оплата в Telegram Stars" data-alt-en="Zernolist: catalog, product page and Telegram Stars payment"></figure>
+        <div class="case-body">
+          <div class="case-kind"><span>Telegram Mini App</span><span class="cnt"><span data-l="ru">143 теста</span><span data-l="en">143 tests</span></span></div>
+          <h3>Zernolist</h3>
+          <p data-l="ru">Магазин кофе и&nbsp;чая внутри Telegram: каталог с&nbsp;поиском, промокоды, курьер или самовывоз, оплата в&nbsp;Telegram Stars или при получении. Заказы приходят админу в&nbsp;бот, статус он меняет кнопками под уведомлением.</p>
+          <p data-l="en">A coffee and tea shop inside Telegram: a searchable catalog, promo codes, courier or pickup, payment with Telegram Stars or on receipt. Orders reach the admin in the bot, and the status changes with buttons under the notification.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Цену каждого заказа сервер считает сам по&nbsp;каталогу, поэтому подменить её из&nbsp;браузера не&nbsp;выйдет. Если Telegram пришлёт уведомление об&nbsp;оплате дважды, заказ второй раз не&nbsp;проведётся.</p>
+          <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>The server prices every order from the catalog itself, so nobody can change the price in the browser. If Telegram sends the same payment update twice, the order goes through only once.</p>
+          <p class="tags"><span>React</span><span>Vite</span><span>aiogram 3</span><span>FastAPI</span><span>SQLAlchemy</span></p>
+          <div class="case-links">
+            <a class="lnk" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+            <a class="lnk" href="https://github.com/sinnercode228/tg-shop-miniapp" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          </div>
+        </div>
+      </article>
     </div>
 
-    <div class="more">
+    <div class="more" id="more">
       <h3><span data-l="ru">Проекты поменьше</span><span data-l="en">Smaller projects</span></h3>
       <ul class="more-list">
         <li>
@@ -590,28 +647,27 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <span class="links"><a href="https://github.com/sinnercode228/n8n-home-ai-workflows" target="_blank" rel="noopener"><span data-l="ru">код</span><span data-l="en">code</span></a></span>
         </li>
       </ul>
-      <p class="stack"><b><span data-l="ru">Стек:</span><span data-l="en">Stack:</span></b><span>Python (FastAPI, aiogram, SQLAlchemy)</span><span>TypeScript (React, Next.js, Fastify, Prisma)</span><span>PostgreSQL, Redis, SQLite</span><span>Docker, GitHub Actions, nginx</span></p>
     </div>
   </div>
 </section>
 
-<section class="sec" id="process" aria-labelledby="process-h">
+<section class="sec sec-alt" id="process" aria-labelledby="process-h">
   <div class="wrap">
     <div class="sec-head">
-      <p class="eyebrow"><span data-l="ru">Как работаю</span><span data-l="en">How it works</span></p>
-      <h2 id="process-h"><span data-l="ru">Как проходит заказ</span><span data-l="en">From first message to handover</span></h2>
+      <p class="eyebrow"><span data-l="ru">Как работаю</span><span data-l="en">Process</span></p>
+      <h2 id="process-h"><span data-l="ru">Как проходит работа</span><span data-l="en">How a project runs</span></h2>
     </div>
     <ol class="steps">
-      <li><span class="step-n">01</span><h3><span data-l="ru">Бриф</span><span data-l="en">Brief</span></h3><p data-l="ru">Разбираем задачу в&nbsp;Telegram, фиксирую требования и&nbsp;результат, который вы примете.</p><p data-l="en">We go through the task on Telegram; I write down the requirements and what you'll accept as done.</p></li>
-      <li><span class="step-n">02</span><h3><span data-l="ru">Цена и&nbsp;срок</span><span data-l="en">Price and timeline</span></h3><p data-l="ru">Называю цену и&nbsp;срок заранее. Цена не&nbsp;меняется, пока не&nbsp;меняется объём работ.</p><p data-l="en">You get the price and timeline upfront. The price doesn't change unless the scope does.</p></li>
-      <li><span class="step-n">03</span><h3><span data-l="ru">50% на&nbsp;старте</span><span data-l="en">50% upfront</span></h3><p data-l="ru">Половина&nbsp;— на&nbsp;старте, вторая&nbsp;— после приёмки.</p><p data-l="en">Half at the start, the rest after you accept the work.</p></li>
-      <li><span class="step-n">04</span><h3><span data-l="ru">Этапы</span><span data-l="en">Milestones</span></h3><p data-l="ru">Показываю рабочие промежуточные версии, а&nbsp;не&nbsp;отчёты <span class="nw">«в&nbsp;процессе»</span>.</p><p data-l="en">You see working builds at each milestone, not "in progress" updates.</p></li>
-      <li><span class="step-n">05</span><h3><span data-l="ru">Сдача</span><span data-l="en">Handover</span></h3><p data-l="ru">Код в&nbsp;вашем репозитории, README, инструкция по&nbsp;запуску, тесты и&nbsp;деплой.</p><p data-l="en">Code in your repository, a README, run instructions, tests and deployment.</p></li>
+      <li><span class="step-n">01</span><h3><span data-l="ru">Разговор</span><span data-l="en">First talk</span></h3><p data-l="ru">Обсуждаем задачу, сроки и&nbsp;формат работы. Если код уже есть, смотрю его до&nbsp;оценки.</p><p data-l="en">We go over the task, the timeline and the format. If there's existing code, I look at it before estimating.</p></li>
+      <li><span class="step-n">02</span><h3><span data-l="ru">Оценка</span><span data-l="en">Estimate</span></h3><p data-l="ru">За&nbsp;проект&nbsp;— объём, срок и&nbsp;фиксированная цена, за&nbsp;долгую работу&nbsp;— ставка. Цена не&nbsp;меняется, пока не&nbsp;меняется объём.</p><p data-l="en">For a project: scope, timeline and a fixed price. For longer work: a rate. The price holds unless the scope changes.</p></li>
+      <li><span class="step-n">03</span><h3><span data-l="ru">Этапы</span><span data-l="en">Milestones</span></h3><p data-l="ru">Большую задачу делю на&nbsp;этапы. Каждый заканчивается рабочей версией, которую можно открыть и&nbsp;проверить.</p><p data-l="en">Big jobs get split into milestones. Each one ends with a working build you can open and check.</p></li>
+      <li><span class="step-n">04</span><h3><span data-l="ru">Код у&nbsp;вас</span><span data-l="en">Your code</span></h3><p data-l="ru">С&nbsp;первого дня пишу в&nbsp;ваш репозиторий, с&nbsp;тестами и&nbsp;CI. Проект не&nbsp;привязан ко&nbsp;мне.</p><p data-l="en">From day one I commit to your repository, with tests and CI. The project isn't tied to me.</p></li>
+      <li><span class="step-n">05</span><h3><span data-l="ru">Запуск</span><span data-l="en">Launch</span></h3><p data-l="ru">Деплой, README и&nbsp;инструкция по&nbsp;запуску. Дальше могу остаться на&nbsp;развитии и&nbsp;поддержке.</p><p data-l="en">Deployment, a README and run instructions. After that I can stay on for support and new features.</p></li>
     </ol>
   </div>
 </section>
 
-<section class="sec sec-alt" id="faq" aria-labelledby="faq-h">
+<section class="sec" id="faq" aria-labelledby="faq-h">
   <div class="wrap faq-grid">
     <div class="faq-side">
       <p class="eyebrow"><span data-l="ru">Вопросы</span><span data-l="en">FAQ</span></p>
@@ -622,39 +678,39 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
     </div>
     <div class="faq">
       <details>
-        <summary><span data-l="ru">С&nbsp;чего начать?</span><span data-l="en">Where do I start?</span></summary>
-        <p data-l="ru">Напишите в&nbsp;Telegram пару предложений: что нужно сделать, где сейчас заявки или данные и&nbsp;к&nbsp;какому сроку. Я&nbsp;задам вопросы и&nbsp;отвечу ценой и&nbsp;сроком.</p>
-        <p data-l="en">Send me a couple of sentences on Telegram: what you need, where your leads or data live now and when you need it by. I'll ask questions and reply with a price and a timeline.</p>
+        <summary><span data-l="ru">Беретесь за&nbsp;большие проекты?</span><span data-l="en">Do you take on large projects?</span></summary>
+        <p data-l="ru">Да. Могу вести продукт один, от&nbsp;схемы базы до&nbsp;продакшена, или работать частью вашей команды. Большой проект делим на&nbsp;этапы, и&nbsp;каждый сдаётся рабочей версией, так что месяцами ждать результата не&nbsp;придётся.</p>
+        <p data-l="en">Yes. I can build a product on my own, from the database schema to production, or work as part of your team. A big project is split into milestones, each delivered as a working build, so you never wait months to see results.</p>
       </details>
       <details>
-        <summary><span data-l="ru">Сколько будет стоить моя задача?</span><span data-l="en">How much will my project cost?</span></summary>
-        <p data-l="ru">Нижние границы есть в&nbsp;прайсе выше. Точную цену называю после брифа, и&nbsp;дальше она не&nbsp;меняется, пока не&nbsp;меняется объём работ.</p>
-        <p data-l="en">The starting prices are in the list above. I give an exact price after the brief, and it stays the same unless the scope changes.</p>
+        <summary><span data-l="ru">Сколько это стоит?</span><span data-l="en">How much does it cost?</span></summary>
+        <p data-l="ru">Зависит от&nbsp;объёма и&nbsp;формата. Проект оцениваю после разговора и&nbsp;фиксирую цену до&nbsp;старта. Для долгой работы или работы в&nbsp;команде называю ставку в&nbsp;час или в&nbsp;месяц.</p>
+        <p data-l="en">It depends on the scope and the format. I estimate a project after we talk and fix the price before we start. For longer work or a spot on your team, I quote an hourly or monthly rate.</p>
       </details>
       <details>
         <summary><span data-l="ru">Как платить?</span><span data-l="en">How does payment work?</span></summary>
-        <p data-l="ru">50% на&nbsp;старте, вторую половину&nbsp;— после того, как вы примете работу.</p>
-        <p data-l="en">50% at the start and 50% once you accept the work.</p>
+        <p data-l="ru">Проект с&nbsp;фиксированной ценой: 50% на&nbsp;старте и&nbsp;50% после приёмки, большой&nbsp;— по&nbsp;этапам. Почасовая и&nbsp;помесячная работа оплачивается по&nbsp;ставке, периодичность договорим на&nbsp;старте.</p>
+        <p data-l="en">A fixed-price project is 50% upfront and 50% on acceptance; a large one is paid by milestone. Hourly and monthly work is billed at the rate, on a schedule we agree at the start.</p>
       </details>
       <details>
-        <summary><span data-l="ru">Что я&nbsp;получу в&nbsp;конце?</span><span data-l="en">What do I get at the end?</span></summary>
-        <p data-l="ru">Код в&nbsp;вашем репозитории, README, инструкцию по&nbsp;запуску, тесты и&nbsp;запуск на&nbsp;вашем сервере.</p>
-        <p data-l="en">The code in your repository, a README, run instructions, tests, and the app running on your server.</p>
+        <summary><span data-l="ru">Можете разобраться в&nbsp;чужом коде?</span><span data-l="en">Can you take over someone else's code?</span></summary>
+        <p data-l="ru">Да, это отдельный формат. Сначала читаю код и&nbsp;говорю, что в&nbsp;нём сломано и&nbsp;что опасно, потом оцениваю, сколько займёт исправление или доработка.</p>
+        <p data-l="en">Yes, that's a format of its own. I read the code first and tell you what's broken and what's risky, then estimate the fix or the rest of the work.</p>
       </details>
       <details>
-        <summary><span data-l="ru">Можно доработать то, что уже есть?</span><span data-l="en">Can you work on something that already exists?</span></summary>
-        <p data-l="ru">Да. Перенос на&nbsp;сервер, Docker, CI и&nbsp;исправление багов в&nbsp;существующем коде есть в&nbsp;прайсе отдельной строкой.</p>
-        <p data-l="en">Yes. Moving to a server, Docker, CI and bug fixes in an existing codebase are a separate line in the price list.</p>
+        <summary><span data-l="ru">Работаете с&nbsp;зарубежными заказчиками?</span><span data-l="en">Can we work in English?</span></summary>
+        <p data-l="ru">Да. Общаться можем на&nbsp;русском или английском, у&nbsp;этой страницы и&nbsp;у&nbsp;README всех проектов есть английская версия.</p>
+        <p data-l="en">Yes. We can talk in English or Russian, and this page and every project README have English versions.</p>
       </details>
       <details>
         <summary><span data-l="ru">Почему в&nbsp;портфолио демо, а&nbsp;не&nbsp;проекты клиентов?</span><span data-l="en">Why demos and not client projects?</span></summary>
-        <p data-l="ru">Клиентский код я&nbsp;не&nbsp;публикую: он принадлежит заказчикам. Демо сделаны на&nbsp;выдуманных данных, чтобы их можно было открыть, пощёлкать и&nbsp;почитать код.</p>
-        <p data-l="en">I don't publish client code; it belongs to the clients. The demos run on made-up data so you can open them, click around and read the code.</p>
+        <p data-l="ru">Клиентский код я&nbsp;не&nbsp;публикую: он принадлежит заказчикам. Открытые проекты сделаны на&nbsp;выдуманных данных, чтобы их можно было открыть, пощёлкать и&nbsp;почитать код.</p>
+        <p data-l="en">I don't publish client code; it belongs to the clients. The open projects run on made-up data so you can open them, click around and read the code.</p>
       </details>
       <details>
         <summary><span data-l="ru">Как будем общаться?</span><span data-l="en">How do we keep in touch?</span></summary>
-        <p data-l="ru">В&nbsp;Telegram. По&nbsp;ходу работы присылаю рабочие промежуточные версии, чтобы вы видели, как продвигается задача.</p>
-        <p data-l="en">On Telegram. Along the way I send you working builds, so you can see how the work is going.</p>
+        <p data-l="ru">Первый разговор&nbsp;— в&nbsp;Telegram. Если работаю в&nbsp;вашей команде, подключаюсь к&nbsp;вашему мессенджеру и&nbsp;трекеру задач.</p>
+        <p data-l="en">The first conversation is on Telegram. If I join your team, I use your messenger and your task tracker.</p>
       </details>
     </div>
   </div>
@@ -663,9 +719,9 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
 <section class="cta-block" id="contacts" aria-labelledby="contacts-h">
   <div class="wrap cta-inner">
     <div>
-      <h2 id="contacts-h"><span data-l="ru">Расскажите, что нужно сделать</span><span data-l="en">Tell me what you need built</span></h2>
-      <p data-l="ru">Готовое ТЗ не&nbsp;нужно: опишите задачу своими словами, остальное уточним в&nbsp;переписке. Отвечу с&nbsp;вопросами, сроком и&nbsp;ценой.</p>
-      <p data-l="en">You don't need a written spec: describe the task in your own words and we'll sort out the details in chat. I'll reply with questions, a timeline and a price.</p>
+      <h2 id="contacts-h"><span data-l="ru">Расскажите о&nbsp;проекте</span><span data-l="en">Tell me about your project</span></h2>
+      <p data-l="ru">Готовое ТЗ не&nbsp;нужно: напишите, что строите, что уже есть и&nbsp;к&nbsp;какому сроку. Отвечу с&nbsp;вопросами и&nbsp;следующим шагом.</p>
+      <p data-l="en">You don't need a written spec: tell me what you're building, what exists already and when you need it. I'll reply with questions and a next step.</p>
       <div class="cta-contacts">
         <span>Telegram · <a href="https://t.me/sinnercode" target="_blank" rel="noopener">@sinnercode</a></span>
         <span>GitHub · <a href="https://github.com/sinnercode228" target="_blank" rel="noopener">sinnercode228</a></span>
@@ -691,8 +747,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
 (function () {
   var root = document.documentElement;
   var META = {
-    ru: { title: "Грешный Котик — Telegram-боты, интеграции и веб-сервисы на заказ", description: "Full-stack разработчик, больше 7 лет работы на заказ, в основном на фрилансе: Telegram-боты и Mini App, интеграции с amoCRM, Bitrix24 и Tilda, веб-приложения, парсеры и отчёты. Цены от 10 000 ₽, открытые демо и код.", toDark: "Включить тёмную тему", toLight: "Включить светлую тему" },
-    en: { title: "sinnercode — custom Telegram bots, CRM integrations and web apps", description: "Full-stack developer with 7+ years of client work, mostly freelance: Telegram bots and Mini Apps, amoCRM, Bitrix24 and Tilda integrations, web apps, scrapers and reports. Prices from $120, open demos and code.", toDark: "Switch to dark theme", toLight: "Switch to light theme" }
+    ru: { title: "Грешный Котик — full-stack разработчик: веб-продукты, интеграции, AI", description: "Full-stack разработчик на Python и TypeScript, больше 7 лет коммерческой разработки. Делаю продукты с нуля, работаю в командах, беру проекты на развитие и аудит. Открытые проекты с демо и кодом.", toDark: "Включить тёмную тему", toLight: "Включить светлую тему" },
+    en: { title: "sinnercode — full-stack developer: web products, integrations, AI", description: "Full-stack developer, Python and TypeScript, 7+ years of commercial work. I build products from scratch, join teams, and take on ongoing development and code audits. Open projects with demos and code.", toDark: "Switch to dark theme", toLight: "Switch to light theme" }
   };
   var descMeta = document.querySelector('meta[name="description"]');
   var themeMeta = document.querySelector('meta[name="theme-color"]');
