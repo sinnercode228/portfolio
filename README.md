@@ -1,5 +1,7 @@
 # portfolio
 
+**Русский** · [English](README.en.md)
+
 Здесь четыре демо-проекта (вместе 380 тестов) и одностраничное портфолио [`index.html`](index.html), которое GitHub Pages отдаёт по адресу https://sinnercode228.github.io/portfolio/.
 
 Проекты покрупнее лежат в отдельных репозиториях, у каждого есть живое демо: [flowdesk-crm](https://github.com/sinnercode228/flowdesk-crm), [docmind-rag](https://github.com/sinnercode228/docmind-rag), [tg-shop-miniapp](https://github.com/sinnercode228/tg-shop-miniapp), [integration-hub](https://github.com/sinnercode228/integration-hub), [pulse-analytics](https://github.com/sinnercode228/pulse-analytics). Остальное в профиле: [github.com/sinnercode228](https://github.com/sinnercode228).
@@ -52,4 +54,6 @@ cd excel-dashboard-demo && make setup all
 
 Стили и скрипты лежат в самом файле, шрифты системные, с других доменов ничего не грузится; из репозитория подтягиваются только обложки из [`assets/projects/`](assets/projects/). Оба языка есть в разметке, лишний прячет CSS, так что без JS видна русская версия. Язык (`?lang=en` или сохранённый) и тему (сохранённую или системную) скрипт в `<head>` ставит до первой отрисовки. Кнопки RU/EN и темы запоминают выбор, при переключении на EN в адрес дописывается `?lang=en`.
 
-Связь: Telegram [@sinnercode](https://t.me/sinnercode).
+---
+
+Автор — Грешный Котик, беру заказы на похожие задачи: Telegram [@sinnercode](https://t.me/sinnercode).

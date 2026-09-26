@@ -1,5 +1,7 @@
 # excel-dashboard-demo
 
+**Русский** · [English](README.en.md)
+
 ![Дашборд в русской версии: KPI, таблицы по цехам и оборудованию, графики](docs/dashboard_ru.png)
 
 Скрипты на Python 3.10+ с openpyxl собирают из сырых CSV-выгрузок два вида .xlsx: дашборд по производственному журналу и счёт с зарплатой по журналу рабочего времени. Все итоги считаются формулами Excel поверх таблиц с исходными данными, поэтому после сборки Python не нужен: при смене фильтра Excel сам пересчитывает итоги и графики. Журналы вымышленных «Quillmoor Machining» и «Brindlecote Digital» генерирует [`generate_sample_data.py`](generate_sample_data.py).
@@ -70,3 +72,7 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
 ## Тесты
 
 `make test` или `.venv/bin/python -m pytest`: 112 тестов из 48 функций с параметризацией, обе книги проверяются на английском и на русском. Тесты книг перебирают шесть сочетаний фильтров, пустой период, шаг округления 0 ч, 0,5 ч и 1 ч, налог 20 % и сравнивают результат pycel с эталоном. Крайние случаи лежат в [`tests/test_edge_cases.py`](tests/test_edge_cases.py).
+
+---
+
+Автор — Грешный Котик, беру заказы на похожие задачи: Telegram [@sinnercode](https://t.me/sinnercode).

@@ -1,5 +1,7 @@
 # Telegram-бот для заявок на aiogram 3
 
+**Русский** · [English](README.en.md)
+
 Бот собирает заявки через анкету из четырёх шагов, сохраняет их в SQLite и присылает карточку в админ-чаты. У администратора есть `/leads`, `/export` в CSV, `/stats` и `/broadcast`. Код написан на Python 3.11+ и aiogram 3 (long polling, FSM, CallbackData), с базой работает через aiosqlite. Студия «Ромашка Digital» существует только в [`texts.py`](bot/texts.py), вместе со своими услугами и ценами.
 
 Кусок вывода [`scripts/demo_dialog.py`](scripts/demo_dialog.py). Скрипт прогоняет настоящие хендлеры на том же фейковом Telegram, что и тесты, без токена и интернета. Часть сообщений и строк пропущена, эмодзи убраны или заменены словами:
@@ -73,3 +75,7 @@ pytest && ruff check . && ruff format --check .
 ```
 
 Тестов 139. Диалоговые сценарии в [`test_user_flow.py`](tests/test_user_flow.py) и [`test_admin.py`](tests/test_admin.py) идут через настоящий диспетчер aiogram поверх [`FakeSession`](tests/fakes.py). Она записывает каждый вызов Bot API и отвечает локально, а тест проверяет, какие сообщения и кнопки ушли и что легло в базу. Остальные файлы проверяют по отдельности валидаторы, конфиг, базу, форматирование, экспорт в CSV, фоновые задачи и запуск `python -m bot`.
+
+---
+
+Автор — Грешный Котик, беру заказы на похожие задачи: Telegram [@sinnercode](https://t.me/sinnercode). Лицензия [MIT](LICENSE).

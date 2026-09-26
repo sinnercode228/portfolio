@@ -1,5 +1,7 @@
 # landing-calculator
 
+**Русский** · [English](README.en.md)
+
 Одностраничный сайт строительной компании «Полдень» с калькулятором стоимости дома и формой заявки. Фирмы такой нет, цены и контакты на странице условные. Смета собирается по строкам, телефон вводится по маске, а serverless-функция пересылает заявку в Telegram и/или на почту. Код на HTML, CSS и JS без сборки и npm-зависимостей, страница весит 37 КБ в gzip (шрифт Manrope с Google Fonts сюда не входит).
 
 Демо: https://sinnercode228.github.io/portfolio/landing-calculator/
@@ -64,3 +66,7 @@ npm start            # dev-сервер на node:http, http://localhost:8080
 npm start -- 3000    # другой порт
 npm test             # Node ≥ 22, зависимостей нет
 ```
+
+---
+
+Автор — Грешный Котик, беру заказы на похожие задачи: Telegram [@sinnercode](https://t.me/sinnercode). Лицензия [MIT](LICENSE).
