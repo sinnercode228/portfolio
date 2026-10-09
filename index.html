@@ -529,8 +529,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         <h3>FlowDesk</h3>
         <p data-l="ru">CRM для отдела продаж: канбан сделок с&nbsp;перетаскиванием, контакты, заметки и&nbsp;история по&nbsp;сделке, дашборд с&nbsp;воронкой и&nbsp;прогнозом. Менеджер двигает и&nbsp;правит только свои сделки, админ&nbsp;— все.</p>
         <p data-l="en">A CRM for a sales team: a drag-and-drop deals board, contacts, notes and history for each deal, a dashboard with the funnel and a forecast. Managers move and edit only their own deals; admins can edit all of them.</p>
-        <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Refresh-токены ротируются, а&nbsp;повторно использованный токен отзывает всю сессию. Гонку двух одновременных refresh-запросов закрывает условный <code>updateMany</code> в&nbsp;транзакции.</p>
-        <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>Refresh tokens rotate, and a reused token revokes the whole session. A conditional <code>updateMany</code> inside a transaction settles the race between two concurrent refreshes.</p>
+        <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Refresh-токены ротируются, а&nbsp;повторно использованный токен отзывает всю сессию. Гонку двух одновременных refresh-запросов закрывает условный <code>updateMany</code> в&nbsp;транзакции.</p>
+        <p class="inside" data-l="en"><span class="inside-l">How it works</span>Refresh tokens rotate, and a reused token revokes the whole session. A conditional <code>updateMany</code> inside a transaction settles the race between two concurrent refreshes.</p>
         <p class="tags"><span>Next.js</span><span>Fastify</span><span>Prisma</span><span>PostgreSQL</span><span>TanStack Query</span><span>dnd-kit</span></p>
         <p class="note" data-l="ru">Вход в&nbsp;демо уже заполнен, пароль вводить не&nbsp;нужно.</p>
         <p class="note" data-l="en">The demo login is prefilled, so there's no password to type.</p>
@@ -549,8 +549,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <h3>Pulse</h3>
           <p data-l="ru">Веб-аналитика без cookies и&nbsp;проверка доступности сайтов в&nbsp;одном дашборде. Посетители появляются в&nbsp;живой ленте, а&nbsp;если сайт упал, это видно на&nbsp;отдельной странице.</p>
           <p data-l="en">Cookieless web analytics and uptime checks in one dashboard. Visitors show up in a live feed, and if a site goes down you see it on a separate page.</p>
-          <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Посетителей в&nbsp;каждой строке статистики считает HyperLogLog: до&nbsp;512 хэшей это точное множество, дальше 2048 регистров с&nbsp;ошибкой около 2,3%. Трекер для сайта весит 843&nbsp;байта, 560&nbsp;в&nbsp;gzip.</p>
-          <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>Each stats row counts visitors with HyperLogLog: an exact set up to 512 hashes, then 2048 registers with about 2.3% error. The site tracker is 843 bytes, 560 gzipped.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Посетителей в&nbsp;каждой строке статистики считает HyperLogLog: до&nbsp;512 хэшей это точное множество, дальше 2048 регистров с&nbsp;ошибкой около 2,3%. Трекер для сайта весит 843&nbsp;байта, 560&nbsp;в&nbsp;gzip.</p>
+          <p class="inside" data-l="en"><span class="inside-l">How it works</span>Each stats row counts visitors with HyperLogLog: an exact set up to 512 hashes, then 2048 registers with about 2.3% error. The site tracker is 843 bytes, 560 gzipped.</p>
           <p class="tags"><span>TypeScript</span><span>Fastify</span><span>node:sqlite</span><span>WebSocket</span><span>React</span></p>
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
@@ -565,8 +565,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <h3>Relay</h3>
           <p data-l="ru">Заявки из&nbsp;Tilda, amoCRM и&nbsp;Bitrix24 расходятся в&nbsp;Telegram, Google Sheets, amoCRM и&nbsp;на&nbsp;почту. Если получатель не&nbsp;ответил, доставка повторяется с&nbsp;растущей паузой, а&nbsp;то, что так и&nbsp;не&nbsp;дошло, можно отправить ещё раз из&nbsp;отдельного списка.</p>
           <p data-l="en">Leads from Tilda, amoCRM and Bitrix24 go out to Telegram, Google Sheets, amoCRM and e-mail. If a recipient doesn't answer, delivery is retried with growing pauses, and anything that never got through can be resent from a separate list.</p>
-          <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Очередь своя, на&nbsp;sorted sets в&nbsp;Redis. Взятая задача получает дедлайн 120&nbsp;секунд, и&nbsp;если воркер упадёт, после дедлайна она вернётся в&nbsp;очередь.</p>
-          <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>The queue is custom, built on Redis sorted sets. A job a worker takes gets a 120-second deadline, and if the worker dies, the job goes back to the queue once the deadline passes.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Очередь своя, на&nbsp;sorted sets в&nbsp;Redis. Взятая задача получает дедлайн 120&nbsp;секунд, и&nbsp;если воркер упадёт, после дедлайна она вернётся в&nbsp;очередь.</p>
+          <p class="inside" data-l="en"><span class="inside-l">How it works</span>The queue is custom, built on Redis sorted sets. A job a worker takes gets a 120-second deadline, and if the worker dies, the job goes back to the queue once the deadline passes.</p>
           <p class="tags"><span>Python</span><span>FastAPI</span><span>Redis</span><span>SQLite</span><span>React</span></p>
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
@@ -584,8 +584,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <h3>DocMind</h3>
           <p data-l="ru">Ассистент, который отвечает по&nbsp;вашим документам: PDF, DOCX, страницам сайта. Ответ идёт потоком со&nbsp;сносками, клик по&nbsp;сноске открывает фрагмент источника. Есть веб-интерфейс и&nbsp;Telegram-бот.</p>
           <p data-l="en">An assistant that answers from your documents: PDF, DOCX, web pages. The answer streams in with citations, and clicking one opens the source passage. It has a web UI and a Telegram bot.</p>
-          <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Источники приходят по&nbsp;SSE раньше первого токена ответа, поэтому, когда в&nbsp;тексте появляется сноска [n], её карточка уже на&nbsp;экране.</p>
-          <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>Sources arrive over SSE before the first answer token, so when a [n] citation appears in the text, its card is already on screen.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Источники приходят по&nbsp;SSE раньше первого токена ответа, поэтому, когда в&nbsp;тексте появляется сноска [n], её карточка уже на&nbsp;экране.</p>
+          <p class="inside" data-l="en"><span class="inside-l">How it works</span>Sources arrive over SSE before the first answer token, so when a [n] citation appears in the text, its card is already on screen.</p>
           <p class="tags"><span>Python</span><span>FastAPI</span><span>pgvector</span><span>Claude / OpenAI API</span><span>React</span></p>
           <p class="note" data-l="ru">В&nbsp;демо нет LLM: ответ собирается из&nbsp;найденных в&nbsp;документах предложений.</p>
           <p class="note" data-l="en">The demo has no LLM: answers are put together from sentences found in the documents.</p>
@@ -602,8 +602,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <h3>Zernolist</h3>
           <p data-l="ru">Магазин кофе и&nbsp;чая внутри Telegram: каталог с&nbsp;поиском, промокоды, курьер или самовывоз, оплата в&nbsp;Telegram Stars или при получении. Заказы приходят админу в&nbsp;бот, статус он меняет кнопками под уведомлением.</p>
           <p data-l="en">A coffee and tea shop inside Telegram: a searchable catalog, promo codes, courier or pickup, payment with Telegram Stars or on receipt. Orders reach the admin in the bot, and the status changes with buttons under the notification.</p>
-          <p class="inside" data-l="ru"><span class="inside-l">Под капотом</span>Цену каждого заказа сервер считает сам по&nbsp;каталогу, поэтому подменить её из&nbsp;браузера не&nbsp;выйдет. Если Telegram пришлёт уведомление об&nbsp;оплате дважды, заказ второй раз не&nbsp;проведётся.</p>
-          <p class="inside" data-l="en"><span class="inside-l">Under the hood</span>The server prices every order from the catalog itself, so nobody can change the price in the browser. If Telegram sends the same payment update twice, the order goes through only once.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Цену каждого заказа сервер считает сам по&nbsp;каталогу, поэтому подменить её из&nbsp;браузера не&nbsp;выйдет. Если Telegram пришлёт уведомление об&nbsp;оплате дважды, заказ второй раз не&nbsp;проведётся.</p>
+          <p class="inside" data-l="en"><span class="inside-l">How it works</span>The server prices every order from the catalog itself, so nobody can change the price in the browser. If Telegram sends the same payment update twice, the order goes through only once.</p>
           <p class="tags"><span>React</span><span>Vite</span><span>aiogram 3</span><span>FastAPI</span><span>SQLAlchemy</span></p>
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
