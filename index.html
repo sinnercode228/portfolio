@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Грешный Котик — full-stack разработчик: веб-продукты, интеграции, AI</title>
-<meta name="description" content="Full-stack разработчик на Python и TypeScript, в коммерческой разработке с 2019 года. Делаю продукты с нуля, работаю в командах, беру проекты на развитие и аудит. Открытые проекты с демо и кодом.">
+<meta name="description" content="Full-stack разработчик на Python, TypeScript и Go, в коммерческой разработке с 2019 года. Делаю продукты с нуля, работаю в командах, беру проекты на развитие и аудит. Открытые проекты с демо и кодом.">
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#fafaf8">
 <meta property="og:type" content="website">
@@ -379,8 +379,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
   <div class="wrap hero-grid">
     <div>
       <p class="kicker mono">
-        <span data-l="ru"><b>Грешный Котик</b> · full-stack разработчик · Python и&nbsp;TypeScript</span>
-        <span data-l="en"><b>sinnercode</b> · full-stack developer · Python and TypeScript</span>
+        <span data-l="ru"><b>Грешный Котик</b> · full-stack разработчик · Python, TypeScript и&nbsp;Go</span>
+        <span data-l="en"><b>sinnercode</b> · full-stack developer · Python, TypeScript and Go</span>
       </p>
       <h1 id="hero-h">
         <span data-l="ru"><span class="nw">Бэкенд, фронтенд,</span> интеграции и&nbsp;AI в&nbsp;одних руках</span>
@@ -397,8 +397,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         </a>
         <a class="lnk" href="#work"><span data-l="ru">Смотреть проекты ↓</span><span data-l="en">See the projects ↓</span></a>
       </div>
-      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>10</b> открытых проектов</span><span>тесты и CI в&nbsp;каждом</span><span>беру новые проекты</span></p>
-      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>10</b> open projects</span><span>tests and CI in each</span><span>taking on new projects</span></p>
+      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>12</b> открытых проектов</span><span>тесты и CI в&nbsp;каждом</span><span>беру новые проекты</span></p>
+      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>12</b> open projects</span><span>tests and CI in each</span><span>taking on new projects</span></p>
     </div>
 
     <figure class="hero-shot">
@@ -462,11 +462,20 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <li class="skill">
         <h3><span data-l="ru">Бэкенд и&nbsp;API</span><span data-l="en">Backend and APIs</span></h3>
         <div>
-          <p data-l="ru">REST и&nbsp;WebSocket API, фоновые задачи и&nbsp;очереди, повторные попытки, обработка вебхуков и&nbsp;платежей, которые пришли дважды.</p>
-          <p data-l="en">REST and WebSocket APIs, background jobs and queues, retries, handling webhooks and payments that arrive twice.</p>
-          <p class="tech"><span>FastAPI</span><span>SQLAlchemy</span><span>Fastify</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span></p>
+          <p data-l="ru">REST и&nbsp;WebSocket API на&nbsp;Python, TypeScript и&nbsp;Go, фоновые задачи и&nbsp;очереди, повторные попытки, обработка вебхуков и&nbsp;платежей, которые пришли дважды.</p>
+          <p data-l="en">REST and WebSocket APIs in Python, TypeScript and Go, background jobs and queues, retries, handling webhooks and payments that arrive twice.</p>
+          <p class="tech"><span>Go</span><span>FastAPI</span><span>SQLAlchemy</span><span>Fastify</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span></p>
         </div>
         <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/integration-hub/blob/main/backend/src/relay/queue/redis.py" target="_blank" rel="noopener"><span data-l="ru">очередь на&nbsp;Redis, которая забирает задачи у&nbsp;упавшего воркера</span><span data-l="en">a Redis queue that takes jobs back from a dead worker</span></a></p>
+      </li>
+      <li class="skill">
+        <h3><span data-l="ru">Базы данных</span><span data-l="en">Databases</span></h3>
+        <div>
+          <p data-l="ru">Схемы и&nbsp;миграции на&nbsp;PostgreSQL. Правила, которые нельзя нарушить, держу в&nbsp;самой базе, а&nbsp;не&nbsp;только в&nbsp;коде: ограничение против двойной записи, триггер, который не&nbsp;пропустит несбалансированную проводку, SKIP LOCKED, чтобы два воркера не&nbsp;взяли одну задачу.</p>
+          <p data-l="en">PostgreSQL schemas and migrations. Rules that must never break live in the database, not only in the code: a constraint against double booking, a trigger that refuses an unbalanced journal entry, SKIP LOCKED so two workers never take the same job.</p>
+          <p class="tech"><span>PostgreSQL</span><span>btree_gist</span><span>constraint triggers</span><span>SKIP LOCKED</span><span>SQLite</span></p>
+        </div>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/slotbook/blob/1c8318474319f6e61cc76a3bbc5b5911625d7c1e/internal/db/migrations/0001_schema.sql#L111-L113" target="_blank" rel="noopener"><span data-l="ru">ограничение, которое запрещает двойную запись</span><span data-l="en">the constraint that rules out double booking</span></a></p>
       </li>
       <li class="skill">
         <h3><span data-l="ru">Авторизация и&nbsp;безопасность</span><span data-l="en">Auth and security</span></h3>
@@ -489,8 +498,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <li class="skill">
         <h3><span data-l="ru">Интеграции и&nbsp;платежи</span><span data-l="en">Integrations and payments</span></h3>
         <div>
-          <p data-l="ru">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, почта. Вебхуки с&nbsp;подписью, ретраи с&nbsp;растущей паузой, оплата в&nbsp;Telegram Stars.</p>
-          <p data-l="en">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, e-mail. Signed webhooks, retries with backoff, Telegram Stars payments.</p>
+          <p data-l="ru">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, почта. Вебхуки с&nbsp;подписью, ретраи с&nbsp;растущей паузой, оплата в&nbsp;Telegram Stars, биллинг подписок с&nbsp;повторными списаниями.</p>
+          <p data-l="en">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, e-mail. Signed webhooks, retries with backoff, Telegram Stars payments, subscription billing with dunning.</p>
           <p class="tech"><span>httpx</span><span>aiogram 3</span><span>Bot API</span></p>
         </div>
         <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/tg-shop-miniapp/blob/54cb076af58b99b8e693ff301d43ea20a9dc1d91/bot/tgshop/services/orders.py#L76-L100" target="_blank" rel="noopener"><span data-l="ru">сервер пересчитывает каждый заказ по&nbsp;каталогу</span><span data-l="en">the server re-prices every order from the catalog</span></a></p>
@@ -555,6 +564,45 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         </div>
       </div>
     </article>
+
+    <div class="case-pair">
+      <article class="case">
+        <figure><img src="assets/projects/ledgerline-billing/cover.webp" width="1200" height="750" loading="lazy" alt="Ledgerline: MRR, выручка по дням и тестовые часы" data-alt-en="Ledgerline: MRR, revenue by day and the test clock"></figure>
+        <div class="case-body">
+          <div class="case-kind"><span data-l="ru">Биллинг подписок</span><span data-l="en">Subscription billing</span><span class="cnt"><span data-l="ru">@@LL_RU@@</span><span data-l="en">@@LL_EN@@</span></span></div>
+          <h3>Ledgerline</h3>
+          <p data-l="ru">Биллинг для SaaS: тарифы с&nbsp;пробным периодом, продления, пересчёт при смене тарифа посреди месяца, счета с&nbsp;номерами без пропусков и&nbsp;повторные списания, если карта не&nbsp;прошла. Каждое движение денег записано в&nbsp;книгу по&nbsp;двойной записи.</p>
+          <p data-l="en">Billing for a SaaS: plans with trials, renewals, proration when the plan changes mid-month, invoices numbered without gaps, and retries when a card is declined. Every movement of money goes into a double-entry ledger.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Если проводки не&nbsp;сходятся в&nbsp;ноль, PostgreSQL откатывает всю транзакцию: это проверяет триггер, отложенный до&nbsp;COMMIT, какой бы код ни&nbsp;писал в&nbsp;базу. Тот же движок биллинга работает в&nbsp;браузере, на&nbsp;нём сделано демо.</p>
+          <p class="inside" data-l="en"><span class="inside-l">How it works</span>If the entries don't sum to zero, PostgreSQL rolls the whole transaction back: a trigger deferred to COMMIT checks it, whatever code wrote to the database. The same billing engine runs in the browser, and that's what the demo is.</p>
+          <p class="tags"><span>TypeScript</span><span>Fastify</span><span>PostgreSQL</span><span>React</span><span>fast-check</span></p>
+          <p class="note" data-l="ru">В&nbsp;демо есть тестовые часы: нажмите «+1 неделя» и&nbsp;посмотрите, как идут продления, отказы карты, повторы и&nbsp;списание долга.</p>
+          <p class="note" data-l="en">The demo has a test clock: press "+1 week" and watch renewals, declined cards, retries and a write-off happen.</p>
+          <div class="case-links">
+            <a class="lnk" href="https://sinnercode228.github.io/ledgerline-billing/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+            <a class="lnk" href="https://github.com/sinnercode228/ledgerline-billing" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          </div>
+        </div>
+      </article>
+      <article class="case">
+        <figure><img src="assets/projects/slotbook/cover.webp" width="1200" height="750" loading="lazy" alt="Slotbook: расписание дня салона с записями, удержанием слота и блокировкой" data-alt-en="Slotbook: a salon's day schedule with bookings, a held slot and a block"></figure>
+        <div class="case-body">
+          <div class="case-kind"><span data-l="ru">Онлайн-запись, Go</span><span data-l="en">Booking, Go</span><span class="cnt"><span data-l="ru">320 тестов</span><span data-l="en">320 tests</span></span></div>
+          <h3>Slotbook</h3>
+          <p data-l="ru">Онлайн-запись для салонов и&nbsp;клиник. Клиент выбирает услугу, мастера и&nbsp;время, слот держится за&nbsp;ним 10&nbsp;минут, пока он вводит контакты, а&nbsp;потом приходит ссылка, чтобы перенести или отменить визит. У&nbsp;сотрудников расписание дня, напоминания уходят в&nbsp;Telegram.</p>
+          <p data-l="en">Online booking for salons and clinics. The customer picks a service, a specialist and a time, the slot is held for 10 minutes while they type their details, and then they get a link to reschedule or cancel. Staff get a day schedule, and reminders go out on Telegram.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Двойную запись запрещает сама база: ограничение EXCLUDE в&nbsp;PostgreSQL не&nbsp;даёт пересечься двум записям одного мастера, и&nbsp;из&nbsp;20 одновременных попыток занять слот проходит одна. В&nbsp;дни перевода часов сетка времени остаётся верной, это проверяют 23 общих теста для Go и&nbsp;TypeScript.</p>
+          <p class="inside" data-l="en"><span class="inside-l">How it works</span>The database itself rules out double booking: an EXCLUDE constraint in PostgreSQL keeps two bookings of one specialist from overlapping, and of 20 simultaneous attempts to take a slot exactly one succeeds. The time grid stays right on DST change days, checked by 23 test vectors shared by Go and TypeScript.</p>
+          <p class="tags"><span>Go</span><span>pgx</span><span>PostgreSQL</span><span>React</span><span>TypeScript</span></p>
+          <p class="note" data-l="ru">Откройте демо в&nbsp;двух вкладках и&nbsp;выберите одно и&nbsp;то&nbsp;же время: запись получит только одна вкладка.</p>
+          <p class="note" data-l="en">Open the demo in two tabs and pick the same time in both: only one tab gets the booking.</p>
+          <div class="case-links">
+            <a class="lnk" href="https://sinnercode228.github.io/slotbook/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+            <a class="lnk" href="https://github.com/sinnercode228/slotbook" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          </div>
+        </div>
+      </article>
+    </div>
 
     <div class="case-pair">
       <article class="case">
@@ -846,8 +894,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
 (function () {
   var root = document.documentElement;
   var META = {
-    ru: { title: "Грешный Котик — full-stack разработчик: веб-продукты, интеграции, AI", description: "Full-stack разработчик на Python и TypeScript, в коммерческой разработке с 2019 года. Делаю продукты с нуля, работаю в командах, беру проекты на развитие и аудит. Открытые проекты с демо и кодом.", toDark: "Включить тёмную тему", toLight: "Включить светлую тему" },
-    en: { title: "sinnercode — full-stack developer: web products, integrations, AI", description: "Full-stack developer, Python and TypeScript, doing commercial work since 2019. I build products from scratch, join teams, and take on ongoing development and code audits. Open projects with demos and code.", toDark: "Switch to dark theme", toLight: "Switch to light theme" }
+    ru: { title: "Грешный Котик — full-stack разработчик: веб-продукты, интеграции, AI", description: "Full-stack разработчик на Python, TypeScript и Go, в коммерческой разработке с 2019 года. Делаю продукты с нуля, работаю в командах, беру проекты на развитие и аудит. Открытые проекты с демо и кодом.", toDark: "Включить тёмную тему", toLight: "Включить светлую тему" },
+    en: { title: "sinnercode — full-stack developer: web products, integrations, AI", description: "Full-stack developer, Python, TypeScript and Go, doing commercial work since 2019. I build products from scratch, join teams, and take on ongoing development and code audits. Open projects with demos and code.", toDark: "Switch to dark theme", toLight: "Switch to light theme" }
   };
   var descMeta = document.querySelector('meta[name="description"]');
   var themeMeta = document.querySelector('meta[name="theme-color"]');
