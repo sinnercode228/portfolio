@@ -119,7 +119,7 @@ button { font: inherit; color: inherit; }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 700 15px/1 var(--display); letter-spacing: -.01em; white-space: nowrap; }
 .brand .cat { width: 34px; height: 34px; flex: none; }
 .nav { display: flex; gap: 26px; margin-left: auto; }
-.nav a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--ink-2); padding: 6px 0; border-bottom: 2px solid transparent; }
+.nav a { text-decoration: none; font-weight: 500; font-size: 15px; color: var(--ink-2); padding: 6px 0; border-bottom: 2px solid transparent; white-space: nowrap; }
 .nav a:hover { color: var(--ink); border-color: var(--accent); }
 .tools { display: flex; align-items: center; gap: 10px; }
 .lang { display: inline-flex; border: 1.5px solid var(--ink); border-radius: 8px; overflow: hidden; }
@@ -226,6 +226,15 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .more-list .links a { text-decoration: none; border-bottom: 1.5px solid var(--accent); color: var(--ink); }
 .more-list .links a:hover { color: var(--accent); }
 
+/* Разборы */
+.sec-notes { padding-top: 0; }
+.notes-list li { grid-template-columns: 120px minmax(0, 1fr); }
+.notes-list .proj { font: 13px/1.6 var(--mono); color: var(--muted); }
+.notes-list .t { font-weight: 700; text-decoration: none; border-bottom: 1.5px solid var(--accent); color: var(--ink); }
+.notes-list .t:hover { color: var(--accent); }
+.notes-list p { margin-top: 4px; }
+.notes-list code { font: .9em var(--mono); background: var(--bg-alt); border-radius: 4px; padding: 1px 4px; }
+
 /* Как работаю */
 .steps { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 1.5px solid var(--ink); }
 .steps li { position: relative; padding: 26px 22px 6px 0; }
@@ -275,6 +284,9 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
 @media (max-width: 880px) {
   .nav { display: none; }
   .tools { margin-left: auto; }
+}
+@media (min-width: 881px) and (max-width: 1060px) {
+  .brand-name { display: none; }
 }
 @media (max-width: 940px) {
   .hero-grid { grid-template-columns: 1fr; }
@@ -343,6 +355,7 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <a href="#services"><span data-l="ru">Форматы</span><span data-l="en">Ways to work</span></a>
       <a href="#skills"><span data-l="ru">Что умею</span><span data-l="en">Skills</span></a>
       <a href="#work"><span data-l="ru">Проекты</span><span data-l="en">Projects</span></a>
+      <a href="#notes"><span data-l="ru">Разборы</span><span data-l="en">Write-ups</span></a>
       <a href="#process"><span data-l="ru">Как работаю</span><span data-l="en">Process</span></a>
       <a href="#faq"><span data-l="ru">Вопросы</span><span data-l="en">FAQ</span></a>
     </nav>
@@ -537,6 +550,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         <div class="case-links">
           <a class="lnk" href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
           <a class="lnk" href="https://github.com/sinnercode228/flowdesk-crm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.ru.md" target="_blank" rel="noopener">Разбор</a>
+          <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.md" target="_blank" rel="noopener">Write-up</a>
         </div>
       </div>
     </article>
@@ -555,6 +570,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
             <a class="lnk" href="https://github.com/sinnercode228/pulse-analytics" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/pulse-hyperloglog.ru.md" target="_blank" rel="noopener">Разбор</a>
+            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/pulse-hyperloglog.md" target="_blank" rel="noopener">Write-up</a>
           </div>
         </div>
       </article>
@@ -571,6 +588,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
             <a class="lnk" href="https://github.com/sinnercode228/integration-hub" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-lease-fencing.ru.md" target="_blank" rel="noopener">Разбор</a>
+            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-lease-fencing.md" target="_blank" rel="noopener">Write-up</a>
           </div>
         </div>
       </article>
@@ -592,6 +611,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
             <a class="lnk" href="https://github.com/sinnercode228/docmind-rag" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/docmind-sources-before-tokens.ru.md" target="_blank" rel="noopener">Разбор</a>
+            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/docmind-sources-before-tokens.md" target="_blank" rel="noopener">Write-up</a>
           </div>
         </div>
       </article>
@@ -608,6 +629,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
             <a class="lnk" href="https://github.com/sinnercode228/tg-shop-miniapp" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/zernolist-stars-payments.ru.md" target="_blank" rel="noopener">Разбор</a>
+            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/zernolist-stars-payments.md" target="_blank" rel="noopener">Write-up</a>
           </div>
         </div>
       </article>
@@ -648,6 +671,82 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         </li>
       </ul>
     </div>
+  </div>
+</section>
+
+<section class="sec sec-notes" id="notes" aria-labelledby="notes-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span data-l="ru">Разборы</span><span data-l="en">Write-ups</span></p>
+      <h2 id="notes-h"><span data-l="ru">Как устроены проекты, по&nbsp;строкам кода</span><span data-l="en">How the projects work, line by line</span></h2>
+      <p class="sec-intro" data-l="ru">Тексты о&nbsp;том, как работают отдельные части проектов выше. Я&nbsp;цитирую код со&nbsp;ссылками на&nbsp;строки в&nbsp;конкретном коммите и&nbsp;пишу, что покрывают тесты. Два первых&nbsp;— про ошибки, которые я&nbsp;нашёл в&nbsp;своей очереди в&nbsp;Relay и&nbsp;исправил.</p>
+      <p class="sec-intro" data-l="en">How specific parts of the projects above work. I quote the code with links to the exact lines at a fixed commit and say what the tests cover. The first two are about bugs I found in my own queue in Relay and fixed.</p>
+    </div>
+    <ul class="more-list notes-list">
+      <li>
+        <span class="proj">Relay</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-lease-fencing.ru.md" target="_blank" rel="noopener">Поздний ack оказался мелочью: fencing token из&nbsp;срока аренды в&nbsp;очереди на&nbsp;Redis</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-lease-fencing.md" target="_blank" rel="noopener">The late ack was the small bug: fencing a Redis queue with the lease deadline</a>
+          <p data-l="ru">Вторая часть про очередь Relay. Воркер с&nbsp;истёкшей арендой затирал запись о&nbsp;доставке у&nbsp;нового владельца задачи; теперь каждая запись после попытки сверяет срок аренды.</p>
+          <p data-l="en">Part 2 of the Relay queue story. A worker past its lease overwrote the new owner's delivery record; now every write after an attempt checks the lease deadline.</p>
+        </div>
+      </li>
+      <li>
+        <span class="proj">Relay</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-queue-races.ru.md" target="_blank" rel="noopener">Очередь на&nbsp;Redis атомарно забирала задачи и&nbsp;всё равно отдавала одну и&nbsp;ту&nbsp;же двум воркерам</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-queue-races.md" target="_blank" rel="noopener">My Redis queue claimed jobs atomically and still handed the same job to two workers</a>
+          <p data-l="ru"><code>MULTI</code> сделал атомарным захват задачи, но&nbsp;не&nbsp;чтение, на&nbsp;котором он основан. Хук в&nbsp;тестах, который на&nbsp;каждом прогоне воспроизводит обе гонки, и&nbsp;исправление на&nbsp;Lua.</p>
+          <p data-l="en"><code>MULTI</code> made the claim atomic, but not the read it was based on. A test hook that forces both interleavings on every run, and the fix in Lua.</p>
+        </div>
+      </li>
+      <li>
+        <span class="proj">Relay</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-redis-lease-queue.ru.md" target="_blank" rel="noopener">Очередь доставок Relay на&nbsp;двух sorted set в&nbsp;Redis с&nbsp;арендой задачи на&nbsp;120&nbsp;секунд</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-redis-lease-queue.md" target="_blank" rel="noopener">Relay's delivery queue on two Redis sorted sets with a 120-second lease</a>
+          <p data-l="ru">Как воркер берёт задачу в&nbsp;аренду, а&nbsp;не&nbsp;забирает её из&nbsp;очереди, и&nbsp;почему попытка сохраняется раньше ack.</p>
+          <p data-l="en">How a worker leases a job instead of popping it, and why the attempt is saved before the ack.</p>
+        </div>
+      </li>
+      <li>
+        <span class="proj">FlowDesk</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.ru.md" target="_blank" rel="noopener">Ротация refresh-токенов в&nbsp;FlowDesk через условный UPDATE и&nbsp;блокировку между вкладками</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.md" target="_blank" rel="noopener">How FlowDesk rotates refresh tokens with a conditional UPDATE and a cross-tab lock</a>
+          <p data-l="ru">Одноразовые refresh-токены, условный <code>updateMany</code>, после которого из&nbsp;двух одновременных refresh-запросов проходит один, и&nbsp;Web Locks для двух вкладок с&nbsp;одной сессией.</p>
+          <p data-l="en">Single-use refresh tokens, the conditional <code>updateMany</code> that lets only one of two concurrent refreshes win, and Web Locks for two tabs on one session.</p>
+        </div>
+      </li>
+      <li>
+        <span class="proj">Zernolist</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/zernolist-stars-payments.ru.md" target="_blank" rel="noopener">Как Zernolist считает цену заказа на&nbsp;сервере и&nbsp;принимает каждый платёж в&nbsp;Telegram Stars один раз</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/zernolist-stars-payments.md" target="_blank" rel="noopener">How Zernolist prices an order on the server and accepts each Telegram Stars charge once</a>
+          <p data-l="ru">Цены в&nbsp;копейках из&nbsp;каталога, проверки при pre-checkout и&nbsp;ещё раз при оплате, и&nbsp;почему повторный <code>successful_payment</code> не&nbsp;уходит в&nbsp;возврат.</p>
+          <p data-l="en">Prices in kopecks from the catalog, the checks at pre-checkout and again on payment, and why a repeated <code>successful_payment</code> is not refunded.</p>
+        </div>
+      </li>
+      <li>
+        <span class="proj">DocMind</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/docmind-sources-before-tokens.ru.md" target="_blank" rel="noopener">Как DocMind отдаёт источники раньше первого токена и&nbsp;превращает [n] в&nbsp;ссылки на&nbsp;лету</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/docmind-sources-before-tokens.md" target="_blank" rel="noopener">How DocMind sends sources before the first token and links [n] markers mid-stream</a>
+          <p data-l="ru">Порядок событий в&nbsp;SSE, как клиент превращает [n] в&nbsp;кнопку, пока текст ещё идёт, и&nbsp;что происходит со&nbsp;сноской [7], когда источников пять.</p>
+          <p data-l="en">The SSE event order, how the client turns [n] into a button while the text is still streaming, and what happens to a [7] when there are five sources.</p>
+        </div>
+      </li>
+      <li>
+        <span class="proj">Pulse</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/pulse-hyperloglog.ru.md" target="_blank" rel="noopener">Как Pulse считает посетителей через суточную соль и&nbsp;HyperLogLog</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/pulse-hyperloglog.md" target="_blank" rel="noopener">How Pulse counts unique visitors with a daily salt and a sparse-to-dense HyperLogLog</a>
+          <p data-l="ru">Идентификатор посетителя без cookies, скетч, который до&nbsp;512 хэшей остаётся точным множеством, и&nbsp;ошибка, измеренная на&nbsp;разных объёмах.</p>
+          <p data-l="en">A visitor id without cookies, a sketch that stays an exact set up to 512 hashes, and the error measured at different sizes.</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
