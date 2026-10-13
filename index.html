@@ -581,6 +581,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/ledgerline-billing/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
             <a class="lnk" href="https://github.com/sinnercode228/ledgerline-billing" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/ledgerline-balanced-but-wrong.ru.md" target="_blank" rel="noopener">Разбор</a>
+            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/ledgerline-balanced-but-wrong.md" target="_blank" rel="noopener">Write-up</a>
           </div>
         </div>
       </article>
@@ -599,6 +601,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <div class="case-links">
             <a class="lnk" href="https://sinnercode228.github.io/slotbook/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
             <a class="lnk" href="https://github.com/sinnercode228/slotbook" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/slotbook-exclusion-constraint.ru.md" target="_blank" rel="noopener">Разбор</a>
+            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/slotbook-exclusion-constraint.md" target="_blank" rel="noopener">Write-up</a>
           </div>
         </div>
       </article>
@@ -727,10 +731,37 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
     <div class="sec-head">
       <p class="eyebrow"><span data-l="ru">Разборы</span><span data-l="en">Write-ups</span></p>
       <h2 id="notes-h"><span data-l="ru">Как устроены проекты, по&nbsp;строкам кода</span><span data-l="en">How the projects work, line by line</span></h2>
-      <p class="sec-intro" data-l="ru">Тексты о&nbsp;том, как работают отдельные части проектов выше. Я&nbsp;цитирую код со&nbsp;ссылками на&nbsp;строки в&nbsp;конкретном коммите и&nbsp;пишу, что покрывают тесты. Два первых&nbsp;— про ошибки, которые я&nbsp;нашёл в&nbsp;своей очереди в&nbsp;Relay и&nbsp;исправил.</p>
-      <p class="sec-intro" data-l="en">How specific parts of the projects above work. I quote the code with links to the exact lines at a fixed commit and say what the tests cover. The first two are about bugs I found in my own queue in Relay and fixed.</p>
+      <p class="sec-intro" data-l="ru">Тексты о&nbsp;том, как работают отдельные части проектов выше. Я&nbsp;цитирую код со&nbsp;ссылками на&nbsp;строки в&nbsp;конкретном коммите и&nbsp;пишу, что покрывают тесты. Три из&nbsp;них&nbsp;— про ошибки, которые я&nbsp;нашёл у&nbsp;себя и&nbsp;исправил: в&nbsp;цикле повторов Ledgerline и&nbsp;в&nbsp;очереди Relay.</p>
+      <p class="sec-intro" data-l="en">How specific parts of the projects above work. I quote the code with links to the exact lines at a fixed commit and say what the tests cover. Three are about bugs I found in my own code and fixed: in Ledgerline's retry loop and in Relay's queue.</p>
     </div>
     <ul class="more-list notes-list">
+      <li>
+        <span class="proj">Ledgerline</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/ledgerline-balanced-but-wrong.ru.md" target="_blank" rel="noopener">Оборотная ведомость сходилась в&nbsp;ноль, а&nbsp;счёт списали дважды</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/ledgerline-balanced-but-wrong.md" target="_blank" rel="noopener">The trial balance was zero and the invoice was written off twice</a>
+          <p data-l="ru">Цикл повторов работал с&nbsp;копиями счетов, которые вызов внутри него уже списал, и&nbsp;один счёт списывался дважды. Журнал из&nbsp;прогона на&nbsp;старом коде, два инварианта, которые сверяют книгу со&nbsp;счетами, и&nbsp;исправление.</p>
+          <p data-l="en">A retry loop kept invoice copies across a call that wrote them off, and one invoice was written off twice. The journal from a run on the old code, the two invariants that compare the books with the invoices, and the fix.</p>
+        </div>
+      </li>
+      <li>
+        <span class="proj">Slotbook</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/slotbook-exclusion-constraint.ru.md" target="_blank" rel="noopener">Две вкладки, один слот: вторую запись отклоняет сам PostgreSQL</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/slotbook-exclusion-constraint.md" target="_blank" rel="noopener">Two tabs, one slot: letting PostgreSQL refuse the second booking</a>
+          <p data-l="ru">Почему вторую из&nbsp;двух одновременных записей отклоняет exclusion constraint, а&nbsp;не&nbsp;проверка на&nbsp;Go, чего ждёт вторая вставка и&nbsp;когда проигравший получает <code>500</code> вместо <code>409</code>.</p>
+          <p data-l="en">Why an exclusion constraint, not a check in Go, refuses the second of two simultaneous bookings, what the second insert waits for, and when a loser gets <code>500</code> instead of <code>409</code>.</p>
+        </div>
+      </li>
+      <li>
+        <span class="proj">Slotbook</span>
+        <div>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/slotbook-dst-slots.ru.md" target="_blank" rel="noopener">Берлин, 29&nbsp;марта: слоты записи при переводе часов без прибавления 24&nbsp;часов</a>
+          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/slotbook-dst-slots.md" target="_blank" rel="noopener">Berlin on 29 March: booking slots across a DST change without adding 24 hours</a>
+          <p data-l="ru">Даты обходятся по&nbsp;полуночам UTC, а&nbsp;время на&nbsp;часах разрешается через моменты, которые читаются обратно как то&nbsp;же время. 23 JSON-вектора держат генератор на&nbsp;Go и&nbsp;его копию на&nbsp;TypeScript на&nbsp;одних и&nbsp;тех&nbsp;же строках.</p>
+          <p data-l="en">Dates walked on UTC midnights, and wall times resolved through the instants that read back as the same time. 23 JSON vectors hold the Go generator and its TypeScript port to the same strings.</p>
+        </div>
+      </li>
       <li>
         <span class="proj">Relay</span>
         <div>
