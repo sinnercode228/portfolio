@@ -589,7 +589,7 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <article class="case">
         <figure><img src="assets/projects/slotbook/cover.webp" width="1200" height="750" loading="lazy" alt="Slotbook: расписание дня салона с записями, удержанием слота и блокировкой" data-alt-en="Slotbook: a salon's day schedule with bookings, a held slot and a block"></figure>
         <div class="case-body">
-          <div class="case-kind"><span data-l="ru">Онлайн-запись, Go</span><span data-l="en">Booking, Go</span><span class="cnt"><span data-l="ru">320 тестов</span><span data-l="en">320 tests</span></span></div>
+          <div class="case-kind"><span data-l="ru">Онлайн-запись, Go</span><span data-l="en">Booking, Go</span><span class="cnt"><span data-l="ru">328 тестов</span><span data-l="en">328 tests</span></span></div>
           <h3>Slotbook</h3>
           <p data-l="ru">Онлайн-запись для салонов и&nbsp;клиник. Клиент выбирает услугу, мастера и&nbsp;время, слот держится за&nbsp;ним 10&nbsp;минут, пока он вводит контакты, а&nbsp;потом приходит ссылка, чтобы перенести или отменить визит. У&nbsp;сотрудников расписание дня, напоминания уходят в&nbsp;Telegram.</p>
           <p data-l="en">Online booking for salons and clinics. The customer picks a service, a specialist and a time, the slot is held for 10 minutes while they type their details, and then they get a link to reschedule or cancel. Staff get a day schedule, and reminders go out on Telegram.</p>
@@ -749,8 +749,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         <div>
           <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/slotbook-exclusion-constraint.ru.md" target="_blank" rel="noopener">Две вкладки, один слот: вторую запись отклоняет сам PostgreSQL</a>
           <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/slotbook-exclusion-constraint.md" target="_blank" rel="noopener">Two tabs, one slot: letting PostgreSQL refuse the second booking</a>
-          <p data-l="ru">Почему вторую из&nbsp;двух одновременных записей отклоняет exclusion constraint, а&nbsp;не&nbsp;проверка на&nbsp;Go, чего ждёт вторая вставка и&nbsp;когда проигравший получает <code>500</code> вместо <code>409</code>.</p>
-          <p data-l="en">Why an exclusion constraint, not a check in Go, refuses the second of two simultaneous bookings, what the second insert waits for, and when a loser gets <code>500</code> instead of <code>409</code>.</p>
+          <p data-l="ru">Почему вторую из&nbsp;двух одновременных записей отклоняет exclusion constraint, а&nbsp;не&nbsp;проверка на&nbsp;Go, чего ждёт вторая вставка и&nbsp;почему проигравший иногда получал <code>500</code> вместо <code>409</code>, пока транзакция не&nbsp;стала повторяться.</p>
+          <p data-l="en">Why an exclusion constraint, not a check in Go, refuses the second of two simultaneous bookings, what the second insert waits for, and why a loser sometimes got <code>500</code> instead of <code>409</code> until the transaction was made to run again.</p>
         </div>
       </li>
       <li>
