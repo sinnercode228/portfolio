@@ -224,6 +224,7 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .libs .case-pair { margin-top: 0; }
 .libs .case { align-content: stretch; }
 .libs .case-links { margin-top: 0; }
+.libs .case h4 { margin: 0; font: 700 clamp(22px, 2.4vw, 28px)/1.1 var(--display); letter-spacing: -.03em; }
 .case-body .pip { margin-top: auto; padding-top: 6px; }
 .case-body .pip code { display: inline-block; padding: 6px 10px; font-size: 14px; overflow-wrap: anywhere; }
 
@@ -712,7 +713,7 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         <article class="case">
           <div class="case-body">
             <div class="case-kind"><span data-l="ru">Оплата в&nbsp;Telegram</span><span data-l="en">Telegram payments</span><span class="cnt"><span data-l="ru">270 тестов</span><span data-l="en">270 tests</span></span></div>
-            <h3>aiogram-stars</h3>
+            <h4>aiogram-stars</h4>
             <p data-l="ru">Оплата в&nbsp;Telegram Stars для ботов на&nbsp;aiogram&nbsp;3. От&nbsp;вас две функции: <code>check</code> решает, принимать ли платёж, <code>on_paid</code> выдаёт товар. Библиотека подписывает payload счёта, отвечает на&nbsp;<span class="nw">pre-checkout</span> раньше, чем истекут 10&nbsp;секунд, которые на&nbsp;это даёт Telegram, вызывает <code>on_paid</code> один раз на&nbsp;каждый платёж и&nbsp;хранит возвраты в&nbsp;базе, пока Telegram их не&nbsp;подтвердит.</p>
             <p data-l="en">Telegram Stars payments for aiogram 3 bots. You write two functions: <code>check</code> decides whether to take a payment, <code>on_paid</code> hands over the goods. The library signs the invoice payload, answers <span class="nw">pre-checkout</span> before Telegram's <span class="nw">10-second</span> deadline, calls <code>on_paid</code> once per charge and keeps refunds in the database until Telegram confirms them.</p>
             <p class="tags"><span>Python</span><span>aiogram 3</span><span>SQLAlchemy 2</span><span>PostgreSQL</span><span>SQLite</span></p>
@@ -728,7 +729,7 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         <article class="case">
           <div class="case-body">
             <div class="case-kind"><span data-l="ru">Клиент API amoCRM</span><span data-l="en">amoCRM API client</span><span class="cnt"><span data-l="ru">354 теста</span><span data-l="en">354 tests</span></span></div>
-            <h3>aioamocrm</h3>
+            <h4>aioamocrm</h4>
             <p data-l="ru">Асинхронный клиент API v4 amoCRM и&nbsp;Kommo. Берёт на&nbsp;себя OAuth2-токены, которые меняются при каждом обновлении, лимит 7&nbsp;запросов в&nbsp;секунду, повторы, которые без разрешения не&nbsp;отправят запись второй раз, постраничные списки с&nbsp;фильтрами и&nbsp;разбор вебхуков. Сделки, контакты, компании и&nbsp;задачи приходят моделями pydantic.</p>
             <p data-l="en">An async client for the amoCRM and Kommo API v4. It takes care of OAuth2 tokens that rotate on every refresh, the limit of 7 requests per second, retries that never send a write twice unless asked, paginated lists with filters and webhook parsing. Leads, contacts, companies and tasks come back as pydantic models.</p>
             <p class="tags"><span>Python</span><span>httpx</span><span>pydantic 2</span><span>OAuth2</span></p>
