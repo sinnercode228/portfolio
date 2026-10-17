@@ -4,7 +4,9 @@
 
 Здесь четыре демо-проекта (вместе 380 тестов) и одностраничное портфолио [`index.html`](index.html), которое GitHub Pages отдаёт по адресу https://sinnercode228.github.io/portfolio/.
 
-Проекты покрупнее лежат в отдельных репозиториях, у каждого есть живое демо: [flowdesk-crm](https://github.com/sinnercode228/flowdesk-crm), [docmind-rag](https://github.com/sinnercode228/docmind-rag), [tg-shop-miniapp](https://github.com/sinnercode228/tg-shop-miniapp), [integration-hub](https://github.com/sinnercode228/integration-hub), [pulse-analytics](https://github.com/sinnercode228/pulse-analytics). Остальное в профиле: [github.com/sinnercode228](https://github.com/sinnercode228).
+Проекты покрупнее лежат в отдельных репозиториях, у каждого есть живое демо: [flowdesk-crm](https://github.com/sinnercode228/flowdesk-crm), [docmind-rag](https://github.com/sinnercode228/docmind-rag), [tg-shop-miniapp](https://github.com/sinnercode228/tg-shop-miniapp), [integration-hub](https://github.com/sinnercode228/integration-hub), [pulse-analytics](https://github.com/sinnercode228/pulse-analytics), [ledgerline-billing](https://github.com/sinnercode228/ledgerline-billing), [slotbook](https://github.com/sinnercode228/slotbook). Остальное в профиле: [github.com/sinnercode228](https://github.com/sinnercode228).
+
+Две библиотеки на PyPI: [aiogram-stars](https://pypi.org/project/aiogram-stars/) ([код](https://github.com/sinnercode228/aiogram-stars)), оплата в Telegram Stars для ботов на aiogram 3, и [aioamocrm](https://pypi.org/project/aioamocrm/) ([код](https://github.com/sinnercode228/aioamocrm)), асинхронный клиент API v4 amoCRM и Kommo.
 
 ## Четыре демо
 
