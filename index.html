@@ -194,6 +194,7 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .skill .src { font: 13px/1.55 var(--mono); color: var(--muted); }
 .skill .src a { color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent); }
 .skill .src a:hover { color: var(--accent); }
+.skill .src-lib { display: block; margin-top: 10px; }
 
 /* Работы */
 .case { background: var(--card); border: 1.5px solid var(--ink); border-radius: 16px; padding: clamp(14px, 1.6vw, 20px); display: grid; gap: 22px; }
@@ -214,6 +215,18 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .case-wide h3 { font-size: clamp(26px, 3vw, 36px); }
 .case-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 26px); margin-top: clamp(16px, 2vw, 26px); }
 .case-pair .case { align-content: start; }
+
+/* Библиотеки */
+.libs { margin-top: clamp(48px, 6vw, 72px); }
+.libs-head { max-width: 860px; margin-bottom: 18px; }
+.libs-head h3 { font: 700 22px/1.15 var(--display); letter-spacing: -.03em; }
+.libs-head p { margin-top: 10px; color: var(--ink-2); font-size: 15.5px; }
+.libs .case-pair { margin-top: 0; }
+.libs .case { align-content: stretch; }
+.libs .case-links { margin-top: 0; }
+.libs .case h4 { margin: 0; font: 700 clamp(22px, 2.4vw, 28px)/1.1 var(--display); letter-spacing: -.03em; }
+.case-body .pip { margin-top: auto; padding-top: 6px; }
+.case-body .pip code { display: inline-block; padding: 6px 10px; font-size: 14px; overflow-wrap: anywhere; }
 
 .more { margin-top: clamp(48px, 6vw, 72px); }
 .more h3 { font: 700 22px/1.15 var(--display); letter-spacing: -.03em; margin-bottom: 18px; }
@@ -397,8 +410,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         </a>
         <a class="lnk" href="#work"><span data-l="ru">Смотреть проекты ↓</span><span data-l="en">See the projects ↓</span></a>
       </div>
-      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>12</b> открытых проектов</span><span>тесты и CI в&nbsp;каждом</span><span>беру новые проекты</span></p>
-      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>12</b> open projects</span><span>tests and CI in each</span><span>taking on new projects</span></p>
+      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>14</b> открытых проектов</span><span>тесты и CI в&nbsp;каждом</span><span>беру новые проекты</span></p>
+      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>14</b> open projects</span><span>tests and CI in each</span><span>taking on new projects</span></p>
     </div>
 
     <figure class="hero-shot">
@@ -502,7 +515,9 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <p data-l="en">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, e-mail. Signed webhooks, retries with backoff, Telegram Stars payments, subscription billing with dunning.</p>
           <p class="tech"><span>httpx</span><span>aiogram 3</span><span>Bot API</span></p>
         </div>
-        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/tg-shop-miniapp/blob/54cb076af58b99b8e693ff301d43ea20a9dc1d91/bot/tgshop/services/orders.py#L76-L100" target="_blank" rel="noopener"><span data-l="ru">сервер пересчитывает каждый заказ по&nbsp;каталогу</span><span data-l="en">the server re-prices every order from the catalog</span></a></p>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/tg-shop-miniapp/blob/54cb076af58b99b8e693ff301d43ea20a9dc1d91/bot/tgshop/services/orders.py#L76-L100" target="_blank" rel="noopener"><span data-l="ru">сервер пересчитывает каждый заказ по&nbsp;каталогу</span><span data-l="en">the server re-prices every order from the catalog</span></a>
+          <span class="src-lib"><span data-l="ru">в&nbsp;библиотеке <span class="nw">aiogram-stars</span>:</span><span data-l="en">in the <span class="nw">aiogram-stars</span> library:</span> <a href="https://github.com/sinnercode228/aiogram-stars/blob/d601bc348503130979eee6c2313de45265dbb23d/src/aiogram_stars/_payments.py#L478-L486" target="_blank" rel="noopener"><span data-l="ru">повторный апдейт об&nbsp;оплате не&nbsp;вызывает on_paid второй раз</span><span data-l="en">a repeated payment update doesn't run on_paid again</span></a></span>
+          <span class="src-lib"><span data-l="ru">в&nbsp;библиотеке aioamocrm:</span><span data-l="en">in the aioamocrm library:</span> <a href="https://github.com/sinnercode228/aioamocrm/blob/a35f0c86ac0521a8397e90ae79e3fb32dad88caa/src/aioamocrm/_auth.py#L336-L341" target="_blank" rel="noopener"><span data-l="ru">если <span class="nw">refresh-токен</span> уже потратил другой процесс, клиент берёт токены, которые тот сохранил</span><span data-l="en">if another process already used the refresh token, the client takes the tokens that process saved</span></a></span></p>
       </li>
       <li class="skill">
         <h3><span data-l="ru">AI и&nbsp;LLM</span><span data-l="en">AI and LLMs</span></h3>
@@ -686,6 +701,48 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           </div>
         </div>
       </article>
+    </div>
+
+    <div class="libs" id="libraries">
+      <div class="libs-head">
+        <h3><span data-l="ru">Библиотеки с&nbsp;открытым кодом</span><span data-l="en">Open-source libraries</span></h3>
+        <p data-l="ru">Обе выросли из&nbsp;проектов выше: <span class="nw">aiogram-stars</span>&nbsp;— из&nbsp;платёжного кода Zernolist, aioamocrm&nbsp;— из&nbsp;коннектора amoCRM в&nbsp;Relay. Ставятся через pip, нужен Python 3.10 или новее.</p>
+        <p data-l="en">Both grew out of the projects above: <span class="nw">aiogram-stars</span> from Zernolist's payment code, aioamocrm from Relay's amoCRM connector. Both install with pip and need Python 3.10 or newer.</p>
+      </div>
+      <div class="case-pair">
+        <article class="case">
+          <div class="case-body">
+            <div class="case-kind"><span data-l="ru">Оплата в&nbsp;Telegram</span><span data-l="en">Telegram payments</span><span class="cnt"><span data-l="ru">270 тестов</span><span data-l="en">270 tests</span></span></div>
+            <h4>aiogram-stars</h4>
+            <p data-l="ru">Оплата в&nbsp;Telegram Stars для ботов на&nbsp;aiogram&nbsp;3. От&nbsp;вас две функции: <code>check</code> решает, принимать ли платёж, <code>on_paid</code> выдаёт товар. Библиотека подписывает payload счёта, отвечает на&nbsp;<span class="nw">pre-checkout</span> раньше, чем истекут 10&nbsp;секунд, которые на&nbsp;это даёт Telegram, вызывает <code>on_paid</code> один раз на&nbsp;каждый платёж и&nbsp;хранит возвраты в&nbsp;базе, пока Telegram их не&nbsp;подтвердит.</p>
+            <p data-l="en">Telegram Stars payments for aiogram 3 bots. You write two functions: <code>check</code> decides whether to take a payment, <code>on_paid</code> hands over the goods. The library signs the invoice payload, answers <span class="nw">pre-checkout</span> before Telegram's <span class="nw">10-second</span> deadline, calls <code>on_paid</code> once per charge and keeps refunds in the database until Telegram confirms them.</p>
+            <p class="tags"><span>Python</span><span>aiogram 3</span><span>SQLAlchemy 2</span><span>PostgreSQL</span><span>SQLite</span></p>
+            <p class="note" data-l="ru">Тесты не&nbsp;ходят в&nbsp;Telegram: Bot API в&nbsp;них поддельный, но&nbsp;его ответы разбирает сам aiogram.</p>
+            <p class="note" data-l="en">The tests don't call Telegram: the Bot API is a fake, but aiogram itself parses its replies.</p>
+            <p class="pip"><code>pip install aiogram-stars</code></p>
+            <div class="case-links">
+              <a class="lnk" href="https://github.com/sinnercode228/aiogram-stars" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+              <a class="lnk" href="https://pypi.org/project/aiogram-stars/" target="_blank" rel="noopener">PyPI</a>
+            </div>
+          </div>
+        </article>
+        <article class="case">
+          <div class="case-body">
+            <div class="case-kind"><span data-l="ru">Клиент API amoCRM</span><span data-l="en">amoCRM API client</span><span class="cnt"><span data-l="ru">354 теста</span><span data-l="en">354 tests</span></span></div>
+            <h4>aioamocrm</h4>
+            <p data-l="ru">Асинхронный клиент API v4 amoCRM и&nbsp;Kommo. Берёт на&nbsp;себя <span class="nw">OAuth2-токены</span>, которые меняются при каждом обновлении, лимит 7&nbsp;запросов в&nbsp;секунду, повторы, которые без разрешения не&nbsp;отправят запись второй раз, постраничные списки с&nbsp;фильтрами и&nbsp;разбор вебхуков. Сделки, контакты, компании и&nbsp;задачи приходят моделями pydantic.</p>
+            <p data-l="en">An async client for the amoCRM and Kommo API v4. It takes care of OAuth2 tokens that rotate on every refresh, the limit of 7 requests per second, retries that never send a write twice unless asked, paginated lists with filters and webhook parsing. Leads, contacts, companies and tasks come back as pydantic models.</p>
+            <p class="tags"><span>Python</span><span>httpx</span><span>pydantic 2</span><span>OAuth2</span></p>
+            <p class="note" data-l="ru">Живого аккаунта amoCRM за&nbsp;тестами пока нет: HTTP в&nbsp;них замокан, а&nbsp;форматы запросов и&nbsp;ответов сверены с&nbsp;официальным PHP SDK amoCRM.</p>
+            <p class="note" data-l="en">There's no live amoCRM account behind the tests yet: HTTP is mocked, and the request and answer shapes are checked against amoCRM's official PHP SDK.</p>
+            <p class="pip"><code>pip install aioamocrm</code></p>
+            <div class="case-links">
+              <a class="lnk" href="https://github.com/sinnercode228/aioamocrm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+              <a class="lnk" href="https://pypi.org/project/aioamocrm/" target="_blank" rel="noopener">PyPI</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
 
     <div class="more" id="more">
