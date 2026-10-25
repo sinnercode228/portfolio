@@ -6,6 +6,8 @@
 
 Проекты покрупнее лежат в отдельных репозиториях, у каждого есть живое демо: [flowdesk-crm](https://github.com/sinnercode228/flowdesk-crm), [docmind-rag](https://github.com/sinnercode228/docmind-rag), [tg-shop-miniapp](https://github.com/sinnercode228/tg-shop-miniapp), [integration-hub](https://github.com/sinnercode228/integration-hub), [pulse-analytics](https://github.com/sinnercode228/pulse-analytics), [ledgerline-billing](https://github.com/sinnercode228/ledgerline-billing), [slotbook](https://github.com/sinnercode228/slotbook). Остальное в профиле: [github.com/sinnercode228](https://github.com/sinnercode228).
 
+В отдельном репозитории лежит и [tg-paid-club](https://github.com/sinnercode228/tg-paid-club): Telegram-бот, который продаёт доступ в закрытый канал или группу по подписке с оплатой через ЮKassa и Telegram Stars (506 тестов). Живого демо у него нет: дашборд на смоделированных данных запускается локально командой `make demo`, и ни один настоящий клуб на нём не работает.
+
 Две библиотеки на PyPI: [aiogram-stars](https://pypi.org/project/aiogram-stars/) ([код](https://github.com/sinnercode228/aiogram-stars)), оплата в Telegram Stars для ботов на aiogram 3, и [aioamocrm](https://pypi.org/project/aioamocrm/) ([код](https://github.com/sinnercode228/aioamocrm)), асинхронный клиент API v4 amoCRM и Kommo.
 
 ## Четыре демо

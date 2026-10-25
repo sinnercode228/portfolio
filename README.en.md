@@ -6,6 +6,8 @@ This repo has four demo projects (380 tests between them) and a one-page portfol
 
 Bigger projects live in their own repositories, and each one has a live demo: [flowdesk-crm](https://github.com/sinnercode228/flowdesk-crm), [docmind-rag](https://github.com/sinnercode228/docmind-rag), [tg-shop-miniapp](https://github.com/sinnercode228/tg-shop-miniapp), [integration-hub](https://github.com/sinnercode228/integration-hub), [pulse-analytics](https://github.com/sinnercode228/pulse-analytics), [ledgerline-billing](https://github.com/sinnercode228/ledgerline-billing), [slotbook](https://github.com/sinnercode228/slotbook). Everything else is on my profile: [github.com/sinnercode228](https://github.com/sinnercode228).
 
+One more project has its own repository: [tg-paid-club](https://github.com/sinnercode228/tg-paid-club), a Telegram bot that sells access to a private channel or group by subscription through YooKassa and Telegram Stars (506 tests). It has no live demo: its dashboard on simulated data runs locally with `make demo`, and no real club runs on it.
+
 Two libraries on PyPI: [aiogram-stars](https://pypi.org/project/aiogram-stars/) ([code](https://github.com/sinnercode228/aiogram-stars)), Telegram Stars payments for aiogram 3 bots, and [aioamocrm](https://pypi.org/project/aioamocrm/) ([code](https://github.com/sinnercode228/aioamocrm)), an async client for the amoCRM and Kommo API v4.
 
 ## Four demos

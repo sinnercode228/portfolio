@@ -213,6 +213,8 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .case-wide { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; }
 .case-wide .case-body { padding: 8px clamp(4px, 1.5vw, 18px); gap: 14px; }
 .case-wide h3 { font-size: clamp(26px, 3vw, 36px); }
+.case-wide + .case-wide { margin-top: clamp(16px, 2vw, 26px); }
+.case figcaption { padding: 8px 12px; border-top: 1px solid var(--rule); background: var(--card); font: 12px/1.4 var(--mono); color: var(--muted); }
 .case-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 26px); margin-top: clamp(16px, 2vw, 26px); }
 .case-pair .case { align-content: start; }
 
@@ -410,8 +412,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         </a>
         <a class="lnk" href="#work"><span data-l="ru">Смотреть проекты ↓</span><span data-l="en">See the projects ↓</span></a>
       </div>
-      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>14</b> открытых проектов</span><span>тесты и CI в&nbsp;каждом</span><span>беру новые проекты</span></p>
-      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>14</b> open projects</span><span>tests and CI in each</span><span>taking on new projects</span></p>
+      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>15</b> открытых проектов</span><span>тесты и CI в&nbsp;каждом</span><span>беру новые проекты</span></p>
+      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>15</b> open projects</span><span>tests and CI in each</span><span>taking on new projects</span></p>
     </div>
 
     <figure class="hero-shot">
@@ -511,8 +513,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <li class="skill">
         <h3><span data-l="ru">Интеграции и&nbsp;платежи</span><span data-l="en">Integrations and payments</span></h3>
         <div>
-          <p data-l="ru">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, почта. Вебхуки с&nbsp;подписью, ретраи с&nbsp;растущей паузой, оплата в&nbsp;Telegram Stars, биллинг подписок с&nbsp;повторными списаниями.</p>
-          <p data-l="en">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, e-mail. Signed webhooks, retries with backoff, Telegram Stars payments, subscription billing with dunning.</p>
+          <p data-l="ru">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, ЮKassa, почта. Вебхуки с&nbsp;подписью, ретраи с&nbsp;растущей паузой, оплата в&nbsp;Telegram Stars, биллинг подписок с&nbsp;повторными списаниями.</p>
+          <p data-l="en">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, YooKassa, e-mail. Signed webhooks, retries with backoff, Telegram Stars payments, subscription billing with dunning.</p>
           <p class="tech"><span>httpx</span><span>aiogram 3</span><span>Bot API</span></p>
         </div>
         <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/tg-shop-miniapp/blob/54cb076af58b99b8e693ff301d43ea20a9dc1d91/bot/tgshop/services/orders.py#L76-L100" target="_blank" rel="noopener"><span data-l="ru">сервер пересчитывает каждый заказ по&nbsp;каталогу</span><span data-l="en">the server re-prices every order from the catalog</span></a>
@@ -555,8 +557,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
     <div class="sec-head">
       <p class="eyebrow"><span data-l="ru">Проекты</span><span data-l="en">Projects</span></p>
       <h2 id="work-h"><span data-l="ru">Проекты, в&nbsp;которые можно заглянуть</span><span data-l="en">Projects you can look inside</span></h2>
-      <p class="sec-intro" data-l="ru">Код заказчиков остаётся у&nbsp;них, поэтому здесь открытые проекты на&nbsp;выдуманных данных. Это не&nbsp;макеты: у&nbsp;каждого есть демо, которое работает прямо в&nbsp;браузере, тесты и&nbsp;CI, а&nbsp;весь код лежит на&nbsp;GitHub.</p>
-      <p class="sec-intro" data-l="en">Client code stays with clients, so these are open projects on made-up data. They aren't mockups: each one has a demo that runs right in your browser, tests and CI, and all the code is on GitHub.</p>
+      <p class="sec-intro" data-l="ru">Код заказчиков остаётся у&nbsp;них, поэтому здесь открытые проекты на&nbsp;выдуманных данных. Это не&nbsp;макеты: у&nbsp;каждого есть демо, которое работает прямо в&nbsp;браузере, тесты и&nbsp;CI, а&nbsp;весь код лежит на&nbsp;GitHub. Исключение&nbsp;— tg-paid-club: это бот, демо в&nbsp;браузере у&nbsp;него нет, а&nbsp;дашборд на&nbsp;смоделированных данных запускается локально.</p>
+      <p class="sec-intro" data-l="en">Client code stays with clients, so these are open projects on made-up data. They aren't mockups: each one has a demo that runs right in your browser, tests and CI, and all the code is on GitHub. The exception is tg-paid-club: it's a bot with no browser demo, and its dashboard on simulated data runs locally.</p>
     </div>
 
     <article class="case case-wide">
@@ -576,6 +578,25 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <a class="lnk" href="https://github.com/sinnercode228/flowdesk-crm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
           <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.ru.md" target="_blank" rel="noopener">Разбор</a>
           <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.md" target="_blank" rel="noopener">Write-up</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="case case-wide">
+      <figure><img src="assets/projects/tg-paid-club/cover.webp" width="1200" height="750" loading="lazy" alt="tg-paid-club: дашборд владельца клуба с MRR, выручкой и оттоком. Данные смоделированы командой paidclub simulate, это не настоящий клуб" data-alt-en="tg-paid-club: the club owner's dashboard with MRR, revenue and churn. The data is simulated by paidclub simulate, not a real club"><figcaption><span data-l="ru">Данные смоделированы: 300 выдуманных участников за&nbsp;120 дней, денег никто не&nbsp;платил</span><span data-l="en">Simulated data: 300 made-up members over 120 days, nobody paid any money</span></figcaption></figure>
+      <div class="case-body">
+        <div class="case-kind"><span data-l="ru">Платный клуб в&nbsp;Telegram</span><span data-l="en">Paid Telegram club</span><span class="cnt"><span data-l="ru">506 тестов</span><span data-l="en">506 tests</span></span></div>
+        <h3>tg-paid-club</h3>
+        <p data-l="ru">Бот продаёт доступ в&nbsp;закрытый канал или группу по&nbsp;подписке: картой через ЮKassa с&nbsp;автопродлением или звёздами Telegram. Напоминает о&nbsp;продлении за&nbsp;3&nbsp;дня и&nbsp;за&nbsp;1&nbsp;день, повторяет неудачное списание через 1 и&nbsp;3&nbsp;дня льготного периода, потом удаляет из&nbsp;чата. Владельцу&nbsp;— <code>/stats</code>, выгрузка в&nbsp;CSV и&nbsp;дашборд с&nbsp;выручкой, MRR и&nbsp;оттоком.</p>
+        <p data-l="en">A bot that sells access to a private channel or group by subscription: by card through YooKassa with auto-renewal, or with Telegram Stars. It reminds members 3 days and 1 day before a renewal, retries a failed charge 1 and 3 days into a grace period, then removes them from the chat. The owner gets <code>/stats</code>, CSV export and a dashboard with revenue, MRR and churn.</p>
+        <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>В&nbsp;чат пускают только по&nbsp;заявке: ссылка одна, с&nbsp;<code>creates_join_request</code>, бот одобряет заявку, только если подписка даёт доступ, а&nbsp;вошедших в&nbsp;обход удаляет. Удаление&nbsp;— бан на&nbsp;10&nbsp;минут и&nbsp;сразу разбан, поэтому после новой оплаты та&nbsp;же ссылка снова работает. Сообщения идут через outbox с&nbsp;уникальным ключом, и&nbsp;одно напоминание не&nbsp;попадёт в&nbsp;очередь дважды.</p>
+        <p class="inside" data-l="en"><span class="inside-l">How it works</span>Members get in only through join requests: each chat has one link with <code>creates_join_request</code>, a request is approved only when the subscription gives access, and anyone who gets in another way is removed. Removal is a 10-minute ban and an immediate unban, so the same link works again once the person pays. Messages go through an outbox with a unique key, so one reminder can't be queued twice.</p>
+        <p class="tags"><span>Python</span><span>aiogram 3</span><span>FastAPI</span><span>SQLAlchemy 2</span><span>PostgreSQL</span><span>Docker</span></p>
+        <p class="note" data-l="ru">Демо-проект: ни&nbsp;один клуб на&nbsp;нём не&nbsp;работает, демо в&nbsp;браузере нет. Дашборд со&nbsp;скриншота запускается локально через <code>make demo</code>, без Telegram и&nbsp;без денег. Ограничения: в&nbsp;боевом магазине ЮKassa автоплатежи включает менеджер ЮKassa, Stars только помесячно, Prodamus не&nbsp;подключён.</p>
+        <p class="note" data-l="en">A demo project: no club runs on it, and there's no browser demo. The dashboard in the screenshot runs locally with <code>make demo</code>, with no Telegram and no money. Limits: in a live YooKassa shop a YooKassa manager has to turn autopayments on, Stars is monthly only, Prodamus isn't included.</p>
+        <div class="case-links">
+          <a class="lnk" href="https://github.com/sinnercode228/tg-paid-club" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          <a class="lnk" href="https://github.com/sinnercode228/tg-paid-club/blob/main/docs/architecture.md" target="_blank" rel="noopener"><span data-l="ru">Архитектура (англ.)</span><span data-l="en">Architecture</span></a>
         </div>
       </div>
     </article>
