@@ -8,7 +8,7 @@ Bigger projects live in their own repositories: [tg-paid-club](https://github.co
 
 Six of my pull requests are merged upstream: two in aiogram ([#1954](https://github.com/aiogram/aiogram/pull/1954), [#1956](https://github.com/aiogram/aiogram/pull/1956)) and four in unstructured ([#4568](https://github.com/Unstructured-IO/unstructured/pull/4568), [#4597](https://github.com/Unstructured-IO/unstructured/pull/4597), [#4599](https://github.com/Unstructured-IO/unstructured/pull/4599), [#4602](https://github.com/Unstructured-IO/unstructured/pull/4602)).
 
-Two libraries on PyPI: [aiogram-stars](https://pypi.org/project/aiogram-stars/) 0.2.0 ([code](https://github.com/sinnercode228/aiogram-stars)), Telegram Stars payments for aiogram 3 bots, extracted from Zernolist's payment code, and [aioamocrm](https://pypi.org/project/aioamocrm/) 0.1.1 ([code](https://github.com/sinnercode228/aioamocrm)), an async client for the amoCRM and Kommo API v4.
+Three libraries on PyPI: [aiogram-stars](https://pypi.org/project/aiogram-stars/) 0.2.0 ([code](https://github.com/sinnercode228/aiogram-stars)), Telegram Stars payments for aiogram 3 bots, extracted from Zernolist's payment code; [aioamocrm](https://pypi.org/project/aioamocrm/) 0.1.1 ([code](https://github.com/sinnercode228/aioamocrm)), an async client for the amoCRM and Kommo API v4; and [aiomoysklad](https://pypi.org/project/aiomoysklad/) 0.1.0 ([code](https://github.com/sinnercode228/aiomoysklad)), an async client for the MoySklad JSON API 1.2 that keeps to the API's limits.
 
 ## Four demos
 

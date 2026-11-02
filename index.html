@@ -233,7 +233,7 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .libs-head { max-width: 860px; margin-bottom: 18px; }
 .libs-head h3 { font: 700 22px/1.15 var(--display); letter-spacing: -.03em; }
 .libs-head p { margin-top: 10px; color: var(--ink-2); font-size: 15.5px; }
-.libs .case-pair { margin-top: 0; }
+.libs .case-pair { margin-top: 0; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .libs .case { align-content: stretch; }
 .libs .case-links { margin-top: 0; }
 .libs .case h4 { margin: 0; font: 700 clamp(22px, 2.4vw, 28px)/1.1 var(--display); letter-spacing: -.03em; }
@@ -305,6 +305,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
   .nav { gap: 18px; }
   .nav a { font-size: 14px; }
   .formats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .libs .case-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .libs .case:last-child:nth-child(odd) { grid-column: 1 / -1; }
 }
 @media (max-width: 880px) {
   .nav { display: none; }
@@ -331,7 +333,7 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
 }
 @media (max-width: 700px) {
   body { font-size: 16px; }
-  .case-pair { grid-template-columns: 1fr; }
+  .case-pair, .libs .case-pair { grid-template-columns: 1fr; }
   .more-list li { grid-template-columns: 1fr; gap: 4px; }
   .skill { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
   .skill .src { grid-column: auto; }
@@ -422,8 +424,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         </a>
         <a class="lnk" href="#work"><span data-l="ru">Смотреть проекты ↓</span><span data-l="en">See the projects ↓</span></a>
       </div>
-      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>6</b> PR приняты в&nbsp;aiogram и&nbsp;unstructured</span><span><b>2</b> библиотеки на&nbsp;PyPI</span><span>беру новые проекты</span></p>
-      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>6</b> PRs merged into aiogram and unstructured</span><span><b>2</b> libraries on PyPI</span><span>taking on new projects</span></p>
+      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>6</b> PR приняты в&nbsp;aiogram и&nbsp;unstructured</span><span><b>3</b> библиотеки на&nbsp;PyPI</span><span>беру новые проекты</span></p>
+      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>6</b> PRs merged into aiogram and unstructured</span><span><b>3</b> libraries on PyPI</span><span>taking on new projects</span></p>
     </div>
 
     <figure class="hero-shot">
@@ -482,8 +484,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
     <div class="libs" id="libraries">
       <div class="libs-head">
         <h3><span data-l="ru">Библиотеки на&nbsp;PyPI</span><span data-l="en">Libraries on PyPI</span></h3>
-        <p data-l="ru">Обе под лицензией MIT, ставятся через pip, нужен Python 3.10 или новее.</p>
-        <p data-l="en">Both are MIT licensed, install with pip and need Python 3.10 or newer.</p>
+        <p data-l="ru">Все три под лицензией MIT, ставятся через pip, нужен Python 3.10 или новее.</p>
+        <p data-l="en">All three are MIT licensed, install with pip and need Python 3.10 or newer.</p>
       </div>
       <div class="case-pair">
         <article class="case">
@@ -515,6 +517,22 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
             <div class="case-links">
               <a class="lnk" href="https://github.com/sinnercode228/aioamocrm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
               <a class="lnk" href="https://pypi.org/project/aioamocrm/" target="_blank" rel="noopener">PyPI</a>
+            </div>
+          </div>
+        </article>
+        <article class="case">
+          <div class="case-body">
+            <div class="case-kind"><span data-l="ru">Клиент API МойСклад</span><span data-l="en">MoySklad API client</span><span class="cnt"><span data-l="ru">643 теста</span><span data-l="en">643 tests</span></span></div>
+            <h4>aiomoysklad <span class="ver">0.1.0</span></h4>
+            <p data-l="ru">Асинхронный клиент JSON API 1.2 МойСклад, который держится в&nbsp;пределах лимитов API. Вес запроса зависит от&nbsp;вида токена, с&nbsp;учётом изменения с&nbsp;1&nbsp;декабря 2026&nbsp;года. Одновременно выполняется не&nbsp;больше 5&nbsp;запросов, на&nbsp;429 запрос повторяется по&nbsp;заголовкам Lognex. Клиент останавливается сам, не&nbsp;доходя до&nbsp;автоматического отключения со&nbsp;стороны МойСклад. Есть постраничные списки, конструктор фильтров, отчёты об&nbsp;остатках, заказы покупателей и&nbsp;вебхуки с&nbsp;приёмником и&nbsp;проверкой работоспособности.</p>
+            <p data-l="en">An async client for the MoySklad JSON API 1.2 that keeps to the API's limits. Request weights depend on the token kind, including the change on 1&nbsp;December 2026. At most 5 requests are in flight at once, a 429 is retried using the Lognex headers, and the client stops before MoySklad's automatic cut-off. It covers pagination, a filter builder, stock reports, customer orders, and webhooks with a receiver and a health check.</p>
+            <p class="tags"><span>Python</span><span>JSON API 1.2</span></p>
+            <p class="note" data-l="ru">Тесты идут на&nbsp;замоканном HTTP, не&nbsp;на&nbsp;живом аккаунте МойСклад.</p>
+            <p class="note" data-l="en">Tested on mocked HTTP, not a live MoySklad account.</p>
+            <p class="pip"><code>pip install aiomoysklad</code></p>
+            <div class="case-links">
+              <a class="lnk" href="https://github.com/sinnercode228/aiomoysklad" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+              <a class="lnk" href="https://pypi.org/project/aiomoysklad/" target="_blank" rel="noopener">PyPI</a>
             </div>
           </div>
         </article>

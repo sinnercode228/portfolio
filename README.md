@@ -8,7 +8,7 @@
 
 В upstream приняты шесть моих PR: два в aiogram ([#1954](https://github.com/aiogram/aiogram/pull/1954), [#1956](https://github.com/aiogram/aiogram/pull/1956)) и четыре в unstructured ([#4568](https://github.com/Unstructured-IO/unstructured/pull/4568), [#4597](https://github.com/Unstructured-IO/unstructured/pull/4597), [#4599](https://github.com/Unstructured-IO/unstructured/pull/4599), [#4602](https://github.com/Unstructured-IO/unstructured/pull/4602)).
 
-Две библиотеки на PyPI: [aiogram-stars](https://pypi.org/project/aiogram-stars/) 0.2.0 ([код](https://github.com/sinnercode228/aiogram-stars)), оплата в Telegram Stars для ботов на aiogram 3, вынесенная из платёжного кода Zernolist, и [aioamocrm](https://pypi.org/project/aioamocrm/) 0.1.1 ([код](https://github.com/sinnercode228/aioamocrm)), асинхронный клиент API v4 amoCRM и Kommo.
+Три библиотеки на PyPI: [aiogram-stars](https://pypi.org/project/aiogram-stars/) 0.2.0 ([код](https://github.com/sinnercode228/aiogram-stars)), оплата в Telegram Stars для ботов на aiogram 3, вынесенная из платёжного кода Zernolist; [aioamocrm](https://pypi.org/project/aioamocrm/) 0.1.1 ([код](https://github.com/sinnercode228/aioamocrm)), асинхронный клиент API v4 amoCRM и Kommo; [aiomoysklad](https://pypi.org/project/aiomoysklad/) 0.1.0 ([код](https://github.com/sinnercode228/aiomoysklad)), асинхронный клиент JSON API 1.2 МойСклад, который держится в пределах лимитов API.
 
 ## Четыре демо
 
