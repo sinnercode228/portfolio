@@ -11,11 +11,11 @@
 <meta property="og:title" content="Грешный Котик — full-stack разработчик: веб-продукты, интеграции, AI">
 <meta property="og:description" content="Бэкенд, фронтенд, интеграции и AI. Продукты с нуля, работа в команде, развитие и аудит чужого кода. Открытые проекты с демо и кодом.">
 <meta property="og:url" content="https://sinnercode228.github.io/portfolio/">
-<meta property="og:image" content="https://sinnercode228.github.io/portfolio/assets/projects/pulse-analytics/cover.webp">
+<meta property="og:image" content="https://sinnercode228.github.io/portfolio/assets/projects/slotbook/cover.webp">
 <meta property="og:image:type" content="image/webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="750">
-<meta property="og:image:alt" content="Pulse — аналитика сайтов с живой лентой посетителей">
+<meta property="og:image:alt" content="Slotbook — расписание дня салона с записями, удержанием слота и блокировкой">
 <meta property="og:site_name" content="Грешный Котик">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:locale:alternate" content="en_US">
@@ -23,7 +23,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230f0f0f'/%3E%3Cpath d='M7 13V5.5l5.6 4.3h6.8L25 5.5V13c0 7.6-4 13-9 13s-9-5.4-9-13Z' fill='%23ff4530'/%3E%3Cpath d='M11 15.6l3 1.3M21 15.6l-3 1.3M13.6 21c.8.9 1.6.9 2.4 0 .8.9 1.6.9 2.4 0' fill='none' stroke='%230f0f0f' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preload" href="assets/fonts/unbounded-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/projects/pulse-analytics/cover.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/projects/slotbook/cover.webp" type="image/webp">
 <script>
   /* До отрисовки: язык (?lang=en|ru → сохранённый → русский) и тема (сохранённая → системная). */
   (function () {
@@ -213,10 +213,20 @@ h2 { font: 700 clamp(28px, 3.6vw, 44px)/1.08 var(--display); letter-spacing: -.0
 .case-wide { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: center; }
 .case-wide .case-body { padding: 8px clamp(4px, 1.5vw, 18px); gap: 14px; }
 .case-wide h3 { font-size: clamp(26px, 3vw, 36px); }
-.case-wide + .case-wide { margin-top: clamp(16px, 2vw, 26px); }
+.case-wide + .case-wide, .case-pair + .case-wide { margin-top: clamp(16px, 2vw, 26px); }
 .case figcaption { padding: 8px 12px; border-top: 1px solid var(--rule); background: var(--card); font: 12px/1.4 var(--mono); color: var(--muted); }
 .case-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 26px); margin-top: clamp(16px, 2vw, 26px); }
 .case-pair .case { align-content: start; }
+
+/* Открытый код */
+.up h3 { font: 700 22px/1.15 var(--display); letter-spacing: -.03em; margin-bottom: 18px; }
+.up-list li { grid-template-columns: 200px minmax(0, 1fr); }
+.up-list .t { font: 14px/1.6 var(--mono); text-decoration: none; border-bottom: 1.5px solid var(--accent); color: var(--ink); justify-self: start; white-space: nowrap; }
+.up-list .t:hover { color: var(--accent); }
+.up-list code { font: .9em var(--mono); background: var(--card); border-radius: 4px; padding: 1px 4px; overflow-wrap: anywhere; }
+.up-list .ref { font: 13px/1.5 var(--mono); color: var(--muted); white-space: nowrap; }
+.up-list .ref a { color: inherit; }
+.libs h4 .ver { font: 400 14px/1 var(--mono); letter-spacing: 0; color: var(--muted); vertical-align: middle; margin-left: 4px; }
 
 /* Библиотеки */
 .libs { margin-top: clamp(48px, 6vw, 72px); }
@@ -367,11 +377,11 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <span class="brand-name"><span data-l="ru">Грешный Котик</span><span data-l="en">sinnercode</span></span>
     </a>
     <nav class="nav" aria-label="Разделы" data-label-ru="Разделы" data-label-en="Sections">
+      <a href="#oss"><span data-l="ru">Открытый код</span><span data-l="en">Open source</span></a>
       <a href="#services"><span data-l="ru">Форматы</span><span data-l="en">Ways to work</span></a>
       <a href="#skills"><span data-l="ru">Что умею</span><span data-l="en">Skills</span></a>
       <a href="#work"><span data-l="ru">Проекты</span><span data-l="en">Projects</span></a>
       <a href="#notes"><span data-l="ru">Разборы</span><span data-l="en">Write-ups</span></a>
-      <a href="#process"><span data-l="ru">Как работаю</span><span data-l="en">Process</span></a>
       <a href="#faq"><span data-l="ru">Вопросы</span><span data-l="en">FAQ</span></a>
     </nav>
     <div class="tools">
@@ -403,8 +413,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       </h1>
       <p class="lead" data-l="ru">Делаю веб-продукты целиком, от&nbsp;схемы базы данных до&nbsp;продакшена. Можно отдать мне продукт с&nbsp;нуля, подключить к&nbsp;проекту, который уже работает, или взять в&nbsp;свою команду.</p>
       <p class="lead" data-l="en">I build web products end to end, from the database schema to production. Hand me a product from scratch, bring me onto one that's already live, or add me to your team.</p>
-      <p class="lead" data-l="ru"><strong>Сбои продумываю заранее.</strong> Вебхук, пришедший дважды, два одновременных запроса, воркер, упавший посреди задачи: в&nbsp;проектах ниже всё это обработано и&nbsp;проверено тестами.</p>
-      <p class="lead" data-l="en"><strong>I plan for failure up front.</strong> A webhook delivered twice, two requests at the same moment, a worker dying mid-job: the projects below handle all of it, and tests check that they do.</p>
+      <p class="lead" data-l="ru"><strong>Сбои продумываю заранее.</strong> Платёж, о&nbsp;котором Telegram сообщил дважды, две одновременные записи на&nbsp;один слот, отказ карты при продлении подписки: в&nbsp;проектах ниже это обработано и&nbsp;проверено тестами.</p>
+      <p class="lead" data-l="en"><strong>I plan for failure up front.</strong> A payment Telegram reports twice, two bookings of one slot at the same moment, a card declined at renewal: the projects below handle these, and tests check that they do.</p>
       <div class="cta-row">
         <a class="btn btn-accent btn-lg" href="https://t.me/sinnercode" target="_blank" rel="noopener">
           <svg aria-hidden="true"><use href="#tg"/></svg>
@@ -412,17 +422,104 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         </a>
         <a class="lnk" href="#work"><span data-l="ru">Смотреть проекты ↓</span><span data-l="en">See the projects ↓</span></a>
       </div>
-      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>15</b> открытых проектов</span><span>тесты и CI в&nbsp;каждом</span><span>беру новые проекты</span></p>
-      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>15</b> open projects</span><span>tests and CI in each</span><span>taking on new projects</span></p>
+      <p class="proof" data-l="ru"><span>в коммерческой разработке <b>с&nbsp;2019</b></span><span><b>6</b> PR приняты в&nbsp;aiogram и&nbsp;unstructured</span><span><b>2</b> библиотеки на&nbsp;PyPI</span><span>беру новые проекты</span></p>
+      <p class="proof" data-l="en"><span>commercial work <b>since&nbsp;2019</b></span><span><b>6</b> PRs merged into aiogram and unstructured</span><span><b>2</b> libraries on PyPI</span><span>taking on new projects</span></p>
     </div>
 
     <figure class="hero-shot">
-      <a href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener" tabindex="-1"><img src="assets/projects/pulse-analytics/cover.webp" width="1200" height="750" alt="Pulse: график трафика и живая лента посетителей" data-alt-en="Pulse: traffic chart and live visitor feed" fetchpriority="high"></a>
+      <a href="https://sinnercode228.github.io/slotbook/" target="_blank" rel="noopener" tabindex="-1"><img src="assets/projects/slotbook/cover.webp" width="1200" height="750" alt="Slotbook: расписание дня салона с записями, удержанием слота и блокировкой" data-alt-en="Slotbook: a salon's day schedule with bookings, a held slot and a block" fetchpriority="high"></a>
       <figcaption>
-        <span data-l="ru">Pulse — аналитика сайтов</span><span data-l="en">Pulse, web analytics with a live feed</span>
-        <a href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">открыть демо ↗</span><span data-l="en">open the demo ↗</span></a>
+        <span data-l="ru">Slotbook — онлайн-запись для салонов</span><span data-l="en">Slotbook, online booking for salons</span>
+        <a href="https://sinnercode228.github.io/slotbook/" target="_blank" rel="noopener"><span data-l="ru">открыть демо ↗</span><span data-l="en">open the demo ↗</span></a>
       </figcaption>
     </figure>
+  </div>
+</section>
+
+<section class="sec sec-alt" id="oss" aria-labelledby="oss-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow"><span data-l="ru">Открытый код</span><span data-l="en">Open source</span></p>
+      <h2 id="oss-h"><span data-l="ru">Принятые PR и&nbsp;свои библиотеки</span><span data-l="en">Merged pull requests and my own libraries</span></h2>
+    </div>
+
+    <div class="up">
+      <h3><span data-l="ru">PR в&nbsp;aiogram и&nbsp;unstructured</span><span data-l="en">Pull requests to aiogram and unstructured</span></h3>
+      <ul class="more-list up-list">
+        <li>
+          <a class="t" href="https://github.com/aiogram/aiogram/pull/1954" target="_blank" rel="noopener">aiogram&nbsp;#1954</a>
+          <p data-l="ru"><code>InlineKeyboardBuilder.as_markup()</code> больше не&nbsp;теряет переданные параметры. <span class="ref">Закрывает <a href="https://github.com/aiogram/aiogram/issues/1423" target="_blank" rel="noopener">#1423</a></span></p>
+          <p data-l="en"><code>InlineKeyboardBuilder.as_markup()</code> no longer drops its options. <span class="ref">Fixes <a href="https://github.com/aiogram/aiogram/issues/1423" target="_blank" rel="noopener">#1423</a></span></p>
+        </li>
+        <li>
+          <a class="t" href="https://github.com/aiogram/aiogram/pull/1956" target="_blank" rel="noopener">aiogram&nbsp;#1956</a>
+          <p data-l="ru">Необязательный <code>tasks_shutdown_timeout</code>: при остановке polling можно дождаться хендлеров, которые ещё работают. <span class="ref">Закрывает <a href="https://github.com/aiogram/aiogram/issues/1955" target="_blank" rel="noopener">#1955</a></span></p>
+          <p data-l="en">Opt-in <code>tasks_shutdown_timeout</code>, so polling shutdown can wait for running handlers. <span class="ref">Fixes <a href="https://github.com/aiogram/aiogram/issues/1955" target="_blank" rel="noopener">#1955</a></span></p>
+        </li>
+        <li>
+          <a class="t" href="https://github.com/Unstructured-IO/unstructured/pull/4568" target="_blank" rel="noopener">unstructured&nbsp;#4568</a>
+          <p data-l="ru"><code>translate_text()</code> больше не&nbsp;повторяет первые 512 токенов в&nbsp;каждом фрагменте. <span class="ref">Закрывает <a href="https://github.com/Unstructured-IO/unstructured/issues/3607" target="_blank" rel="noopener">#3607</a></span></p>
+          <p data-l="en"><code>translate_text()</code> no longer repeats the first 512 tokens for every chunk. <span class="ref">Fixes <a href="https://github.com/Unstructured-IO/unstructured/issues/3607" target="_blank" rel="noopener">#3607</a></span></p>
+        </li>
+        <li>
+          <a class="t" href="https://github.com/Unstructured-IO/unstructured/pull/4597" target="_blank" rel="noopener">unstructured&nbsp;#4597</a>
+          <p data-l="ru"><code>partition_email()</code> больше не&nbsp;падает на&nbsp;вложенных письмах (<code>message/rfc822</code>).</p>
+          <p data-l="en"><code>partition_email()</code> no longer fails on attached emails (<code>message/rfc822</code>).</p>
+        </li>
+        <li>
+          <a class="t" href="https://github.com/Unstructured-IO/unstructured/pull/4599" target="_blank" rel="noopener">unstructured&nbsp;#4599</a>
+          <p data-l="ru">Файлы <code>.markdown</code> определяются как Markdown. <span class="ref">Продолжение <a href="https://github.com/Unstructured-IO/unstructured/issues/3670" target="_blank" rel="noopener">#3670</a></span></p>
+          <p data-l="en"><code>.markdown</code> files are detected as Markdown. <span class="ref">Follow-up to <a href="https://github.com/Unstructured-IO/unstructured/issues/3670" target="_blank" rel="noopener">#3670</a></span></p>
+        </li>
+        <li>
+          <a class="t" href="https://github.com/Unstructured-IO/unstructured/pull/4602" target="_blank" rel="noopener">unstructured&nbsp;#4602</a>
+          <p data-l="ru">Отладочные слои <code>partition_pdf()</code> берут DPI и&nbsp;пароль PDF, переданные при разборе. <span class="ref">Закрывает <a href="https://github.com/Unstructured-IO/unstructured/issues/3985" target="_blank" rel="noopener">#3985</a></span></p>
+          <p data-l="en"><code>partition_pdf()</code> debug overlays now use the DPI and PDF password passed to partitioning. <span class="ref">Fixes <a href="https://github.com/Unstructured-IO/unstructured/issues/3985" target="_blank" rel="noopener">#3985</a></span></p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="libs" id="libraries">
+      <div class="libs-head">
+        <h3><span data-l="ru">Библиотеки на&nbsp;PyPI</span><span data-l="en">Libraries on PyPI</span></h3>
+        <p data-l="ru">Обе под лицензией MIT, ставятся через pip, нужен Python 3.10 или новее.</p>
+        <p data-l="en">Both are MIT licensed, install with pip and need Python 3.10 or newer.</p>
+      </div>
+      <div class="case-pair">
+        <article class="case">
+          <div class="case-body">
+            <div class="case-kind"><span data-l="ru">Оплата в&nbsp;Telegram</span><span data-l="en">Telegram payments</span><span class="cnt"><span data-l="ru">270 тестов</span><span data-l="en">270 tests</span></span></div>
+            <h4>aiogram-stars <span class="ver">0.2.0</span></h4>
+            <p data-l="ru">Оплата в&nbsp;Telegram Stars для ботов на&nbsp;aiogram&nbsp;3, вынесена из&nbsp;платёжного кода Zernolist, который теперь работает на&nbsp;ней. От&nbsp;вас две функции: <code>check</code> решает, принимать ли платёж, <code>on_paid</code> выдаёт товар. Библиотека подписывает payload счёта, отвечает на&nbsp;<span class="nw">pre-checkout</span> в&nbsp;пределах 10&nbsp;секунд, которые даёт Telegram, вызывает <code>on_paid</code> один раз на&nbsp;каждый платёж, а&nbsp;неудачные возвраты повторяет из&nbsp;outbox в&nbsp;базе.</p>
+            <p data-l="en">Telegram Stars payments for aiogram 3 bots, extracted from Zernolist's payment code; Zernolist now runs on it. You write two functions: <code>check</code> decides whether to take a payment, <code>on_paid</code> hands over the goods. The library signs the invoice payload, answers <span class="nw">pre-checkout</span> within Telegram's <span class="nw">10-second</span> deadline, calls <code>on_paid</code> once per charge and retries failed refunds from an outbox in the database.</p>
+            <p class="tags"><span>Python</span><span>aiogram 3</span><span>SQLAlchemy 2</span><span>PostgreSQL</span><span>SQLite</span></p>
+            <p class="note" data-l="ru">Тесты не&nbsp;ходят в&nbsp;Telegram: Bot API в&nbsp;них поддельный, но&nbsp;его ответы разбирает сам aiogram.</p>
+            <p class="note" data-l="en">The tests don't call Telegram: the Bot API is a fake, but aiogram itself parses its replies.</p>
+            <p class="pip"><code>pip install aiogram-stars</code></p>
+            <div class="case-links">
+              <a class="lnk" href="https://github.com/sinnercode228/aiogram-stars" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+              <a class="lnk" href="https://pypi.org/project/aiogram-stars/" target="_blank" rel="noopener">PyPI</a>
+            </div>
+          </div>
+        </article>
+        <article class="case">
+          <div class="case-body">
+            <div class="case-kind"><span data-l="ru">Клиент API amoCRM</span><span data-l="en">amoCRM API client</span><span class="cnt"><span data-l="ru">354 теста</span><span data-l="en">354 tests</span></span></div>
+            <h4>aioamocrm <span class="ver">0.1.1</span></h4>
+            <p data-l="ru">Асинхронный клиент API v4 amoCRM и&nbsp;Kommo. Берёт на&nbsp;себя <span class="nw">OAuth2-токены</span>, которые меняются при каждом обновлении, лимит 7&nbsp;запросов в&nbsp;секунду, постраничные списки с&nbsp;фильтрами и&nbsp;разбор вебхуков. <code>POST</code> повторяется только с&nbsp;<code>retry=True</code>: ключей идемпотентности в&nbsp;amoCRM нет. Сделки, контакты, компании и&nbsp;задачи приходят моделями pydantic.</p>
+            <p data-l="en">An async client for the amoCRM and Kommo API v4. It takes care of OAuth2 tokens that rotate on every refresh, the limit of 7 requests per second, paginated lists with filters and webhook parsing. A <code>POST</code> is resent only with <code>retry=True</code>, because amoCRM has no idempotency keys. Leads, contacts, companies and tasks come back as pydantic models.</p>
+            <p class="tags"><span>Python</span><span>httpx</span><span>pydantic 2</span><span>OAuth2</span></p>
+            <p class="note" data-l="ru">Тесты идут на&nbsp;замоканном HTTP, не&nbsp;на&nbsp;живом аккаунте amoCRM. Форматы запросов и&nbsp;ответов сверены с&nbsp;официальным PHP SDK.</p>
+            <p class="note" data-l="en">Tested on mocked HTTP, not a live amoCRM account. The request and response shapes are checked against amoCRM's official PHP SDK.</p>
+            <p class="pip"><code>pip install aioamocrm</code></p>
+            <div class="case-links">
+              <a class="lnk" href="https://github.com/sinnercode228/aioamocrm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+              <a class="lnk" href="https://pypi.org/project/aioamocrm/" target="_blank" rel="noopener">PyPI</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -479,36 +576,36 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         <div>
           <p data-l="ru">REST и&nbsp;WebSocket API на&nbsp;Python, TypeScript и&nbsp;Go, фоновые задачи и&nbsp;очереди, повторные попытки, обработка вебхуков и&nbsp;платежей, которые пришли дважды.</p>
           <p data-l="en">REST and WebSocket APIs in Python, TypeScript and Go, background jobs and queues, retries, handling webhooks and payments that arrive twice.</p>
-          <p class="tech"><span>Go</span><span>FastAPI</span><span>SQLAlchemy</span><span>Fastify</span><span>Prisma</span><span>PostgreSQL</span><span>Redis</span></p>
+          <p class="tech"><span>Go</span><span>FastAPI</span><span>SQLAlchemy</span><span>Node.js</span><span>PostgreSQL</span><span>Redis</span></p>
         </div>
-        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/integration-hub/blob/main/backend/src/relay/queue/redis.py" target="_blank" rel="noopener"><span data-l="ru">очередь на&nbsp;Redis, которая забирает задачи у&nbsp;упавшего воркера</span><span data-l="en">a Redis queue that takes jobs back from a dead worker</span></a></p>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/slotbook/blob/3991b465b1322033cf0f2b6423e0fde4d2a54421/internal/notify/worker.go#L100-L115" target="_blank" rel="noopener"><span data-l="ru">воркер напоминаний Slotbook: одну запись не&nbsp;возьмут два воркера</span><span data-l="en">Slotbook's reminder worker: no two workers take the same row</span></a></p>
       </li>
       <li class="skill">
         <h3><span data-l="ru">Базы данных</span><span data-l="en">Databases</span></h3>
         <div>
-          <p data-l="ru">Схемы и&nbsp;миграции на&nbsp;PostgreSQL. Правила, которые нельзя нарушить, держу в&nbsp;самой базе, а&nbsp;не&nbsp;только в&nbsp;коде: ограничение против двойной записи, триггер, который не&nbsp;пропустит несбалансированную проводку, SKIP LOCKED, чтобы два воркера не&nbsp;взяли одну задачу.</p>
-          <p data-l="en">PostgreSQL schemas and migrations. Rules that must never break live in the database, not only in the code: a constraint against double booking, a trigger that refuses an unbalanced journal entry, SKIP LOCKED so two workers never take the same job.</p>
-          <p class="tech"><span>PostgreSQL</span><span>btree_gist</span><span>constraint triggers</span><span>SKIP LOCKED</span><span>SQLite</span></p>
+          <p data-l="ru">Схемы и&nbsp;миграции на&nbsp;PostgreSQL. Правила, которые нельзя нарушить, держу в&nbsp;самой базе, а&nbsp;не&nbsp;только в&nbsp;коде: ограничение против двойной записи, уникальный ключ, чтобы одно сообщение не&nbsp;попало в&nbsp;очередь дважды, SKIP LOCKED, чтобы два воркера не&nbsp;взяли одну задачу.</p>
+          <p data-l="en">PostgreSQL schemas and migrations. Rules that must never break live in the database, not only in the code: a constraint against double booking, a unique key so one message can't be queued twice, SKIP LOCKED so two workers never take the same job.</p>
+          <p class="tech"><span>PostgreSQL</span><span>btree_gist</span><span>SKIP LOCKED</span><span>SQLite</span></p>
         </div>
         <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/slotbook/blob/1c8318474319f6e61cc76a3bbc5b5911625d7c1e/internal/db/migrations/0001_schema.sql#L111-L113" target="_blank" rel="noopener"><span data-l="ru">ограничение, которое запрещает двойную запись</span><span data-l="en">the constraint that rules out double booking</span></a></p>
       </li>
       <li class="skill">
         <h3><span data-l="ru">Авторизация и&nbsp;безопасность</span><span data-l="en">Auth and security</span></h3>
         <div>
-          <p data-l="ru">Сессии с&nbsp;ротацией refresh-токенов, роли и&nbsp;права доступа, проверка данных и&nbsp;цен на&nbsp;сервере, а&nbsp;не&nbsp;в&nbsp;браузере.</p>
-          <p data-l="en">Sessions with refresh-token rotation, roles and permissions, and data and prices checked on the server rather than in the browser.</p>
-          <p class="tech"><span>zod</span><span>Pydantic</span><span>HMAC</span></p>
+          <p data-l="ru">Сессии с&nbsp;ротацией refresh-токенов, роли и&nbsp;права доступа, проверка данных и&nbsp;цен на&nbsp;сервере, а&nbsp;не&nbsp;в&nbsp;браузере, подписанные данные платежей.</p>
+          <p data-l="en">Sessions with refresh-token rotation, roles and permissions, data and prices checked on the server rather than in the browser, signed payment payloads.</p>
+          <p class="tech"><span>Pydantic</span><span>HMAC</span></p>
         </div>
-        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/flowdesk-crm/blob/de0a2c21755f9f59060d9d6d07f55e0b3b1cd42b/server/src/modules/auth/auth.service.ts#L44-L51" target="_blank" rel="noopener"><span data-l="ru">гонка двух refresh-запросов, закрытая в&nbsp;транзакции</span><span data-l="en">two concurrent refreshes, settled inside a transaction</span></a></p>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/tg-paid-club/blob/6979eb48f24c1d8be0b48aaa47b189176566fa33/src/paidclub/access.py#L111-L160" target="_blank" rel="noopener"><span data-l="ru">в&nbsp;закрытый чат tg-paid-club пускают только с&nbsp;действующей подпиской</span><span data-l="en">tg-paid-club lets someone into the private chat only with an active subscription</span></a></p>
       </li>
       <li class="skill">
         <h3><span data-l="ru">Фронтенд</span><span data-l="en">Frontend</span></h3>
         <div>
-          <p data-l="ru">Интерфейсы на&nbsp;React и&nbsp;Next.js: дашборды, канбан с&nbsp;перетаскиванием, живые графики, формы, адаптивная вёрстка.</p>
-          <p data-l="en">React and Next.js interfaces: dashboards, drag-and-drop boards, live charts, forms, responsive layouts.</p>
+          <p data-l="ru">Интерфейсы на&nbsp;React и&nbsp;Next.js: дашборды, виджеты записи, ответы, которые приходят потоком, формы, адаптивная вёрстка.</p>
+          <p data-l="en">React and Next.js interfaces: dashboards, booking widgets, streamed answers, forms, responsive layouts.</p>
           <p class="tech"><span>React 19</span><span>Next.js</span><span>TanStack Query</span><span>Zustand</span><span>Tailwind</span></p>
         </div>
-        <p class="src"><span data-l="ru">в&nbsp;демо:</span><span data-l="en">in the demo:</span> <a href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">канбан сделок FlowDesk&nbsp;↗</span><span data-l="en">the FlowDesk deals board&nbsp;↗</span></a></p>
+        <p class="src"><span data-l="ru">в&nbsp;демо:</span><span data-l="en">in the demo:</span> <a href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener"><span data-l="ru">сноски DocMind кликаются, пока ответ ещё идёт&nbsp;↗</span><span data-l="en">DocMind's citations, clickable while the answer streams&nbsp;↗</span></a></p>
       </li>
       <li class="skill">
         <h3><span data-l="ru">Интеграции и&nbsp;платежи</span><span data-l="en">Integrations and payments</span></h3>
@@ -533,11 +630,11 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <li class="skill">
         <h3><span data-l="ru">Данные и&nbsp;аналитика</span><span data-l="en">Data and analytics</span></h3>
         <div>
-          <p data-l="ru">Сбор событий и&nbsp;агрегаты, парсинг сайтов, выгрузки и&nbsp;отчёты в&nbsp;Excel, где итоги считают формулы.</p>
-          <p data-l="en">Event collection and rollups, web scraping, exports and Excel reports where the totals are formulas.</p>
-          <p class="tech"><span>PostgreSQL</span><span>SQLite</span><span>openpyxl</span><span>uPlot</span></p>
+          <p data-l="ru">Парсинг сайтов, выгрузки, отчёты в&nbsp;Excel, где итоги считают формулы, дашборды с&nbsp;выручкой, MRR и&nbsp;оттоком.</p>
+          <p data-l="en">Web scraping, exports, Excel reports where the totals are formulas, dashboards with revenue, MRR and churn.</p>
+          <p class="tech"><span>PostgreSQL</span><span>SQLite</span><span>httpx</span><span>openpyxl</span><span>pycel</span></p>
         </div>
-        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/pulse-analytics/blob/main/packages/core/src/hll.ts" target="_blank" rel="noopener"><span data-l="ru">HyperLogLog для подсчёта посетителей</span><span data-l="en">HyperLogLog for counting visitors</span></a></p>
+        <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/portfolio/blob/main/excel-dashboard-demo/check_workbook.py" target="_blank" rel="noopener"><span data-l="ru">проверка формул в&nbsp;готовых книгах Excel</span><span data-l="en">checking the formulas in the finished Excel workbooks</span></a></p>
       </li>
       <li class="skill">
         <h3><span data-l="ru">Инфраструктура и&nbsp;тесты</span><span data-l="en">Infrastructure and tests</span></h3>
@@ -557,33 +654,12 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
     <div class="sec-head">
       <p class="eyebrow"><span data-l="ru">Проекты</span><span data-l="en">Projects</span></p>
       <h2 id="work-h"><span data-l="ru">Проекты, в&nbsp;которые можно заглянуть</span><span data-l="en">Projects you can look inside</span></h2>
-      <p class="sec-intro" data-l="ru">Код заказчиков остаётся у&nbsp;них, поэтому здесь открытые проекты на&nbsp;выдуманных данных. Это не&nbsp;макеты: у&nbsp;каждого есть демо, которое работает прямо в&nbsp;браузере, тесты и&nbsp;CI, а&nbsp;весь код лежит на&nbsp;GitHub. Исключение&nbsp;— tg-paid-club: это бот, демо в&nbsp;браузере у&nbsp;него нет, а&nbsp;дашборд на&nbsp;смоделированных данных запускается локально.</p>
-      <p class="sec-intro" data-l="en">Client code stays with clients, so these are open projects on made-up data. They aren't mockups: each one has a demo that runs right in your browser, tests and CI, and all the code is on GitHub. The exception is tg-paid-club: it's a bot with no browser demo, and its dashboard on simulated data runs locally.</p>
+      <p class="sec-intro" data-l="ru">Код заказчиков остаётся у&nbsp;них, поэтому здесь отдельные проекты на&nbsp;выдуманных данных. У&nbsp;каждого есть тесты и&nbsp;CI, весь код лежит на&nbsp;GitHub. Демо Zernolist, Slotbook и&nbsp;DocMind работают прямо в&nbsp;браузере, API в&nbsp;них замокан. У&nbsp;tg-paid-club демо в&nbsp;браузере нет: это бот, а&nbsp;его дашборд на&nbsp;смоделированных данных запускается локально.</p>
+      <p class="sec-intro" data-l="en">Client code stays with clients, so these are standalone projects on made-up data. Each has tests and CI, and all the code is on GitHub. The Zernolist, Slotbook and DocMind demos run right in your browser with the API mocked. tg-paid-club has no browser demo: it's a bot, and its dashboard on simulated data runs locally.</p>
     </div>
 
     <article class="case case-wide">
-      <figure><img src="assets/projects/flowdesk-crm/cover.webp" width="1200" height="750" loading="lazy" alt="FlowDesk: канбан сделок" data-alt-en="FlowDesk: the deals board"></figure>
-      <div class="case-body">
-        <div class="case-kind"><span data-l="ru">CRM, full-stack</span><span data-l="en">CRM, full-stack</span><span class="cnt"><span data-l="ru">129 тестов</span><span data-l="en">129 tests</span></span></div>
-        <h3>FlowDesk</h3>
-        <p data-l="ru">CRM для отдела продаж: канбан сделок с&nbsp;перетаскиванием, контакты, заметки и&nbsp;история по&nbsp;сделке, дашборд с&nbsp;воронкой и&nbsp;прогнозом. Менеджер двигает и&nbsp;правит только свои сделки, админ&nbsp;— все.</p>
-        <p data-l="en">A CRM for a sales team: a drag-and-drop deals board, contacts, notes and history for each deal, a dashboard with the funnel and a forecast. Managers move and edit only their own deals; admins can edit all of them.</p>
-        <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Refresh-токены ротируются, а&nbsp;повторно использованный токен отзывает всю сессию. Гонку двух одновременных refresh-запросов закрывает условный <code>updateMany</code> в&nbsp;транзакции.</p>
-        <p class="inside" data-l="en"><span class="inside-l">How it works</span>Refresh tokens rotate, and a reused token revokes the whole session. A conditional <code>updateMany</code> inside a transaction settles the race between two concurrent refreshes.</p>
-        <p class="tags"><span>Next.js</span><span>Fastify</span><span>Prisma</span><span>PostgreSQL</span><span>TanStack Query</span><span>dnd-kit</span></p>
-        <p class="note" data-l="ru">Вход в&nbsp;демо уже заполнен, пароль вводить не&nbsp;нужно.</p>
-        <p class="note" data-l="en">The demo login is prefilled, so there's no password to type.</p>
-        <div class="case-links">
-          <a class="lnk" href="https://sinnercode228.github.io/flowdesk-crm/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
-          <a class="lnk" href="https://github.com/sinnercode228/flowdesk-crm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-          <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.ru.md" target="_blank" rel="noopener">Разбор</a>
-          <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.md" target="_blank" rel="noopener">Write-up</a>
-        </div>
-      </div>
-    </article>
-
-    <article class="case case-wide">
-      <figure><img src="assets/projects/tg-paid-club/cover.webp" width="1200" height="750" loading="lazy" alt="tg-paid-club: дашборд владельца клуба с MRR, выручкой и оттоком. Данные смоделированы командой paidclub simulate, это не настоящий клуб" data-alt-en="tg-paid-club: the club owner's dashboard with MRR, revenue and churn. The data is simulated by paidclub simulate, not a real club"><figcaption><span data-l="ru">Данные смоделированы: 300 выдуманных участников за&nbsp;120 дней, денег никто не&nbsp;платил</span><span data-l="en">Simulated data: 300 made-up members over 120 days, nobody paid any money</span></figcaption></figure>
+      <figure><img src="assets/projects/tg-paid-club/cover.webp" width="1200" height="750" loading="lazy" alt="tg-paid-club: дашборд владельца клуба с MRR, выручкой и оттоком. Данные смоделированы командой paidclub simulate, это не настоящий клуб" data-alt-en="tg-paid-club: the club owner's dashboard with MRR, revenue and churn. The data is simulated by paidclub simulate, not a real club"><figcaption><span data-l="ru">Смоделированные данные: 300 выдуманных участников за&nbsp;120 дней</span><span data-l="en">Simulated data: 300 made-up members over 120 days</span></figcaption></figure>
       <div class="case-body">
         <div class="case-kind"><span data-l="ru">Платный клуб в&nbsp;Telegram</span><span data-l="en">Paid Telegram club</span><span class="cnt"><span data-l="ru">506 тестов</span><span data-l="en">506 tests</span></span></div>
         <h3>tg-paid-club</h3>
@@ -592,8 +668,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>В&nbsp;чат пускают только по&nbsp;заявке: ссылка одна, с&nbsp;<code>creates_join_request</code>, бот одобряет заявку, только если подписка даёт доступ, а&nbsp;вошедших в&nbsp;обход удаляет. Удаление&nbsp;— бан на&nbsp;10&nbsp;минут и&nbsp;сразу разбан, поэтому после новой оплаты та&nbsp;же ссылка снова работает. Сообщения идут через outbox с&nbsp;уникальным ключом, и&nbsp;одно напоминание не&nbsp;попадёт в&nbsp;очередь дважды.</p>
         <p class="inside" data-l="en"><span class="inside-l">How it works</span>Members get in only through join requests: each chat has one link with <code>creates_join_request</code>, a request is approved only when the subscription gives access, and anyone who gets in another way is removed. Removal is a 10-minute ban and an immediate unban, so the same link works again once the person pays. Messages go through an outbox with a unique key, so one reminder can't be queued twice.</p>
         <p class="tags"><span>Python</span><span>aiogram 3</span><span>FastAPI</span><span>SQLAlchemy 2</span><span>PostgreSQL</span><span>Docker</span></p>
-        <p class="note" data-l="ru">Демо-проект: ни&nbsp;один клуб на&nbsp;нём не&nbsp;работает, демо в&nbsp;браузере нет. Дашборд со&nbsp;скриншота запускается локально через <code>make demo</code>, без Telegram и&nbsp;без денег. Ограничения: в&nbsp;боевом магазине ЮKassa автоплатежи включает менеджер ЮKassa, Stars только помесячно, Prodamus не&nbsp;подключён.</p>
-        <p class="note" data-l="en">A demo project: no club runs on it, and there's no browser demo. The dashboard in the screenshot runs locally with <code>make demo</code>, with no Telegram and no money. Limits: in a live YooKassa shop a YooKassa manager has to turn autopayments on, Stars is monthly only, Prodamus isn't included.</p>
+        <p class="note" data-l="ru">Живого запуска и&nbsp;демо в&nbsp;браузере нет: дашборд со&nbsp;скриншота запускается локально через <code>make demo</code>, без Telegram и&nbsp;без денег. Автоплатежи в&nbsp;боевом магазине ЮKassa включает её менеджер; звёздами подписка только помесячная.</p>
+        <p class="note" data-l="en">No live deployment and no browser demo: the dashboard in the screenshot runs locally with <code>make demo</code>, with no Telegram and no money. In a live YooKassa shop, a YooKassa manager turns autopayments on; Stars subscriptions are monthly only.</p>
         <div class="case-links">
           <a class="lnk" href="https://github.com/sinnercode228/tg-paid-club" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
           <a class="lnk" href="https://github.com/sinnercode228/tg-paid-club/blob/main/docs/architecture.md" target="_blank" rel="noopener"><span data-l="ru">Архитектура (англ.)</span><span data-l="en">Architecture</span></a>
@@ -603,22 +679,20 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
 
     <div class="case-pair">
       <article class="case">
-        <figure><img src="assets/projects/ledgerline-billing/cover.webp" width="1200" height="750" loading="lazy" alt="Ledgerline: MRR, выручка по дням и тестовые часы" data-alt-en="Ledgerline: MRR, revenue by day and the test clock"></figure>
+        <figure><img src="assets/projects/tg-shop-miniapp/cover.webp" width="1200" height="750" loading="lazy" alt="Zernolist: каталог, карточка товара и оплата в Telegram Stars" data-alt-en="Zernolist: catalog, product page and Telegram Stars payment"></figure>
         <div class="case-body">
-          <div class="case-kind"><span data-l="ru">Биллинг подписок</span><span data-l="en">Subscription billing</span><span class="cnt"><span data-l="ru">248 тестов</span><span data-l="en">248 tests</span></span></div>
-          <h3>Ledgerline</h3>
-          <p data-l="ru">Биллинг для SaaS: тарифы с&nbsp;пробным периодом, продления, пересчёт при смене тарифа посреди месяца, счета с&nbsp;номерами без пропусков и&nbsp;повторные списания, если карта не&nbsp;прошла. Каждое движение денег записано в&nbsp;книгу по&nbsp;двойной записи.</p>
-          <p data-l="en">Billing for a SaaS: plans with trials, renewals, proration when the plan changes mid-month, invoices numbered without gaps, and retries when a card is declined. Every movement of money goes into a double-entry ledger.</p>
-          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Если проводки не&nbsp;сходятся в&nbsp;ноль, PostgreSQL откатывает всю транзакцию: это проверяет триггер, отложенный до&nbsp;COMMIT, какой бы код ни&nbsp;писал в&nbsp;базу. Тот же движок биллинга работает в&nbsp;браузере, на&nbsp;нём сделано демо.</p>
-          <p class="inside" data-l="en"><span class="inside-l">How it works</span>If the entries don't sum to zero, PostgreSQL rolls the whole transaction back: a trigger deferred to COMMIT checks it, whatever code wrote to the database. The same billing engine runs in the browser, and that's what the demo is.</p>
-          <p class="tags"><span>TypeScript</span><span>Fastify</span><span>PostgreSQL</span><span>React</span><span>fast-check</span></p>
-          <p class="note" data-l="ru">В&nbsp;демо есть тестовые часы: нажмите «+1 неделя» и&nbsp;посмотрите, как идут продления, отказы карты, повторы и&nbsp;списание долга.</p>
-          <p class="note" data-l="en">The demo has a test clock: press "+1 week" and watch renewals, declined cards, retries and a write-off happen.</p>
+          <div class="case-kind"><span>Telegram Mini App</span><span class="cnt"><span data-l="ru">171 тест</span><span data-l="en">171 tests</span></span></div>
+          <h3>Zernolist</h3>
+          <p data-l="ru">Магазин кофе и&nbsp;чая внутри Telegram: каталог с&nbsp;поиском, промокоды, курьер или самовывоз, оплата в&nbsp;Telegram Stars или при получении. Заказы приходят админу в&nbsp;бот, статус он меняет кнопками под уведомлением.</p>
+          <p data-l="en">A coffee and tea shop inside Telegram: a searchable catalog, promo codes, courier or pickup, payment with Telegram Stars or on receipt. Orders reach the admin in the bot, and the status changes with buttons under the notification.</p>
+          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Цену каждого заказа сервер считает сам по&nbsp;каталогу, поэтому подменить её из&nbsp;браузера не&nbsp;выйдет. Оплата звёздами идёт через <span class="nw">aiogram-stars</span>: если Telegram пришлёт уведомление об&nbsp;оплате дважды, заказ второй раз не&nbsp;проведётся.</p>
+          <p class="inside" data-l="en"><span class="inside-l">How it works</span>The server prices every order from the catalog itself, so nobody can change the price in the browser. Stars payments go through <span class="nw">aiogram-stars</span>: if Telegram sends the same payment update twice, the order goes through only once.</p>
+          <p class="tags"><span>React</span><span>Vite</span><span>aiogram 3</span><span>aiogram-stars</span><span>FastAPI</span><span>SQLAlchemy</span></p>
           <div class="case-links">
-            <a class="lnk" href="https://sinnercode228.github.io/ledgerline-billing/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
-            <a class="lnk" href="https://github.com/sinnercode228/ledgerline-billing" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/ledgerline-balanced-but-wrong.ru.md" target="_blank" rel="noopener">Разбор</a>
-            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/ledgerline-balanced-but-wrong.md" target="_blank" rel="noopener">Write-up</a>
+            <a class="lnk" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+            <a class="lnk" href="https://github.com/sinnercode228/tg-shop-miniapp" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/zernolist-stars-payments.ru.md" target="_blank" rel="noopener">Разбор</a>
+            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/zernolist-stars-payments.md" target="_blank" rel="noopener">Write-up</a>
           </div>
         </div>
       </article>
@@ -644,127 +718,26 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       </article>
     </div>
 
-    <div class="case-pair">
-      <article class="case">
-        <figure><img src="assets/projects/pulse-analytics/cover.webp" width="1200" height="750" loading="lazy" alt="Pulse: график трафика и живая лента посетителей" data-alt-en="Pulse: traffic chart and live visitor feed"></figure>
-        <div class="case-body">
-          <div class="case-kind"><span data-l="ru">Аналитика, SaaS</span><span data-l="en">Analytics, SaaS</span><span class="cnt"><span data-l="ru">118 тестов</span><span data-l="en">118 tests</span></span></div>
-          <h3>Pulse</h3>
-          <p data-l="ru">Веб-аналитика без cookies и&nbsp;проверка доступности сайтов в&nbsp;одном дашборде. Посетители появляются в&nbsp;живой ленте, а&nbsp;если сайт упал, это видно на&nbsp;отдельной странице.</p>
-          <p data-l="en">Cookieless web analytics and uptime checks in one dashboard. Visitors show up in a live feed, and if a site goes down you see it on a separate page.</p>
-          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Посетителей в&nbsp;каждой строке статистики считает HyperLogLog: до&nbsp;512 хэшей это точное множество, дальше 2048 регистров с&nbsp;ошибкой около 2,3%. Трекер для сайта весит 843&nbsp;байта, 560&nbsp;в&nbsp;gzip.</p>
-          <p class="inside" data-l="en"><span class="inside-l">How it works</span>Each stats row counts visitors with HyperLogLog: an exact set up to 512 hashes, then 2048 registers with about 2.3% error. The site tracker is 843 bytes, 560 gzipped.</p>
-          <p class="tags"><span>TypeScript</span><span>Fastify</span><span>node:sqlite</span><span>WebSocket</span><span>React</span></p>
-          <div class="case-links">
-            <a class="lnk" href="https://sinnercode228.github.io/pulse-analytics/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
-            <a class="lnk" href="https://github.com/sinnercode228/pulse-analytics" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/pulse-hyperloglog.ru.md" target="_blank" rel="noopener">Разбор</a>
-            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/pulse-hyperloglog.md" target="_blank" rel="noopener">Write-up</a>
-          </div>
+    <article class="case case-wide">
+      <figure><img src="assets/projects/docmind-rag/cover.webp" width="1200" height="750" loading="lazy" alt="DocMind: ответ со сносками на источники" data-alt-en="DocMind: an answer with source citations"></figure>
+      <div class="case-body">
+        <div class="case-kind"><span>AI, RAG</span><span class="cnt"><span data-l="ru">139 тестов</span><span data-l="en">139 tests</span></span></div>
+        <h3>DocMind</h3>
+        <p data-l="ru">Ассистент, который отвечает по&nbsp;вашим документам: PDF, DOCX, страницам сайта. Ответ идёт потоком со&nbsp;сносками, клик по&nbsp;сноске открывает фрагмент источника. Есть веб-интерфейс и&nbsp;Telegram-бот.</p>
+        <p data-l="en">An assistant that answers from your documents: PDF, DOCX, web pages. The answer streams in with citations, and clicking one opens the source passage. It has a web UI and a Telegram bot.</p>
+        <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Источники приходят по&nbsp;SSE раньше первого токена ответа, поэтому, когда в&nbsp;тексте появляется сноска [n], её карточка уже на&nbsp;экране.</p>
+        <p class="inside" data-l="en"><span class="inside-l">How it works</span>Sources arrive over SSE before the first answer token, so when a [n] citation appears in the text, its card is already on screen.</p>
+        <p class="tags"><span>Python</span><span>FastAPI</span><span>pgvector</span><span>Claude / OpenAI API</span><span>React</span></p>
+        <p class="note" data-l="ru">В&nbsp;демо нет LLM: ответ собирается из&nbsp;найденных в&nbsp;документах предложений.</p>
+        <p class="note" data-l="en">The demo has no LLM: answers are put together from sentences found in the documents.</p>
+        <div class="case-links">
+          <a class="lnk" href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
+          <a class="lnk" href="https://github.com/sinnercode228/docmind-rag" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
+          <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/docmind-sources-before-tokens.ru.md" target="_blank" rel="noopener">Разбор</a>
+          <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/docmind-sources-before-tokens.md" target="_blank" rel="noopener">Write-up</a>
         </div>
-      </article>
-      <article class="case">
-        <figure><img src="assets/projects/integration-hub/cover.webp" width="1200" height="750" loading="lazy" alt="Дашборд Relay: события, доставки и повторы" data-alt-en="The Relay dashboard: events, deliveries and retries"></figure>
-        <div class="case-body">
-          <div class="case-kind"><span data-l="ru">Интеграции</span><span data-l="en">Integrations</span><span class="cnt"><span data-l="ru">214 тестов</span><span data-l="en">214 tests</span></span></div>
-          <h3>Relay</h3>
-          <p data-l="ru">Заявки из&nbsp;Tilda, amoCRM и&nbsp;Bitrix24 расходятся в&nbsp;Telegram, Google Sheets, amoCRM и&nbsp;на&nbsp;почту. Если получатель не&nbsp;ответил, доставка повторяется с&nbsp;растущей паузой, а&nbsp;то, что так и&nbsp;не&nbsp;дошло, можно отправить ещё раз из&nbsp;отдельного списка.</p>
-          <p data-l="en">Leads from Tilda, amoCRM and Bitrix24 go out to Telegram, Google Sheets, amoCRM and e-mail. If a recipient doesn't answer, delivery is retried with growing pauses, and anything that never got through can be resent from a separate list.</p>
-          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Очередь своя, на&nbsp;sorted sets в&nbsp;Redis. Взятая задача получает дедлайн 120&nbsp;секунд, и&nbsp;если воркер упадёт, после дедлайна она вернётся в&nbsp;очередь.</p>
-          <p class="inside" data-l="en"><span class="inside-l">How it works</span>The queue is custom, built on Redis sorted sets. A job a worker takes gets a 120-second deadline, and if the worker dies, the job goes back to the queue once the deadline passes.</p>
-          <p class="tags"><span>Python</span><span>FastAPI</span><span>Redis</span><span>SQLite</span><span>React</span></p>
-          <div class="case-links">
-            <a class="lnk" href="https://sinnercode228.github.io/integration-hub/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
-            <a class="lnk" href="https://github.com/sinnercode228/integration-hub" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-lease-fencing.ru.md" target="_blank" rel="noopener">Разбор</a>
-            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-lease-fencing.md" target="_blank" rel="noopener">Write-up</a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="case-pair">
-      <article class="case">
-        <figure><img src="assets/projects/docmind-rag/cover.webp" width="1200" height="750" loading="lazy" alt="DocMind: ответ со сносками на источники" data-alt-en="DocMind: an answer with source citations"></figure>
-        <div class="case-body">
-          <div class="case-kind"><span>AI, RAG</span><span class="cnt"><span data-l="ru">139 тестов</span><span data-l="en">139 tests</span></span></div>
-          <h3>DocMind</h3>
-          <p data-l="ru">Ассистент, который отвечает по&nbsp;вашим документам: PDF, DOCX, страницам сайта. Ответ идёт потоком со&nbsp;сносками, клик по&nbsp;сноске открывает фрагмент источника. Есть веб-интерфейс и&nbsp;Telegram-бот.</p>
-          <p data-l="en">An assistant that answers from your documents: PDF, DOCX, web pages. The answer streams in with citations, and clicking one opens the source passage. It has a web UI and a Telegram bot.</p>
-          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Источники приходят по&nbsp;SSE раньше первого токена ответа, поэтому, когда в&nbsp;тексте появляется сноска [n], её карточка уже на&nbsp;экране.</p>
-          <p class="inside" data-l="en"><span class="inside-l">How it works</span>Sources arrive over SSE before the first answer token, so when a [n] citation appears in the text, its card is already on screen.</p>
-          <p class="tags"><span>Python</span><span>FastAPI</span><span>pgvector</span><span>Claude / OpenAI API</span><span>React</span></p>
-          <p class="note" data-l="ru">В&nbsp;демо нет LLM: ответ собирается из&nbsp;найденных в&nbsp;документах предложений.</p>
-          <p class="note" data-l="en">The demo has no LLM: answers are put together from sentences found in the documents.</p>
-          <div class="case-links">
-            <a class="lnk" href="https://sinnercode228.github.io/docmind-rag/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
-            <a class="lnk" href="https://github.com/sinnercode228/docmind-rag" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/docmind-sources-before-tokens.ru.md" target="_blank" rel="noopener">Разбор</a>
-            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/docmind-sources-before-tokens.md" target="_blank" rel="noopener">Write-up</a>
-          </div>
-        </div>
-      </article>
-      <article class="case">
-        <figure><img src="assets/projects/tg-shop-miniapp/cover.webp" width="1200" height="750" loading="lazy" alt="Zernolist: каталог, карточка товара и оплата в Telegram Stars" data-alt-en="Zernolist: catalog, product page and Telegram Stars payment"></figure>
-        <div class="case-body">
-          <div class="case-kind"><span>Telegram Mini App</span><span class="cnt"><span data-l="ru">171 тест</span><span data-l="en">171 tests</span></span></div>
-          <h3>Zernolist</h3>
-          <p data-l="ru">Магазин кофе и&nbsp;чая внутри Telegram: каталог с&nbsp;поиском, промокоды, курьер или самовывоз, оплата в&nbsp;Telegram Stars или при получении. Заказы приходят админу в&nbsp;бот, статус он меняет кнопками под уведомлением.</p>
-          <p data-l="en">A coffee and tea shop inside Telegram: a searchable catalog, promo codes, courier or pickup, payment with Telegram Stars or on receipt. Orders reach the admin in the bot, and the status changes with buttons under the notification.</p>
-          <p class="inside" data-l="ru"><span class="inside-l">Как сделано</span>Цену каждого заказа сервер считает сам по&nbsp;каталогу, поэтому подменить её из&nbsp;браузера не&nbsp;выйдет. Если Telegram пришлёт уведомление об&nbsp;оплате дважды, заказ второй раз не&nbsp;проведётся.</p>
-          <p class="inside" data-l="en"><span class="inside-l">How it works</span>The server prices every order from the catalog itself, so nobody can change the price in the browser. If Telegram sends the same payment update twice, the order goes through only once.</p>
-          <p class="tags"><span>React</span><span>Vite</span><span>aiogram 3</span><span>FastAPI</span><span>SQLAlchemy</span></p>
-          <div class="case-links">
-            <a class="lnk" href="https://sinnercode228.github.io/tg-shop-miniapp/" target="_blank" rel="noopener"><span data-l="ru">Открыть демо ↗</span><span data-l="en">Open the demo ↗</span></a>
-            <a class="lnk" href="https://github.com/sinnercode228/tg-shop-miniapp" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-            <a class="lnk" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/zernolist-stars-payments.ru.md" target="_blank" rel="noopener">Разбор</a>
-            <a class="lnk" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/zernolist-stars-payments.md" target="_blank" rel="noopener">Write-up</a>
-          </div>
-        </div>
-      </article>
-    </div>
-
-    <div class="libs" id="libraries">
-      <div class="libs-head">
-        <h3><span data-l="ru">Библиотеки с&nbsp;открытым кодом</span><span data-l="en">Open-source libraries</span></h3>
-        <p data-l="ru">Обе выросли из&nbsp;проектов выше: <span class="nw">aiogram-stars</span>&nbsp;— из&nbsp;платёжного кода Zernolist, aioamocrm&nbsp;— из&nbsp;коннектора amoCRM в&nbsp;Relay. Ставятся через pip, нужен Python 3.10 или новее.</p>
-        <p data-l="en">Both grew out of the projects above: <span class="nw">aiogram-stars</span> from Zernolist's payment code, aioamocrm from Relay's amoCRM connector. Both install with pip and need Python 3.10 or newer.</p>
       </div>
-      <div class="case-pair">
-        <article class="case">
-          <div class="case-body">
-            <div class="case-kind"><span data-l="ru">Оплата в&nbsp;Telegram</span><span data-l="en">Telegram payments</span><span class="cnt"><span data-l="ru">270 тестов</span><span data-l="en">270 tests</span></span></div>
-            <h4>aiogram-stars</h4>
-            <p data-l="ru">Оплата в&nbsp;Telegram Stars для ботов на&nbsp;aiogram&nbsp;3. От&nbsp;вас две функции: <code>check</code> решает, принимать ли платёж, <code>on_paid</code> выдаёт товар. Библиотека подписывает payload счёта, отвечает на&nbsp;<span class="nw">pre-checkout</span> раньше, чем истекут 10&nbsp;секунд, которые на&nbsp;это даёт Telegram, вызывает <code>on_paid</code> один раз на&nbsp;каждый платёж и&nbsp;хранит возвраты в&nbsp;базе, пока Telegram их не&nbsp;подтвердит.</p>
-            <p data-l="en">Telegram Stars payments for aiogram 3 bots. You write two functions: <code>check</code> decides whether to take a payment, <code>on_paid</code> hands over the goods. The library signs the invoice payload, answers <span class="nw">pre-checkout</span> before Telegram's <span class="nw">10-second</span> deadline, calls <code>on_paid</code> once per charge and keeps refunds in the database until Telegram confirms them.</p>
-            <p class="tags"><span>Python</span><span>aiogram 3</span><span>SQLAlchemy 2</span><span>PostgreSQL</span><span>SQLite</span></p>
-            <p class="note" data-l="ru">Тесты не&nbsp;ходят в&nbsp;Telegram: Bot API в&nbsp;них поддельный, но&nbsp;его ответы разбирает сам aiogram.</p>
-            <p class="note" data-l="en">The tests don't call Telegram: the Bot API is a fake, but aiogram itself parses its replies.</p>
-            <p class="pip"><code>pip install aiogram-stars</code></p>
-            <div class="case-links">
-              <a class="lnk" href="https://github.com/sinnercode228/aiogram-stars" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-              <a class="lnk" href="https://pypi.org/project/aiogram-stars/" target="_blank" rel="noopener">PyPI</a>
-            </div>
-          </div>
-        </article>
-        <article class="case">
-          <div class="case-body">
-            <div class="case-kind"><span data-l="ru">Клиент API amoCRM</span><span data-l="en">amoCRM API client</span><span class="cnt"><span data-l="ru">354 теста</span><span data-l="en">354 tests</span></span></div>
-            <h4>aioamocrm</h4>
-            <p data-l="ru">Асинхронный клиент API v4 amoCRM и&nbsp;Kommo. Берёт на&nbsp;себя <span class="nw">OAuth2-токены</span>, которые меняются при каждом обновлении, лимит 7&nbsp;запросов в&nbsp;секунду, повторы, которые без разрешения не&nbsp;отправят запись второй раз, постраничные списки с&nbsp;фильтрами и&nbsp;разбор вебхуков. Сделки, контакты, компании и&nbsp;задачи приходят моделями pydantic.</p>
-            <p data-l="en">An async client for the amoCRM and Kommo API v4. It takes care of OAuth2 tokens that rotate on every refresh, the limit of 7 requests per second, retries that never send a write twice unless asked, paginated lists with filters and webhook parsing. Leads, contacts, companies and tasks come back as pydantic models.</p>
-            <p class="tags"><span>Python</span><span>httpx</span><span>pydantic 2</span><span>OAuth2</span></p>
-            <p class="note" data-l="ru">Живого аккаунта amoCRM за&nbsp;тестами пока нет: HTTP в&nbsp;них замокан, а&nbsp;форматы запросов и&nbsp;ответов сверены с&nbsp;официальным PHP SDK amoCRM.</p>
-            <p class="note" data-l="en">There's no live amoCRM account behind the tests yet: HTTP is mocked, and the request and answer shapes are checked against amoCRM's official PHP SDK.</p>
-            <p class="pip"><code>pip install aioamocrm</code></p>
-            <div class="case-links">
-              <a class="lnk" href="https://github.com/sinnercode228/aioamocrm" target="_blank" rel="noopener"><span data-l="ru">Код</span><span data-l="en">Code</span></a>
-              <a class="lnk" href="https://pypi.org/project/aioamocrm/" target="_blank" rel="noopener">PyPI</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
+    </article>
 
     <div class="more" id="more">
       <h3><span data-l="ru">Проекты поменьше</span><span data-l="en">Smaller projects</span></h3>
@@ -809,17 +782,17 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
     <div class="sec-head">
       <p class="eyebrow"><span data-l="ru">Разборы</span><span data-l="en">Write-ups</span></p>
       <h2 id="notes-h"><span data-l="ru">Как устроены проекты, по&nbsp;строкам кода</span><span data-l="en">How the projects work, line by line</span></h2>
-      <p class="sec-intro" data-l="ru">Тексты о&nbsp;том, как работают отдельные части проектов выше. Я&nbsp;цитирую код со&nbsp;ссылками на&nbsp;строки в&nbsp;конкретном коммите и&nbsp;пишу, что покрывают тесты. Четыре из&nbsp;них&nbsp;— про ошибки, которые я&nbsp;нашёл у&nbsp;себя и&nbsp;исправил: в&nbsp;цикле повторов Ledgerline, в&nbsp;записи на&nbsp;один слот в&nbsp;Slotbook и&nbsp;в&nbsp;очереди Relay.</p>
-      <p class="sec-intro" data-l="en">How specific parts of the projects above work. I quote the code with links to the exact lines at a fixed commit and say what the tests cover. Four are about bugs I found in my own code and fixed: in Ledgerline's retry loop, in Slotbook's simultaneous bookings of one slot and in Relay's queue.</p>
+      <p class="sec-intro" data-l="ru">Тексты о&nbsp;том, как работают отдельные части проектов и&nbsp;библиотек выше. Я&nbsp;цитирую код со&nbsp;ссылками на&nbsp;строки в&nbsp;конкретном коммите и&nbsp;пишу, что покрывают тесты. Два из&nbsp;них&nbsp;— про ошибки, которые я&nbsp;нашёл у&nbsp;себя и&nbsp;исправил: в&nbsp;aiogram-stars перед первым релизом и&nbsp;в&nbsp;одновременных записях на&nbsp;один слот в&nbsp;Slotbook.</p>
+      <p class="sec-intro" data-l="en">How specific parts of the projects and libraries above work. I quote the code with links to the exact lines at a fixed commit and say what the tests cover. Two are about bugs I found in my own code and fixed: in aiogram-stars before its first release, and in Slotbook's simultaneous bookings of one slot.</p>
     </div>
     <ul class="more-list notes-list">
       <li>
-        <span class="proj">Ledgerline</span>
+        <span class="proj">aiogram-stars</span>
         <div>
-          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/ledgerline-balanced-but-wrong.ru.md" target="_blank" rel="noopener">Оборотная ведомость сходилась в&nbsp;ноль, а&nbsp;счёт списали дважды</a>
-          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/ledgerline-balanced-but-wrong.md" target="_blank" rel="noopener">The trial balance was zero and the invoice was written off twice</a>
-          <p data-l="ru">Цикл повторов работал с&nbsp;копиями счетов, которые вызов внутри него уже списал, и&nbsp;один счёт списывался дважды. Журнал из&nbsp;прогона на&nbsp;старом коде, два инварианта, которые сверяют книгу со&nbsp;счетами, и&nbsp;исправление.</p>
-          <p data-l="en">A retry loop kept invoice copies across a call that wrote them off, and one invoice was written off twice. The journal from a run on the old code, the two invariants that compare the books with the invoices, and the fix.</p>
+          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/aiogram-stars-payments.ru.md" target="_blank" rel="noopener">Звёзды списаны, а&nbsp;on_paid не&nbsp;вызван: где теряются платежи Telegram Stars в&nbsp;aiogram</a>
+          <a class="t" data-l="en" href="https://dev.to/sinnercode228/the-stars-were-charged-and-onpaid-never-ran-where-telegram-stars-payments-get-lost-in-aiogram-5m2" target="_blank" rel="noopener">The Stars were charged and on_paid never ran: where Telegram Stars payments get lost in aiogram</a>
+          <p data-l="ru">Девять ошибок, найденных в&nbsp;aiogram-stars до&nbsp;первого релиза, четыре подробно: <code>asyncio.wait_for</code>, с&nbsp;которым ответ на&nbsp;<span class="nw">pre-checkout</span> ушёл через 11&nbsp;с, роутер «на&nbsp;всё», забиравший сообщение об&nbsp;оплате, остановка polling посреди <code>on_paid</code> и&nbsp;429, из-за которого каждый возврат в&nbsp;очереди терял попытку.</p>
+          <p data-l="en">Nine bugs found in aiogram-stars before its first release, four in detail: an <code>asyncio.wait_for</code> that let the <span class="nw">pre-checkout</span> answer leave after 11&nbsp;s, a catch-all router that took the payment message, a polling shutdown that cut <code>on_paid</code> off, and a 429 that burnt an attempt of every queued refund. On dev.to.</p>
         </div>
       </li>
       <li>
@@ -841,42 +814,6 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
         </div>
       </li>
       <li>
-        <span class="proj">Relay</span>
-        <div>
-          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-lease-fencing.ru.md" target="_blank" rel="noopener">Поздний ack оказался мелочью: fencing token из&nbsp;срока аренды в&nbsp;очереди на&nbsp;Redis</a>
-          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-lease-fencing.md" target="_blank" rel="noopener">The late ack was the small bug: fencing a Redis queue with the lease deadline</a>
-          <p data-l="ru">Вторая часть про очередь Relay. Воркер с&nbsp;истёкшей арендой затирал запись о&nbsp;доставке у&nbsp;нового владельца задачи; теперь каждая запись после попытки сверяет срок аренды.</p>
-          <p data-l="en">Part 2 of the Relay queue story. A worker past its lease overwrote the new owner's delivery record; now every write after an attempt checks the lease deadline.</p>
-        </div>
-      </li>
-      <li>
-        <span class="proj">Relay</span>
-        <div>
-          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-queue-races.ru.md" target="_blank" rel="noopener">Очередь на&nbsp;Redis атомарно забирала задачи и&nbsp;всё равно отдавала одну и&nbsp;ту&nbsp;же двум воркерам</a>
-          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-queue-races.md" target="_blank" rel="noopener">My Redis queue claimed jobs atomically and still handed the same job to two workers</a>
-          <p data-l="ru"><code>MULTI</code> сделал атомарным захват задачи, но&nbsp;не&nbsp;чтение, на&nbsp;котором он основан. Хук в&nbsp;тестах, который на&nbsp;каждом прогоне воспроизводит обе гонки, и&nbsp;исправление на&nbsp;Lua.</p>
-          <p data-l="en"><code>MULTI</code> made the claim atomic, but not the read it was based on. A test hook that forces both interleavings on every run, and the fix in Lua.</p>
-        </div>
-      </li>
-      <li>
-        <span class="proj">Relay</span>
-        <div>
-          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-redis-lease-queue.ru.md" target="_blank" rel="noopener">Очередь доставок Relay на&nbsp;двух sorted set в&nbsp;Redis с&nbsp;арендой задачи на&nbsp;120&nbsp;секунд</a>
-          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/relay-redis-lease-queue.md" target="_blank" rel="noopener">Relay's delivery queue on two Redis sorted sets with a 120-second lease</a>
-          <p data-l="ru">Как воркер берёт задачу в&nbsp;аренду, а&nbsp;не&nbsp;забирает её из&nbsp;очереди, и&nbsp;почему попытка сохраняется раньше ack.</p>
-          <p data-l="en">How a worker leases a job instead of popping it, and why the attempt is saved before the ack.</p>
-        </div>
-      </li>
-      <li>
-        <span class="proj">FlowDesk</span>
-        <div>
-          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.ru.md" target="_blank" rel="noopener">Ротация refresh-токенов в&nbsp;FlowDesk через условный UPDATE и&nbsp;блокировку между вкладками</a>
-          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/flowdesk-refresh-rotation.md" target="_blank" rel="noopener">How FlowDesk rotates refresh tokens with a conditional UPDATE and a cross-tab lock</a>
-          <p data-l="ru">Одноразовые refresh-токены, условный <code>updateMany</code>, после которого из&nbsp;двух одновременных refresh-запросов проходит один, и&nbsp;Web Locks для двух вкладок с&nbsp;одной сессией.</p>
-          <p data-l="en">Single-use refresh tokens, the conditional <code>updateMany</code> that lets only one of two concurrent refreshes win, and Web Locks for two tabs on one session.</p>
-        </div>
-      </li>
-      <li>
         <span class="proj">Zernolist</span>
         <div>
           <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/zernolist-stars-payments.ru.md" target="_blank" rel="noopener">Как Zernolist считает цену заказа на&nbsp;сервере и&nbsp;принимает каждый платёж в&nbsp;Telegram Stars один раз</a>
@@ -892,15 +829,6 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
           <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/docmind-sources-before-tokens.md" target="_blank" rel="noopener">How DocMind sends sources before the first token and links [n] markers mid-stream</a>
           <p data-l="ru">Порядок событий в&nbsp;SSE, как клиент превращает [n] в&nbsp;кнопку, пока текст ещё идёт, и&nbsp;что происходит со&nbsp;сноской [7], когда источников пять.</p>
           <p data-l="en">The SSE event order, how the client turns [n] into a button while the text is still streaming, and what happens to a [7] when there are five sources.</p>
-        </div>
-      </li>
-      <li>
-        <span class="proj">Pulse</span>
-        <div>
-          <a class="t" data-l="ru" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/pulse-hyperloglog.ru.md" target="_blank" rel="noopener">Как Pulse считает посетителей через суточную соль и&nbsp;HyperLogLog</a>
-          <a class="t" data-l="en" href="https://github.com/sinnercode228/sinnercode228/blob/main/notes/pulse-hyperloglog.md" target="_blank" rel="noopener">How Pulse counts unique visitors with a daily salt and a sparse-to-dense HyperLogLog</a>
-          <p data-l="ru">Идентификатор посетителя без cookies, скетч, который до&nbsp;512 хэшей остаётся точным множеством, и&nbsp;ошибка, измеренная на&nbsp;разных объёмах.</p>
-          <p data-l="en">A visitor id without cookies, a sketch that stays an exact set up to 512 hashes, and the error measured at different sizes.</p>
         </div>
       </li>
     </ul>
