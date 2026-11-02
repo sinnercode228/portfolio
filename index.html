@@ -592,8 +592,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <li class="skill">
         <h3><span data-l="ru">Авторизация и&nbsp;безопасность</span><span data-l="en">Auth and security</span></h3>
         <div>
-          <p data-l="ru">Сессии с&nbsp;ротацией refresh-токенов, роли и&nbsp;права доступа, проверка данных и&nbsp;цен на&nbsp;сервере, а&nbsp;не&nbsp;в&nbsp;браузере, подписанные данные платежей.</p>
-          <p data-l="en">Sessions with refresh-token rotation, roles and permissions, data and prices checked on the server rather than in the browser, signed payment payloads.</p>
+          <p data-l="ru">Доступ по&nbsp;действующей подписке, OAuth2 с&nbsp;ротацией токенов, проверка данных и&nbsp;цен на&nbsp;сервере, а&nbsp;не&nbsp;в&nbsp;браузере, подписанные данные платежей.</p>
+          <p data-l="en">Access gated by an active subscription, OAuth2 with token rotation, data and prices checked on the server rather than in the browser, signed payment payloads.</p>
           <p class="tech"><span>Pydantic</span><span>HMAC</span></p>
         </div>
         <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/tg-paid-club/blob/6979eb48f24c1d8be0b48aaa47b189176566fa33/src/paidclub/access.py#L111-L160" target="_blank" rel="noopener"><span data-l="ru">в&nbsp;закрытый чат tg-paid-club пускают только с&nbsp;действующей подпиской</span><span data-l="en">tg-paid-club lets someone into the private chat only with an active subscription</span></a></p>
@@ -610,8 +610,8 @@ footer { padding: 30px 0 40px; font: 13px/1.6 var(--mono); color: var(--muted); 
       <li class="skill">
         <h3><span data-l="ru">Интеграции и&nbsp;платежи</span><span data-l="en">Integrations and payments</span></h3>
         <div>
-          <p data-l="ru">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, ЮKassa, почта. Вебхуки с&nbsp;подписью, ретраи с&nbsp;растущей паузой, оплата в&nbsp;Telegram Stars, биллинг подписок с&nbsp;повторными списаниями.</p>
-          <p data-l="en">amoCRM, Bitrix24, Tilda, Google Sheets, Telegram, YooKassa, e-mail. Signed webhooks, retries with backoff, Telegram Stars payments, subscription billing with dunning.</p>
+          <p data-l="ru">amoCRM, Bitrix24, Google Sheets, Telegram, ЮKassa. Вебхуки с&nbsp;подписью, ретраи с&nbsp;растущей паузой, оплата в&nbsp;Telegram Stars, биллинг подписок с&nbsp;повторными списаниями.</p>
+          <p data-l="en">amoCRM, Bitrix24, Google Sheets, Telegram, YooKassa. Signed webhooks, retries with backoff, Telegram Stars payments, subscription billing with dunning.</p>
           <p class="tech"><span>httpx</span><span>aiogram 3</span><span>Bot API</span></p>
         </div>
         <p class="src"><span data-l="ru">в&nbsp;коде:</span><span data-l="en">in the code:</span> <a href="https://github.com/sinnercode228/tg-shop-miniapp/blob/54cb076af58b99b8e693ff301d43ea20a9dc1d91/bot/tgshop/services/orders.py#L76-L100" target="_blank" rel="noopener"><span data-l="ru">сервер пересчитывает каждый заказ по&nbsp;каталогу</span><span data-l="en">the server re-prices every order from the catalog</span></a>
